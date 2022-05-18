@@ -1,0 +1,27 @@
+{
+    "event": "topic:default/sap.c4u.mcm/-/ce/sap/c4u/mcm/MCMInstance/ExternalMasterDataReady/v1",
+    "data": {
+        "groupingName": "OrdererCode",
+        "id": "1603d76e-325d-4977-b8e0-30b962dc76ec",
+        "groupingValue": "SP_DIST"
+    },
+    "msg": {
+        "req": {
+            "authInfo": {},
+            "query": {},
+            "headers": {}
+        }
+    },
+    "headers": {
+        "id": "4e16eb53-74cc-4adb-8bea-f6fad7a900de",
+        "time": "2021-06-28T17:04:04.414238Z",
+        "type": "sap.c4u.mcm.MCMInstance.ExternalMasterDataReady.v1",
+        "source": "/default/sap.c4u.mcm",
+        "specversion": "1.0",
+        "datacontenttype": "appplication/json",
+        "subject": "1603d76e-325d-4977-b8e0-30b962dc76ec",
+        "x-correlation-id": "c691136a-a75e-4220-99a6-688d18f2b023",
+        "authorization": ""
+    },
+    "inbound": true
+}

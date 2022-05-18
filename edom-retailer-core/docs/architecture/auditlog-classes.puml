@@ -1,0 +1,34 @@
+@startuml
+class Service
+
+class "@sap/audit-logging/AuditLogClient" {
+    AuditLogMessage update(...)
+}
+class "@sap/audit-logging/AuditLogMessage" {
+    AuditLogMessage attribute(...)
+    AuditLogMessage.dataSubject(...)
+    AuditLogMessage.tenant(string tenantId)
+    AuditLogMessage.by(string userId)
+    logPrepare(callback)
+    logSuccess(callback)
+    logError(callback)
+}
+class AuditLogService {
+    void registerHandler(Service srv)   
+}
+class AuditLogBuilder {
+    constructor()
+    AuditLogBuilder update(Request req, Object data)
+    AuditLogBuilder addAttributes(Object data)
+    AuditLogBuilder addDataSubject(Object data)
+    AuditLogMessage build()
+}
+
+Service - AuditLogService : registers Handler >
+
+AuditLogService - AuditLogBuilder : builds >
+AuditLogService - "@sap/audit-logging/AuditLogMessage" : logs >
+
+AuditLogBuilder - "@sap/audit-logging/AuditLogClient" : update >
+AuditLogBuilder - "@sap/audit-logging/AuditLogMessage" : builds >
+@enduml

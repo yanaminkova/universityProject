@@ -1,0 +1,34 @@
+specVersion: '2.4'
+metadata:
+    name: 'fioriLaunchpad'
+type: application
+
+resources:
+    configuration:
+        paths:
+            webapp: './app'
+
+server:
+    customMiddleware:
+        - name: sap-fe-mockserver
+          beforeMiddleware: csp
+          mountPath: /
+          configuration:
+              annotations:
+                  urlPath: '/customer-order/annotations'
+                  localPath: './customer-order/annotations.cds'
+              service:
+                  urlBasePath: '/api/v1'
+                  name: 'ui'
+                  metadataXmlPath: './test/ui/mockserver/localService/metadata.xml'
+                  mockdataRootPath: './test/ui/mockserver/localService/data'
+        - name: fiori-tools-proxy
+          afterMiddleware: compression
+          configuration:
+              ignoreCertError: false # If set to true, certificate errors will be ignored. E.g. self-signed certificates will be accepted
+              ui5:
+                  path:
+                      - /resources
+                      - /test-resources
+                  url: https://ui5.sap.com
+                  version:

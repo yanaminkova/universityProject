@@ -1,0 +1,10 @@
+{
+    "types": {
+        "created": "sap.c4u.retail.BusinessPartner.Created.v1",
+        "updated": "sap.c4u.retail.BusinessPartner.Updated.v1"
+    },
+    "topics": {
+        "created": "Created/v1",
+        "updated": "Updated/v1"
+    }
+}

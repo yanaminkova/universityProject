@@ -1,0 +1,14 @@
+code;name;descr
+TRA;Transmission;
+DIS;Distribution;
+COO;Settlement Coordination;
+RES;Settlement Responsible;
+CLE;Clearing House;
+DHB;Data Hub;
+MET;Meter Operation;
+MIT;Metering Operation;
+TEC;Technical Services;
+CUS;Third-Party Customer Services;
+SAL;Third-Party Sales;
+SUP;Supply;
+OTH;Other;

@@ -1,0 +1,25 @@
+{
+    "name": "c4u-foundation-retailer-approuter",
+    "version": "1.0.0",
+    "description": "Cloud for Utilities Foundation Retailer Approuter",
+    "license": "SAP SE",
+    "author": "",
+    "repository": {
+        "type": "git",
+        "url": "https://github.wdf.sap.corp/c4u/edom-retailer-core"
+    },
+    "scripts": {
+        "start": "node node_modules/@sap/approuter/approuter.js",
+        "css-min": "css-minify -d resources/css/styles -o resources/css/styles"
+    },
+    "dependencies": {
+        "@sap/approuter": "10.14.0"
+    },
+    "devDependencies": {
+        "css-minify": "2.0.0"
+    },
+    "engines": {
+        "node": "14.18.*"
+    },
+    "private": true
+}

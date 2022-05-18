@@ -1,0 +1,81 @@
+{
+    "MessageHeader": {
+        "ID": "0894EF4577B11EDC819410E4569C9B37",
+        "UUID": "0894ef45-77b1-1edc-8194-10e4569c9b37",
+        "CreationDateTime": "2021-08-24T06:00:06.768371Z",
+        "SenderBusinessSystemID": "0LETAUD",
+        "RecipientBusinessSystemID": "SBTEMP18"
+    },
+    "BillableItemsCreateResult": [
+        {
+            "CABllbleItmSourceTransType": "REVCL",
+            "CABllbleItmSourceTransId": "0000000000000000002432",
+            "CABllbleItmStatus": "E",
+            "CABllbleItmPackageUUID": "00000000000000000000000000000000",
+            "CABllbleItmDataPackageID": "00000000000000000000000000000000",
+            "ContractAccount": {
+                "InternalID": "BP_DE_2"
+            },
+            "CABillgDocument": "000000000000",
+            "CAInvcgDocument": "000000000000"
+        }
+    ],
+    "Log": {
+        "BusinessDocumentProcessingResultCode": "3",
+        "MaximumLogItemSeverityCode": "3",
+        "Item": [
+            {
+                "TypeID": "281(FKKBIX2)",
+                "SeverityCode": "3",
+                "Note": "Billable Items could not be loaded (please see log 12011870)."
+            },
+            {
+                "TypeID": "360(FKKBIX2)",
+                "SeverityCode": "1",
+                "Note": "********** Start Creation of Billable Items **********"
+            },
+            {
+                "TypeID": "814(FKKBIX)",
+                "SeverityCode": "1",
+                "Note": "***********************  C R E A T I O N  ***************************"
+            },
+            {
+                "TypeID": "815(FKKBIX)",
+                "SeverityCode": "1",
+                "Note": "Creation of billable items was started for class 0SAP"
+            },
+            {
+                "TypeID": "001(>3)",
+                "SeverityCode": "3",
+                "Note": "Contract account BP_DE_2 does not exist - change your entry"
+            },
+            {
+                "TypeID": "400(FKKBIX)",
+                "SeverityCode": "1",
+                "Note": "All items were returned as having errors",
+                "WebURI": "http://ldai2cc3.wdf.sap.corp:50000/sap/xi/docu_apperror?ID=NA&OBJECT=FKKBIX400&LANGUAGE=E"
+            },
+            {
+                "TypeID": "205(FKKBIX)",
+                "SeverityCode": "1",
+                "Note": "************************  S T A T I S T I C S ************************"
+            },
+            {
+                "TypeID": "071(FKKBIX2)",
+                "SeverityCode": "1",
+                "Note": "Data has been processed under the data package ID 0894EF4577B11EDC819410E823BA5B37",
+                "WebURI": "http://ldai2cc3.wdf.sap.corp:50000/sap/xi/docu_apperror?ID=NA&OBJECT=FKKBIX2071&LANGUAGE=E&MSGV1=0894EF4577B11EDC819410E823BA5B37"
+            },
+            {
+                "TypeID": "325(FKKBIX2)",
+                "SeverityCode": "3",
+                "Note": "35 items failed"
+            },
+            {
+                "TypeID": "361(FKKBIX2)",
+                "SeverityCode": "1",
+                "Note": "********** Stop Creation of Billable Items **********"
+            }
+        ]
+    }
+}

@@ -1,0 +1,906 @@
+{
+    "name": "edom-retailer",
+    "version": "1.51.1",
+    "description": "C4U EDoM Retailer main application",
+    "license": "SAP SE",
+    "author": "",
+    "repository": {
+        "type": "git",
+        "url": "https://github.wdf.sap.corp/c4u/c4u-cn-edom-retailer"
+    },
+    "scripts": {
+        "start": "cds run",
+        "openapi": "cds compile srv --service all -o docs/content/openapi --to openapi",
+        "edmx": "cds compile srv --service all -o docs/content/edmx --to edmx-x4",
+        "createCustomerOrderAPIDocs": "node scripts/openAPI/createCustomerOrderAPIDocs.js",
+        "openAPItranslate": "node scripts/openAPI/i18n2docs.js",
+        "build": "cds build --production --clean",
+        "lint": "npx eslint .",
+        "prettier": "npx prettier --write  .",
+        "test": "jest --testPathPattern='/.*/backend-[a-z]+/.*.js' --reporters='jest-junit' --reporters='default' --coverage=true --coverageDirectory='target/backend/' ",
+        "ci-lint": "npx eslint -o ./eslint.xml -f checkstyle .",
+        "newman-local": "newman run test/postman/edom_retailer_test.postman_collection.json --environment test/postman/localhost.postman_environment.json",
+        "newman-dev": "newman run test/postman/edom_retailer_test.postman_collection.json --environment test/postman/c4uconsumerdevaws.postman_environment.json",
+        "newman-test": "newman run test/postman/edom_retailer_test.postman_collection.json --environment test/postman/c4uconsumertestaws.postman_environment.json --globals test/postman/edom_retailer_test.postman_globals.json",
+        "karma-start": "karma start karma.conf.js",
+        "karma-start-ci": "wait-on http://localhost:8080/fiori.html && karma start karma-ci.conf.js",
+        "start-ui-mock": "ui5 serve --config app/ui5-cap.yaml",
+        "ci-it-frontend": "concurrently -k -s first \"npm run start-ui-mock\"  \"npm run karma-start-ci\"",
+        "prepare": "node srv/hooks/huskyPrepare.js"
+    },
+    "dependencies": {
+        "@babel/types": "7.17.0",
+        "@dynatrace/oneagent-sdk": "1.4.1",
+        "@sap-cloud-sdk/core": "1.54.0",
+        "@sap/audit-logging": "5.5.1",
+        "@sap/cds": "5.8.4",
+        "@sap/cds-mtx": "2.5.3",
+        "@sap/hdbext": "7.6.2",
+        "@sap/odm": "3.0.0",
+        "@sap/textbundle": "4.1.0",
+        "@sap/xb-msg-amqp-v100": "0.9.59",
+        "@sap/xsenv": "3.2.1",
+        "@sap/xssec": "3.2.12",
+        "axios": "0.26.1",
+        "cf-nodejs-logging-support": "6.12.0",
+        "cloudevents": "5.3.2",
+        "express": "4.17.3",
+        "hdb": "0.19.1",
+        "helmet": "5.0.2",
+        "jsonwebtoken": "8.5.1",
+        "moment": "2.29.1",
+        "p-limit": "3.1.0",
+        "passport": "0.5.2",
+        "qs": "6.10.3",
+        "soap": "0.43.0",
+        "xml2js": "0.4.23",
+        "xss": "1.0.11"
+    },
+    "devDependencies": {
+        "@octokit/core": "3.5.1",
+        "@sap-cloud-sdk/test-util": "2.0.0",
+        "@sap/cds-dk": "4.8.0",
+        "@sap/ux-ui5-fe-mockserver-middleware": "1.4.9",
+        "@sap/ux-ui5-tooling": "1.4.7",
+        "@ui5/cli": "2.14.4",
+        "chai": "4.3.6",
+        "chai-as-promised": "7.1.1",
+        "chai-subset": "1.6.0",
+        "concurrently": "7.0.0",
+        "eslint": "8.8.0",
+        "eslint-config-airbnb-base": "15.0.0",
+        "eslint-config-prettier": "8.3.0",
+        "eslint-config-ui5": "0.0.17",
+        "eslint-plugin-import": "2.25.4",
+        "eslint-plugin-prettier": "4.0.0",
+        "eslint-plugin-ui5": "0.1.0",
+        "husky": "7.0.4",
+        "jest": "27.5.0",
+        "jest-junit": "13.0.0",
+        "jest-sonar-reporter": "2.0.0",
+        "karma": "6.3.15",
+        "karma-chrome-launcher": "3.1.0",
+        "karma-junit-reporter": "2.0.1",
+        "karma-ui5": "2.4.0",
+        "karma-webdriver-launcher": "1.0.8",
+        "mocha": "9.2.0",
+        "mocha-junit-reporter": "2.0.2",
+        "msw": "0.28.2",
+        "newman": "5.3.1",
+        "prettier": "2.5.1",
+        "sqlite3": "^5.0.2",
+        "wait-on": "6.0.0",
+        "whitesource": "20.12.2",
+        "xml-formatter": "2.6.1",
+        "xmldom": "0.6.0"
+    },
+    "engines": {
+        "node": "14.18.*"
+    },
+    "private": true,
+    "cds": {
+        "comment": "Anything defined outside of a [profile] will apply to all profiles and are used by released features.",
+        "requires": {
+            "db": {
+                "kind": "hana",
+                "model": [
+                    "db",
+                    "srv"
+                ],
+                "multiTenant": true,
+                "vcap": {
+                    "label": "service-manager"
+                },
+                "pool": {
+                    "max": 10,
+                    "min": 5
+                }
+            },
+            "multitenancy": true,
+            "featureFlags": {
+                "impl": "srv/external/FeatureFlagsService"
+            },
+            "businessRules": {
+                "impl": "srv/external/BusinessRuleMockService"
+            },
+            "messaging": {
+                "[development]": {
+                    "kind": "local-messaging"
+                },
+                "[production]": {
+                    "kind": "enterprise-messaging"
+                },
+                "emitPerHTTP": true,
+                "queue": {
+                    "name": "default/sap.c4u.retail/-/ce/sap/c4u/retail"
+                }
+            },
+            "subscriptionBillingMessaging": {
+                "[development]": {
+                    "kind": "local-messaging"
+                },
+                "[production]": {
+                    "kind": "enterprise-messaging"
+                },
+                "emitPerHTTP": true,
+                "queue": {
+                    "name": "default/sap.c4u.retail/-/ce/sap/billing/sb"
+                }
+            },
+            "billingAccountMessaging": {
+                "[development]": {
+                    "kind": "local-messaging"
+                },
+                "[production]": {
+                    "kind": "enterprise-messaging"
+                },
+                "emitPerHTTP": true,
+                "queue": {
+                    "name": "default/sap.c4u.retail/-/ce/sap/c4u/retail/BillingAccount"
+                }
+            },
+            "businessPartnerMessaging": {
+                "[development]": {
+                    "kind": "local-messaging"
+                },
+                "[production]": {
+                    "kind": "enterprise-messaging"
+                },
+                "emitPerHTTP": true,
+                "outbox": false,
+                "queue": {
+                    "name": "default/sap.c4u.retail/-/ce/sap/c4u/retail/BusinessPartner"
+                }
+            },
+            "[development]": {
+                "auth": {
+                    "strategy": "mock",
+                    "users": {
+                        "admin": {
+                            "roles": [
+                                "API.Write",
+                                "API.Read",
+                                "API.Create",
+                                "API.Delete",
+                                "Admin",
+                                "UI.Edit",
+                                "UI.Browse",
+                                "DPPBlocked.Read",
+                                "MasterData.Sync"
+                            ],
+                            "password": "admin"
+                        },
+                        "user": {
+                            "roles": [
+                                "API.Write",
+                                "API.Read",
+                                "UI.Edit",
+                                "UI.Browse"
+                            ],
+                            "password": "user"
+                        },
+                        "viewer": {
+                            "roles": [
+                                "API.Read",
+                                "UI.Browse"
+                            ],
+                            "password": "viewer"
+                        },
+                        "drm": {
+                            "roles": [
+                                "DataRetentionManagerUser"
+                            ],
+                            "password": "drm"
+                        },
+                        "pdm": {
+                            "roles": [
+                                "PersonalDataManagerUser"
+                            ],
+                            "password": "pdm"
+                        }
+                    }
+                },
+                "db": {
+                    "kind": "sqlite",
+                    "multiTenant": false,
+                    "credentials": {
+                        "database": "sqlite.db"
+                    }
+                },
+                "multitenancy": false,
+                "BusinessPartnerKeyMappingService": {
+                    "service": "API_BP_KEY_MAPPING",
+                    "kind": "odata",
+                    "credentials": {
+                        "destination": "mdi-bp-keymap",
+                        "requestTimeout": 30000
+                    }
+                },
+                "API_BANKDETAIL_SRV": {
+                    "service": "API_BANKDETAIL_SRV",
+                    "kind": "odata",
+                    "credentials": {
+                        "destination": "S4HC_SEPA_MANDATE_BANKDETAILS",
+                        "requestTimeout": 30000
+                    }
+                },
+                "API_COMPANYCODE_SRV": {
+                    "service": "API_COMPANYCODE_SRV",
+                    "kind": "odata",
+                    "credentials": {
+                        "destination": "S4HC_SEPA_MANDATE_COMPANYCODE",
+                        "requestTimeout": 30000
+                    }
+                },
+                "SEPAMandate": {
+                    "service": "API_O2C_FICA_SEPA_MANDATE_SRV",
+                    "kind": "odata",
+                    "credentials": {
+                        "destination": "S4HC_SEPA_MANDATE",
+                        "requestTimeout": 30000
+                    }
+                },
+                "SBDestination": {
+                    "kind": "rest",
+                    "credentials": {
+                        "destination": "SB-DESTINATION",
+                        "requestTimeout": 30000
+                    }
+                },
+                "MdiDestination": {
+                    "kind": "rest",
+                    "credentials": {
+                        "destination": "C4UF-MDI",
+                        "requestTimeout": 30000
+                    }
+                },
+                "Sales_Distribution_Order": {
+                    "kind": "odata",
+                    "service": "API_SALES_ORDER_SRV",
+                    "credentials": {
+                        "destination": "S4-DESTINATION"
+                    }
+                },
+                "C4EDestination": {
+                    "kind": "rest",
+                    "credentials": {
+                        "destination": "c4e-dest",
+                        "requestTimeout": 30000
+                    }
+                },
+                "C4ESLPDestination": {
+                    "kind": "rest",
+                    "credentials": {
+                        "destination": "c4e-slp-dest",
+                        "requestTimeout": 30000
+                    }
+                },
+                "C4EBDSDestination": {
+                    "kind": "rest",
+                    "credentials": {
+                        "destination": "c4e-bds-dest",
+                        "requestTimeout": 30000
+                    }
+                },
+                "MCMDestination": {
+                    "kind": "rest",
+                    "credentials": {
+                        "destination": "mcm-dest",
+                        "requestTimeout": 30000
+                    }
+                },
+                "distributionMessaging": {
+                    "kind": "local-messaging"
+                },
+                "contractAccountMessaging": {
+                    "kind": "local-messaging"
+                },
+                "technicalMasterDataMessaging": {
+                    "kind": "local-messaging"
+                },
+                "providerContractMessaging": {
+                    "kind": "local-messaging"
+                },
+                "featureFlags": {
+                    "impl": "srv/external/FeatureFlagsMockService"
+                },
+                "audit-log": {
+                    "credentials": {
+                        "logToConsole": true
+                    }
+                },
+                "S4Destination": {
+                    "kind": "rest",
+                    "credentials": {
+                        "destination": "S4-DESTINATION",
+                        "requestTimeout": 30000
+                    }
+                }
+            },
+            "[edom-retailer-dev]": {
+                "BusinessPartnerKeyMappingService": {
+                    "service": "API_BP_KEY_MAPPING",
+                    "kind": "odata",
+                    "credentials": {
+                        "destination": "mdi-bp-keymap",
+                        "requestTimeout": 30000
+                    }
+                },
+                "API_BANKDETAIL_SRV": {
+                    "service": "API_BANKDETAIL_SRV",
+                    "kind": "odata",
+                    "credentials": {
+                        "destination": "S4HC_SEPA_MANDATE_BANKDETAILS",
+                        "requestTimeout": 30000
+                    }
+                },
+                "API_COMPANYCODE_SRV": {
+                    "service": "API_COMPANYCODE_SRV",
+                    "kind": "odata",
+                    "credentials": {
+                        "destination": "S4HC_SEPA_MANDATE_COMPANYCODE",
+                        "requestTimeout": 30000
+                    }
+                },
+                "SEPAMandate": {
+                    "service": "API_O2C_FICA_SEPA_MANDATE_SRV",
+                    "kind": "odata",
+                    "credentials": {
+                        "destination": "S4HC_SEPA_MANDATE",
+                        "requestTimeout": 30000
+                    }
+                },
+                "SBDestination": {
+                    "kind": "rest",
+                    "credentials": {
+                        "destination": "SB-DESTINATION",
+                        "requestTimeout": 30000
+                    }
+                },
+                "MdiDestination": {
+                    "kind": "rest",
+                    "credentials": {
+                        "destination": "C4UF-MDI",
+                        "requestTimeout": 30000
+                    }
+                },
+                "Sales_Distribution_Order": {
+                    "kind": "odata",
+                    "service": "API_SALES_ORDER_SRV",
+                    "credentials": {
+                        "destination": "S4-DESTINATION"
+                    }
+                },
+                "C4EDestination": {
+                    "kind": "rest",
+                    "credentials": {
+                        "destination": "c4e-dest",
+                        "requestTimeout": 30000
+                    }
+                },
+                "C4ESLPDestination": {
+                    "kind": "rest",
+                    "credentials": {
+                        "destination": "c4e-slp-dest",
+                        "requestTimeout": 30000
+                    }
+                },
+                "C4EBDSDestination": {
+                    "kind": "rest",
+                    "credentials": {
+                        "destination": "c4e-bds-dest",
+                        "requestTimeout": 30000
+                    }
+                },
+                "MCMDestination": {
+                    "kind": "rest",
+                    "credentials": {
+                        "destination": "mcm-dest",
+                        "requestTimeout": 30000
+                    }
+                },
+                "distributionMessaging": {
+                    "kind": "enterprise-messaging",
+                    "emitPerHTTP": true,
+                    "queue": {
+                        "name": "default/sap.c4u.retail/-/ce/sap/c4u/distribution"
+                    }
+                },
+                "contractAccountMessaging": {
+                    "kind": "enterprise-messaging",
+                    "emitPerHTTP": true,
+                    "queue": {
+                        "name": "default/sap.c4u.retail/-/ce/sap/contractAcc"
+                    },
+                    "webhook": {
+                        "waitingPeriod": 7000
+                    }
+                },
+                "technicalMasterDataMessaging": {
+                    "kind": "enterprise-messaging",
+                    "emitPerHTTP": true,
+                    "queue": {
+                        "name": "default/sap.c4u.retail/-/ce/sap/c4e/createTMD"
+                    },
+                    "webhook": {
+                        "pushConfig": {
+                            "defaultContentType": "application/json"
+                        },
+                        "waitingPeriod": 7000
+                    }
+                },
+                "providerContractMessaging": {
+                    "kind": "enterprise-messaging",
+                    "emitPerHTTP": true,
+                    "queue": {
+                        "name": "default/sap.c4u.retail/-/ce/sap/providerContract"
+                    },
+                    "webhook": {
+                        "waitingPeriod": 7000
+                    }
+                },
+                "S4Destination": {
+                    "kind": "rest",
+                    "credentials": {
+                        "destination": "S4-DESTINATION",
+                        "requestTimeout": 30000
+                    }
+                }
+            },
+            "[edom-retailer-test]": {
+                "BusinessPartnerKeyMappingService": {
+                    "service": "API_BP_KEY_MAPPING",
+                    "kind": "odata",
+                    "credentials": {
+                        "destination": "mdi-bp-keymap",
+                        "requestTimeout": 30000
+                    }
+                },
+                "API_BANKDETAIL_SRV": {
+                    "service": "API_BANKDETAIL_SRV",
+                    "kind": "odata",
+                    "credentials": {
+                        "destination": "S4HC_SEPA_MANDATE_BANKDETAILS",
+                        "requestTimeout": 30000
+                    }
+                },
+                "API_COMPANYCODE_SRV": {
+                    "service": "API_COMPANYCODE_SRV",
+                    "kind": "odata",
+                    "credentials": {
+                        "destination": "S4HC_SEPA_MANDATE_COMPANYCODE",
+                        "requestTimeout": 30000
+                    }
+                },
+                "SEPAMandate": {
+                    "service": "API_O2C_FICA_SEPA_MANDATE_SRV",
+                    "kind": "odata",
+                    "credentials": {
+                        "destination": "S4HC_SEPA_MANDATE",
+                        "requestTimeout": 30000
+                    }
+                },
+                "SBDestination": {
+                    "kind": "rest",
+                    "credentials": {
+                        "destination": "SB-DESTINATION",
+                        "requestTimeout": 30000
+                    }
+                },
+                "MdiDestination": {
+                    "kind": "rest",
+                    "credentials": {
+                        "destination": "C4UF-MDI",
+                        "requestTimeout": 30000
+                    }
+                },
+                "Sales_Distribution_Order": {
+                    "kind": "odata",
+                    "service": "API_SALES_ORDER_SRV",
+                    "credentials": {
+                        "destination": "S4-DESTINATION"
+                    }
+                },
+                "C4EDestination": {
+                    "kind": "rest",
+                    "credentials": {
+                        "destination": "c4e-dest",
+                        "requestTimeout": 30000
+                    }
+                },
+                "S4Destination": {
+                    "kind": "rest",
+                    "credentials": {
+                        "destination": "S4-DESTINATION",
+                        "requestTimeout": 30000
+                    }
+                },
+                "C4ESLPDestination": {
+                    "kind": "rest",
+                    "credentials": {
+                        "destination": "c4e-slp-dest",
+                        "requestTimeout": 30000
+                    }
+                },
+                "C4EBDSDestination": {
+                    "kind": "rest",
+                    "credentials": {
+                        "destination": "c4e-bds-dest",
+                        "requestTimeout": 30000
+                    }
+                },
+                "MCMDestination": {
+                    "kind": "rest",
+                    "credentials": {
+                        "destination": "mcm-dest",
+                        "requestTimeout": 30000
+                    }
+                },
+                "distributionMessaging": {
+                    "kind": "enterprise-messaging",
+                    "emitPerHTTP": true,
+                    "queue": {
+                        "name": "default/sap.c4u.retail/-/ce/sap/c4u/distribution"
+                    }
+                },
+                "contractAccountMessaging": {
+                    "kind": "enterprise-messaging",
+                    "emitPerHTTP": true,
+                    "queue": {
+                        "name": "default/sap.c4u.retail/-/ce/sap/contractAcc"
+                    },
+                    "webhook": {
+                        "waitingPeriod": 7000
+                    }
+                },
+                "technicalMasterDataMessaging": {
+                    "kind": "enterprise-messaging",
+                    "emitPerHTTP": true,
+                    "queue": {
+                        "name": "default/sap.c4u.retail/-/ce/sap/c4e/createTMD"
+                    },
+                    "webhook": {
+                        "pushConfig": {
+                            "defaultContentType": "application/json"
+                        },
+                        "waitingPeriod": 7000
+                    }
+                },
+                "providerContractMessaging": {
+                    "kind": "enterprise-messaging",
+                    "emitPerHTTP": true,
+                    "queue": {
+                        "name": "default/sap.c4u.retail/-/ce/sap/providerContract"
+                    },
+                    "webhook": {
+                        "waitingPeriod": 7000
+                    }
+                }
+            },
+            "[production]": {
+                "uaa": {
+                    "kind": "xsuaa"
+                },
+                "Sales_Distribution_Order": {
+                    "kind": "odata",
+                    "service": "API_SALES_ORDER_SRV",
+                    "credentials": {
+                        "destination": "S4-DESTINATION"
+                    }
+                },
+                "S4Destination": {
+                    "kind": "rest",
+                    "credentials": {
+                        "destination": "S4-DESTINATION",
+                        "requestTimeout": 30000
+                    }
+                },
+                "BusinessPartnerKeyMappingService": {
+                    "service": "API_BP_KEY_MAPPING",
+                    "kind": "odata",
+                    "credentials": {
+                        "destination": "mdi-bp-keymap",
+                        "requestTimeout": 30000
+                    }
+                },
+                "API_BANKDETAIL_SRV": {
+                    "service": "API_BANKDETAIL_SRV",
+                    "kind": "odata",
+                    "credentials": {
+                        "destination": "S4HC_SEPA_MANDATE_BANKDETAILS",
+                        "requestTimeout": 30000
+                    }
+                },
+                "API_COMPANYCODE_SRV": {
+                    "service": "API_COMPANYCODE_SRV",
+                    "kind": "odata",
+                    "credentials": {
+                        "destination": "S4HC_SEPA_MANDATE_COMPANYCODE",
+                        "requestTimeout": 30000
+                    }
+                },
+                "SEPAMandate": {
+                    "service": "API_O2C_FICA_SEPA_MANDATE_SRV",
+                    "kind": "odata",
+                    "credentials": {
+                        "destination": "S4HC_SEPA_MANDATE",
+                        "requestTimeout": 30000
+                    }
+                },
+                "MdiDestination": {
+                    "kind": "rest",
+                    "credentials": {
+                        "destination": "C4UF-MDI",
+                        "requestTimeout": 30000
+                    }
+                },
+                "SBDestination": {
+                    "kind": "rest",
+                    "credentials": {
+                        "destination": "SB-DESTINATION",
+                        "requestTimeout": 30000
+                    }
+                },
+                "C4EDestination": {
+                    "kind": "rest",
+                    "credentials": {
+                        "destination": "c4e-dest",
+                        "requestTimeout": 30000
+                    }
+                },
+                "C4ESLPDestination": {
+                    "kind": "rest",
+                    "credentials": {
+                        "destination": "c4e-slp-dest",
+                        "requestTimeout": 30000
+                    }
+                },
+                "C4EBDSDestination": {
+                    "kind": "rest",
+                    "credentials": {
+                        "destination": "c4e-bds-dest",
+                        "requestTimeout": 30000
+                    }
+                },
+                "MCMDestination": {
+                    "kind": "rest",
+                    "credentials": {
+                        "destination": "mcm-dest",
+                        "requestTimeout": 30000
+                    }
+                },
+                "distributionMessaging": {
+                    "kind": "enterprise-messaging",
+                    "emitPerHTTP": true,
+                    "queue": {
+                        "name": "default/sap.c4u.retail/-/ce/sap/c4u/distribution"
+                    }
+                },
+                "contractAccountMessaging": {
+                    "kind": "enterprise-messaging",
+                    "emitPerHTTP": true,
+                    "queue": {
+                        "name": "default/sap.c4u.retail/-/ce/sap/contractAcc"
+                    },
+                    "webhook": {
+                        "waitingPeriod": 7000
+                    }
+                },
+                "technicalMasterDataMessaging": {
+                    "kind": "enterprise-messaging",
+                    "emitPerHTTP": true,
+                    "queue": {
+                        "name": "default/sap.c4u.retail/-/ce/sap/c4e/createTMD"
+                    },
+                    "webhook": {
+                        "pushConfig": {
+                            "defaultContentType": "application/json"
+                        },
+                        "waitingPeriod": 7000
+                    }
+                },
+                "providerContractMessaging": {
+                    "kind": "enterprise-messaging",
+                    "emitPerHTTP": true,
+                    "queue": {
+                        "name": "default/sap.c4u.retail/-/ce/sap/providerContract"
+                    },
+                    "webhook": {
+                        "waitingPeriod": 7000
+                    }
+                }
+            }
+        },
+        "features": {
+            "comment": "Any feature flag defined oustide will apply for all profiles",
+            "cds_tx_protection": false,
+            "kibana_formatter": true,
+            "[development]": {
+                "comment": "whitelist all development or localhost features here",
+                "alpha": true,
+                "beta": true,
+                "assert_integrity": "db"
+            },
+            "[edom-retailer-dev]": {
+                "comment": "whitelist all dev features here",
+                "alpha": true,
+                "beta": true,
+                "assert_integrity": "db"
+            },
+            "[edom-retailer-test]": {
+                "comment": "whitelist all test features here",
+                "alpha": false,
+                "beta": true
+            }
+        },
+        "cdsc": {
+            "[development]": {
+                "beta": {
+                    "foreignKeyConstraints": true
+                },
+                "integrityNotValidated": true,
+                "constraintsNotValidated": false,
+                "constraintsNotEnforced": false
+            },
+            "[edom-retailer-dev]": {
+                "beta": {
+                    "foreignKeyConstraints": true
+                },
+                "integrityNotValidated": true,
+                "constraintsNotValidated": false,
+                "constraintsNotEnforced": false
+            }
+        },
+        "mtx": {
+            "api": {
+                "model": true,
+                "provisioning": true,
+                "metadata": true
+            },
+            "element-prefix": [
+                "ext__"
+            ],
+            "namespace-blacklist": [
+                "com.sap."
+            ],
+            "extension-allowlist": [
+                {
+                    "for": [
+                        "sap.odm.businesspartner.BusinessPartner",
+                        "sap.odm.utilities.billingaccount.BillingAccount",
+                        "BusinessPartnerService.BusinessPartner",
+                        "BillingAccountService.BillingAccount"
+                    ],
+                    "new-fields": 10
+                },
+                {
+                    "for": [
+                        "BusinessPartnerService",
+                        "BillingAccountService"
+                    ],
+                    "new-entities": 3
+                }
+            ],
+            "security": {
+                "subscription-scope": "$XSAPPNAME.mtcallback",
+                "deployment-scope": "$XSAPPNAME.mtcallback"
+            }
+        },
+        "build": {
+            "target": "gen",
+            "tasks": [
+                {
+                    "src": "db",
+                    "for": "hana",
+                    "options": {
+                        "model": [
+                            "db",
+                            "srv",
+                            "srv/external/API_SALES_ORDER_SRV"
+                        ]
+                    }
+                },
+                {
+                    "src": "srv",
+                    "for": "node-cf",
+                    "options": {
+                        "model": [
+                            "db",
+                            "srv",
+                            "srv/external/API_SALES_ORDER_SRV"
+                        ]
+                    }
+                },
+                {
+                    "src": ".",
+                    "for": "mtx",
+                    "dest": "srv"
+                }
+            ]
+        },
+        "hana": {
+            "syntax": "hdi"
+        },
+        "odata": {
+            "version": "v4",
+            "flavor": "x4"
+        },
+        "folders": {
+            "app": " "
+        },
+        "i18n": {
+            "[development]": {
+                "default_language": " "
+            },
+            "[edom-retailer-dev]": {
+                "default_language": " "
+            },
+            "[edom-retailer-test]": {
+                "default_language": " "
+            }
+        }
+    },
+    "jest": {
+        "testEnvironment": "node",
+        "testTimeout": 220000,
+        "collectCoverage": true,
+        "testResultsProcessor": "jest-sonar-reporter",
+        "modulePathIgnorePatterns": [
+            "/node_modules"
+        ],
+        "coverageReporters": [
+            "cobertura",
+            "lcov",
+            "text"
+        ],
+        "coveragePathIgnorePatterns": [
+            "/node_modules/",
+            "/app/",
+            "/mock/",
+            "/gen/db/",
+            "/gen/srv/",
+            "/test/",
+            "/srv/hooks/upgradeTenants.js"
+        ]
+    },
+    "jest-junit": {
+        "outputName": "results.xml",
+        "outputDirectory": "./target/backend"
+    },
+    "jestSonar": {
+        "reportFile": "sonar-report.xml",
+        "reportPath": "./target/backend",
+        "indent": 4,
+        "env": {
+            "unittest": {
+                "reportPath": "./target/backend"
+            }
+        }
+    },
+    "ui5": {
+        "dependencies": [
+            "@sap/ux-ui5-fe-mockserver-middleware",
+            "@sap/ux-ui5-tooling"
+        ]
+    }
+}

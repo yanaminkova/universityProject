@@ -1,0 +1,287 @@
+{
+    "id": "1A09739B-A873-49F9-ABE1-556F3534TEST",
+    "documentNumber": 125,
+    "metaData": {
+        "createdAt": "2021-06-10T08:53:34.029Z"
+    },
+    "billingType": "CHARGE",
+    "billStatus": "CLOSED",
+    "closing": {
+        "method": "AUTO"
+    },
+    "transferStatus": "NOT_TRANSFERRED",
+    "dueDate": "2021-06-10",
+    "billingDate": "2021-06-12",
+    "createInvoice": true,
+    "market": {
+        "id": "DE",
+        "timeZone": "Europe/Berlin",
+        "currency": "EUR",
+        "priceType": "Net"
+    },
+    "timeZone": "Europe/Berlin",
+    "customer": {
+        "id": "5135507660",
+        "type": "INDIVIDUAL",
+        "country": "DE"
+    },
+    "netAmount": {
+        "currency": "EUR",
+        "amount": 650
+    },
+    "customReferences": [],
+    "billItems": [
+        {
+            "lineNumber": 1,
+            "type": "SUBSCRIPTION",
+            "subscription": {
+                "id": "2734331B-ECBC-42FD-B0BE-5AB7A9A65E64",
+                "documentNumber": 1,
+                "itemId": "01",
+                "subscriptionDocumentId": "1"
+            },
+            "product": {
+                "id": "03809455-aeb7-4eef-9ee7-bda36e8694e0",
+                "code": "SUPERFANCY",
+                "name": "Super Fancy Product"
+            },
+            "ratePlan": {
+                "id": "af062b88-abbd-484d-bdd7-d1ce9b803e90"
+            },
+            "netAmount": {
+                "currency": "EUR",
+                "amount": 50
+            },
+            "customReferences": [],
+            "externalObjectReferences": [],
+            "charges": [
+                {
+                    "lineNumber": 1,
+                    "metricId": "CONNECTION_FEE",
+                    "ratingPeriod": {
+                        "start": "2021-06-09T22:00:00Z"
+                    },
+                    "consumedQuantity": {
+                        "unit": "EB",
+                        "value": 1
+                    },
+                    "chargedQuantity": {
+                        "unit": "EB",
+                        "value": 1
+                    },
+                    "includedQuantity": {
+                        "unit": "EB",
+                        "value": 0
+                    },
+                    "netAmount": {
+                        "currency": "EUR",
+                        "amount": 50
+                    },
+                    "grossAmount": {
+                        "currency": "EUR",
+                        "amount": 80
+                    },
+                    "reversal": false,
+                    "ratingType": "usage",
+                    "pricingElements": [
+                        {
+                            "conditionValue": {
+                                "amount": 500,
+                                "currency": "EUR"
+                            }
+                        },
+                        {
+                            "conditionType": "PMP2",
+                            "conditionValue": {
+                                "amount": 500,
+                                "currency": "EUR"
+                            }
+                        }
+                    ],
+                    "externalObjectReferences": [],
+                    "originalBillReference": {
+                        "billItemLineNumber": 11
+                    }
+                },
+                {
+                    "lineNumber": 2,
+                    "metricId": "CONNECTION_FEE",
+                    "ratingPeriod": {
+                        "start": "2021-06-09T22:00:00Z",
+                        "end": "2021-07-09T22:00:00Z"
+                    },
+                    "consumedQuantity": {
+                        "unit": "EB",
+                        "value": 1
+                    },
+                    "chargedQuantity": {
+                        "unit": "EB",
+                        "value": 1
+                    },
+                    "includedQuantity": {
+                        "unit": "EB",
+                        "value": 0
+                    },
+                    "netAmount": {
+                        "currency": "EUR",
+                        "amount": 50
+                    },
+                    "reversal": false,
+                    "ratingType": "recurring",
+                    "pricingElements": [
+                        {
+                            "conditionType": "PMP2",
+                            "conditionValue": {
+                                "amount": 500,
+                                "currency": "EUR"
+                            }
+                        },
+                        {
+                            "conditionType": "PMP1",
+                            "conditionValue": {
+                                "amount": 500,
+                                "currency": "EUR"
+                            }
+                        }
+                    ],
+                    "externalObjectReferences": [],
+                    "originalBillReference": {
+                        "billItemLineNumber": 22,
+                        "chargeLineNumber": 3
+                    }
+                }
+            ],
+            "markedForDeletion": false
+        },
+        {
+            "lineNumber": 2,
+            "type": "SUBSCRIPTION",
+            "subscription": {
+                "id": "D7332EB3-58AF-43C6-B520-8C926DCF6A77",
+                "documentNumber": 2,
+                "itemId": "01",
+                "subscriptionDocumentId": "2"
+            },
+            "product": {
+                "id": "03809455-aeb7-4eef-9ee7-bda36e8694e0",
+                "code": "SUPERFANCY",
+                "name": "Super Fancy Product"
+            },
+            "ratePlan": {
+                "id": "af062b88-abbd-484d-bdd7-d1ce9b803e90"
+            },
+            "netAmount": {
+                "currency": "EUR",
+                "amount": 50
+            },
+            "customReferences": [],
+            "externalObjectReferences": [],
+            "charges": [
+                {
+                    "lineNumber": 1,
+                    "metricId": "CONNECTION_FEE",
+                    "ratingPeriod": {
+                        "start": "2021-06-09T22:00:00Z"
+                    },
+                    "consumedQuantity": {
+                        "unit": "EB",
+                        "value": 1
+                    },
+                    "chargedQuantity": {
+                        "unit": "EB",
+                        "value": 1
+                    },
+                    "includedQuantity": {
+                        "unit": "EB",
+                        "value": 0
+                    },
+                    "netAmount": {
+                        "currency": "EUR",
+                        "amount": 50
+                    },
+                    "reversal": false,
+                    "pricingElements": [
+                        {
+                            "conditionType": "PMP3",
+                            "conditionValue": {
+                                "amount": 500,
+                                "currency": "EUR"
+                            }
+                        },
+                        {
+                            "conditionType": "PMP1",
+                            "conditionValue": {
+                                "amount": 500,
+                                "currency": "EUR"
+                            }
+                        }
+                    ],
+                    "externalObjectReferences": []
+                }
+            ],
+            "markedForDeletion": false
+        },
+        {
+            "lineNumber": 3,
+            "type": "SUBSCRIPTION",
+            "subscription": {
+                "id": "2F2E0401-3F8D-40A8-9BAB-3ED033600B3D",
+                "documentNumber": 3,
+                "itemId": "01",
+                "subscriptionDocumentId": "3"
+            },
+            "product": {
+                "id": "03809455-aeb7-4eef-9ee7-bda36e8694e0",
+                "code": "SUPERFANCY",
+                "name": "Super Fancy Product"
+            },
+            "ratePlan": {
+                "id": "af062b88-abbd-484d-bdd7-d1ce9b803e90"
+            },
+            "netAmount": {
+                "currency": "EUR",
+                "amount": 50
+            },
+            "customReferences": [],
+            "externalObjectReferences": [],
+            "charges": [
+                {
+                    "lineNumber": 1,
+                    "metricId": "CONNECTION_FEE",
+                    "ratingPeriod": {
+                        "start": "2021-06-09T22:00:00Z"
+                    },
+                    "consumedQuantity": {
+                        "unit": "EB",
+                        "value": 1
+                    },
+                    "chargedQuantity": {
+                        "unit": "EB",
+                        "value": 1
+                    },
+                    "includedQuantity": {
+                        "unit": "EB",
+                        "value": 0
+                    },
+                    "netAmount": {
+                        "currency": "EUR",
+                        "amount": 50
+                    },
+                    "reversal": false,
+                    "pricingElements": [
+                        {
+                            "conditionType": "",
+                            "conditionValue": {
+                                "amount": 500,
+                                "currency": "EUR"
+                            }
+                        }
+                    ],
+                    "externalObjectReferences": []
+                }
+            ],
+            "markedForDeletion": false
+        }
+    ],
+    "containsDeletableBillItems": false
+}

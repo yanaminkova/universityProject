@@ -1,0 +1,11 @@
+@Library(['piper-lib', 'piper-lib-dwc']) _
+
+// Use pipeline default values from DwC, see https://github.wdf.sap.corp/deploy-with-confidence/piper-lib-dwc/blob/master/resources/dwc-defaults.yml.
+def parameters = [ script: this, customDefaults: 'dwc-defaults.yml' ]
+
+// Use standard SAP Piper pipeline, based on https://github.com/SAP/jenkins-library/blob/master/vars/piperPipeline.groovy.
+// Note that this pipeline cannot access and hence ignores DwC specific scripts declared in 'config.yml'. Because of this,
+//     the pipeline must be extended with custom pipeline code (extensions/<stageName>.groovy).
+// It is also possible to define your own Piper pipeline which add DwC specific stages and scripts,
+//     see for example https://github.wdf.sap.corp/CentralInvoices/piper_custom_lib.
+sapPiperPipeline(parameters)

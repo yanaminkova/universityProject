@@ -1,0 +1,42 @@
+[
+    {
+        "id": "07e664dc-69d5-4e83-ab17-b891aae01ecf",
+        "displayId": "P000006",
+        "name": "Eco Elec Basic"
+    },
+    {
+        "id": "0b960c70-9187-4c1f-b23f-3407575972bc",
+        "displayId": "P000003",
+        "name": "Safe home"
+    },
+    {
+        "id": "5bf43f44-1af4-4902-baeb-99cbba7faa45",
+        "displayId": "B000002",
+        "name": "Black Forest home bundle"
+    },
+    {
+        "id": "68ac7213-012e-4988-9d94-e61011054c9b",
+        "displayId": "P000005",
+        "name": "Smart Audit"
+    },
+    {
+        "id": "8832fe90-7411-40aa-9470-e12d1390e2d6",
+        "displayId": "B000001",
+        "name": "Happy Home Bundle"
+    },
+    {
+        "id": "906e1658-f323-4ef4-88ce-0ee4eb5b1133",
+        "displayId": "P000002",
+        "name": "Eco Elec Happy Home"
+    },
+    {
+        "id": "bbd04d9b-4898-4906-8e45-006ea4c6195d",
+        "displayId": "P000001",
+        "name": "Bio Gas Happy Home"
+    },
+    {
+        "id": "fa53c5f5-900e-448f-a995-f7df87e65637",
+        "displayId": "P000004",
+        "name": "Flying e-Bike"
+    }
+]

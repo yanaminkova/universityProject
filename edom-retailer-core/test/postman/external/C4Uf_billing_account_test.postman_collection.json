@@ -1,0 +1,2370 @@
+{
+    "info": {
+        "_postman_id": "eaad39cc-3fec-4138-ae3c-8fbcce512eb3",
+        "name": "C4Uf_billing_account_test",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "item": [
+        {
+            "name": "JWT",
+            "item": [
+                {
+                    "name": "{{jwtProtocol}}://{{uaa-domain}}/oauth/token",
+                    "event": [
+                        {
+                            "listen": "test",
+                            "script": {
+                                "exec": [
+                                    "var jsonData = JSON.parse(responseBody);",
+                                    "if(jsonData && jsonData.access_token){",
+                                    "    postman.setEnvironmentVariable(\"jwt\", jsonData.access_token);",
+                                    "}",
+                                    "pm.test(\"Successful POST request\", function () {",
+                                    "     pm.expect(pm.response.code).to.be.oneOf([200]);",
+                                    "});"
+                                ],
+                                "type": "text/javascript"
+                            }
+                        },
+                        {
+                            "listen": "prerequest",
+                            "script": {
+                                "exec": [""],
+                                "type": "text/javascript"
+                            }
+                        }
+                    ],
+                    "request": {
+                        "auth": {
+                            "type": "noauth"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "X-CorrelationID",
+                                "value": "",
+                                "disabled": true
+                            },
+                            {
+                                "key": "Content-Type",
+                                "value": "application/x-www-form-urlencoded"
+                            }
+                        ],
+                        "body": {
+                            "mode": "urlencoded",
+                            "urlencoded": [
+                                {
+                                    "key": "response_type",
+                                    "value": "token",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "grant_type",
+                                    "value": "client_credentials",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "client_id",
+                                    "value": "{{uaa_client_id}}",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "client_secret",
+                                    "value": "{{uaa_client_secret}}",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "scope",
+                                    "value": "",
+                                    "type": "text"
+                                }
+                            ]
+                        },
+                        "url": {
+                            "raw": "{{jwtProtocol}}://{{uaa-domain}}/oauth/token",
+                            "protocol": "{{jwtProtocol}}",
+                            "host": ["{{uaa-domain}}"],
+                            "path": ["oauth", "token"]
+                        }
+                    },
+                    "response": []
+                }
+            ]
+        },
+        {
+            "name": "CONFIGURATION DATA",
+            "item": [
+                {
+                    "name": "CREATE",
+                    "item": [
+                        {
+                            "name": "AccountDeterminationIdCodes",
+                            "item": [
+                                {
+                                    "name": "CREATE AccountDeterminationIdCodes Y1",
+                                    "event": [
+                                        {
+                                            "listen": "test",
+                                            "script": {
+                                                "exec": [""],
+                                                "type": "text/javascript"
+                                            }
+                                        }
+                                    ],
+                                    "request": {
+                                        "method": "POST",
+                                        "header": [],
+                                        "body": {
+                                            "mode": "raw",
+                                            "raw": "{\r\n    \"name\": \"Account Holder\",\r\n    \"descr\": null,\r\n    \"code\": \"Y1\"\r\n}",
+                                            "options": {
+                                                "raw": {
+                                                    "language": "json"
+                                                }
+                                            }
+                                        },
+                                        "url": {
+                                            "raw": "{{url}}/{{api-ba-config}}/AccountDeterminationIdCodes",
+                                            "host": ["{{url}}"],
+                                            "path": [
+                                                "{{api-ba-config}}",
+                                                "AccountDeterminationIdCodes"
+                                            ]
+                                        }
+                                    },
+                                    "response": []
+                                }
+                            ]
+                        },
+                        {
+                            "name": "BillingAccountRelationshipCodes",
+                            "item": [
+                                {
+                                    "name": "CREATE BillingAccountRelationshipCodes Y1",
+                                    "event": [
+                                        {
+                                            "listen": "test",
+                                            "script": {
+                                                "exec": [""],
+                                                "type": "text/javascript"
+                                            }
+                                        }
+                                    ],
+                                    "request": {
+                                        "method": "POST",
+                                        "header": [],
+                                        "body": {
+                                            "mode": "raw",
+                                            "raw": "{\r\n    \"name\": \"Account Holder\",\r\n    \"descr\": null,\r\n    \"code\": \"Y1\"\r\n}",
+                                            "options": {
+                                                "raw": {
+                                                    "language": "json"
+                                                }
+                                            }
+                                        },
+                                        "url": {
+                                            "raw": "{{url}}/{{api-ba-config}}/BillingAccountRelationshipCodes",
+                                            "host": ["{{url}}"],
+                                            "path": [
+                                                "{{api-ba-config}}",
+                                                "BillingAccountRelationshipCodes"
+                                            ]
+                                        }
+                                    },
+                                    "response": []
+                                }
+                            ]
+                        },
+                        {
+                            "name": "CategoryCodes",
+                            "item": [
+                                {
+                                    "name": "CREATE CategoryCodes Y1",
+                                    "event": [
+                                        {
+                                            "listen": "test",
+                                            "script": {
+                                                "exec": [""],
+                                                "type": "text/javascript"
+                                            }
+                                        },
+                                        {
+                                            "listen": "prerequest",
+                                            "script": {
+                                                "exec": [""],
+                                                "type": "text/javascript"
+                                            }
+                                        }
+                                    ],
+                                    "request": {
+                                        "method": "POST",
+                                        "header": [],
+                                        "body": {
+                                            "mode": "raw",
+                                            "raw": "{\r\n    \"name\": \"New Category Code\",\r\n    \"descr\": null,\r\n    \"code\": \"Y1\"\r\n}",
+                                            "options": {
+                                                "raw": {
+                                                    "language": "json"
+                                                }
+                                            }
+                                        },
+                                        "url": {
+                                            "raw": "{{url}}/{{api-ba-config}}/CategoryCodes",
+                                            "host": ["{{url}}"],
+                                            "path": [
+                                                "{{api-ba-config}}",
+                                                "CategoryCodes"
+                                            ]
+                                        }
+                                    },
+                                    "response": []
+                                }
+                            ]
+                        },
+                        {
+                            "name": "ClearingCategoryCodes",
+                            "item": [
+                                {
+                                    "name": "CREATE ClearingCategoryCodes Y001",
+                                    "event": [
+                                        {
+                                            "listen": "test",
+                                            "script": {
+                                                "exec": [""],
+                                                "type": "text/javascript"
+                                            }
+                                        }
+                                    ],
+                                    "request": {
+                                        "method": "POST",
+                                        "header": [],
+                                        "body": {
+                                            "mode": "raw",
+                                            "raw": "{\r\n    \"name\": \"Lailing Test\",\r\n    \"descr\": null,\r\n    \"code\": \"Y001\"\r\n}",
+                                            "options": {
+                                                "raw": {
+                                                    "language": "json"
+                                                }
+                                            }
+                                        },
+                                        "url": {
+                                            "raw": "{{url}}/{{api-ba-config}}/ClearingCategoryCodes",
+                                            "host": ["{{url}}"],
+                                            "path": [
+                                                "{{api-ba-config}}",
+                                                "ClearingCategoryCodes"
+                                            ]
+                                        }
+                                    },
+                                    "response": []
+                                }
+                            ]
+                        },
+                        {
+                            "name": "ToleranceGroupCodes",
+                            "item": [
+                                {
+                                    "name": "CREATE ToleranceGroupCodes Y001",
+                                    "event": [
+                                        {
+                                            "listen": "test",
+                                            "script": {
+                                                "exec": [""],
+                                                "type": "text/javascript"
+                                            }
+                                        }
+                                    ],
+                                    "request": {
+                                        "method": "POST",
+                                        "header": [],
+                                        "body": {
+                                            "mode": "raw",
+                                            "raw": "{\r\n    \"name\": \"Tolerance Group N001, 5 EUR Absolute\",\r\n    \"descr\": null,\r\n    \"code\": \"Y001\"\r\n}",
+                                            "options": {
+                                                "raw": {
+                                                    "language": "json"
+                                                }
+                                            }
+                                        },
+                                        "url": {
+                                            "raw": "{{url}}/{{api-ba-config}}/ToleranceGroupCodes",
+                                            "host": ["{{url}}"],
+                                            "path": [
+                                                "{{api-ba-config}}",
+                                                "ToleranceGroupCodes"
+                                            ]
+                                        }
+                                    },
+                                    "response": []
+                                }
+                            ]
+                        },
+                        {
+                            "name": "DunningProcedureCodes",
+                            "item": [
+                                {
+                                    "name": "CREATE DunningProcedureCodes 01",
+                                    "event": [
+                                        {
+                                            "listen": "test",
+                                            "script": {
+                                                "exec": [""],
+                                                "type": "text/javascript"
+                                            }
+                                        },
+                                        {
+                                            "listen": "prerequest",
+                                            "script": {
+                                                "exec": [""],
+                                                "type": "text/javascript"
+                                            }
+                                        }
+                                    ],
+                                    "request": {
+                                        "method": "POST",
+                                        "header": [],
+                                        "body": {
+                                            "mode": "raw",
+                                            "raw": "{\r\n    \"name\": \"dunningProcedure_Code\",\r\n    \"descr\": \"Standard Dunning Procedure\",\r\n    \"code\": \"01\"\r\n}",
+                                            "options": {
+                                                "raw": {
+                                                    "language": "json"
+                                                }
+                                            }
+                                        },
+                                        "url": {
+                                            "raw": "{{url}}/{{api-ba-config}}/DunningProcedureCodes",
+                                            "host": ["{{url}}"],
+                                            "path": [
+                                                "{{api-ba-config}}",
+                                                "DunningProcedureCodes"
+                                            ]
+                                        }
+                                    },
+                                    "response": []
+                                },
+                                {
+                                    "name": "CREATE DunningProcedureCodes 02",
+                                    "event": [
+                                        {
+                                            "listen": "test",
+                                            "script": {
+                                                "exec": [""],
+                                                "type": "text/javascript"
+                                            }
+                                        },
+                                        {
+                                            "listen": "prerequest",
+                                            "script": {
+                                                "exec": [""],
+                                                "type": "text/javascript"
+                                            }
+                                        }
+                                    ],
+                                    "request": {
+                                        "method": "POST",
+                                        "header": [],
+                                        "body": {
+                                            "mode": "raw",
+                                            "raw": "{\r\n    \"name\": \"dunningProcedure_Code\",\r\n    \"descr\": \"Installment Dunning Procedure\",\r\n    \"code\": \"02\"\r\n}",
+                                            "options": {
+                                                "raw": {
+                                                    "language": "json"
+                                                }
+                                            }
+                                        },
+                                        "url": {
+                                            "raw": "{{url}}/{{api-ba-config}}/DunningProcedureCodes",
+                                            "host": ["{{url}}"],
+                                            "path": [
+                                                "{{api-ba-config}}",
+                                                "DunningProcedureCodes"
+                                            ]
+                                        }
+                                    },
+                                    "response": []
+                                },
+                                {
+                                    "name": "CREATE DunningProcedureCodes 03",
+                                    "event": [
+                                        {
+                                            "listen": "test",
+                                            "script": {
+                                                "exec": [""],
+                                                "type": "text/javascript"
+                                            }
+                                        },
+                                        {
+                                            "listen": "prerequest",
+                                            "script": {
+                                                "exec": [""],
+                                                "type": "text/javascript"
+                                            }
+                                        }
+                                    ],
+                                    "request": {
+                                        "method": "POST",
+                                        "header": [],
+                                        "body": {
+                                            "mode": "raw",
+                                            "raw": "{\r\n    \"name\": \"dunningProcedure_Code\",\r\n    \"descr\": \"Standard Dunning Procedure for Disconnection\",\r\n    \"code\": \"03\"\r\n}",
+                                            "options": {
+                                                "raw": {
+                                                    "language": "json"
+                                                }
+                                            }
+                                        },
+                                        "url": {
+                                            "raw": "{{url}}/{{api-ba-config}}/DunningProcedureCodes",
+                                            "host": ["{{url}}"],
+                                            "path": [
+                                                "{{api-ba-config}}",
+                                                "DunningProcedureCodes"
+                                            ]
+                                        }
+                                    },
+                                    "response": []
+                                },
+                                {
+                                    "name": "CREATE DunningProcedureCodes 06",
+                                    "event": [
+                                        {
+                                            "listen": "test",
+                                            "script": {
+                                                "exec": [""],
+                                                "type": "text/javascript"
+                                            }
+                                        },
+                                        {
+                                            "listen": "prerequest",
+                                            "script": {
+                                                "exec": [""],
+                                                "type": "text/javascript"
+                                            }
+                                        }
+                                    ],
+                                    "request": {
+                                        "method": "POST",
+                                        "header": [],
+                                        "body": {
+                                            "mode": "raw",
+                                            "raw": "{\r\n    \"name\": \"dunningProcedure_Code\",\r\n    \"descr\": \"Dunning Proc. Rel for Submit.to Ext. Coll. Agency\",\r\n    \"code\": \"06\"\r\n}",
+                                            "options": {
+                                                "raw": {
+                                                    "language": "json"
+                                                }
+                                            }
+                                        },
+                                        "url": {
+                                            "raw": "{{url}}/{{api-ba-config}}/DunningProcedureCodes",
+                                            "host": ["{{url}}"],
+                                            "path": [
+                                                "{{api-ba-config}}",
+                                                "DunningProcedureCodes"
+                                            ]
+                                        }
+                                    },
+                                    "response": []
+                                },
+                                {
+                                    "name": "CREATE DunningProcedureCodes 07",
+                                    "event": [
+                                        {
+                                            "listen": "test",
+                                            "script": {
+                                                "exec": [""],
+                                                "type": "text/javascript"
+                                            }
+                                        },
+                                        {
+                                            "listen": "prerequest",
+                                            "script": {
+                                                "exec": [""],
+                                                "type": "text/javascript"
+                                            }
+                                        }
+                                    ],
+                                    "request": {
+                                        "method": "POST",
+                                        "header": [],
+                                        "body": {
+                                            "mode": "raw",
+                                            "raw": "{\r\n    \"name\": \"dunningProcedure_Code\",\r\n    \"descr\": \"Dunning Proc. for Recall Recv. from coll. Agency\",\r\n    \"code\": \"07\"\r\n}",
+                                            "options": {
+                                                "raw": {
+                                                    "language": "json"
+                                                }
+                                            }
+                                        },
+                                        "url": {
+                                            "raw": "{{url}}/{{api-ba-config}}/DunningProcedureCodes",
+                                            "host": ["{{url}}"],
+                                            "path": [
+                                                "{{api-ba-config}}",
+                                                "DunningProcedureCodes"
+                                            ]
+                                        }
+                                    },
+                                    "response": []
+                                },
+                                {
+                                    "name": "CREATE DunningProcedureCodes 08",
+                                    "event": [
+                                        {
+                                            "listen": "test",
+                                            "script": {
+                                                "exec": [""],
+                                                "type": "text/javascript"
+                                            }
+                                        },
+                                        {
+                                            "listen": "prerequest",
+                                            "script": {
+                                                "exec": [""],
+                                                "type": "text/javascript"
+                                            }
+                                        }
+                                    ],
+                                    "request": {
+                                        "method": "POST",
+                                        "header": [],
+                                        "body": {
+                                            "mode": "raw",
+                                            "raw": "{\r\n    \"name\": \"dunningProcedure_Code\",\r\n    \"descr\": \"Dunning Proc. for Rel. to Coll. Agency (FKKMAKT)\",\r\n    \"code\": \"08\"\r\n}",
+                                            "options": {
+                                                "raw": {
+                                                    "language": "json"
+                                                }
+                                            }
+                                        },
+                                        "url": {
+                                            "raw": "{{url}}/{{api-ba-config}}/DunningProcedureCodes",
+                                            "host": ["{{url}}"],
+                                            "path": [
+                                                "{{api-ba-config}}",
+                                                "DunningProcedureCodes"
+                                            ]
+                                        }
+                                    },
+                                    "response": []
+                                }
+                            ]
+                        },
+                        {
+                            "name": "PaymentConditionCodes",
+                            "item": [
+                                {
+                                    "name": "CREATE PaymentConditionCodes YN01",
+                                    "event": [
+                                        {
+                                            "listen": "test",
+                                            "script": {
+                                                "exec": [""],
+                                                "type": "text/javascript"
+                                            }
+                                        },
+                                        {
+                                            "listen": "prerequest",
+                                            "script": {
+                                                "exec": [""],
+                                                "type": "text/javascript"
+                                            }
+                                        }
+                                    ],
+                                    "request": {
+                                        "method": "POST",
+                                        "header": [],
+                                        "body": {
+                                            "mode": "raw",
+                                            "raw": "{\r\n    \"name\": \"paymentCondition_Code\",\r\n    \"descr\": null,\r\n    \"code\": \"YN01\"\r\n}",
+                                            "options": {
+                                                "raw": {
+                                                    "language": "json"
+                                                }
+                                            }
+                                        },
+                                        "url": {
+                                            "raw": "{{url}}/{{api-ba-config}}/PaymentConditionCodes",
+                                            "host": ["{{url}}"],
+                                            "path": [
+                                                "{{api-ba-config}}",
+                                                "PaymentConditionCodes"
+                                            ]
+                                        }
+                                    },
+                                    "response": []
+                                }
+                            ]
+                        },
+                        {
+                            "name": "PaymentMethodCodes",
+                            "item": [
+                                {
+                                    "name": "CREATE PaymentMethod N",
+                                    "event": [
+                                        {
+                                            "listen": "test",
+                                            "script": {
+                                                "exec": [""],
+                                                "type": "text/javascript"
+                                            }
+                                        },
+                                        {
+                                            "listen": "prerequest",
+                                            "script": {
+                                                "exec": [""],
+                                                "type": "text/javascript"
+                                            }
+                                        }
+                                    ],
+                                    "request": {
+                                        "method": "POST",
+                                        "header": [],
+                                        "body": {
+                                            "mode": "raw",
+                                            "raw": "{\r\n    \"name\": \"Credit Card\",\r\n    \"descr\": null,\r\n    \"code\": \"N\",\r\n    \"isBankTransfer\": false,\r\n    \"isCardPayment\": true\r\n}",
+                                            "options": {
+                                                "raw": {
+                                                    "language": "json"
+                                                }
+                                            }
+                                        },
+                                        "url": {
+                                            "raw": "{{url}}/{{api-ba-config}}/PaymentMethodCodes",
+                                            "host": ["{{url}}"],
+                                            "path": [
+                                                "{{api-ba-config}}",
+                                                "PaymentMethodCodes"
+                                            ]
+                                        }
+                                    },
+                                    "response": []
+                                },
+                                {
+                                    "name": "CREATE PaymentMethod E",
+                                    "event": [
+                                        {
+                                            "listen": "test",
+                                            "script": {
+                                                "exec": [""],
+                                                "type": "text/javascript"
+                                            }
+                                        },
+                                        {
+                                            "listen": "prerequest",
+                                            "script": {
+                                                "exec": [""],
+                                                "type": "text/javascript"
+                                            }
+                                        }
+                                    ],
+                                    "request": {
+                                        "method": "POST",
+                                        "header": [],
+                                        "body": {
+                                            "mode": "raw",
+                                            "raw": "{\r\n    \"name\": \"SEPA Direct Debit\",\r\n    \"descr\": null,\r\n    \"code\": \"E\",\r\n    \"isBankTransfer\": true,\r\n    \"isCardPayment\": false\r\n}",
+                                            "options": {
+                                                "raw": {
+                                                    "language": "json"
+                                                }
+                                            }
+                                        },
+                                        "url": {
+                                            "raw": "{{url}}/{{api-ba-config}}/PaymentMethodCodes",
+                                            "host": ["{{url}}"],
+                                            "path": [
+                                                "{{api-ba-config}}",
+                                                "PaymentMethodCodes"
+                                            ]
+                                        }
+                                    },
+                                    "response": []
+                                },
+                                {
+                                    "name": "CREATE PaymentMethod 4",
+                                    "event": [
+                                        {
+                                            "listen": "test",
+                                            "script": {
+                                                "exec": [""],
+                                                "type": "text/javascript"
+                                            }
+                                        },
+                                        {
+                                            "listen": "prerequest",
+                                            "script": {
+                                                "exec": [""],
+                                                "type": "text/javascript"
+                                            }
+                                        }
+                                    ],
+                                    "request": {
+                                        "method": "POST",
+                                        "header": [],
+                                        "body": {
+                                            "mode": "raw",
+                                            "raw": "{\r\n    \"name\": \"Direct Debit via Payment Order\",\r\n    \"descr\": null,\r\n    \"code\": \"4\",\r\n    \"isBankTransfer\": true,\r\n    \"isCardPayment\": false\r\n}",
+                                            "options": {
+                                                "raw": {
+                                                    "language": "json"
+                                                }
+                                            }
+                                        },
+                                        "url": {
+                                            "raw": "{{url}}/{{api-ba-config}}/PaymentMethodCodes",
+                                            "host": ["{{url}}"],
+                                            "path": [
+                                                "{{api-ba-config}}",
+                                                "PaymentMethodCodes"
+                                            ]
+                                        }
+                                    },
+                                    "response": []
+                                },
+                                {
+                                    "name": "CREATE PaymentMethod 3",
+                                    "event": [
+                                        {
+                                            "listen": "test",
+                                            "script": {
+                                                "exec": [""],
+                                                "type": "text/javascript"
+                                            }
+                                        },
+                                        {
+                                            "listen": "prerequest",
+                                            "script": {
+                                                "exec": [""],
+                                                "type": "text/javascript"
+                                            }
+                                        }
+                                    ],
+                                    "request": {
+                                        "method": "POST",
+                                        "header": [],
+                                        "body": {
+                                            "mode": "raw",
+                                            "raw": "{\r\n    \"name\": \"Credit Card for outgoing pymt\",\r\n    \"descr\": null,\r\n    \"code\": \"3\",\r\n    \"isBankTransfer\": false,\r\n    \"isCardPayment\": true\r\n}",
+                                            "options": {
+                                                "raw": {
+                                                    "language": "json"
+                                                }
+                                            }
+                                        },
+                                        "url": {
+                                            "raw": "{{url}}/{{api-ba-config}}/PaymentMethodCodes",
+                                            "host": ["{{url}}"],
+                                            "path": [
+                                                "{{api-ba-config}}",
+                                                "PaymentMethodCodes"
+                                            ]
+                                        }
+                                    },
+                                    "response": []
+                                },
+                                {
+                                    "name": "CREATE PaymentMethod 5",
+                                    "event": [
+                                        {
+                                            "listen": "test",
+                                            "script": {
+                                                "exec": [""],
+                                                "type": "text/javascript"
+                                            }
+                                        },
+                                        {
+                                            "listen": "prerequest",
+                                            "script": {
+                                                "exec": [""],
+                                                "type": "text/javascript"
+                                            }
+                                        }
+                                    ],
+                                    "request": {
+                                        "method": "POST",
+                                        "header": [],
+                                        "body": {
+                                            "mode": "raw",
+                                            "raw": "{\r\n    \"name\": \"Bank transfer via pymnt order\",\r\n    \"descr\": null,\r\n    \"code\": \"5\",\r\n    \"isBankTransfer\": true,\r\n    \"isCardPayment\": false\r\n}",
+                                            "options": {
+                                                "raw": {
+                                                    "language": "json"
+                                                }
+                                            }
+                                        },
+                                        "url": {
+                                            "raw": "{{url}}/{{api-ba-config}}/PaymentMethodCodes",
+                                            "host": ["{{url}}"],
+                                            "path": [
+                                                "{{api-ba-config}}",
+                                                "PaymentMethodCodes"
+                                            ]
+                                        }
+                                    },
+                                    "response": []
+                                },
+                                {
+                                    "name": "CREATE PaymentMethod T",
+                                    "event": [
+                                        {
+                                            "listen": "test",
+                                            "script": {
+                                                "exec": [""],
+                                                "type": "text/javascript"
+                                            }
+                                        },
+                                        {
+                                            "listen": "prerequest",
+                                            "script": {
+                                                "exec": [""],
+                                                "type": "text/javascript"
+                                            }
+                                        }
+                                    ],
+                                    "request": {
+                                        "method": "POST",
+                                        "header": [],
+                                        "body": {
+                                            "mode": "raw",
+                                            "raw": "{\r\n    \"name\": \"SEPA Credit Transfer\",\r\n    \"descr\": null,\r\n    \"code\": \"T\",\r\n    \"isBankTransfer\": true,\r\n    \"isCardPayment\": false\r\n}",
+                                            "options": {
+                                                "raw": {
+                                                    "language": "json"
+                                                }
+                                            }
+                                        },
+                                        "url": {
+                                            "raw": "{{url}}/{{api-ba-config}}/PaymentMethodCodes",
+                                            "host": ["{{url}}"],
+                                            "path": [
+                                                "{{api-ba-config}}",
+                                                "PaymentMethodCodes"
+                                            ]
+                                        }
+                                    },
+                                    "response": []
+                                }
+                            ]
+                        },
+                        {
+                            "name": "InterestKeyCodes",
+                            "item": [
+                                {
+                                    "name": "CREATE InterestKeyCodes 01",
+                                    "event": [
+                                        {
+                                            "listen": "test",
+                                            "script": {
+                                                "exec": [""],
+                                                "type": "text/javascript"
+                                            }
+                                        },
+                                        {
+                                            "listen": "prerequest",
+                                            "script": {
+                                                "exec": [""],
+                                                "type": "text/javascript"
+                                            }
+                                        }
+                                    ],
+                                    "request": {
+                                        "method": "POST",
+                                        "header": [],
+                                        "body": {
+                                            "mode": "raw",
+                                            "raw": "{\r\n    \"name\": \"interestKey_Code\",\r\n    \"descr\": \"Standard 5%\",\r\n    \"code\": \"01\"\r\n}",
+                                            "options": {
+                                                "raw": {
+                                                    "language": "json"
+                                                }
+                                            }
+                                        },
+                                        "url": {
+                                            "raw": "{{url}}/{{api-ba-config}}/InterestKeyCodes",
+                                            "host": ["{{url}}"],
+                                            "path": [
+                                                "{{api-ba-config}}",
+                                                "InterestKeyCodes"
+                                            ]
+                                        }
+                                    },
+                                    "response": []
+                                }
+                            ]
+                        },
+                        {
+                            "name": "BillingAccountTemplate",
+                            "item": [
+                                {
+                                    "name": "CREATE BA_Template",
+                                    "event": [
+                                        {
+                                            "listen": "test",
+                                            "script": {
+                                                "exec": [
+                                                    "    pm.test(\"CREATE BA_Template. Successful POST request UTILITIESCLOUDSOLUTION-2920\", function () {\r",
+                                                    "        pm.expect(pm.response.code).to.be.oneOf([200,201,400]);\r",
+                                                    "    })\r",
+                                                    "\r",
+                                                    "    var jsonData = JSON.parse(responseBody);\r",
+                                                    "    if(jsonData && jsonData.templateId){\r",
+                                                    "    postman.setEnvironmentVariable(\"env_BillingAccount_templateId\", jsonData.templateId);\r",
+                                                    "    }else\r",
+                                                    "    {\r",
+                                                    "    postman.setEnvironmentVariable(\"env_BillingAccount_templateId\", \"T3\");\r",
+                                                    "    }\r",
+                                                    ""
+                                                ],
+                                                "type": "text/javascript"
+                                            }
+                                        }
+                                    ],
+                                    "request": {
+                                        "method": "POST",
+                                        "header": [],
+                                        "body": {
+                                            "mode": "raw",
+                                            "raw": "{\r\n    \"templateId\": \"T6\",\r\n    \"category\": {\r\n        \"code\": \"Y1\"\r\n    },\r\n    \"billingAccountRelationship\": {\r\n        \"code\": \"Y1\"\r\n    },\r\n    \"toleranceGroup\": {\r\n        \"code\": \"Y001\"\r\n    },\r\n    \"paymentCondition\": {\r\n        \"code\": \"YN01\"\r\n    },\r\n    \"companyCodeGroup\": \"1010\",\r\n    \"standardCompanyCode\": \"1010\",\r\n    \"supplyingCountry\": {\r\n        \"code\": \"CA\"\r\n    },\r\n    \"interestKey\": {\r\n        \"code\": \"01\"\r\n    }\r\n}",
+                                            "options": {
+                                                "raw": {
+                                                    "language": "json"
+                                                }
+                                            }
+                                        },
+                                        "url": {
+                                            "raw": "{{url}}/{{api-ba-config}}/BillingAccountTemplates",
+                                            "host": ["{{url}}"],
+                                            "path": [
+                                                "{{api-ba-config}}",
+                                                "BillingAccountTemplates"
+                                            ]
+                                        }
+                                    },
+                                    "response": []
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "name": "READ",
+                    "item": [
+                        {
+                            "name": "READ /api/v1/$metadata",
+                            "event": [
+                                {
+                                    "listen": "prerequest",
+                                    "script": {
+                                        "exec": [""],
+                                        "type": "text/javascript"
+                                    }
+                                },
+                                {
+                                    "listen": "test",
+                                    "script": {
+                                        "exec": [
+                                            "pm.test(\"READ BillingAcounts. Successful GET request  UTILITIESCLOUDSOLUTION-2920\", function () {\r",
+                                            "     pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
+                                            "});"
+                                        ],
+                                        "type": "text/javascript"
+                                    }
+                                }
+                            ],
+                            "request": {
+                                "method": "GET",
+                                "header": [],
+                                "url": {
+                                    "raw": "{{url}}/api/v1/$metadata",
+                                    "host": ["{{url}}"],
+                                    "path": ["api", "v1", "$metadata"]
+                                }
+                            },
+                            "response": []
+                        },
+                        {
+                            "name": "READ AccountDeterminationIdCodes",
+                            "event": [
+                                {
+                                    "listen": "test",
+                                    "script": {
+                                        "exec": [
+                                            "    pm.test(\"READ AccountDeterminationIdCodes. Successful GET request UTILITIESCLOUDSOLUTION-2920\", function () {\r",
+                                            "        pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
+                                            "    })\r",
+                                            "\r",
+                                            "    var jsonData = JSON.parse(responseBody);\r",
+                                            "    if(jsonData && jsonData.id){\r",
+                                            "        postman.setEnvironmentVariable(\"env_AccountDeterminationIdCodes_id\", jsonData.id);\r",
+                                            "    }\r",
+                                            ""
+                                        ],
+                                        "type": "text/javascript"
+                                    }
+                                }
+                            ],
+                            "request": {
+                                "method": "GET",
+                                "header": [
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "application/json;IEEE754Compatible=true",
+                                        "type": "text"
+                                    }
+                                ],
+                                "url": {
+                                    "raw": "{{url}}/{{api-ba-config}}/AccountDeterminationIdCodes",
+                                    "host": ["{{url}}"],
+                                    "path": [
+                                        "{{api-ba-config}}",
+                                        "AccountDeterminationIdCodes"
+                                    ]
+                                }
+                            },
+                            "response": []
+                        },
+                        {
+                            "name": "READ BillingAccountRelationshipCodes",
+                            "event": [
+                                {
+                                    "listen": "test",
+                                    "script": {
+                                        "exec": [
+                                            "    pm.test(\"READ BillingAccountRelationshipCodes. Successful GET request UTILITIESCLOUDSOLUTION-2920\", function () {\r",
+                                            "        pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
+                                            "    })\r",
+                                            "\r",
+                                            "    var jsonData = JSON.parse(responseBody);\r",
+                                            "    if(jsonData && jsonData.id){\r",
+                                            "        postman.setEnvironmentVariable(\"env_BillingAccountRelationshipCodes_id\", jsonData.id);\r",
+                                            "    }\r",
+                                            ""
+                                        ],
+                                        "type": "text/javascript"
+                                    }
+                                }
+                            ],
+                            "request": {
+                                "method": "GET",
+                                "header": [
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "application/json;IEEE754Compatible=true",
+                                        "type": "text"
+                                    }
+                                ],
+                                "url": {
+                                    "raw": "{{url}}/{{api-ba-config}}/BillingAccountRelationshipCodes",
+                                    "host": ["{{url}}"],
+                                    "path": [
+                                        "{{api-ba-config}}",
+                                        "BillingAccountRelationshipCodes"
+                                    ]
+                                }
+                            },
+                            "response": []
+                        },
+                        {
+                            "name": "READ ToleranceGroupCodes",
+                            "event": [
+                                {
+                                    "listen": "test",
+                                    "script": {
+                                        "exec": [
+                                            "    pm.test(\"READ ToleranceGroupCodes. Successful GET request UTILITIESCLOUDSOLUTION-2920\", function () {\r",
+                                            "        pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
+                                            "    })\r",
+                                            "\r",
+                                            "    var jsonData = JSON.parse(responseBody);\r",
+                                            "    if(jsonData && jsonData.id){\r",
+                                            "        postman.setEnvironmentVariable(\"env_ToleranceGroupCodes_id\", jsonData.id);\r",
+                                            "    }\r",
+                                            ""
+                                        ],
+                                        "type": "text/javascript"
+                                    }
+                                }
+                            ],
+                            "protocolProfileBehavior": {
+                                "disableBodyPruning": true
+                            },
+                            "request": {
+                                "method": "GET",
+                                "header": [
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "application/json;IEEE754Compatible=true",
+                                        "type": "text"
+                                    }
+                                ],
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "",
+                                    "options": {
+                                        "raw": {
+                                            "language": "json"
+                                        }
+                                    }
+                                },
+                                "url": {
+                                    "raw": "{{url}}/{{api-ba-config}}/ToleranceGroupCodes",
+                                    "host": ["{{url}}"],
+                                    "path": [
+                                        "{{api-ba-config}}",
+                                        "ToleranceGroupCodes"
+                                    ]
+                                }
+                            },
+                            "response": []
+                        },
+                        {
+                            "name": "READ CategoryCodes",
+                            "event": [
+                                {
+                                    "listen": "test",
+                                    "script": {
+                                        "exec": [
+                                            "    pm.test(\"READ CategoryCodes. Successful GET request UTILITIESCLOUDSOLUTION-2920\", function () {\r",
+                                            "        pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
+                                            "    })\r",
+                                            "\r",
+                                            "    var jsonData = JSON.parse(responseBody);\r",
+                                            "    if(jsonData && jsonData.id){\r",
+                                            "        postman.setEnvironmentVariable(\"env_CategoryCode_id\", jsonData.id);\r",
+                                            "    }\r",
+                                            ""
+                                        ],
+                                        "type": "text/javascript"
+                                    }
+                                }
+                            ],
+                            "protocolProfileBehavior": {
+                                "disableBodyPruning": true
+                            },
+                            "request": {
+                                "method": "GET",
+                                "header": [
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "application/json;IEEE754Compatible=true",
+                                        "type": "text"
+                                    }
+                                ],
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "",
+                                    "options": {
+                                        "raw": {
+                                            "language": "json"
+                                        }
+                                    }
+                                },
+                                "url": {
+                                    "raw": "{{url}}/{{api-ba-config}}/CategoryCodes",
+                                    "host": ["{{url}}"],
+                                    "path": [
+                                        "{{api-ba-config}}",
+                                        "CategoryCodes"
+                                    ]
+                                }
+                            },
+                            "response": []
+                        },
+                        {
+                            "name": "READ ClearingCategoryCodes",
+                            "event": [
+                                {
+                                    "listen": "test",
+                                    "script": {
+                                        "exec": [
+                                            "    pm.test(\"READ CategoryCodes. Successful GET request UTILITIESCLOUDSOLUTION-2920\", function () {\r",
+                                            "        pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
+                                            "    })\r",
+                                            "\r",
+                                            "    var jsonData = JSON.parse(responseBody);\r",
+                                            "    if(jsonData && jsonData.id){\r",
+                                            "        postman.setEnvironmentVariable(\"env_CategoryCode_id\", jsonData.id);\r",
+                                            "    }\r",
+                                            ""
+                                        ],
+                                        "type": "text/javascript"
+                                    }
+                                }
+                            ],
+                            "protocolProfileBehavior": {
+                                "disableBodyPruning": true
+                            },
+                            "request": {
+                                "method": "GET",
+                                "header": [
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "application/json;IEEE754Compatible=true",
+                                        "type": "text"
+                                    }
+                                ],
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "",
+                                    "options": {
+                                        "raw": {
+                                            "language": "json"
+                                        }
+                                    }
+                                },
+                                "url": {
+                                    "raw": "{{url}}/{{api-ba-config}}/ClearingCategoryCodes",
+                                    "host": ["{{url}}"],
+                                    "path": [
+                                        "{{api-ba-config}}",
+                                        "ClearingCategoryCodes"
+                                    ]
+                                }
+                            },
+                            "response": []
+                        },
+                        {
+                            "name": "READ BillingAccountTemplate",
+                            "event": [
+                                {
+                                    "listen": "test",
+                                    "script": {
+                                        "exec": [
+                                            "    pm.test(\"READ BillingAccountTemplates. Successful GET request UTILITIESCLOUDSOLUTION-2920\", function () {\r",
+                                            "        pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
+                                            "    })\r",
+                                            "\r",
+                                            "    var jsonData = JSON.parse(responseBody);\r",
+                                            "    if(jsonData && jsonData.id){\r",
+                                            "        postman.setEnvironmentVariable(\"env_BillingAccount_templateId\", jsonData.id);\r",
+                                            "    }\r",
+                                            ""
+                                        ],
+                                        "type": "text/javascript"
+                                    }
+                                }
+                            ],
+                            "protocolProfileBehavior": {
+                                "disableBodyPruning": true
+                            },
+                            "request": {
+                                "method": "GET",
+                                "header": [
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "application/json;IEEE754Compatible=true",
+                                        "type": "text"
+                                    }
+                                ],
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "",
+                                    "options": {
+                                        "raw": {
+                                            "language": "json"
+                                        }
+                                    }
+                                },
+                                "url": {
+                                    "raw": "{{url}}/{{api-ba-config}}/BillingAccountTemplates/{{env_BillingAccount_templateId}}",
+                                    "host": ["{{url}}"],
+                                    "path": [
+                                        "{{api-ba-config}}",
+                                        "BillingAccountTemplates",
+                                        "{{env_BillingAccount_templateId}}"
+                                    ]
+                                }
+                            },
+                            "response": []
+                        },
+                        {
+                            "name": "READ DunningProcedureCodes",
+                            "event": [
+                                {
+                                    "listen": "test",
+                                    "script": {
+                                        "exec": [
+                                            "    pm.test(\"READ DunningProcedureCodes. Successful GET request UTILITIESCLOUDSOLUTION-2920\", function () {\r",
+                                            "        pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
+                                            "    })\r",
+                                            " \r",
+                                            "    var jsonData = JSON.parse(responseBody);\r",
+                                            "    if(jsonData && jsonData.id){\r",
+                                            "        postman.setEnvironmentVariable(\"env_DunningProcedureCode_id\", jsonData.id);\r",
+                                            "    }"
+                                        ],
+                                        "type": "text/javascript"
+                                    }
+                                },
+                                {
+                                    "listen": "prerequest",
+                                    "script": {
+                                        "exec": [""],
+                                        "type": "text/javascript"
+                                    }
+                                }
+                            ],
+                            "protocolProfileBehavior": {
+                                "disableBodyPruning": true
+                            },
+                            "request": {
+                                "method": "GET",
+                                "header": [],
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "",
+                                    "options": {
+                                        "raw": {
+                                            "language": "json"
+                                        }
+                                    }
+                                },
+                                "url": {
+                                    "raw": "{{url}}/{{api-ba-config}}/DunningProcedureCodes",
+                                    "host": ["{{url}}"],
+                                    "path": [
+                                        "{{api-ba-config}}",
+                                        "DunningProcedureCodes"
+                                    ]
+                                }
+                            },
+                            "response": []
+                        },
+                        {
+                            "name": "READ PaymentConditionCodes",
+                            "event": [
+                                {
+                                    "listen": "test",
+                                    "script": {
+                                        "exec": [
+                                            "    pm.test(\"READ PaymentConditionCodes. Successful GET request UTILITIESCLOUDSOLUTION-2920\", function () {\r",
+                                            "        pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
+                                            "    })\r",
+                                            " \r",
+                                            "    var jsonData = JSON.parse(responseBody);\r",
+                                            "    if(jsonData && jsonData.id){\r",
+                                            "        postman.setEnvironmentVariable(\"env_PaymentConditionCode_id\", jsonData.id);\r",
+                                            "    }"
+                                        ],
+                                        "type": "text/javascript"
+                                    }
+                                },
+                                {
+                                    "listen": "prerequest",
+                                    "script": {
+                                        "exec": [""],
+                                        "type": "text/javascript"
+                                    }
+                                }
+                            ],
+                            "protocolProfileBehavior": {
+                                "disableBodyPruning": true
+                            },
+                            "request": {
+                                "method": "GET",
+                                "header": [],
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "",
+                                    "options": {
+                                        "raw": {
+                                            "language": "json"
+                                        }
+                                    }
+                                },
+                                "url": {
+                                    "raw": "{{url}}/{{api-ba-config}}/PaymentConditionCodes",
+                                    "host": ["{{url}}"],
+                                    "path": [
+                                        "{{api-ba-config}}",
+                                        "PaymentConditionCodes"
+                                    ]
+                                }
+                            },
+                            "response": []
+                        },
+                        {
+                            "name": "READ PaymentMethodCodes",
+                            "event": [
+                                {
+                                    "listen": "test",
+                                    "script": {
+                                        "exec": [
+                                            "    pm.test(\"READ PaymentMethodCodes. Successful GET request UTILITIESCLOUDSOLUTION-3046\", function () {\r",
+                                            "        pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
+                                            "    })\r",
+                                            " \r",
+                                            "    var jsonData = JSON.parse(responseBody);\r",
+                                            "    if(jsonData && jsonData.id){\r",
+                                            "        postman.setEnvironmentVariable(\"env_PaymentMethodCode_id\", jsonData.id);\r",
+                                            "    }"
+                                        ],
+                                        "type": "text/javascript"
+                                    }
+                                },
+                                {
+                                    "listen": "prerequest",
+                                    "script": {
+                                        "exec": [""],
+                                        "type": "text/javascript"
+                                    }
+                                }
+                            ],
+                            "request": {
+                                "method": "GET",
+                                "header": [],
+                                "url": {
+                                    "raw": "{{url}}/{{api-ba-config}}/PaymentMethodCodes",
+                                    "host": ["{{url}}"],
+                                    "path": [
+                                        "{{api-ba-config}}",
+                                        "PaymentMethodCodes"
+                                    ]
+                                }
+                            },
+                            "response": []
+                        },
+                        {
+                            "name": "READ InterestKeyCodes",
+                            "event": [
+                                {
+                                    "listen": "test",
+                                    "script": {
+                                        "exec": [
+                                            "    pm.test(\"READ InterestKeyCodes. Successful GET request UTILITIESCLOUDSOLUTION-3055\", function () {\r",
+                                            "        pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
+                                            "    })\r",
+                                            " \r",
+                                            "    var jsonData = JSON.parse(responseBody);\r",
+                                            "    if(jsonData && jsonData.id){\r",
+                                            "        postman.setEnvironmentVariable(\"env_InterestKeyCode_id\", jsonData.id);\r",
+                                            "    }"
+                                        ],
+                                        "type": "text/javascript"
+                                    }
+                                },
+                                {
+                                    "listen": "prerequest",
+                                    "script": {
+                                        "exec": [""],
+                                        "type": "text/javascript"
+                                    }
+                                }
+                            ],
+                            "protocolProfileBehavior": {
+                                "disableBodyPruning": true
+                            },
+                            "request": {
+                                "method": "GET",
+                                "header": [],
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "{\r\n    \"name\": \"interestKey_Code\",\r\n    \"descr\": \"Standard 5%\",\r\n    \"code\": \"01\"\r\n}",
+                                    "options": {
+                                        "raw": {
+                                            "language": "json"
+                                        }
+                                    }
+                                },
+                                "url": {
+                                    "raw": "{{url}}/{{api-ba-config}}/InterestKeyCodes",
+                                    "host": ["{{url}}"],
+                                    "path": [
+                                        "{{api-ba-config}}",
+                                        "InterestKeyCodes"
+                                    ]
+                                }
+                            },
+                            "response": []
+                        }
+                    ]
+                },
+                {
+                    "name": "BP Config Codes",
+                    "item": [
+                        {
+                            "name": "CREATE CountrySubdivisionCodes = RP",
+                            "event": [
+                                {
+                                    "listen": "test",
+                                    "script": {
+                                        "exec": [""],
+                                        "type": "text/javascript"
+                                    }
+                                }
+                            ],
+                            "request": {
+                                "method": "POST",
+                                "header": [
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "application/json;IEEE754Compatible=true",
+                                        "type": "text"
+                                    }
+                                ],
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "{\r\n    \"name\": \"RP\",\r\n    \"descr\": null,\r\n    \"code\": \"RP\"\r\n}",
+                                    "options": {
+                                        "raw": {
+                                            "language": "json"
+                                        }
+                                    }
+                                },
+                                "url": {
+                                    "raw": "{{url}}/{{api-config}}/CountrySubdivisionCodes",
+                                    "host": ["{{url}}"],
+                                    "path": [
+                                        "{{api-config}}",
+                                        "CountrySubdivisionCodes"
+                                    ]
+                                }
+                            },
+                            "response": []
+                        }
+                    ]
+                }
+            ],
+            "event": [
+                {
+                    "listen": "prerequest",
+                    "script": {
+                        "type": "text/javascript",
+                        "exec": [""]
+                    }
+                },
+                {
+                    "listen": "test",
+                    "script": {
+                        "type": "text/javascript",
+                        "exec": [
+                            "postman.setEnvironmentVariable(\"env_apiBa\",\"api/billingAccount/v1\");"
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "name": "BILLING ACCOUNTS",
+            "item": [
+                {
+                    "name": "CREATE",
+                    "item": [
+                        {
+                            "name": "CREATE BP for BillingAccount",
+                            "event": [
+                                {
+                                    "listen": "test",
+                                    "script": {
+                                        "exec": [
+                                            "pm.test(`Create ${pm.globals.get('entity')}. Successful POST request UTILITIESCLOUDSOLUTION-2920`, function () {\r",
+                                            "    pm.expect(pm.response.code).to.be.oneOf([200, 201]);\r",
+                                            "  });\r",
+                                            "\r",
+                                            "var jsonData = pm.response.json();\r",
+                                            "if(jsonData && jsonData.id) {\r",
+                                            "    pm.environment.set(\"env_businessPartnerIdForBA\", jsonData.id);\r",
+                                            "   }\r",
+                                            "if(jsonData && jsonData.addressData) {\r",
+                                            "    pm.environment.set(\"env_businessPartnerAddressId\", jsonData.addressData[0].id);\r",
+                                            "  }\r",
+                                            "\r",
+                                            "setTimeout(function(){}, 50000);\r",
+                                            ""
+                                        ],
+                                        "type": "text/javascript"
+                                    }
+                                },
+                                {
+                                    "listen": "prerequest",
+                                    "script": {
+                                        "exec": [""],
+                                        "type": "text/javascript"
+                                    }
+                                }
+                            ],
+                            "request": {
+                                "method": "POST",
+                                "header": [],
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "{   \"displayId\": \"{{$randomBankAccount}}\",\r\n    \"businessPartnerType\": \"person\",\r\n    \"person\": {\r\n        \"nameDetails\": {\r\n            \"firstName\": \"Gabriel-{{$randomInt}}\",\r\n            \"lastName\": \"Haynes16\",\r\n            \"academicTitle\": {\r\n                \"code\": \"0004\"\r\n            }\r\n        },\r\n        \"birthDate\": \"1990-12-31\",\r\n        \"gender\": {\r\n            \"code\": \"0\"\r\n        },\r\n        \"language\": {\r\n            \"code\": \"en\"\r\n        },\r\n        \"correspondenceLanguage\": {\r\n            \"code\": \"en\"\r\n        },\r\n        \"nationality\": {\r\n            \"code\": \"US\"\r\n        }\r\n    },\r\n    \"bankAccounts\": [\r\n        {\r\n            \"id\": \"0001\",\r\n            \"bankAccountName\": \"bankAccountName1\",\r\n            \"bankControlKey\": \"01\",\r\n            \"validFrom\": \"2020-01-01\",\r\n            \"validTo\": \"2021-12-31\",\r\n            \"bankAccountHolderName\": \"bankAccountHolderName1\",\r\n            \"IBAN\": \"DE46230300000001990033\",\r\n            \"bankAccount\": \"12345\",\r\n            \"bankNumber\": \"23030000\",\r\n            \"bankAccountReference\": \"bankAccRef1\",\r\n            \"bankCountry\": {\r\n                \"code\": \"DE\"\r\n            }\r\n        }\r\n    ],\r\n    \"taxNumbers\": [\r\n        {\r\n            \"taxNumber\": \"DE204797706\",\r\n            \"taxNumberType\": {\r\n                \"code\": \"DE0\"\r\n            }\r\n        }\r\n    ],\r\n    \"roles\": [\r\n        {\r\n            \"validFrom\": \"2020-01-01\",\r\n            \"validTo\": \"9999-12-31\",\r\n            \"role\": {\r\n                \"code\": \"MKK\"\r\n            }\r\n        },\r\n        {\r\n            \"validFrom\": \"2021-01-01\",\r\n            \"validTo\": \"9999-12-31\",\r\n            \"role\": {\r\n                \"code\": \"FLCU01\"\r\n            }\r\n        },\r\n        {\r\n            \"validFrom\": \"2021-01-01\",\r\n            \"validTo\": \"9999-12-31\",\r\n            \"role\": {\r\n                \"code\": \"UDM000\"\r\n            }\r\n        },\r\n        {\r\n            \"validFrom\": \"2021-01-01\",\r\n            \"validTo\": \"9999-12-31\",\r\n            \"role\": {\r\n                \"code\": \"FLCU00\"\r\n            }\r\n        },\r\n        {\r\n            \"validFrom\": \"2021-01-01\",\r\n            \"validTo\": \"9999-12-31\",\r\n            \"role\": {\r\n                \"code\": \"UKM000\"\r\n            }\r\n        }\r\n    ],\r\n    \"isBlocked\": false,\r\n    \"addressData\": [\r\n        {\r\n            \"usages\": [\r\n                {\r\n                    \"isStandard\": false,\r\n                    \"validFrom\": \"2020-12-31\",\r\n                    \"validTo\": \"9999-12-31\",\r\n                    \"usage\": {\r\n                        \"code\": \"XXDEFAULT\"\r\n                    }\r\n                }\r\n            ],\r\n            \"emailAddresses\": [\r\n                {\r\n                    \"address\": \"zack.haynes@email.com\"\r\n                }\r\n            ],\r\n            \"phoneNumbers\": [\r\n                {\r\n                    \"isMobile\": true,\r\n                    \"number\": \"1234567890\",\r\n                    \"numberExtension\": \"123\",\r\n                    \"country\": {\r\n                        \"code\": \"US\"\r\n                    }\r\n                }\r\n            ],\r\n            \"validFrom\": \"2020-12-31\",\r\n            \"validTo\": \"9999-12-31\",\r\n            \"postalAddressType\": \"personPostalAddress\",\r\n            \"personPostalAddress\": {\r\n                \"street\": {\r\n                    \"name\": \"Römerstrabe\"\r\n                },\r\n                \"houseNumber\": \"1230\",\r\n                \"town\": {\r\n                    \"name\": \"Budenheim\"\r\n                },\r\n                \"postCode\": \"55257\",\r\n                \"streetSuffix1\": \"suffix1 v1\",\r\n                \"streetSuffix2\": \"suffix2 v1\",\r\n                \"companyPostalCode\": \"55257\",\r\n                \"primaryRegion\": {\r\n                    \"code\": \"RP\"\r\n                },\r\n                \"country\": {\r\n                    \"code\": \"DE\"\r\n                }\r\n            }\r\n        }\r\n    ],\r\n    \"customerInformation\": {\r\n        \"salesArrangements\": [\r\n            {\r\n                \"salesAreaRef\": {\r\n                    \"salesOrganizationDisplayId\": \"1010\",\r\n                    \"distributionChannel\": \"10\",\r\n                    \"division\": \"00\"\r\n                },\r\n                \"functions\": [\r\n                    {\r\n                        \"functionName\": \"Sold-to Party\",\r\n                        \"functionPartnerType\": \"functionPartnerCustomer\",\r\n                        \"functionCode\": {\r\n                            \"code\": \"AG\"\r\n                        }\r\n                    },\r\n                    {\r\n                        \"functionName\": \"Bill-to Party\",\r\n                        \"functionPartnerType\": \"functionPartnerCustomer\",\r\n                        \"functionCode\": {\r\n                            \"code\": \"RE\"\r\n                        }\r\n                    },\r\n                    {\r\n                        \"functionName\": \"Ship-to Party\",\r\n                        \"functionPartnerType\": \"functionPartnerCustomer\",\r\n                        \"functionCode\": {\r\n                            \"code\": \"WE\"\r\n                        }\r\n                    },\r\n                    {\r\n                        \"functionName\": \"Payer\",\r\n                        \"functionPartnerType\": \"functionPartnerCustomer\",\r\n                        \"functionCode\": {\r\n                            \"code\": \"RG\"\r\n                        }\r\n                    }\r\n                ],\r\n                \"incotermsTransferLocationName\": \"FH\",\r\n                \"deliveryPriority\": {\r\n                    \"code\": \"02\"\r\n                },\r\n                \"currency\": {\r\n                    \"code\": \"EUR\"\r\n                },\r\n                \"salesArrangementGroup\": {\r\n                    \"code\": \"01\"\r\n                },\r\n                \"salesArrangementPriceGroup\": {\r\n                    \"code\": \"C1\"\r\n                },\r\n                \"incotermsClassification\": {\r\n                    \"code\": \"FH\"\r\n                }\r\n            }\r\n        ],\r\n        \"taxClassifications\": [\r\n            {\r\n                \"country\": {\r\n                    \"code\": \"DE\"\r\n                },\r\n                \"taxCategory\": {\r\n                    \"code\": \"TTX1\"\r\n                },\r\n                \"taxClassification\": {\r\n                    \"code\": \"1\"\r\n                }\r\n            }\r\n        ],\r\n        \"vatLiability\": true,\r\n        \"customerAccountGroup\": {\r\n            \"code\": \"FICA\"\r\n        }\r\n    }\r\n}",
+                                    "options": {
+                                        "raw": {
+                                            "language": "json"
+                                        }
+                                    }
+                                },
+                                "url": {
+                                    "raw": "{{url}}/{{api-bp}}/BusinessPartner",
+                                    "host": ["{{url}}"],
+                                    "path": ["{{api-bp}}", "BusinessPartner"]
+                                }
+                            },
+                            "response": []
+                        },
+                        {
+                            "name": "Read BP from S4HC",
+                            "event": [
+                                {
+                                    "listen": "test",
+                                    "script": {
+                                        "exec": [
+                                            "pm.test(`Create ${pm.globals.get('entity')}. Successful POST request UTILITIESCLOUDSOLUTION-2920`, function () {\r",
+                                            "if( pm.response.code == 200 || pm.response.code == 201 ) {\r",
+                                            "    var jsonData = pm.response.json();\r",
+                                            "    if(jsonData && jsonData.d && jsonData.d.results && jsonData.d.results[0] && jsonData.d.results[0].BusinessPartner) {\r",
+                                            "        postman.setNextRequest(\"CREATE BillingAccount (API)\");\r",
+                                            "  } else {\r",
+                                            "          postman.setNextRequest(\"Read existing BP from S4HC\");\r",
+                                            "  }\r",
+                                            "   }\r",
+                                            "else if (pm.response.code == 401) {\r",
+                                            "    console.log(\"Could not read BP from S4 . Kindly verify s4 credentials\")\r",
+                                            "    postman.setNextRequest(\"CREATE BillingAccount (API)\");\r",
+                                            "}\r",
+                                            "else {\r",
+                                            "    postman.setNextRequest(\"Read existing BP from S4HC\");  \r",
+                                            "}  \r",
+                                            "    }\r",
+                                            "    );\r",
+                                            ""
+                                        ],
+                                        "type": "text/javascript"
+                                    }
+                                },
+                                {
+                                    "listen": "prerequest",
+                                    "script": {
+                                        "exec": ["setTimeout(50000);"],
+                                        "type": "text/javascript"
+                                    }
+                                }
+                            ],
+                            "protocolProfileBehavior": {
+                                "disableBodyPruning": true
+                            },
+                            "request": {
+                                "auth": {
+                                    "type": "basic",
+                                    "basic": [
+                                        {
+                                            "key": "username",
+                                            "value": "{{s4hc_username}}",
+                                            "type": "string"
+                                        },
+                                        {
+                                            "key": "password",
+                                            "value": "{{s4hc_password}}",
+                                            "type": "string"
+                                        }
+                                    ]
+                                },
+                                "method": "GET",
+                                "header": [],
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "",
+                                    "options": {
+                                        "raw": {
+                                            "language": "json"
+                                        }
+                                    }
+                                },
+                                "url": {
+                                    "raw": "{{s4hc_url}}/sap/opu/odata/sap/API_BUSINESS_PARTNER//A_BusinessPartner?$format=json&$filter=BusinessPartnerUUID eq guid'{{env_businessPartnerIdForBA}}'",
+                                    "host": ["{{s4hc_url}}"],
+                                    "path": [
+                                        "sap",
+                                        "opu",
+                                        "odata",
+                                        "sap",
+                                        "API_BUSINESS_PARTNER",
+                                        "",
+                                        "A_BusinessPartner"
+                                    ],
+                                    "query": [
+                                        {
+                                            "key": "$format",
+                                            "value": "json"
+                                        },
+                                        {
+                                            "key": "$filter",
+                                            "value": "BusinessPartnerUUID eq guid'{{env_businessPartnerIdForBA}}'"
+                                        }
+                                    ]
+                                }
+                            },
+                            "response": []
+                        },
+                        {
+                            "name": "Read existing BP from S4HC",
+                            "event": [
+                                {
+                                    "listen": "test",
+                                    "script": {
+                                        "exec": [
+                                            "pm.test(`Create ${pm.globals.get('entity')}. Successful POST request UTILITIESCLOUDSOLUTION-2920`, function () {\r",
+                                            "        var jsonData = pm.response.json()\r",
+                                            "        if ( (pm.response.code == 200 || pm.response.code == 201) && jsonData.d.results[0]);\r",
+                                            "        else if (pm.response.code == 401) {\r",
+                                            "    console.log(\"Could not read BP from S4 . Kindly verify s4 credentials\")\r",
+                                            "     }\r",
+                                            "        else\r",
+                                            "        console.log(\"*****\" + \"Failed to connect to S4 HANA Cloud. Will impact BP replication. Check the s4 hc system status\" +  \"*******\")\r",
+                                            "         \r",
+                                            "    });\r",
+                                            ""
+                                        ],
+                                        "type": "text/javascript"
+                                    }
+                                },
+                                {
+                                    "listen": "prerequest",
+                                    "script": {
+                                        "exec": [
+                                            "    pm.test(`Create ${pm.globals.get('entity')}. Successful POST request UTILITIESCLOUDSOLUTION-2920`, function () {\r",
+                                            "    if (pm.environment.get(\"url\").includes('test')) {\r",
+                                            "        console.log(\"test\")\r",
+                                            "           pm.environment.set(\"env_businessPartnerIdForBA\", \"f323df57-7a4a-4b83-bfbd-65e9c7f71477\");\r",
+                                            "}  else if (pm.environment.get(\"url\").includes('dev')) {\r",
+                                            "           pm.environment.set(\"env_businessPartnerIdForBA\", \"1745e846-09ef-41b7-97ac-dc077979f866\");\r",
+                                            "} });"
+                                        ],
+                                        "type": "text/javascript"
+                                    }
+                                }
+                            ],
+                            "protocolProfileBehavior": {
+                                "disableBodyPruning": true
+                            },
+                            "request": {
+                                "auth": {
+                                    "type": "basic",
+                                    "basic": [
+                                        {
+                                            "key": "password",
+                                            "value": "{{s4hc_password}}",
+                                            "type": "string"
+                                        },
+                                        {
+                                            "key": "username",
+                                            "value": "{{s4hc_username}}",
+                                            "type": "string"
+                                        }
+                                    ]
+                                },
+                                "method": "GET",
+                                "header": [],
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "",
+                                    "options": {
+                                        "raw": {
+                                            "language": "json"
+                                        }
+                                    }
+                                },
+                                "url": {
+                                    "raw": "{{s4hc_url}}/sap/opu/odata/sap/API_BUSINESS_PARTNER//A_BusinessPartner?$format=json&$filter=BusinessPartnerUUID eq guid'{{env_businessPartnerIdForBA}}'",
+                                    "host": ["{{s4hc_url}}"],
+                                    "path": [
+                                        "sap",
+                                        "opu",
+                                        "odata",
+                                        "sap",
+                                        "API_BUSINESS_PARTNER",
+                                        "",
+                                        "A_BusinessPartner"
+                                    ],
+                                    "query": [
+                                        {
+                                            "key": "$format",
+                                            "value": "json"
+                                        },
+                                        {
+                                            "key": "$filter",
+                                            "value": "BusinessPartnerUUID eq guid'{{env_businessPartnerIdForBA}}'"
+                                        },
+                                        {
+                                            "key": "$filter",
+                                            "value": "BusinessPartnerUUID eq guid'4f6f80c6-bb53-46d0-9d2a-2791560d2ba9'",
+                                            "disabled": true
+                                        }
+                                    ]
+                                }
+                            },
+                            "response": []
+                        },
+                        {
+                            "name": "CREATE BillingAccount (API)",
+                            "event": [
+                                {
+                                    "listen": "test",
+                                    "script": {
+                                        "exec": [
+                                            "pm.test(\"CREATE BillingAccount (API). Successful POST request UTILITIESCLOUDSOLUTION-2920\", function () {\r",
+                                            "        pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
+                                            "    })\r",
+                                            "\r",
+                                            "    var jsonData = JSON.parse(responseBody);\r",
+                                            "    if(jsonData && jsonData.id) {\r",
+                                            "         postman.setEnvironmentVariable(\"env_BillingAccount_id\", jsonData.id);\r",
+                                            "    }\r",
+                                            "    if(jsonData && jsonData.displayId) {\r",
+                                            "        postman.setEnvironmentVariable(\"env_BillingAccount_displayId\", jsonData.displayId);\r",
+                                            "    }"
+                                        ],
+                                        "type": "text/javascript"
+                                    }
+                                },
+                                {
+                                    "listen": "prerequest",
+                                    "script": {
+                                        "exec": ["setTimeout(50000);"],
+                                        "type": "text/javascript"
+                                    }
+                                }
+                            ],
+                            "request": {
+                                "method": "POST",
+                                "header": [],
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "{\r\n    \"category\": {\r\n        \"code\": \"Y1\"\r\n    },\r\n    \"partner\": {\r\n        \"businessPartner\": {\r\n            \"id\": \"{{env_businessPartnerIdForBA}}\"\r\n        },\r\n        \"accountManagementData\": {\r\n            \"name\": \"Contract Account Test-{{$randomInt}}\",\r\n            \"billingAccountRelationship\": {\r\n                \"code\": \"Y1\"\r\n            },\r\n            \"toleranceGroup\": {\r\n                \"code\": \"Y001\"\r\n            },\r\n            \"interestKey\": {\r\n                \"code\": \"01\"\r\n            },\r\n            \"clearingCategory\": null,\r\n            \"paymentCondition\": {\r\n                \"code\": \"YN01\"\r\n            },\r\n            \"accountDeterminationCode\": {\r\n                \"code\": \"Y1\"\r\n            }\r\n        },\r\n        \"paymentControl\": {\r\n            \"companyCodeGroup\": \"1010\",\r\n            \"standardCompanyCode\": \"1010\",\r\n            \"incomingPayment\": {\r\n                \"paymentMethod\": null,\r\n                \"alternativePayer\": null,\r\n                \"bankAccount\": null,\r\n                \"paymentCard\": null,\r\n                \"mandateId\": null\r\n            },\r\n            \"outgoingPayment\": {\r\n                \"paymentMethod\": null,\r\n                \"alternativePayee\": null,\r\n                \"bankAccount\": null,\r\n                \"paymentCard\": null\r\n            }\r\n        },\r\n        \"taxControl\": {\r\n            \"supplyingCountry\": {\r\n                \"code\": \"CA\"\r\n            }\r\n        },\r\n        \"dunningControl\": {\r\n            \"dunningProcedure\": {\r\n                \"code\": \"01\"\r\n            },\r\n            \"alternativeDunningRecipient\": null\r\n        },\r\n        \"correspondence\": {\r\n            \"alternativeCorrespondenceRecipient\": null\r\n        }\r\n    }\r\n}",
+                                    "options": {
+                                        "raw": {
+                                            "language": "json"
+                                        }
+                                    }
+                                },
+                                "url": {
+                                    "raw": "{{url}}/{{api-ba}}/BillingAccount",
+                                    "host": ["{{url}}"],
+                                    "path": ["{{api-ba}}", "BillingAccount"],
+                                    "query": [
+                                        {
+                                            "key": "Content-Type",
+                                            "value": "application/json;IEEE754Compatible=true",
+                                            "disabled": true
+                                        }
+                                    ]
+                                }
+                            },
+                            "response": []
+                        },
+                        {
+                            "name": "CREATE BillingAccount - Template",
+                            "event": [
+                                {
+                                    "listen": "test",
+                                    "script": {
+                                        "exec": [
+                                            "    pm.test(\"CREATE BillingAccount (API). Successful POST request UTILITIESCLOUDSOLUTION-2920\", function () {\r",
+                                            "        pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
+                                            "    })\r",
+                                            "\r",
+                                            "    var jsonData = JSON.parse(responseBody);\r",
+                                            "    if(jsonData && jsonData.id){\r",
+                                            "    postman.setEnvironmentVariable(\"env_BillingAccount_id\", jsonData.id);\r",
+                                            "    }\r",
+                                            "    if(jsonData && jsonData.displayId){\r",
+                                            "    postman.setEnvironmentVariable(\"env_BillingAccount_displayId\", jsonData.displayId);\r",
+                                            "    }\r",
+                                            ""
+                                        ],
+                                        "type": "text/javascript"
+                                    }
+                                },
+                                {
+                                    "listen": "prerequest",
+                                    "script": {
+                                        "exec": ["setTimeout(50000);"],
+                                        "type": "text/javascript"
+                                    }
+                                }
+                            ],
+                            "request": {
+                                "method": "POST",
+                                "header": [
+                                    {
+                                        "key": "templateId",
+                                        "value": "{{env_BillingAccount_templateId}}",
+                                        "type": "text"
+                                    }
+                                ],
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "{\r\n    \"partner\": {\r\n        \"businessPartner\": {\r\n            \"id\": \"{{env_businessPartnerIdForBA}}\"\r\n        },\r\n        \"accountManagementData\": {\r\n            \"name\": \"Contract Account Test-{{$randomInt}}\",\r\n            \"interestKey\": {\r\n                \"code\": \"01\"\r\n            },\r\n            \"accountDeterminationCode\": {\r\n                \"code\": \"Y1\"\r\n            }\r\n        },\r\n        \"paymentControl\": {\r\n            \"incomingPayment\": {\r\n                \"paymentMethod\": null,\r\n                \"alternativePayer\": null,\r\n                \"bankAccount\": null,\r\n                \"paymentCard\": null,\r\n                \"mandateId\": null\r\n            },\r\n            \"outgoingPayment\": {\r\n                \"paymentMethod\": null,\r\n                \"alternativePayee\": null,\r\n                \"bankAccount\": null,\r\n                \"paymentCard\": null\r\n            }\r\n        }\r\n    }\r\n}",
+                                    "options": {
+                                        "raw": {
+                                            "language": "json"
+                                        }
+                                    }
+                                },
+                                "url": {
+                                    "raw": "{{url}}/{{api-ba}}/BillingAccount",
+                                    "host": ["{{url}}"],
+                                    "path": ["{{api-ba}}", "BillingAccount"],
+                                    "query": [
+                                        {
+                                            "key": "Content-Type",
+                                            "value": "application/json;IEEE754Compatible=true",
+                                            "disabled": true
+                                        }
+                                    ]
+                                }
+                            },
+                            "response": []
+                        },
+                        {
+                            "name": "CREATE/UPDATE BillingAccount-Batch Request",
+                            "event": [
+                                {
+                                    "listen": "test",
+                                    "script": {
+                                        "exec": [
+                                            "pm.test(`Create ${pm.request.url.path[3]} . Successful BATCH POST request UTILITIESCLOUDSOLUTION-2920`, function () {\r",
+                                            "    pm.expect(pm.response.code).to.be.oneOf([200, 201]);\r",
+                                            "});"
+                                        ],
+                                        "type": "text/javascript"
+                                    }
+                                },
+                                {
+                                    "listen": "prerequest",
+                                    "script": {
+                                        "exec": ["setTimeout(15000);"],
+                                        "type": "text/javascript"
+                                    }
+                                }
+                            ],
+                            "protocolProfileBehavior": {
+                                "disabledSystemHeaders": {
+                                    "content-type": true
+                                }
+                            },
+                            "request": {
+                                "method": "POST",
+                                "header": [
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "multipart/mixed;boundary=batch_a2eac990-961b-4665-b58e-40aaa219d5cd",
+                                        "type": "text"
+                                    }
+                                ],
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "--batch_a2eac990-961b-4665-b58e-40aaa219d5cd\r\nContent-Type: multipart/mixed;boundary=changeset_57f58690-6277-429a-8a2d-0a017649de5f\r\n\r\n--changeset_57f58690-6277-429a-8a2d-0a017649de5f\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\nContent-ID: 1\r\n\r\nPOST /BillingAccount\r\nHost: host \r\nContent-Type: application/json;type=entry\r\nContent-Length: 1381\r\n\r\n{\r\n    \"category\": {\r\n        \"code\": \"Y1\"\r\n    },\r\n    \"partner\": {\r\n        \"businessPartner\": {\r\n            \"id\": \"{{env_businessPartnerIdForBA}}\"\r\n        },\r\n        \"accountManagementData\": {\r\n            \"name\": \"Contract Account Test-batch1\",\r\n            \"billingAccountRelationship\": {\r\n                \"code\": \"Y1\"\r\n            },\r\n            \"toleranceGroup\": {\r\n                \"code\": \"Y001\"\r\n            },\r\n            \"interestKey\": {\r\n                \"code\": \"01\"\r\n            },\r\n            \"clearingCategory\": null,\r\n            \"paymentCondition\": {\r\n                \"code\": \"YN01\"\r\n            },\r\n            \"accountDeterminationCode\": {\r\n                \"code\": \"Y1\"\r\n            }\r\n        },\r\n        \"paymentControl\": {\r\n            \"companyCodeGroup\": \"1010\",\r\n            \"standardCompanyCode\": \"1010\",\r\n            \"incomingPayment\": {\r\n                \"paymentMethod\": null,\r\n                \"alternativePayer\": null,\r\n                \"bankAccount\": null,\r\n                \"paymentCard\": null,\r\n                \"mandateId\": null\r\n            },\r\n            \"outgoingPayment\": {\r\n                \"paymentMethod\": null,\r\n                \"alternativePayee\": null,\r\n                \"bankAccount\": null,\r\n                \"paymentCard\": null\r\n            }\r\n        },\r\n        \"taxControl\": {\r\n            \"supplyingCountry\": {\r\n                \"code\": \"CA\"\r\n            }\r\n        },\r\n        \"dunningControl\": {\r\n            \"dunningProcedure\": {\r\n                \"code\": \"01\"\r\n            }\r\n            \"alternativeDunningRecipient\": null\r\n        }\r\n        \"correspondence\": {\r\n            \"alternativeCorrespondenceRecipient\": null\r\n        }\r\n    }\r\n}\r\n--changeset_57f58690-6277-429a-8a2d-0a017649de5f\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\nContent-ID: 2\r\n\r\nPOST /BillingAccount\r\nHost: host \r\nContent-Type: application/json;type=entry\r\nContent-Length: 1381\r\n\r\n{\r\n    \"category\": {\r\n        \"code\": \"Y1\"\r\n    },\r\n    \"partner\": {\r\n        \"businessPartner\": {\r\n            \"id\": \"{{env_businessPartnerIdForBA}}\"\r\n        },\r\n        \"accountManagementData\": {\r\n            \"name\": \"Contract Account Test-batch2\",\r\n            \"billingAccountRelationship\": {\r\n                \"code\": \"Y1\"\r\n            },\r\n            \"toleranceGroup\": {\r\n                \"code\": \"Y001\"\r\n            },\r\n             \"interestKey\": {\r\n                \"code\": \"01\"\r\n            },\r\n            \"clearingCategory\": null,\r\n            \"paymentCondition\": {\r\n                \"code\": \"YN01\"\r\n            },\r\n            \"accountDeterminationCode\": {\r\n                \"code\": \"Y1\"\r\n            }\r\n        },\r\n        \"paymentControl\": {\r\n            \"companyCodeGroup\": \"1010\",\r\n            \"standardCompanyCode\": \"1010\",\r\n            \"incomingPayment\": {\r\n                \"paymentMethod\": null,\r\n                \"alternativePayer\": null,\r\n                \"bankAccount\": null,\r\n                \"paymentCard\": null,\r\n                \"mandateId\": null\r\n            },\r\n            \"outgoingPayment\": {\r\n                \"paymentMethod\": null,\r\n                \"alternativePayee\": null,\r\n                \"bankAccount\": null,\r\n                \"paymentCard\": null\r\n            }\r\n        },\r\n        \"taxControl\": {\r\n            \"supplyingCountry\": {\r\n                \"code\": \"CA\"\r\n            }\r\n        },\r\n        \"dunningControl\": {\r\n            \"dunningProcedure\": {\r\n                \"code\": \"02\"\r\n            }\r\n            \"alternativeDunningRecipient\": null\r\n        }\r\n        \"correspondence\": {\r\n            \"alternativeCorrespondenceRecipient\": null\r\n        }\r\n    }\r\n}\r\n--changeset_57f58690-6277-429a-8a2d-0a017649de5f\r\nContent-Type: application/http\r\nContent-Transfer-Encoding: binary\r\nContent-ID: 3\r\n\r\nPATCH /BillingAccount({{env_BillingAccount_id}})\r\nHost: host \r\nContent-Type: application/json;type=entry\r\nContent-Length: 1381\r\n\r\n{\r\n    \"id\": \"{{env_BillingAccount_id}}\",\r\n    \"partner\": {\r\n        \"accountManagementData\": {\r\n            \"name\": \"Contract Account Test batch-{{$randomInt}}\"\r\n        }\r\n    }\r\n}\r\n--changeset_57f58690-6277-429a-8a2d-0a017649de5f--\r\n--batch_a2eac990-961b-4665-b58e-40aaa219d5cd--\r\n",
+                                    "options": {
+                                        "raw": {
+                                            "language": "text"
+                                        }
+                                    }
+                                },
+                                "url": {
+                                    "raw": "{{url}}/{{api-ba}}/$batch",
+                                    "host": ["{{url}}"],
+                                    "path": ["{{api-ba}}", "$batch"],
+                                    "query": [
+                                        {
+                                            "key": "Content-Type",
+                                            "value": "application/json;IEEE754Compatible=true",
+                                            "disabled": true
+                                        }
+                                    ]
+                                }
+                            },
+                            "response": []
+                        }
+                    ]
+                },
+                {
+                    "name": "READ",
+                    "item": [
+                        {
+                            "name": "READ BillingAccount",
+                            "event": [
+                                {
+                                    "listen": "test",
+                                    "script": {
+                                        "exec": [
+                                            "    pm.test(\"READ BillingAccount. Successful GET request UTILITIESCLOUDSOLUTION-2920\", function () {\r",
+                                            "        pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
+                                            "    });\r",
+                                            ""
+                                        ],
+                                        "type": "text/javascript"
+                                    }
+                                },
+                                {
+                                    "listen": "prerequest",
+                                    "script": {
+                                        "exec": [""],
+                                        "type": "text/javascript"
+                                    }
+                                }
+                            ],
+                            "request": {
+                                "method": "GET",
+                                "header": [],
+                                "url": {
+                                    "raw": "{{url}}/{{api-ba}}/BillingAccount",
+                                    "host": ["{{url}}"],
+                                    "path": ["{{api-ba}}", "BillingAccount"]
+                                }
+                            },
+                            "response": []
+                        },
+                        {
+                            "name": "READ BillingAccount - BA_id",
+                            "event": [
+                                {
+                                    "listen": "test",
+                                    "script": {
+                                        "exec": [
+                                            "    pm.test(\"READ BillingAccount. Successful GET request UTILITIESCLOUDSOLUTION-2920\", function () {\r",
+                                            "        pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
+                                            "    });\r",
+                                            ""
+                                        ],
+                                        "type": "text/javascript"
+                                    }
+                                },
+                                {
+                                    "listen": "prerequest",
+                                    "script": {
+                                        "exec": [""],
+                                        "type": "text/javascript"
+                                    }
+                                }
+                            ],
+                            "request": {
+                                "method": "GET",
+                                "header": [],
+                                "url": {
+                                    "raw": "{{url}}/{{api-ba}}/BillingAccount/{{env_BillingAccount_id}}?$expand=partner($expand=*)",
+                                    "host": ["{{url}}"],
+                                    "path": [
+                                        "{{api-ba}}",
+                                        "BillingAccount",
+                                        "{{env_BillingAccount_id}}"
+                                    ],
+                                    "query": [
+                                        {
+                                            "key": "$expand",
+                                            "value": "partner($expand=*)",
+                                            "description": "Expand 'BillingAccountPartner' aspect"
+                                        }
+                                    ]
+                                }
+                            },
+                            "response": []
+                        },
+                        {
+                            "name": "READ BillingAccount - BA_displayId",
+                            "event": [
+                                {
+                                    "listen": "test",
+                                    "script": {
+                                        "exec": [
+                                            "    pm.test(\"READ BillingAccount. Successful GET request UTILITIESCLOUDSOLUTION-2920\", function () {\r",
+                                            "        pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
+                                            "    });\r",
+                                            ""
+                                        ],
+                                        "type": "text/javascript"
+                                    }
+                                },
+                                {
+                                    "listen": "prerequest",
+                                    "script": {
+                                        "exec": [""],
+                                        "type": "text/javascript"
+                                    }
+                                }
+                            ],
+                            "request": {
+                                "method": "GET",
+                                "header": [],
+                                "url": {
+                                    "raw": "{{url}}/{{api-ba}}/BillingAccount?$filter=displayId eq '{{env_BillingAccount_displayId}}'&$expand=partner($expand=*)",
+                                    "host": ["{{url}}"],
+                                    "path": ["{{api-ba}}", "BillingAccount"],
+                                    "query": [
+                                        {
+                                            "key": "$filter",
+                                            "value": "displayId eq '{{env_BillingAccount_displayId}}'"
+                                        },
+                                        {
+                                            "key": "$expand",
+                                            "value": "partner($expand=*)",
+                                            "description": "Expand 'BillingAccountPartner' aspect"
+                                        }
+                                    ]
+                                }
+                            },
+                            "response": []
+                        },
+                        {
+                            "name": "READ BillingAccount - BP_UUID",
+                            "event": [
+                                {
+                                    "listen": "test",
+                                    "script": {
+                                        "exec": [
+                                            "    pm.test(\"READ BillingAccount. Successful GET request UTILITIESCLOUDSOLUTION-2920\", function () {\r",
+                                            "        pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
+                                            "    });\r",
+                                            ""
+                                        ],
+                                        "type": "text/javascript"
+                                    }
+                                },
+                                {
+                                    "listen": "prerequest",
+                                    "script": {
+                                        "exec": [""],
+                                        "type": "text/javascript"
+                                    }
+                                }
+                            ],
+                            "request": {
+                                "method": "GET",
+                                "header": [],
+                                "url": {
+                                    "raw": "{{url}}/{{api-ba}}/BillingAccount?$expand=partner($expand=*)&$filter=partner/businessPartner/id eq {{env_businessPartnerIdForBA}}",
+                                    "host": ["{{url}}"],
+                                    "path": ["{{api-ba}}", "BillingAccount"],
+                                    "query": [
+                                        {
+                                            "key": "$expand",
+                                            "value": "partner($expand=*)",
+                                            "description": "Expand 'BillingAccountPartner' aspect"
+                                        },
+                                        {
+                                            "key": "$filter",
+                                            "value": "partner/businessPartner/id eq {{env_businessPartnerIdForBA}}",
+                                            "description": "Filter on BP id (uuid) thrue 'Composition of one'"
+                                        }
+                                    ]
+                                }
+                            },
+                            "response": []
+                        },
+                        {
+                            "name": "READ BillingAccount - BP_UUID+PaymentMethod",
+                            "event": [
+                                {
+                                    "listen": "test",
+                                    "script": {
+                                        "exec": [
+                                            "    pm.test(\"READ BillingAccount. Successful GET request UTILITIESCLOUDSOLUTION-2920\", function () {\r",
+                                            "        pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
+                                            "    });\r",
+                                            ""
+                                        ],
+                                        "type": "text/javascript"
+                                    }
+                                },
+                                {
+                                    "listen": "prerequest",
+                                    "script": {
+                                        "exec": [""],
+                                        "type": "text/javascript"
+                                    }
+                                }
+                            ],
+                            "request": {
+                                "method": "GET",
+                                "header": [],
+                                "url": {
+                                    "raw": "{{url}}/{{api-ba}}/BillingAccount?$filter=partner/businessPartner/id eq {{env_businessPartnerIdForBA}} and partner/paymentControl/incomingPayment/paymentMethod eq 'E'&$expand=partner($expand=paymentControl($expand=*))",
+                                    "host": ["{{url}}"],
+                                    "path": ["{{api-ba}}", "BillingAccount"],
+                                    "query": [
+                                        {
+                                            "key": "$filter",
+                                            "value": "partner/businessPartner/id eq {{env_businessPartnerIdForBA}} and partner/paymentControl/incomingPayment/paymentMethod eq 'E'",
+                                            "description": "Filter on BP id (uuid) thrue 'Composition of one' & Incoming Payment Method"
+                                        },
+                                        {
+                                            "key": "$expand",
+                                            "value": "partner($expand=paymentControl($expand=*))",
+                                            "description": "Expand 'BillingAccountPartner/paymentControl' aspect"
+                                        }
+                                    ]
+                                }
+                            },
+                            "response": []
+                        }
+                    ]
+                },
+                {
+                    "name": "UPDATE",
+                    "item": [
+                        {
+                            "name": "UPDATE BillingAccount (API)",
+                            "event": [
+                                {
+                                    "listen": "test",
+                                    "script": {
+                                        "exec": [
+                                            "    pm.test(\"Update BillingAccount. Successful POST request UTILITIESCLOUDSOLUTION-2920\", function () {\r",
+                                            "        pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
+                                            "    })\r",
+                                            ""
+                                        ],
+                                        "type": "text/javascript"
+                                    }
+                                }
+                            ],
+                            "request": {
+                                "method": "PATCH",
+                                "header": [],
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "{\r\n    \"partner\": {\r\n        \"accountManagementData\": {\r\n            \"name\": \"Contract Account Test-{{$randomInt}}\"\r\n        }\r\n    }\r\n}",
+                                    "options": {
+                                        "raw": {
+                                            "language": "json"
+                                        }
+                                    }
+                                },
+                                "url": {
+                                    "raw": "{{url}}/{{api-ba}}/BillingAccount({{env_BillingAccount_id}})",
+                                    "host": ["{{url}}"],
+                                    "path": [
+                                        "{{api-ba}}",
+                                        "BillingAccount({{env_BillingAccount_id}})"
+                                    ]
+                                }
+                            },
+                            "response": []
+                        },
+                        {
+                            "name": "UPDATE BillingAccount (API)-Subentities",
+                            "event": [
+                                {
+                                    "listen": "test",
+                                    "script": {
+                                        "exec": [
+                                            "    pm.test(\"Update BillingAccount. Successful POST request UTILITIESCLOUDSOLUTION-2920\", function () {\r",
+                                            "        pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
+                                            "    })\r",
+                                            ""
+                                        ],
+                                        "type": "text/javascript"
+                                    }
+                                }
+                            ],
+                            "request": {
+                                "method": "PATCH",
+                                "header": [],
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "{\r\n    \"paymentMethod\" : \"E\",\r\n    \"bankAccount\": \"0001\"\r\n}",
+                                    "options": {
+                                        "raw": {
+                                            "language": "json"
+                                        }
+                                    }
+                                },
+                                "url": {
+                                    "raw": "{{url}}/{{api-ba}}/BillingAccount({{env_BillingAccount_id}})/partner/paymentControl/incomingPayment",
+                                    "host": ["{{url}}"],
+                                    "path": [
+                                        "{{api-ba}}",
+                                        "BillingAccount({{env_BillingAccount_id}})",
+                                        "partner",
+                                        "paymentControl",
+                                        "incomingPayment"
+                                    ]
+                                }
+                            },
+                            "response": []
+                        }
+                    ]
+                },
+                {
+                    "name": "BA Metadata",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{url}}/{{api-ba}}/$metadata",
+                            "host": ["{{url}}"],
+                            "path": ["{{api-ba}}", "$metadata"]
+                        }
+                    },
+                    "response": []
+                }
+            ],
+            "event": [
+                {
+                    "listen": "prerequest",
+                    "script": {
+                        "type": "text/javascript",
+                        "exec": [""]
+                    }
+                },
+                {
+                    "listen": "test",
+                    "script": {
+                        "type": "text/javascript",
+                        "exec": [""]
+                    }
+                }
+            ]
+        }
+    ],
+    "auth": {
+        "type": "bearer",
+        "bearer": [
+            {
+                "key": "token",
+                "value": "{{jwt}}",
+                "type": "string"
+            }
+        ]
+    },
+    "event": [
+        {
+            "listen": "prerequest",
+            "script": {
+                "type": "text/javascript",
+                "exec": [""]
+            }
+        },
+        {
+            "listen": "test",
+            "script": {
+                "type": "text/javascript",
+                "exec": [""]
+            }
+        }
+    ],
+    "variable": [
+        {
+            "key": "api-bp",
+            "value": "api/businessPartner/v1"
+        },
+        {
+            "key": "api-ba",
+            "value": "api/billingAccount/v1"
+        },
+        {
+            "key": "api-ba-config",
+            "value": "api/billingAccount/v1/config"
+        },
+        {
+            "key": "api-config",
+            "value": "api/config/v1"
+        }
+    ]
+}

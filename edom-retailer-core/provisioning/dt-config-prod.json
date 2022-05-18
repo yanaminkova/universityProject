@@ -1,0 +1,16 @@
+{
+    "environment_name": "C4UFDNRETPROD",
+    "service_parameters": {
+        "skiperrors": "true"
+    },
+    "permission_assignments": [
+        {
+            "name": "C4U Foundation Retailer Prod DT Admin",
+            "roles": ["admin", "log_analytics"]
+        },
+        {
+            "name": "C4U Foundation Retailer Prod DT User",
+            "roles": ["user", "log_analytics"]
+        }
+    ]
+}

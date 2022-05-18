@@ -1,0 +1,27 @@
+[
+    {
+        "code": "EA",
+        "name": "Each",
+        "descr": null
+    },
+    {
+        "code": "EB",
+        "name": "Each per billing cycle",
+        "descr": null
+    },
+    {
+        "code": "kWh",
+        "name": "Kilowatt Hours",
+        "descr": null
+    },
+    {
+        "code": "m3",
+        "name": "Cubic meter",
+        "descr": null
+    },
+    {
+        "code": "PC",
+        "name": "Piece",
+        "descr": null
+    }
+]

@@ -1,0 +1,12 @@
+[
+    {
+        "code": "00001",
+        "name": "Bundle discount",
+        "descr": "Bundle discount notice"
+    },
+    {
+        "code": "00002",
+        "name": "Welcome Bonus",
+        "descr": "Welcome Bonus notice"
+    }
+]

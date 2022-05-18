@@ -1,0 +1,42 @@
+{
+    "@context": "$metadata#ProfileHeader_IntegrationTest",
+    "@metadataEtag": "W/\"d9b77396f2df77d471b9da781a73b4888fa07577a10782ab569be230bf7f0bdd\"",
+    "value": [
+        {
+            "profileId": "7047f558-cddb-4c40-942a-e18cba58328f",
+            "profileName": "H0OffPeak",
+            "description": "Off peak SLP for Residential Electricity",
+            "timeZone": "Europe/Berlin",
+            "decimalPlaces": 2,
+            "commodity_code": "1",
+            "measuringPeriod_code": "2",
+            "measurementUnit_code": "72",
+            "measurementUnitText_code": "1",
+            "unitMultiplier_code": "3"
+        },
+        {
+            "profileId": "daec9fea-74fe-4abb-bc56-17a6c7f1195d",
+            "profileName": "H0OnPeak",
+            "description": "On peak SLP for Residential Electricity",
+            "timeZone": "Europe/Berlin",
+            "decimalPlaces": 2,
+            "commodity_code": "1",
+            "measuringPeriod_code": "2",
+            "measurementUnit_code": "72",
+            "measurementUnitText_code": "1",
+            "unitMultiplier_code": "3"
+        },
+        {
+            "profileId": "fac9335f-2e36-47b2-80d0-8168eca2689c",
+            "profileName": "H0",
+            "description": "SLP for Residential Electricity Customers",
+            "timeZone": "Europe/Berlin",
+            "decimalPlaces": 4,
+            "commodity_code": "1",
+            "measuringPeriod_code": "2",
+            "measurementUnit_code": "72",
+            "measurementUnitText_code": "1",
+            "unitMultiplier_code": "3"
+        }
+    ]
+}

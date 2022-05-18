@@ -1,0 +1,104 @@
+{
+    "d": {
+        "trans_uuid": "248A07FC-5CB0-1EEA-A897-244DF39017ED",
+        "trans_doc_no": "",
+        "client_uuid": "758af75e-5786-4c85-ba5a-173f5328753d",
+        "trans_uuid_ext": "42010AEE2AA41EDAA8972129C05F3B3E",
+        "trans_uuid_mid": "AF7Pb1ezjeb-PaB9LNu4UAfN3kKo",
+        "trans_tstmp": "1590652718000.0000000",
+        "trans_status": "",
+        "trans_status_tstmp": "0.0000000",
+        "trans_direct": "I",
+        "trans_uuid_aggr": "00000000-0000-0000-0000-000000000000",
+        "aggr_type": "",
+        "src_syst_uuid": "MUS",
+        "src_syst_type": "SAP",
+        "sender_id": "SP_SUP_MP4G",
+        "sender_cl_id": "",
+        "receiver_id": "SP_SUP_MP4G",
+        "receiver_cl_id": "",
+        "trans_exchg_meth": "OData",
+        "payload_ext": "",
+        "payload_int": "",
+        "asynchronous": false,
+        "execute_prio": "0.0000000",
+        "retry_counter": 0,
+        "software_build_id": "",
+        "bo_status": "",
+        "tech_msg_id": "",
+        "tech_msg_version": "",
+        "bus_msg_id": "",
+        "com_acc_uuid": "",
+        "auth_grp": "",
+        "to_bo_header": {
+            "results": [
+                {
+                    "bo_uuid": "EC27558E-5755-43C2-A802-A0506139575F",
+                    "bo_ext_uuid": "10000000173093",
+                    "bo_ext_uuid_prev": "",
+                    "bo_status": "",
+                    "operation": "C",
+                    "operation_tstmp": "0.0000000",
+                    "com_acc_uuid": "248A07FC5CB01EEAA89719CCBAE1F7AE",
+                    "bu_partner_uuid": "",
+                    "proc_cluster": "GPKE",
+                    "tech_msg_id": "",
+                    "tech_msg_version": "",
+                    "bus_msg_id": "BM_GPKE_SUPN_SOS_INFO_PROC_START",
+                    "response_cat": "",
+                    "user_uuid": "",
+                    "blocked": false,
+                    "to_bo_data": {
+                        "results": [
+                            {
+                                "data_seq_no": "00000000002",
+                                "path": "/UBD_CONTEXT/",
+                                "field": "PROCESS_ID",
+                                "value": "DE_C_GPKE_SUPN_SOS_REG"
+                            },
+                            {
+                                "data_seq_no": "00000000001",
+                                "path": "",
+                                "field": "OPERATION",
+                                "value": "C"
+                            },
+                            {
+                                "data_seq_no": "00000000005",
+                                "path": "/INFO_EVENT[1]/",
+                                "field": "PROC_DATE",
+                                "value": "20200731220000.0000000"
+                            },
+                            {
+                                "data_seq_no": "00000000004",
+                                "path": "/INFO_EVENT[1]/",
+                                "field": "PROCESS_ID",
+                                "value": "DE_C_GPKE_SUPN_SOS_REG"
+                            },
+                            {
+                                "data_seq_no": "00000000003",
+                                "path": "/INFO_EVENT[1]/",
+                                "field": "INFO_EVENT_CODE",
+                                "value": "ProcStart"
+                            }
+                        ]
+                    },
+                    "to_bo_id": {
+                        "results": [
+                            {
+                                "path": "",
+                                "field": "",
+                                "sign": "",
+                                "opt": "",
+                                "low": "",
+                                "high": ""
+                            }
+                        ]
+                    },
+                    "to_bo_rel": {
+                        "results": []
+                    }
+                }
+            ]
+        }
+    }
+}

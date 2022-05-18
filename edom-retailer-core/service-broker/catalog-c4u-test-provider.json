@@ -1,0 +1,29 @@
+{
+    "services": [
+        {
+            "name": "edom-demo-c4u-test-provider-api",
+            "id": "8228f388-8f90-400a-9be9-107866a3d214",
+            "description": "Access SAP Cloud for Utilities Foundation Retailer C4U Test API.",
+            "bindable": true,
+            "metadata": {
+                "displayName": "SAP Cloud for Utilities Foundation Retailer C4U Test API",
+                "longDescription": "Access SAP Cloud for Utilities Foundation Retailer C4U Test API.",
+                "sap": {
+                    "tenant_aware": true,
+                    "instance_isolation": true,
+                    "support_btp_brand": true
+                }
+            },
+            "plans": [
+                {
+                    "name": "standard",
+                    "id": "3ac9de8f-dac6-43ff-9c1e-61c97612e866",
+                    "description": "Standard Plan",
+                    "free": true,
+                    "bindable": true,
+                    "plan_updateable": true
+                }
+            ]
+        }
+    ]
+}

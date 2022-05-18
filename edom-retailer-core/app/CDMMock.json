@@ -1,0 +1,123 @@
+{
+    "site": {
+        "payload": {
+            "groupsOrder": ["homeGroup"]
+        }
+    },
+    "menus": {},
+    "groups": {
+        "homeGroup": {
+            "payload": {
+                "links": [],
+                "tiles": [
+                    {
+                        "id": "fe-lrop-v4",
+                        "vizId": "fe-lrop-v4"
+                    }
+                ]
+            },
+            "_version": "3.0.0",
+            "identification": {
+                "id": "homeGroup",
+                "title": "Home",
+                "entityType": "group"
+            }
+        }
+    },
+    "layouts": {},
+    "widgets": {},
+    "_version": "3.0.0",
+    "catalogs": {
+        "homeCatalog": {
+            "payload": {
+                "viz": []
+            },
+            "_version": "3.0.0",
+            "identification": {
+                "id": "homeCatalog",
+                "title": "Home Catalog",
+                "entityType": "catalog"
+            }
+        }
+    },
+    "applications": {
+        "fe-lrop-v4": {
+            "sap.ui": {
+                "technology": "UI5",
+                "deviceTypes": {
+                    "phone": true,
+                    "tablet": true,
+                    "desktop": true
+                }
+            },
+            "sap.app": {
+                "id": "fe-lrop-v4",
+                "title": "Display Customer Orders",
+                "properties": {
+                    "targetURL": "#fe-lrop-v4"
+                },
+                "dataSources": {
+                    "mainService": {
+                        "uri": "/api/v1/ui/",
+                        "type": "OData",
+                        "settings": {
+                            "localUri": "localService/metadata.xml",
+                            "odataVersion": "4.0"
+                        }
+                    }
+                },
+                "crossNavigation": {
+                    "inbounds": {
+                        "fe-lrop-v4": {
+                            "icon": "sap-icon://customer-order-entry",
+                            "action": "manage",
+                            "signature": {
+                                "parameters": {},
+                                "additionalParameters": "allowed"
+                            },
+                            "semanticObject": "CustomerOrder"
+                        }
+                    }
+                },
+                "contentProviderId": ""
+            },
+            "sap.ui5": {
+                "componentName": "com.sap.c4u.foundation.retailer.customerorder"
+            },
+            "sap.platform.cf": {
+                "uri": "/",
+                "appName": "comsapc4ufoundationretailercustomerorder",
+                "version": "2.0"
+            },
+            "sap.platform.runtime": {
+                "componentProperties": {
+                    "url": "customer-order/webapp",
+                    "context": ""
+                }
+            }
+        }
+    },
+    "visualizations": {
+        "fe-lrop-v4": {
+            "vizType": "sap.ushell.StaticAppLauncher",
+            "vizConfig": {
+                "sap.ui": {
+                    "icons": {
+                        "icon": "sap-icon://customer-order-entry"
+                    }
+                },
+                "sap.app": {
+                    "title": "Display Customer Orders"
+                },
+                "sap.flp": {
+                    "target": {
+                        "type": "IBN",
+                        "appId": "fe-lrop-v4",
+                        "inboundId": "fe-lrop-v4"
+                    }
+                }
+            },
+            "businessApp": "fe-lrop-v4"
+        }
+    }
+}

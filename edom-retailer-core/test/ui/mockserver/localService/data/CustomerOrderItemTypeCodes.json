@@ -1,0 +1,27 @@
+[
+    {
+        "code": "UBD1",
+        "name": "Bundle",
+        "descr": null
+    },
+    {
+        "code": "UMT1",
+        "name": "Physical",
+        "descr": null
+    },
+    {
+        "code": "USB1",
+        "name": "Non-commodity Subscription",
+        "descr": null
+    },
+    {
+        "code": "USB2",
+        "name": "Commodity Subscription",
+        "descr": null
+    },
+    {
+        "code": "USV1",
+        "name": "Service",
+        "descr": null
+    }
+]

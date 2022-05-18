@@ -1,0 +1,221 @@
+{
+    "@context": "$metadata#MCMInstances(meteringLocations(address(country()),meteringTasks()),marketLocations(address(country())),actors(),leadingAddress(country()),changeProcesses(processType(),processData()),measurementModel(),status(errors()))/$entity",
+    "@metadataEtag": "W/\"fa95576b48d2d92d2e82cb32284cefcf6f41c2adf1ab520b6a4a0c18eb266db2\"",
+    "id": "c57b3ab6-4802-4642-b467-cb6c9b2435a5",
+    "idText": "INST-20",
+    "description": "Instanz-Neuanlage vom DSO im Rahmen des PoC",
+    "leadingGrid_code": "SNE956610053427",
+    "division_code": "EL",
+    "orderer_code": "9903692562385",
+    "leadingAddress_id": "f3f61458-20ed-404c-a098-6dea476b8159",
+    "measurementModel_id": "ffffffff-2222-2222-2222-100000000001",
+    "measurementClass_id": "a1a00005-5555-5555-5555-100000000005",
+    "overallStatus_code": "NEW",
+    "status_id": "4b8f4919-0654-46ed-b69b-e6cf052b634c",
+    "modifiedAt": "2021-07-15T19:36:29Z",
+    "meteringLocations": [
+        {
+            "id": "754185d9-3731-435c-9764-4c854eca62af",
+            "measurementConceptInstance_id": "c57b3ab6-4802-4642-b467-cb6c9b2435a5",
+            "idText": "Z1",
+            "type_code": "GRIDMES",
+            "position": 1,
+            "modelMeteringLocation_id": "eea50001-5555-5555-5555-501000000001",
+            "meteringLocationId": "382741743",
+            "grid_code": null,
+            "gridLevel_code": "MV",
+            "address_id": "f3f61458-20ed-404c-a098-6dea476b8159",
+            "lossTransformer": null,
+            "lossLine": null,
+            "lossFactor": null,
+            "meteringLocationPurpose_code": null,
+            "address": {
+                "id": "f3f61458-20ed-404c-a098-6dea476b8159",
+                "measurementConceptInstance_id": "c57b3ab6-4802-4642-b467-cb6c9b2435a5",
+                "country_code": "DE",
+                "cityID": "WALLDORF",
+                "cityName": "Walldorf",
+                "postalCode": "69190",
+                "streetID": "RINGSTRASSE",
+                "streetName": "Ringstrasse",
+                "houseNumber": "100",
+                "floorNumber": "5",
+                "supplement": "5.Stock App 67",
+                "country": {
+                    "name": "Deutschland",
+                    "descr": "Bundesrepublik Deutschland",
+                    "code": "DE"
+                }
+            },
+            "meteringTasks": [
+                {
+                    "id": "d1f8ba64-d37f-47ca-8af2-52a595c45f13",
+                    "meteringLocation_id": "754185d9-3731-435c-9764-4c854eca62af",
+                    "direction_code": "OUT",
+                    "type_code": "WAAUS",
+                    "position": null,
+                    "modelMeteringTasks_id": "bbb50001-5555-5555-5555-501010000001",
+                    "plannedMeteringProcedure_code": "SLP",
+                    "plannedOBIS_code": "1.8.x",
+                    "OBIS_code": null
+                }
+            ]
+        }
+    ],
+    "marketLocations": [
+        {
+            "id": "0999d647-1204-4b09-9373-5a0f631b5143",
+            "measurementConceptInstance_id": "c57b3ab6-4802-4642-b467-cb6c9b2435a5",
+            "idText": "M VB1",
+            "type_code": "SUPPLY",
+            "direction_code": "IN",
+            "position": null,
+            "modelMarketLocation_id": "aaaaaaaa-2222-3333-1111-100000000001",
+            "marketLocationId": null,
+            "virtualMarketLocation": false,
+            "address_id": "f3f61458-20ed-404c-a098-6dea476b8159",
+            "billingProcedure_code": "SLP",
+            "settlementProcedure_code": "RLM",
+            "plannedOBIS_code": "1-1:1.9.0",
+            "OBIS_code": null,
+            "address": {
+                "id": "f3f61458-20ed-404c-a098-6dea476b8159",
+                "measurementConceptInstance_id": "c57b3ab6-4802-4642-b467-cb6c9b2435a5",
+                "country_code": "DE",
+                "cityID": "WALLDORF",
+                "cityName": "Walldorf",
+                "postalCode": "69190",
+                "streetID": "RINGSTRASSE",
+                "streetName": "Ringstrasse",
+                "houseNumber": "100",
+                "floorNumber": "5",
+                "supplement": "5.Stock App 67",
+                "country": {
+                    "name": "Deutschland",
+                    "descr": "Bundesrepublik Deutschland",
+                    "code": "DE"
+                }
+            }
+        }
+    ],
+    "actors": [
+        {
+            "id": "a3ceef08-2e9b-4d14-aa5c-33b0e48e7bce",
+            "measurementConceptInstance_id": "c57b3ab6-4802-4642-b467-cb6c9b2435a5",
+            "idText": "VB",
+            "type_code": "CONSUMER",
+            "direction_code": "OUT",
+            "position": 1,
+            "modelActor_id": "aaa50001-5555-5555-5555-502000000001",
+            "powerRange_code": "LESS10KW",
+            "gridLevel_code": null,
+            "isOwnConsumption": null
+        },
+        {
+            "id": "45e05a9d-0706-47ba-9bfb-032d9a473208",
+            "measurementConceptInstance_id": "c57b3ab6-4802-4642-b467-cb6c9b2435a5",
+            "idText": "N1",
+            "type_code": "GRID",
+            "direction_code": "OUT",
+            "position": 2,
+            "modelActor_id": "aaa50002-5555-5555-5555-502000000002",
+            "powerRange_code": null,
+            "gridLevel_code": null,
+            "isOwnConsumption": null
+        }
+    ],
+    "leadingAddress": {
+        "id": "f3f61458-20ed-404c-a098-6dea476b8159",
+        "measurementConceptInstance_id": "c57b3ab6-4802-4642-b467-cb6c9b2435a5",
+        "country_code": "DE",
+        "cityID": "WALLDORF",
+        "cityName": "Walldorf",
+        "postalCode": "69190",
+        "streetID": "RINGSTRASSE",
+        "streetName": "Ringstrasse",
+        "houseNumber": "100",
+        "floorNumber": "5",
+        "supplement": "5.Stock App 67",
+        "country": {
+            "name": "Deutschland",
+            "descr": "Bundesrepublik Deutschland",
+            "code": "DE"
+        }
+    },
+    "changeProcesses": [
+        {
+            "id": "466c6bad-7cc7-4166-8d53-fe8c40f2d626",
+            "measurementConceptInstance_id": "c57b3ab6-4802-4642-b467-cb6c9b2435a5",
+            "externalOrderId": "4711",
+            "externalProcessId": null,
+            "processType_code": "CREATE",
+            "status_id": null,
+            "finished": false,
+            "modifiedAt": "2021-07-15T19:30:42Z",
+            "processType": {
+                "name": "Anlageprozess",
+                "descr": "Neuanlage einer MCM Instanz",
+                "code": "CREATE"
+            },
+            "processData": {
+                "id": "3e55ffc3-251f-49bd-91f6-014d1a4cd839",
+                "changeProcess_id": "466c6bad-7cc7-4166-8d53-fe8c40f2d626",
+                "customerRequestDate": "2021-12-24",
+                "subscriberId": "0815",
+                "initialDataEntryDone": false,
+                "masterDataReady": false,
+                "meteringLocationsPD": [
+                    {
+                        "id": "4df87bba-7f49-40c8-86bd-3709a66843e8",
+                        "measurementConceptInstancePD_id": "4ea3530f-e398-4244-8471-128f6cfd2d5f",
+                        "meteringLocation_id": "f9e983f6-a0ce-4f51-80f1-d19ecc420366",
+                        "position": 1,
+                        "plannedMeteringLocationId": null,
+                        "deviceLocationSupplement": null,
+                        "installationDate": "2021-08-22",
+                        "meterOperator": "9903692607804",
+                        "note": "Any note on this metering location",
+                        "classification": "ANY",
+                        "measuringType_code": "MMU",
+                        "volumeCorrector": false,
+                        "nominalCapacity": 42,
+                        "locationIdentifierReady": true,
+                        "masterDataReady": true,
+                        "locationInstalled": true,
+                        "locationComplete": false,
+                        "meteringTasksPD": [
+                            {
+                                "id": "2d3badfb-d129-4deb-befb-a58111c268f9",
+                                "meteringLocationPD_id": "4df87bba-7f49-40c8-86bd-3709a66843e8",
+                                "meteringTask_id": "9644f611-fc7d-45ca-a24c-7875311a8ba3",
+                                "position": 1,
+                                "rate_code": "ET",
+                                "periodConsumption": 789
+                            }
+                        ]
+                    }
+                ]
+            }
+        }
+    ],
+    "measurementModel": {
+        "id": "ffffffff-2222-2222-2222-100000000001",
+        "idText": "B_S_M1",
+        "name": "Standard Bezug Strom",
+        "description": "Standard Bezug Strom",
+        "conceptType_code": "MODEL",
+        "measurementClass_id": "a1a00005-5555-5555-5555-100000000005",
+        "status_code": "ACTIVE",
+        "validFrom": "2000-01-01",
+        "validTo": "9999-12-31",
+        "division_code": "EL",
+        "loadProfilesOut": null
+    },
+    "status": {
+        "id": "4b8f4919-0654-46ed-b69b-e6cf052b634c",
+        "changeProcess_id": "466c6bad-7cc7-4166-8d53-fe8c40f2d626",
+        "instanceStatus_code": "NEW",
+        "processStatus_code": "START_NEW",
+        "errors": []
+    }
+}

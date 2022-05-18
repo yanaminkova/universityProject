@@ -1,0 +1,16 @@
+{
+    "environment_name": "C4UFDNRETSTAGING",
+    "service_parameters": {
+        "skiperrors": "true"
+    },
+    "permission_assignments": [
+        {
+            "name": "EDOM RET Dev DT Admin",
+            "roles": ["admin", "log_analytics"]
+        },
+        {
+            "name": "EDOM RET Dev DT User",
+            "roles": ["user", "log_analytics"]
+        }
+    ]
+}

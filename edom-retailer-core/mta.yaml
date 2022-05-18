@@ -1,0 +1,602 @@
+## SAP Cloud for Utilities Foundation Retailer MTA configuration for pipeline deployments
+_schema-version: '3.1'
+ID: com.sap.c4u.foundation.retailer.core
+version: 1.51.1
+description: 'SAP Cloud for Utilities Foundation Retailer Core'
+
+parameters:
+    enable-parallel-deployments: true
+    xsappname: c4u-foundation-retailer-${space}
+    displayName: SAP Cloud for Utilities Foundation Retailer
+    pdm-service-name: c4u-foundation-retailer-pdm
+    drm-service-name: c4u-foundation-retailer-drm
+    nodejs-buildpack: https://github.com/cloudfoundry/nodejs-buildpack#v1.7.64
+    #
+    # as sapedom.edom-retailer-lab.mtaext file is under the .gitignore it can be created by
+    # 1. copy any other mtaext
+    # 2. get current service broker credentials
+    # 3. replace <%= brokerCredentials %> with current service broker credetials
+    broker-credentials: ''
+
+build-parameters:
+    before-all:
+        - builder: custom
+          commands:
+              - npm install
+              - npm test
+              - npx -p @sap/cds-dk cds build --production
+              - npx -p @sap/cds-dk cds build ui-services --production
+
+modules:
+    # ------------------------------------------------------------
+    #   SAP Cloud for Utilities Foundation Retailer CORE SERVICES
+    # ------------------------------------------------------------
+    - name: c4u-foundation-retailer-srv
+      type: nodejs
+      path: ./gen/srv
+      parameters:
+          disk-quota: 1024M
+          memory: 1024M
+          routes:
+              - route: '${xsappname}-service.${domain}'
+              - route: '${org}-srv.${domain}' # Backward compatibility, deprecated
+      properties:
+          OPTIMIZE_MEMORY: true
+          EXIT: 1 # required by deploy.js task to terminate
+          CDS_ENV: ${org}
+          CDS_MULTITENANCY_APPUI_URL: ${xsappname}.${domain}
+          CDS_MULTITENANCY_APPUI_TENANTSEPARATOR: '.'
+          CDS_MULTITENANCY_DEPS:
+              # Use service names
+              - edom-retailer-dest
+              - c4u-foundation-retailer-connectivity
+              - ${pdm-service-name}
+              - ${drm-service-name}
+              - c4u-foundation-retailer-em
+              - c4u-foundation-retailer-job
+              - c4u-foundation-retailer-portal
+      requires:
+          - name: c4u-foundation-retailer-dest
+          - name: c4u-foundation-retailer-connectivity
+          - name: c4u-foundation-retailer-em
+          - name: c4u-foundation-retailer-sm
+          - name: c4u-foundation-retailer-xsuaa
+          - name: c4u-foundation-retailer-saas-registry
+          - name: c4u-foundation-retailer-portal
+          - name: c4u-foundation-retailer-app-logs
+          - name: c4u-foundation-retailer-audit
+          - name: c4u-foundation-retailer-job
+          - name: c4u-foundation-retailer-pdm
+            parameters:
+                config:
+                    fullyQualifiedApplicationName: ${xsappname}
+                    applicationTitle: SAP Cloud for Utilities Foundation Retailer [${space}]
+                    applicationTitleKey: ${xsappname}
+                    applicationURL: ${protocol}://${xsappname}-service.${domain}
+                    endPoints:
+                        - type: odatav4
+                          serviceName: PersonalDataManagerService
+                          serviceTitle: SAP Cloud for Utilities Foundation Retailer
+                          serviceTitleKey: c4u-foundation-retailer-pdm
+                          serviceURI: /api/v1/dpp/pdm
+                          hasGdprV4Annotations: true
+                        - type: odatav4
+                          serviceName: BusinessPartnerPDMService
+                          serviceTitle: SAP Cloud for Utilities foundation Retailer for Business Partner
+                          serviceTitleKey: c4u-foundation-retailer-bp-pdm
+                          serviceURI: /api/businessPartner/v1/pdm
+                          hasGdprV4Annotations: true
+                        - type: odatav4
+                          serviceName: BillingAccountPDMService
+                          serviceTitle: SAP Cloud for Utilities Foundation Retailer for Billing Account
+                          serviceTitleKey: c4u-foundation-retailer-ba-pdm
+                          serviceURI: /api/billingAccount/v1/pdm
+                          hasGdprV4Annotations: true
+          - name: c4u-foundation-retailer-drm
+          - name: dynatrace-service
+          - name: c4u-foundation-retailer-autoscaler
+          - name: c4u-foundation-retailer-feature-flags
+      provides:
+          - name: srv-binding
+            public: true
+            properties:
+                srv-url: ${protocol}://${xsappname}-service.${domain}
+      hooks:
+          - name: upgrade-tenants
+            type: task
+            phases:
+                - blue-green.application.before-start.idle
+                - deploy.application.before-start
+            parameters:
+                name: upgrade-tenants
+                memory: 2048M
+                disk-quota: 768M
+                command: node srv/hooks/upgradeTenants.js
+          - name: upgrade-em
+            type: task
+            phases:
+                - blue-green.application.before-start.live
+                - deploy.application.before-start
+            parameters:
+                name: upgrade-em
+                memory: 512M
+                disk-quota: 768M
+                command: node srv/hooks/upgradeEM.js
+
+    # ------------------------------------------------------------
+    #   SAP Cloud for Utilities Foundation Retailer UI SERVICES
+    # ------------------------------------------------------------
+    - name: c4u-foundation-retailer-ui-services
+      type: nodejs
+      path: ./ui-services/gen/srv
+      parameters:
+          disk-quota: 512M
+          memory: 512M
+          routes:
+              - route: '${xsappname}-ui-services.${domain}'
+      properties:
+          OPTIMIZE_MEMORY: true
+          EXIT: 1 # required by deploy.js task to terminate
+          CDS_ENV: ${org}
+      requires:
+          - name: c4u-foundation-retailer-sm
+          - name: c4u-foundation-retailer-xsuaa
+          - name: c4u-foundation-retailer-app-logs
+          - name: c4u-foundation-retailer-feature-flags
+          - name: dynatrace-service
+      provides:
+          - name: ui-services-binding
+            public: true
+            properties:
+                srv-url: ${protocol}://${xsappname}-ui-services.${domain}
+
+    # ------------------------------------------------------------
+    #   SAP Cloud for Utilities Foundation Retailer APPROUTER
+    # ------------------------------------------------------------
+    - name: c4u-foundation-retailer-app
+      type: approuter.nodejs
+      path: ./approuter
+      deployed-after:
+          - c4u-foundation-retailer-srv
+          - c4u-foundation-retailer-ui-services
+      parameters:
+          buildpack: '${nodejs-buildpack}'
+          disk-quota: 512M
+          memory: 512M
+          keep-existing-routes: true
+          routes:
+              - route: '*.${xsappname}.${domain}'
+      properties:
+          OPTIMIZE_MEMORY: true
+          TENANT_HOST_PATTERN: ^(.*).${xsappname}.${domain}
+      requires:
+          - name: c4u-foundation-retailer-xsuaa
+          - name: c4u-foundation-retailer-app-logs
+          - name: c4u-foundation-retailer-saas-registry
+          - name: c4u-foundation-retailer-portal
+          - name: c4u-foundation-retailer-html5-repo-runtime
+          - name: srv-binding
+            group: destinations
+            properties:
+                name: srv-api
+                url: ~{srv-url}
+                strictSSL: false
+                forwardAuthToken: true
+          - name: ui-services-binding
+            group: destinations
+            properties:
+                name: ui-services-api
+                url: ~{srv-url}
+                strictSSL: false
+                forwardAuthToken: true
+
+    # ------------------------------------------------------------
+    #   SAP Cloud for Utilities Foundation Retailer SERVICEBROKER
+    # ------------------------------------------------------------
+    - name: c4u-foundation-retailer-broker
+      path: ./service-broker
+      type: nodejs
+      parameters:
+          disk-quota: 1024M
+          memory: 512M
+          health-check-timeout: 180
+          create-service-broker: false
+          service-broker-space-scoped: false
+          routes:
+              - route: '${xsappname}-broker.${domain}'
+              - route: '${org}-broker.${domain}' # Backward compatibility, deprecated
+      requires:
+          - name: c4u-foundation-retailer-xsuaa
+          - name: c4u-foundation-retailer-audit
+          - name: srv-binding
+      properties:
+          OPTIMIZE_MEMORY: true
+          SBF_BROKER_CREDENTIALS_HASH:
+              edomretailer: '${broker-credentials}'
+
+    # ------------------------------------------------------------
+    #   SAP Cloud for Utilities Foundation Retailer APPDEPLOYER
+    # ------------------------------------------------------------
+    - name: c4u-foundation-retailer-appdeployer
+      type: com.sap.html5.application-content
+      path: ./appdeployer
+      parameters:
+          memory: 256M
+          disk-quota: 512M
+      requires:
+          - name: c4u-foundation-retailer-html5-repo
+            parameters:
+                content-target: true
+      build-parameters:
+          requires:
+              - name: customer-order-ui
+                artifacts:
+                    - './*'
+                target-path: resources/customer-order/
+
+    # ------------------------------------------------------------
+    #   SAP Cloud for Utilities Foundation Retailer CUSTOMERORDER UI APP
+    # ------------------------------------------------------------
+    - name: customer-order-ui
+      type: html5
+      path: ./app/customer-order/
+      build-parameters:
+          builder: custom
+          commands:
+              - npm install
+              - npm run build
+          supported-platforms: []
+          build-result: dist
+
+    # ------------------------------------------------------------
+    #   SAP Cloud for Utilities Foundation Retailer PORTALSITE
+    # ------------------------------------------------------------
+    - name: c4u-foundation-retailer-portal-content
+      type: com.sap.application.content
+      path: ./portalsite
+      parameters:
+          disk-quota: 256M
+          memory: 256M
+          config:
+              TENANT_HOST_PATTERN: ^(.*).${xsappname}.${domain}
+      # deployed-after:
+      #     - c4u-foundation-retailer-appdeployer
+      requires:
+          - name: c4u-foundation-retailer-xsuaa
+          - name: c4u-foundation-retailer-saas-registry
+          - name: c4u-foundation-retailer-portal
+            parameters:
+                content-target: true
+                service-key:
+                    name: content-deploy-key #any valid name can be specified, will be used to create the service key for content deployment
+                    config: # the service key configs can be defined inline
+                        content-endpoint: developer
+          - name: c4u-foundation-retailer-html5-repo
+
+resources:
+    # ------------------------------------------------------------
+    #   Destination service
+    # ------------------------------------------------------------
+    - name: c4u-foundation-retailer-dest
+      type: org.cloudfoundry.managed-service
+      parameters:
+          service-name: edom-retailer-dest
+          service: destination
+          service-plan: lite
+
+    # ------------------------------------------------------------
+    #   Connectivity service
+    # ------------------------------------------------------------
+    - name: c4u-foundation-retailer-connectivity
+      type: org.cloudfoundry.managed-service
+      parameters:
+          service-name: c4u-foundation-retailer-connectivity
+          service: connectivity
+          service-plan: lite
+
+    # ------------------------------------------------------------
+    #   Job Scheduling service
+    # ------------------------------------------------------------
+    - name: c4u-foundation-retailer-job
+      type: org.cloudfoundry.managed-service
+      parameters:
+          service-name: c4u-foundation-retailer-job
+          service: jobscheduler
+          service-plan: standard
+          config:
+              enable-xsuaa-support: true
+
+    # ------------------------------------------------------------
+    #   Enterprise Messaging
+    # ------------------------------------------------------------
+    - name: c4u-foundation-retailer-em
+      type: org.cloudfoundry.managed-service
+      optional: true
+      parameters:
+          path: ./provisioning/em.json
+          service-name: c4u-foundation-retailer-em
+          service: enterprise-messaging
+          service-plan: default
+          config:
+              emname: ${xsappname}
+
+    # ------------------------------------------------------------
+    #   Service Manager
+    # ------------------------------------------------------------
+    - name: c4u-foundation-retailer-sm
+      type: org.cloudfoundry.managed-service
+      parameters:
+          service-name: edom-retailer-sm
+          service: service-manager
+          service-plan: container
+
+    # ------------------------------------------------------------
+    #   XSUAA Broker
+    # ------------------------------------------------------------
+    - name: c4u-foundation-retailer-xsuaa
+      type: com.sap.xs.uaa
+      parameters:
+          service-name: c4u-foundation-retailer-xsuaa
+          service: xsuaa
+          service-plan: broker
+          config:
+              xsappname: ${xsappname}
+              tenant-mode: shared
+              scopes:
+                  - name: $XSAPPNAME.Admin
+                    description: SAP Cloud for Utilities Foundation Retailer Admin
+                  - name: $XSAPPNAME.UI.Edit
+                    description: SAP Cloud for Utilities Foundation Retailer UI Edit Access
+                  - name: $XSAPPNAME.UI.Browse
+                    description: SAP Cloud for Utilities Foundation Retailer UI Browse Access
+                  - name: $XSAPPNAME.API.Write
+                    description: SAP Cloud for Utilities Foundation Retailer API Write Access
+                  - name: $XSAPPNAME.API.Read
+                    description: SAP Cloud for Utilities Foundation Retailer API Read Access
+                  - name: $XSAPPNAME.API.Delete
+                    description: SAP Cloud for Utilities Foundation Retailer API Delete Access
+                  - name: $XSAPPNAME.DPPBlocked.Read
+                    description: SAP Cloud for Utilities Foundation Retailer Data Privacy and Protection Blocked Read Access
+                  - name: $XSAPPNAME.ExtendCDS
+                    description: Extend tenant
+                  - name: $XSAPPNAME.ExtendCDSdelete
+                    description: Extend tenant allowing undeploy option
+                  - name: $XSAPPNAME.MasterData.Sync
+                    description: SAP Master Data Integration user
+                  # Personal Data Manager
+                  - name: $XSAPPNAME.PersonalDataManagerUser
+                    description: Authority for Personal Data Manager
+                    grant-as-authority-to-apps:
+                        - $XSSERVICENAME(${pdm-service-name})
+                  # Data Retention Manager
+                  - name: $XSAPPNAME.DataRetentionManagerUser
+                    description: Authority for Data Retention Manager
+                    grant-as-authority-to-apps:
+                        - $XSSERVICENAME(${drm-service-name})
+                  # Tenant Onboarding/Offboarding
+                  - name: $XSAPPNAME.mtcallback
+                    description: SAP Cloud for Utilities Foundation Retailer tenant onboarding/offboarding
+                    grant-as-authority-to-apps:
+                        - $XSAPPNAME(application,sap-provisioning,tenant-onboarding)
+                  # Event Mesh
+                  - name: $XSAPPNAME.emcallback
+                    description: Event Mesh Callback Access
+                    grant-as-authority-to-apps:
+                        - $XSSERVICENAME(c4u-foundation-retailer-em)
+                  # FLP
+                  - name: uaa.user
+                    description: UAA
+                  # Job Scheduling
+                  - name: $XSAPPNAME.jobcallback
+                    description: Job Scheduling Callback Access
+                    grant-as-authority-to-apps:
+                        - $XSSERVICENAME(c4u-foundation-retailer-job)
+              authorities:
+                  - $XSAPPNAME.API.Read
+                  - $XSAPPNAME.API.Write
+                  - $XSAPPNAME.API.Delete
+              role-templates:
+                  - name: RetailerAdmin
+                    description: SAP Cloud for Utilities Foundation Retailer Admin
+                    scope-references:
+                        - $XSAPPNAME.Admin
+                        - $XSAPPNAME.API.Write
+                        - $XSAPPNAME.API.Read
+                        - $XSAPPNAME.API.Delete
+                        - $XSAPPNAME.UI.Edit
+                        - $XSAPPNAME.UI.Browse
+                        - $XSAPPNAME.DPPBlocked.Read
+                        - $XSAPPNAME.MasterData.Sync
+                  - name: RetailerUser
+                    description: SAP Cloud for Utilities Foundation Retailer User
+                    scope-references:
+                        - $XSAPPNAME.API.Write
+                        - $XSAPPNAME.API.Read
+                        - $XSAPPNAME.API.Delete
+                        - $XSAPPNAME.UI.Edit
+                        - $XSAPPNAME.UI.Browse
+                  - name: RetailerViewer
+                    description: SAP Cloud for Utilities Foundation Retailer Viewer
+                    scope-references:
+                        - $XSAPPNAME.API.Read
+                        - $XSAPPNAME.UI.Browse
+                  - name: ExtensionDeveloper
+                    description: SAP Cloud for Utilities Foundation Retailer CDS Extension Developer
+                    scope-references:
+                        - $XSAPPNAME.ExtendCDS
+                        - uaa.user
+                  - name: ExtensionDeveloperUndeploy
+                    description: SAP Cloud for Utilities Foundation Retailer CDS Extension Developer with undeploy rights
+                    scope-references:
+                        - $XSAPPNAME.ExtendCDSdelete
+                        - $XSAPPNAME.ExtendCDS
+                        - uaa.user
+    # ------------------------------------------------------------
+    #   SaaS Registry
+    # ------------------------------------------------------------
+    - name: c4u-foundation-retailer-saas-registry
+      type: org.cloudfoundry.managed-service
+      parameters:
+          service-name: c4u-foundation-retailer-saas-registry
+          service: saas-registry
+          service-plan: application
+          config:
+              xsappname: ${xsappname}
+              appName: ${xsappname}
+              displayName: ${displayName}
+              description: Store and orchestrate data for utility retailers. # NEEDS TO BE APPROVED
+              appUrls:
+                  getDependencies: ~{srv-binding/srv-url}/mtx/v1/provisioning/dependencies
+                  onSubscription: ~{srv-binding/srv-url}/mtx/v1/provisioning/tenant/{tenantId}
+      requires:
+          - name: srv-binding
+
+    # ------------------------------------------------------------
+    #   Application Logs
+    # ------------------------------------------------------------
+    - name: c4u-foundation-retailer-app-logs
+      type: org.cloudfoundry.managed-service
+      parameters:
+          service-name: c4u-foundation-retailer-app-logs
+          service: application-logs
+          service-plan: standard
+
+    # ------------------------------------------------------------
+    #   FLP Portal
+    # ------------------------------------------------------------
+    - name: c4u-foundation-retailer-portal
+      type: org.cloudfoundry.managed-service
+      parameters:
+          service-name: c4u-foundation-retailer-portal
+          service-plan: standard
+          service: portal
+          content-target: true
+          service-key:
+              name: content-deploy-key #any valid name can be specified, will be used to create the service key for content deployment
+              config: # the service key configs can be defined inline
+                  content-endpoint: developer
+
+    # ------------------------------------------------------------
+    #   HTML5 repo host
+    # ------------------------------------------------------------
+    - name: c4u-foundation-retailer-html5-repo
+      type: org.cloudfoundry.managed-service
+      parameters:
+          service: html5-apps-repo
+          service-plan: app-host
+
+    # ------------------------------------------------------------
+    #   HTML 5 Repo Runtime
+    # ------------------------------------------------------------
+    - name: c4u-foundation-retailer-html5-repo-runtime
+      type: org.cloudfoundry.managed-service
+      parameters:
+          service-plan: app-runtime
+          service: html5-apps-repo
+
+    # ------------------------------------------------------------
+    #   Audit log
+    # ------------------------------------------------------------
+    - name: c4u-foundation-retailer-audit
+      type: org.cloudfoundry.managed-service
+      parameters:
+          service-name: edom-retailer-audit
+          service: auditlog
+          service-plan: standard
+
+    # ------------------------------------------------------------
+    #   Personal Data Manager: Data Privacy and Protection Service
+    #   More information: https://help.sap.com/viewer/620a3ea6aaf64610accdd05cca9e3de2/SHIP/en-US/4ee5705b8ded43e68bde610223722971.html
+    # ------------------------------------------------------------
+    - name: c4u-foundation-retailer-pdm
+      type: org.cloudfoundry.managed-service
+      optional: true
+      parameters:
+          service-name: ${pdm-service-name}
+          service: personal-data-manager-service
+          service-plan: standard
+          config:
+              xs-security:
+                  xsappname: ${xsappname}
+                  authorities:
+                      - $ACCEPT_GRANTED_AUTHORITIES
+              fullyQualifiedApplicationName: ${xsappname}
+              # Added to have manual processing of data deletion requests
+              appDeletionServiceEnabled: true
+
+    # ------------------------------------------------------------
+    #   Data Retention Manager
+    #   More information: https://help.sap.com/viewer/7b96239812444caf9dc36faa15292a2f/SHIP/en-US/ad829d0106674e01a74b4be5347b4368.html
+    # ------------------------------------------------------------
+    - name: c4u-foundation-retailer-drm
+      type: org.cloudfoundry.managed-service
+      optional: true
+      parameters:
+          service-name: ${drm-service-name}
+          service: retention-manager
+          service-plan: standard
+          config:
+              xs-security:
+                  xsappname: ${xsappname}
+                  authorities:
+                      - $ACCEPT_GRANTED_AUTHORITIES
+              retention-configs:
+                  applicationGroupName: ${xsappname} # Value cannot be changed
+                  applicationGroupDescription: ${displayName}
+                  applicationGroupDescriptionKey: ${xsappname}
+                  applicationGroupBaseURL: ~{srv-binding/srv-url}
+                  dataSubjects:
+                      - dataSubjectRole: BusinessPartner
+                        dataSubjectDescription: 'BusinessPartner'
+                        dataSubjectDescriptionKey: BusinessPartner
+                        dataSubjectBaseURL: ~{srv-binding/srv-url}
+                        dataSubjectInformationEndPoint: '/api/v1/dpp/drm/dataSubjectInformation'
+                        dataSubjectDeletionEndPoint: '/api/v1/dpp/drm/dataSubjectDeletion'
+                        dataSubjectsDestroyingEndPoint: '/api/v1/dpp/drm/dataSubjectsDestroying'
+                        legalEntity:
+                            legalEntity: 'SAP SE'
+                            legalEntityDescription: 'Leading Cloud ERP company'
+                            legalEntityValueHelpEndPoint: '/api/v1/dpp/legalEntities'
+                        legalGrounds:
+                            - legalGround: CustomerOrder
+                              legalGroundDescription: 'Customer Order'
+                              legalGroundBaseURL: ~{srv-binding/srv-url}
+                              dataSubjectEndofBusinessEndPoint: '/api/v1/dpp/drm/dataSubjectEndofBusiness'
+                              dataSubjectsEndofResidenceEndPoint: '/api/v1/dpp/drm/dataSubjectsEndofResidence'
+                              dataSubjectsEndofResidenceConfirmationEndPoint: '/api/v1/dpp/drm/dataSubjectsEndofResidenceConfirmation'
+                              dataSubjectLegalEntitiesEndPoint: '/api/v1/dpp/drm/dataSubjectLegalEntities'
+                              dataSubjectLastRetentionStartDatesEndPoint: '/api/v1/dpp/drm/dataSubjectLastRetentionStartDates'
+                              dataSubjectLegalGroundDeletionEndPoint: '/api/v1/dpp/drm/dataSubjectLegalGroundDeletion'
+                              dataSubjectsLegalGroundDestroyingEndPoint: '/api/v1/dpp/drm/dataSubjectsLegalGroundDestroying'
+                              startTimes:
+                                  - startTime: endOfBusinessDate
+                                    startTimeDescription: 'Timestamp on which the CustomerOrder has been closed'
+      requires:
+          - name: srv-binding
+
+    # ------------------------------------------------------------
+    #   Dynatrace
+    # ------------------------------------------------------------
+    - name: dynatrace-service
+      type: org.cloudfoundry.existing-service
+      optional: true
+
+    # ------------------------------------------------------------
+    #   Feature Flag Service
+    # ------------------------------------------------------------
+    - name: c4u-foundation-retailer-feature-flags
+      type: org.cloudfoundry.managed-service
+      parameters:
+          service-name: c4u-foundation-retailer-feature-flags
+          service: feature-flags
+          service-plan: standard
+
+    # ------------------------------------------------------------
+    #   Application Autoscaler
+    # ------------------------------------------------------------
+    - name: c4u-foundation-retailer-autoscaler
+      type: org.cloudfoundry.managed-service
+      parameters:
+          service-name: c4u-foundation-retailer-autoscaler
+          service: autoscaler
+          service-plan: standard

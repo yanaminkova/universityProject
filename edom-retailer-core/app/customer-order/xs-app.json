@@ -1,0 +1,17 @@
+{
+    "authenticationMethod": "route",
+    "routes": [
+        {
+            "source": "^/api/v1/ui/(.*)$",
+            "target": "/api/v1/ui/$1",
+            "destination": "ui-services-api",
+            "authenticationType": "xsuaa"
+        },
+        {
+            "source": "^(/.*)",
+            "target": "$1",
+            "service": "html5-apps-repo-rt",
+            "authenticationType": "xsuaa"
+        }
+    ]
+}

@@ -1,0 +1,65 @@
+## SAP Cloud for Utilities Foundation Retailer MTA configuration for app router deployments
+_schema-version: '3.1'
+ID: com.sap.c4u.foundation.retailer.approuter
+version: 1.28.3
+description: 'SAP Cloud for Utilities Foundation Retailer App Router'
+
+parameters:
+    xsappname: c4u-foundation-retailer-${space}
+
+modules:
+    # ------------------------------------------------------------
+    #   SAP Cloud for Utilities Foundation Retailer APPROUTER
+    # ------------------------------------------------------------
+    - name: c4u-foundation-retailer-app
+      type: approuter.nodejs
+      path: ./
+      parameters:
+          disk-quota: 512M
+          memory: 512M
+          keep-existing-routes: true
+          routes:
+              - route: '*.${xsappname}.${domain}'
+      properties:
+          OPTIMIZE_MEMORY: true
+          TENANT_HOST_PATTERN: ^(.*).${xsappname}.${domain}
+      requires:
+          - name: c4u-foundation-retailer-xsuaa
+          - name: c4u-foundation-retailer-saas-registry
+          - name: c4u-foundation-retailer-html5-repo-runtime
+          - name: c4u-foundation-retailer-portal
+          - name: srv-binding
+            group: destinations
+            properties:
+                name: srv-api
+                url: ~{srv-url}
+                strictSSL: false
+                forwardAuthToken: true
+          - name: ui-services-binding
+            group: destinations
+            properties:
+                name: ui-services-api
+                url: ~{srv-url}
+                strictSSL: false
+                forwardAuthToken: true
+
+resources:
+    - name: c4u-foundation-retailer-xsuaa
+      type: org.cloudfoundry.existing-service
+
+    - name: c4u-foundation-retailer-saas-registry
+      type: org.cloudfoundry.existing-service
+
+    - name: c4u-foundation-retailer-portal
+      type: org.cloudfoundry.existing-service
+
+    - name: c4u-foundation-retailer-html5-repo-runtime
+      type: org.cloudfoundry.existing-service
+
+    - name: srv-binding
+      properties:
+          srv-url: https://${xsappname}-service.cfapps.eu10.hana.ondemand.com
+
+    - name: ui-services-binding
+      properties:
+          srv-url: https://${xsappname}-ui-services.cfapps.eu10.hana.ondemand.com

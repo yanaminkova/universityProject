@@ -1,0 +1,21 @@
+{
+    "name": "c4u-foundation-retailer-appdeployer",
+    "version": "1.0.0",
+    "description": "C4U Foundation Retailer Appdeployer",
+    "license": "SAP SE",
+    "author": "",
+    "repository": {
+        "type": "git",
+        "url": "https://github.wdf.sap.corp/c4u/edom-retailer-core"
+    },
+    "scripts": {
+        "start": "node node_modules/@sap/html5-app-deployer/index.js"
+    },
+    "dependencies": {
+        "@sap/html5-app-deployer": "4.0.1"
+    },
+    "engines": {
+        "node": "14.18.*"
+    },
+    "private": true
+}

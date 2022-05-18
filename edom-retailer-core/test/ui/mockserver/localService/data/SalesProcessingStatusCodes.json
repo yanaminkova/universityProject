@@ -1,0 +1,47 @@
+[
+    {
+        "code": "00",
+        "name": "Initial",
+        "descr": "Initial"
+    },
+    {
+        "code": "01",
+        "name": "Open",
+        "descr": "Open"
+    },
+    {
+        "code": "02",
+        "name": "In Process",
+        "descr": "In Process"
+    },
+    {
+        "code": "03",
+        "name": "Completed",
+        "descr": "Completed"
+    },
+    {
+        "code": "04",
+        "name": "Canceled",
+        "descr": "Canceled"
+    },
+    {
+        "code": "05",
+        "name": "Rejected",
+        "descr": "Rejected"
+    },
+    {
+        "code": "06",
+        "name": "In Distribution",
+        "descr": "In Distribution"
+    },
+    {
+        "code": "07",
+        "name": "Active",
+        "descr": "Active"
+    },
+    {
+        "code": "08",
+        "name": "In Error",
+        "descr": "In Error"
+    }
+]

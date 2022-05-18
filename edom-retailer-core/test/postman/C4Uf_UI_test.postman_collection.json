@@ -1,0 +1,438 @@
+{
+    "info": {
+        "_postman_id": "237ad4e4-ac4a-4e8e-b200-879dc019e1eb",
+        "name": "C4Uf_UI_test",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "item": [
+        {
+            "name": "JWT",
+            "item": [
+                {
+                    "name": "JWT - core app",
+                    "event": [
+                        {
+                            "listen": "test",
+                            "script": {
+                                "exec": [
+                                    "var jsonData = JSON.parse(responseBody);",
+                                    "if(jsonData && jsonData.access_token){",
+                                    "    postman.setEnvironmentVariable(\"jwt\", jsonData.access_token);",
+                                    "}",
+                                    "pm.test(\"Successful POST request\", function () {",
+                                    "     pm.expect(pm.response.code).to.be.oneOf([200]);",
+                                    "});"
+                                ],
+                                "type": "text/javascript"
+                            }
+                        },
+                        {
+                            "listen": "prerequest",
+                            "script": {
+                                "exec": [""],
+                                "type": "text/javascript"
+                            }
+                        }
+                    ],
+                    "request": {
+                        "auth": {
+                            "type": "noauth"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "X-CorrelationID",
+                                "value": "",
+                                "disabled": true
+                            },
+                            {
+                                "key": "Content-Type",
+                                "value": "application/x-www-form-urlencoded"
+                            }
+                        ],
+                        "body": {
+                            "mode": "urlencoded",
+                            "urlencoded": [
+                                {
+                                    "key": "response_type",
+                                    "value": "token",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "grant_type",
+                                    "value": "client_credentials",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "client_id",
+                                    "value": "{{uaa_client_id}}",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "client_secret",
+                                    "value": "{{uaa_client_secret}}",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "scope",
+                                    "value": "",
+                                    "type": "text"
+                                }
+                            ]
+                        },
+                        "url": {
+                            "raw": "{{jwtProtocol}}://{{uaa-domain}}/oauth/token",
+                            "protocol": "{{jwtProtocol}}",
+                            "host": ["{{uaa-domain}}"],
+                            "path": ["oauth", "token"]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "JWT - UI service app",
+                    "event": [
+                        {
+                            "listen": "test",
+                            "script": {
+                                "exec": [
+                                    "var jsonData = JSON.parse(responseBody);",
+                                    "if(jsonData && jsonData.access_token){",
+                                    "    postman.setEnvironmentVariable(\"ui_jwt\", jsonData.access_token);",
+                                    "}",
+                                    "pm.test(\"Successful POST request\", function () {",
+                                    "     pm.expect(pm.response.code).to.be.oneOf([200]);",
+                                    "});",
+                                    ""
+                                ],
+                                "type": "text/javascript"
+                            }
+                        },
+                        {
+                            "listen": "prerequest",
+                            "script": {
+                                "exec": [""],
+                                "type": "text/javascript"
+                            }
+                        }
+                    ],
+                    "request": {
+                        "auth": {
+                            "type": "noauth"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "X-CorrelationID",
+                                "value": "",
+                                "disabled": true
+                            },
+                            {
+                                "key": "Content-Type",
+                                "value": "application/x-www-form-urlencoded"
+                            }
+                        ],
+                        "body": {
+                            "mode": "urlencoded",
+                            "urlencoded": [
+                                {
+                                    "key": "response_type",
+                                    "value": "token",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "grant_type",
+                                    "value": "client_credentials",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "client_id",
+                                    "value": "{{ui_client_id}}",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "client_secret",
+                                    "value": "{{ui_client_secret}}",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "scope",
+                                    "value": "",
+                                    "type": "text"
+                                }
+                            ]
+                        },
+                        "url": {
+                            "raw": "{{jwtProtocol}}://{{uaa-domain}}/oauth/token",
+                            "protocol": "{{jwtProtocol}}",
+                            "host": ["{{uaa-domain}}"],
+                            "path": ["oauth", "token"]
+                        }
+                    },
+                    "response": []
+                }
+            ]
+        },
+        {
+            "name": "READ metadata",
+            "event": [
+                {
+                    "listen": "test",
+                    "script": {
+                        "exec": [
+                            "pm.test(\"READ metadata. Successful GET request\", function () {\r",
+                            "     pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
+                            "})"
+                        ],
+                        "type": "text/javascript"
+                    }
+                }
+            ],
+            "request": {
+                "auth": {
+                    "type": "bearer",
+                    "bearer": [
+                        {
+                            "key": "token",
+                            "value": "{{ui_jwt}}",
+                            "type": "string"
+                        }
+                    ]
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                    "raw": "{{ui_url}}/{{ui_api}}/$metadata",
+                    "host": ["{{ui_url}}"],
+                    "path": ["{{ui_api}}", "$metadata"]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "READ OData flavor - UI service app",
+            "event": [
+                {
+                    "listen": "test",
+                    "script": {
+                        "exec": [
+                            "pm.test(\"READ OData version. Successful GET request\", function () {\r",
+                            "    pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
+                            "});\r",
+                            "\r",
+                            "pm.expect(pm.response).to.include(/<EntityType Name=\\\"CustomerOrder\\\">([\\s\\S]*?)<\\/EntityType>/g);\r",
+                            "\r",
+                            "const findFirstOccurance = (obj, keyToFind) => {\r",
+                            "   return Object.entries(obj)\r",
+                            "    .some(([key, value]) => (typeof value === 'object')\r",
+                            "        ? (findFirstOccurance(value, keyToFind))\r",
+                            "        : (key === keyToFind && (key === keyToFind && value === \"true\"))\r",
+                            "    )\r",
+                            "}\r",
+                            "\r",
+                            "var customerOrderEntityType = xml2Json(responseBody.match(/<EntityType Name=\\\"CustomerOrder\\\">([\\s\\S]*?)<\\/EntityType>/g));\r",
+                            "var customerOrderNavigationProperty = customerOrderEntityType.EntityType.NavigationProperty;\r",
+                            "if(customerOrderNavigationProperty) {\r",
+                            "    var hasContainsTargetProperty = findFirstOccurance(customerOrderNavigationProperty, \"ContainsTarget\");\r",
+                            "    pm.expect(hasContainsTargetProperty).not.to.be.true;\r",
+                            "}\r",
+                            ""
+                        ],
+                        "type": "text/javascript"
+                    }
+                }
+            ],
+            "request": {
+                "auth": {
+                    "type": "bearer",
+                    "bearer": [
+                        {
+                            "key": "token",
+                            "value": "{{ui_jwt}}",
+                            "type": "string"
+                        }
+                    ]
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                    "raw": "{{ui_url}}/{{ui_api}}/$metadata",
+                    "host": ["{{ui_url}}"],
+                    "path": ["{{ui_api}}", "$metadata"]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "READ OData flavor - core app",
+            "event": [
+                {
+                    "listen": "test",
+                    "script": {
+                        "exec": [
+                            "pm.test(\"READ OData version. Successful GET request\", function () {\r",
+                            "    pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
+                            "});\r",
+                            "\r",
+                            "pm.expect(pm.response).to.include(/<EntityType Name=\\\"CustomerOrder\\\">([\\s\\S]*?)<\\/EntityType>/g);\r",
+                            "\r",
+                            "const findFirstOccurance = (obj, keyToFind) => {\r",
+                            "   return Object.entries(obj)\r",
+                            "    .some(([key, value]) => (typeof value === 'object')\r",
+                            "        ? (findFirstOccurance(value, keyToFind))\r",
+                            "        : (key === keyToFind && (key === keyToFind && value === \"true\"))\r",
+                            "    )\r",
+                            "}\r",
+                            "\r",
+                            "var customerOrderEntityType = xml2Json(responseBody.match(/<EntityType Name=\\\"CustomerOrder\\\">([\\s\\S]*?)<\\/EntityType>/g));\r",
+                            "var customerOrderNavigationProperty = customerOrderEntityType.EntityType.NavigationProperty;\r",
+                            "if(customerOrderNavigationProperty) {\r",
+                            "    var hasContainsTargetProperty = findFirstOccurance(customerOrderNavigationProperty, \"ContainsTarget\");\r",
+                            "    pm.expect(hasContainsTargetProperty).to.be.true;\r",
+                            "}\r",
+                            ""
+                        ],
+                        "type": "text/javascript"
+                    }
+                }
+            ],
+            "request": {
+                "auth": {
+                    "type": "bearer",
+                    "bearer": [
+                        {
+                            "key": "token",
+                            "value": "{{ui_jwt}}",
+                            "type": "string"
+                        }
+                    ]
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                    "raw": "{{url}}/api/v1/$metadata",
+                    "host": ["{{url}}"],
+                    "path": ["api", "v1", "$metadata"]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "READ Customer Order ID - core app",
+            "event": [
+                {
+                    "listen": "test",
+                    "script": {
+                        "exec": [
+                            "pm.test(\"READ Customer Order (core app). Successful GET request\", function () {\r",
+                            "    pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
+                            "});\r",
+                            "\r",
+                            "var jsonData = JSON.parse(responseBody);\r",
+                            "if(jsonData.value && jsonData.value[0]) {\r",
+                            "    pm.collectionVariables.set('customer_id', jsonData.value[0].id);\r",
+                            "}"
+                        ],
+                        "type": "text/javascript"
+                    }
+                }
+            ],
+            "request": {
+                "auth": {
+                    "type": "bearer",
+                    "bearer": [
+                        {
+                            "key": "token",
+                            "value": "{{jwt}}",
+                            "type": "string"
+                        }
+                    ]
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                    "raw": "{{url}}/api/v1/CustomerOrder?$top=1&$select=id",
+                    "host": ["{{url}}"],
+                    "path": ["api", "v1", "CustomerOrder"],
+                    "query": [
+                        {
+                            "key": "$top",
+                            "value": "1"
+                        },
+                        {
+                            "key": "$select",
+                            "value": "id"
+                        }
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "READ Customer Order - UI service app",
+            "event": [
+                {
+                    "listen": "test",
+                    "script": {
+                        "exec": [
+                            "pm.test(\"READ Customer Order (UI service app). Successful GET request\", function () {\r",
+                            "    pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
+                            "})"
+                        ],
+                        "type": "text/javascript"
+                    }
+                }
+            ],
+            "request": {
+                "auth": {
+                    "type": "bearer",
+                    "bearer": [
+                        {
+                            "key": "token",
+                            "value": "{{ui_jwt}}",
+                            "type": "string"
+                        }
+                    ]
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                    "raw": "{{ui_url}}/{{ui_api}}/CustomerOrder({{customer_id}})",
+                    "host": ["{{ui_url}}"],
+                    "path": ["{{ui_api}}", "CustomerOrder({{customer_id}})"]
+                }
+            },
+            "response": []
+        }
+    ],
+    "event": [
+        {
+            "listen": "prerequest",
+            "script": {
+                "type": "text/javascript",
+                "exec": [""]
+            }
+        },
+        {
+            "listen": "test",
+            "script": {
+                "type": "text/javascript",
+                "exec": [""]
+            }
+        }
+    ],
+    "variable": [
+        {
+            "key": "customer_id",
+            "value": ""
+        }
+    ]
+}

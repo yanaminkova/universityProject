@@ -1,0 +1,17 @@
+[
+    {
+        "code": "D1",
+        "name": "Direct",
+        "descr": "Direct-to-consumer sale"
+    },
+    {
+        "code": "R1",
+        "name": "Retail",
+        "descr": null
+    },
+    {
+        "code": "W1",
+        "name": "Wholesale",
+        "descr": null
+    }
+]

@@ -1,0 +1,129 @@
+{
+    "name": "c4u-foundation-retailer-ui-services",
+    "version": "1.51.1",
+    "description": "C4U Foundation Retailer ui services application",
+    "repository": "https://github.wdf.sap.corp/c4u/edom-retailer-core",
+    "license": "SAP SE",
+    "private": true,
+    "engines": {
+        "node": "14.18.*"
+    },
+    "dependencies": {
+        "@sap/cds": "5.8.4",
+        "@sap/cds-mtx": "2.5.3",
+        "@sap/odm": "2.1.1",
+        "@sap/xssec": "3.2.12",
+        "express": "4.17.3",
+        "hdb": "0.19.1",
+        "helmet": "5.0.2",
+        "passport": "0.5.2",
+        "jsonwebtoken": "8.5.1"
+    },
+    "devDependencies": {
+        "@sap/ux-specification": "1.96.3",
+        "sqlite3": "5.0.2"
+    },
+    "scripts": {
+        "start": "cds run"
+    },
+    "cds": {
+        "requires": {
+            "db": {
+                "kind": "hana",
+                "vcap": {
+                    "label": "service-manager"
+                },
+                "pool": {
+                    "max": 5,
+                    "min": 2
+                }
+            },
+            "multitenancy": true,
+            "[development]": {
+                "auth": {
+                    "strategy": "mock",
+                    "users": {
+                        "admin": {
+                            "roles": [
+                                "API.Write",
+                                "API.Read",
+                                "Admin",
+                                "UI.Edit",
+                                "UI.Browse",
+                                "DPPBlocked.Read"
+                            ],
+                            "password": "admin"
+                        },
+                        "user": {
+                            "roles": [
+                                "API.Write",
+                                "API.Read",
+                                "UI.Edit",
+                                "UI.Browse"
+                            ],
+                            "password": "user"
+                        },
+                        "viewer": {
+                            "roles": [
+                                "API.Read",
+                                "UI.Browse"
+                            ],
+                            "password": "viewer"
+                        }
+                    }
+                },
+                "db": {
+                    "kind": "sqlite",
+                    "multiTenant": false
+                },
+                "multitenancy": false
+            },
+            "[production]": {
+                "uaa": {
+                    "kind": "xsuaa"
+                }
+            },
+            "uaa": {
+                "kind": "xsuaa"
+            }
+        },
+        "mtx": {
+            "api": {
+                "model": false,
+                "provisioning": false,
+                "metadata": false
+            }
+        },
+        "folders": {
+            "app": "../app/"
+        }
+    },
+    "eslintConfig": {
+        "extends": "eslint:recommended",
+        "env": {
+            "es2020": true,
+            "node": true,
+            "jest": true,
+            "mocha": true
+        },
+        "globals": {
+            "SELECT": true,
+            "INSERT": true,
+            "UPDATE": true,
+            "DELETE": true,
+            "CREATE": true,
+            "DROP": true,
+            "CDL": true,
+            "CQL": true,
+            "CXL": true,
+            "cds": true
+        },
+        "rules": {
+            "no-console": "off",
+            "require-atomic-updates": "off"
+        }
+    },
+    "sapux": [
+        "../app/customer-order"
+    ]
+}

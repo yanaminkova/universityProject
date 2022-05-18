@@ -1,0 +1,112 @@
+{
+    "@odata.context": "$metadata#Logs",
+    "value": [
+        {
+            "localIds": [
+                {
+                    "context": {
+                        "application": "MDI",
+                        "tenant": "S4MDIPRDCT",
+                        "type": "sap.odm.product.Product",
+                        "additionalContext": "sap.oitc.20"
+                    },
+                    "status": "active",
+                    "localId": "4021"
+                },
+                {
+                    "context": {
+                        "application": "MDI",
+                        "tenant": "S4MDIPRDCT",
+                        "type": "sap.odm.product.Product",
+                        "additionalContext": "sap.oitc.929"
+                    },
+                    "status": "active",
+                    "localId": "88bf7178-e5d0-47eb-a11f-c9c4e986d5a3"
+                },
+                {
+                    "context": {
+                        "application": "s4",
+                        "tenant": "0LOALS1",
+                        "type": "sap.odm.product.Product",
+                        "additionalContext": "sap.oitc.20"
+                    },
+                    "status": "active",
+                    "localId": "4021"
+                }
+            ],
+            "instance": {
+                "type": {
+                    "code": "HAWA"
+                },
+                "isProductHighlyViscous": false,
+                "areProductEffectiveParameterValuesAssigned": false,
+                "isProductEnvironmentallyRelevant": false,
+                "isApprovedBatchRecordRequired": false,
+                "isInBulkTransport": false,
+                "isConfigurable": false,
+                "isMarkedForDeletion": false,
+                "isBatchManagementRequired": false,
+                "displayId": "4021",
+                "isRelevantForHazardousSubstances": false,
+                "isProductLocked": false,
+                "salesAspect": {
+                    "stackingFactor": 0,
+                    "excessVolumeTolerance": "0.0",
+                    "isClosedPackagingProduct": false,
+                    "excessWeightTolerance": "0.0",
+                    "division": {
+                        "code": "00"
+                    }
+                },
+                "qualityInspectionAspect": {
+                    "isActive": false
+                },
+                "productionAspect": {
+                    "totalShelfLifeStoragePercent": 0,
+                    "totalShelfLife": 0
+                },
+                "unitOfMeasures": [
+                    {
+                        "measurementUnit": {
+                            "code": "PCE"
+                        }
+                    }
+                ],
+                "document": {
+                    "pageCount": "000",
+                    "isCreatedByCAD": false
+                },
+                "servicePartsManagementAspect": {
+                    "overcapacityTolerance": "0.0",
+                    "hasVariableTareWeight": false,
+                    "maximumCapacity": "0.000"
+                },
+                "name": [
+                    {
+                        "lang": "en",
+                        "content": "Name has changed"
+                    }
+                ],
+                "unitOfMeasureConversions": [
+                    {
+                        "quantityDenominator": "1.0",
+                        "measurementUnit2": {
+                            "code": "PCE"
+                        },
+                        "quantityNumerator": "1.0",
+                        "measurementUnit1": {
+                            "code": "PCE"
+                        }
+                    }
+                ],
+                "id": "88bf7178-e5d0-47eb-a11f-c9c4e986d5a3",
+                "baseUnitOfMeasure": {
+                    "code": "PCE"
+                }
+            },
+            "event": "updated",
+            "versionId": "ae126129-bc6a-451d-859a-95b1bd8dc374"
+        }
+    ],
+    "@odata.deltaLink": "/v1/odm/2.3.0/sap.odm.product.Product/events?$deltatoken=F3uAu5u2.3.0u3u274u1u0u44u20u13u20u19u32u11u14u13u6u9u15u17u9u15u20u22"
+}

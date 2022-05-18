@@ -1,0 +1,29 @@
+{
+    "services": [
+        {
+            "name": "c4u-foundation-retailer-staging-api",
+            "id": "1b0869d6-def9-4914-9b4e-4d18d53a060a",
+            "description": "Access SAP Cloud for Utilities Foundation Retailer Staging API.",
+            "bindable": true,
+            "metadata": {
+                "displayName": "SAP Cloud for Utilities Foundation Retailer Staging API",
+                "longDescription": "Access SAP Cloud for Utilities Foundation Retailer Staging API.",
+                "sap": {
+                    "tenant_aware": true,
+                    "instance_isolation": true,
+                    "support_btp_brand": true
+                }
+            },
+            "plans": [
+                {
+                    "name": "standard",
+                    "id": "0740b906-16f1-4706-a78b-b52aa34008e6",
+                    "description": "Standard Plan",
+                    "free": true,
+                    "bindable": true,
+                    "plan_updateable": true
+                }
+            ]
+        }
+    ]
+}

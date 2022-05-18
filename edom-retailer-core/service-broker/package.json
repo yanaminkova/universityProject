@@ -1,0 +1,23 @@
+{
+    "name": "edom-retailer-broker",
+    "version": "1.0.0",
+    "description": "EDoM Retailer Broker using OAuth",
+    "license": "SAP SE",
+    "author": "",
+    "repository": {
+        "type": "git",
+        "url": "https://github.wdf.sap.corp/c4u/c4u-cn-edom-retailer"
+    },
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "start": "start-broker"
+    },
+    "dependencies": {
+        "@sap/hdbext": "7.6.2",
+        "@sap/sbf": "6.4.4"
+    },
+    "engines": {
+        "node": "14.18.*"
+    },
+    "private": true
+}

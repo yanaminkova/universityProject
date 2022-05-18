@@ -1,0 +1,26 @@
+{
+    "event": "topic:default/sap.c4u.retail/-/ce/sap/c4u/retail/CustomerOrder/Created/v1",
+    "data": {
+        "id": "feee1843-3338-4a45-92a5-ea99552edd8b"
+    },
+    "msg": {
+        "req": {
+            "authInfo": {},
+            "query": {},
+            "headers": {}
+        }
+    },
+    "headers": {
+        "id": "85bc93b8-77e2-44e2-8e0f-3100671186a9",
+        "time": "2021-06-04T17:07:44.530Z",
+        "type": "sap.c4u.retail.CustomerOrder.Created.v1",
+        "source": "/default/sap.c4u.retail",
+        "specversion": "1.0",
+        "datacontenttype": "appplication/json",
+        "subject": "feee1843-3338-4a45-92a5-ea99552edd8b",
+        "x-correlation-id": "c691136a-a75e-4220-99a6-688d18f2b023",
+        "authorization": ""
+    },
+
+    "inbound": true
+}

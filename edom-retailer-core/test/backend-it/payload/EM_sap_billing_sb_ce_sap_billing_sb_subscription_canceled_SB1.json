@@ -1,0 +1,89 @@
+{
+    "event": "sap/billing/sb/ce/sap/billing/sb/subscription/canceled/v1",
+    "data": {
+        "sequenceNumber": 1,
+        "subscriptionId": "99999999-0000-0000-0000-000000000001",
+        "subscriptionDocumentId": "SB1",
+        "eventType": "canceled",
+        "eventLogEntryId": "40169523-4214-4DE2-99F3-E9C218417DA2",
+        "changedSubscriptionAspects": [],
+        "subscription": {
+            "metaData": { "version": 2 },
+            "subscriptionDocumentId": "SB1",
+            "subscriptionId": "99999999-0000-0000-0000-000000000001",
+            "status": "Canceled",
+            "customer": { "id": "525803175" },
+            "market": {
+                "id": "DE",
+                "timeZone": "Europe/Berlin",
+                "currency": "EUR"
+            },
+            "validFrom": "2021-04-18T22:00:00.000Z",
+            "billingCycle": "anniversary-quarterly",
+            "nextScheduledBillingDate": "2021-07-18T22:00:00.000Z",
+            "billingCycleReferenceDate": "2021-04-18T22:00:00.000Z",
+            "numberOfCyclesBilledTogether": 1,
+            "cancellationPolicy": { "allowMidBillCycleExpiration": false },
+            "cancellationReason": "POSTMAN Test",
+            "requestedCancellationDate": "2021-10-05T22:00:00.000Z",
+            "canceledWithOverruledTerms": false,
+            "customReferences": [],
+            "externalObjectReferences": [],
+            "notificationSettings": [],
+            "isPending": false,
+            "createdAt": "2021-04-19T14:33:44.383Z",
+            "createdBy": "sebastian.hof@sap.com",
+            "changedAt": "2021-04-19T14:33:44.383Z",
+            "changedBy": "sebastian.hof@sap.com",
+            "documentNumber": 8,
+            "snapshots": [
+                {
+                    "effectiveDate": "2021-04-18T22:00:00.000Z",
+                    "items": [
+                        {
+                            "itemId": "e22dec1e-47d4-4ef0-b8b0-83b8b72238e5",
+                            "lineNumber": "1",
+                            "product": {
+                                "id": "5dd47c54-7642-4598-b75f-bc3f344b8ecf",
+                                "code": "SUPERFANCY",
+                                "name": "Super Fancy Product"
+                            },
+                            "subscriptionParameters": [],
+                            "technicalResources": [],
+                            "subscriptionType": "Commercial",
+                            "createRating": true,
+                            "createBill": true,
+                            "createInvoice": true,
+                            "ratePlan": {
+                                "id": "66742eeb-b930-46e4-bb52-8cc592ed484b",
+                                "source": "product"
+                            },
+                            "pricing": { "pricingParameters": [] },
+                            "numberOfWaiverPeriods": 0,
+                            "customReferences": [],
+                            "externalObjectReferences": [],
+                            "providerContractItems": []
+                        }
+                    ],
+                    "createdAt": "2021-04-19T14:33:44.383Z",
+                    "createdBy": "sebastian.hof@sap.com",
+                    "precedingDocument": {
+                        "id": "3320a8ce-13ff-43d4-9c5c-aa4abf89e07b",
+                        "itemId": "e22dec1e-47d4-4ef0-b8b0-83b8b72238e5_1",
+                        "documentNumber": 8,
+                        "source": "provisioning-request"
+                    }
+                }
+            ]
+        }
+    },
+    "headers": {
+        "specversion": "1.0",
+        "type": "sap.billing.sb.subscription.canceled.v1",
+        "source": "/eu10/sap.billing.sb",
+        "id": "074FCFFF-C03C-4340-81AC-223AFE49FC24",
+        "time": "2021-04-19T14:33:44.383Z",
+        "datacontenttype": "application/json"
+    },
+    "inbound": true
+}

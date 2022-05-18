@@ -1,0 +1,33 @@
+{
+    "event": "topic:+/+/+/ce/sap/s4/beh/contracctgprovidercontract/v1/ContrAcctgProviderContract/Created/v1",
+    "data": {
+        "CAProviderContract": "C7015",
+        "BusinessPartner": "2290122",
+        "CAProviderContractExtReference": "",
+        "CAProviderContractStatus": "",
+        "CAProviderContractSender": ""
+    },
+    "msg": {
+        "req": {
+            "authInfo": {},
+            "query": {},
+            "headers": {}
+        }
+    },
+    "headers": {
+        "type": "sap.s4.beh.contracctgprovidercontract.v1.ContrAcctgProviderContract.Created.v1",
+        "specversion": "1.0",
+        "source": "/default/sap.s4.beh/0LOALS1",
+        "id": "fa163e8f-4692-1edc-a3b6-0709df6de235",
+        "time": "2022-02-14T16:07:34Z",
+        "datacontenttype": "application/json",
+        "data": {
+            "CAProviderContract": "C7015",
+            "BusinessPartner": "2290122",
+            "CAProviderContractExtReference": "",
+            "CAProviderContractStatus": "",
+            "CAProviderContractSender": ""
+        }
+    },
+    "inbound": true
+}

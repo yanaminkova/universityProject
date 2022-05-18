@@ -1,0 +1,868 @@
+{
+    "info": {
+        "_postman_id": "8f8c9b32-4c44-41c4-981b-945dc6366624",
+        "name": "C4Uf_service_provider_test",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "item": [
+        {
+            "name": "JWT",
+            "item": [
+                {
+                    "name": "{{jwtProtocol}}://{{uaa-domain}}/oauth/token",
+                    "event": [
+                        {
+                            "listen": "test",
+                            "script": {
+                                "exec": [
+                                    "",
+                                    "var jsonData = JSON.parse(responseBody);",
+                                    "if(jsonData && jsonData.access_token){",
+                                    "    postman.setEnvironmentVariable(\"jwt\", jsonData.access_token);",
+                                    "}",
+                                    "",
+                                    "",
+                                    "pm.test(\"Successful POST request\", function () {",
+                                    "     pm.expect(pm.response.code).to.be.oneOf([200]);",
+                                    "});"
+                                ],
+                                "type": "text/javascript"
+                            }
+                        },
+                        {
+                            "listen": "prerequest",
+                            "script": {
+                                "exec": [""],
+                                "type": "text/javascript"
+                            }
+                        }
+                    ],
+                    "request": {
+                        "auth": {
+                            "type": "noauth"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "X-CorrelationID",
+                                "value": "",
+                                "disabled": true
+                            },
+                            {
+                                "key": "Content-Type",
+                                "value": "application/x-www-form-urlencoded"
+                            }
+                        ],
+                        "body": {
+                            "mode": "urlencoded",
+                            "urlencoded": [
+                                {
+                                    "key": "response_type",
+                                    "value": "token",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "grant_type",
+                                    "value": "client_credentials",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "client_id",
+                                    "value": "{{uaa_client_id}}",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "client_secret",
+                                    "value": "{{uaa_client_secret}}",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "scope",
+                                    "value": "",
+                                    "type": "text"
+                                }
+                            ]
+                        },
+                        "url": {
+                            "raw": "{{jwtProtocol}}://{{uaa-domain}}/oauth/token",
+                            "protocol": "{{jwtProtocol}}",
+                            "host": ["{{uaa-domain}}"],
+                            "path": ["oauth", "token"]
+                        }
+                    },
+                    "response": []
+                }
+            ]
+        },
+        {
+            "name": "SERVICE_PROVIDER CODES",
+            "item": [
+                {
+                    "name": "CREATE",
+                    "item": [
+                        {
+                            "name": "MarketFunctionCodes",
+                            "item": [
+                                {
+                                    "name": "CREATE MarketFunctionCodes = Distributor",
+                                    "event": [
+                                        {
+                                            "listen": "test",
+                                            "script": {
+                                                "exec": [""],
+                                                "type": "text/javascript"
+                                            }
+                                        }
+                                    ],
+                                    "request": {
+                                        "method": "POST",
+                                        "header": [],
+                                        "body": {
+                                            "mode": "raw",
+                                            "raw": "{\r\n    \"name\": \"Distributor\",\r\n    \"descr\": \"Distributor Role\",\r\n    \"code\": \"DSO001\"\r\n}",
+                                            "options": {
+                                                "raw": {
+                                                    "language": "json"
+                                                }
+                                            }
+                                        },
+                                        "url": {
+                                            "raw": "{{url}}/{{api-sp}}/MarketFunctionCodes",
+                                            "host": ["{{url}}"],
+                                            "path": [
+                                                "{{api-sp}}",
+                                                "MarketFunctionCodes"
+                                            ]
+                                        }
+                                    },
+                                    "response": []
+                                },
+                                {
+                                    "name": "CREATE MarketFunctionCodes = Supplier",
+                                    "event": [
+                                        {
+                                            "listen": "test",
+                                            "script": {
+                                                "exec": [""],
+                                                "type": "text/javascript"
+                                            }
+                                        }
+                                    ],
+                                    "request": {
+                                        "method": "POST",
+                                        "header": [],
+                                        "body": {
+                                            "mode": "raw",
+                                            "raw": "{\r\n    \"name\": \"Supplier\",\r\n    \"descr\": \"Supplier role\",\r\n    \"code\": \"SUP001\"\r\n}",
+                                            "options": {
+                                                "raw": {
+                                                    "language": "json"
+                                                }
+                                            }
+                                        },
+                                        "url": {
+                                            "raw": "{{url}}/{{api-sp}}/MarketFunctionCodes",
+                                            "host": ["{{url}}"],
+                                            "path": [
+                                                "{{api-sp}}",
+                                                "MarketFunctionCodes"
+                                            ]
+                                        }
+                                    },
+                                    "response": []
+                                },
+                                {
+                                    "name": "CREATE MarketFunctionCodes = Meter Operator",
+                                    "event": [
+                                        {
+                                            "listen": "test",
+                                            "script": {
+                                                "exec": [""],
+                                                "type": "text/javascript"
+                                            }
+                                        }
+                                    ],
+                                    "request": {
+                                        "method": "POST",
+                                        "header": [],
+                                        "body": {
+                                            "mode": "raw",
+                                            "raw": "{\r\n    \"name\": \"Meter Operator\",\r\n    \"descr\": \"Meter Operator role\",\r\n    \"code\": \"MRO001\"\r\n}",
+                                            "options": {
+                                                "raw": {
+                                                    "language": "json"
+                                                }
+                                            }
+                                        },
+                                        "url": {
+                                            "raw": "{{url}}/{{api-sp}}/MarketFunctionCodes",
+                                            "host": ["{{url}}"],
+                                            "path": [
+                                                "{{api-sp}}",
+                                                "MarketFunctionCodes"
+                                            ]
+                                        }
+                                    },
+                                    "response": []
+                                }
+                            ]
+                        },
+                        {
+                            "name": "DivisionCodes",
+                            "item": [
+                                {
+                                    "name": "CREATE DivisionCodes = Electric",
+                                    "event": [
+                                        {
+                                            "listen": "test",
+                                            "script": {
+                                                "exec": [""],
+                                                "type": "text/javascript"
+                                            }
+                                        }
+                                    ],
+                                    "request": {
+                                        "method": "POST",
+                                        "header": [],
+                                        "body": {
+                                            "mode": "raw",
+                                            "raw": "{\r\n    \"name\": \"Electricity\",\r\n    \"descr\": null,\r\n    \"code\": \"01\"\r\n}",
+                                            "options": {
+                                                "raw": {
+                                                    "language": "json"
+                                                }
+                                            }
+                                        },
+                                        "url": {
+                                            "raw": "{{url}}/{{api-sp}}/DivisionCodes",
+                                            "host": ["{{url}}"],
+                                            "path": [
+                                                "{{api-sp}}",
+                                                "DivisionCodes"
+                                            ]
+                                        }
+                                    },
+                                    "response": []
+                                },
+                                {
+                                    "name": "CREATE DivisionCodes = Gas",
+                                    "event": [
+                                        {
+                                            "listen": "test",
+                                            "script": {
+                                                "exec": [""],
+                                                "type": "text/javascript"
+                                            }
+                                        }
+                                    ],
+                                    "request": {
+                                        "method": "POST",
+                                        "header": [],
+                                        "body": {
+                                            "mode": "raw",
+                                            "raw": "{\r\n    \"name\": \"Gas\",\r\n    \"descr\": null,\r\n    \"code\": \"02\"\r\n}",
+                                            "options": {
+                                                "raw": {
+                                                    "language": "json"
+                                                }
+                                            }
+                                        },
+                                        "url": {
+                                            "raw": "{{url}}/{{api-sp}}/DivisionCodes",
+                                            "host": ["{{url}}"],
+                                            "path": [
+                                                "{{api-sp}}",
+                                                "DivisionCodes"
+                                            ]
+                                        }
+                                    },
+                                    "response": []
+                                }
+                            ]
+                        }
+                    ],
+                    "event": [
+                        {
+                            "listen": "prerequest",
+                            "script": {
+                                "type": "text/javascript",
+                                "exec": [""]
+                            }
+                        },
+                        {
+                            "listen": "test",
+                            "script": {
+                                "type": "text/javascript",
+                                "exec": [""]
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "READ",
+                    "item": [
+                        {
+                            "name": "READ MarketFunctionCodes",
+                            "event": [
+                                {
+                                    "listen": "test",
+                                    "script": {
+                                        "exec": [
+                                            "pm.test(`Read ${pm.request.url.path[3]}. Successful GET request UTILITIESCLOUDSOLUTION-2916`, function () {\r",
+                                            "    pm.expect(pm.response.code).to.be.oneOf([200, 201]);\r",
+                                            "});"
+                                        ],
+                                        "type": "text/javascript"
+                                    }
+                                }
+                            ],
+                            "request": {
+                                "method": "GET",
+                                "header": [],
+                                "url": {
+                                    "raw": "{{url}}/{{api-sp}}/MarketFunctionCodes",
+                                    "host": ["{{url}}"],
+                                    "path": [
+                                        "{{api-sp}}",
+                                        "MarketFunctionCodes"
+                                    ]
+                                }
+                            },
+                            "response": []
+                        },
+                        {
+                            "name": "READ MarketServiceCodes",
+                            "event": [
+                                {
+                                    "listen": "test",
+                                    "script": {
+                                        "exec": [
+                                            "pm.test(`Read ${pm.request.url.path[3]}. Successful GET request UTILITIESCLOUDSOLUTION-2916`, function () {\r",
+                                            "    pm.expect(pm.response.code).to.be.oneOf([200, 201]);\r",
+                                            "});"
+                                        ],
+                                        "type": "text/javascript"
+                                    }
+                                }
+                            ],
+                            "request": {
+                                "method": "GET",
+                                "header": [],
+                                "url": {
+                                    "raw": "{{url}}/{{api-sp}}/MarketServiceCodes",
+                                    "host": ["{{url}}"],
+                                    "path": ["{{api-sp}}", "MarketServiceCodes"]
+                                }
+                            },
+                            "response": []
+                        },
+                        {
+                            "name": "READ DivisionCodes",
+                            "event": [
+                                {
+                                    "listen": "test",
+                                    "script": {
+                                        "exec": [
+                                            "pm.test(`Read ${pm.request.url.path[3]}. Successful GET request UTILITIESCLOUDSOLUTION-2916`, function () {\r",
+                                            "    pm.expect(pm.response.code).to.be.oneOf([200, 201]);\r",
+                                            "});"
+                                        ],
+                                        "type": "text/javascript"
+                                    }
+                                }
+                            ],
+                            "request": {
+                                "method": "GET",
+                                "header": [],
+                                "url": {
+                                    "raw": "{{url}}/{{api-sp}}/DivisionCodes",
+                                    "host": ["{{url}}"],
+                                    "path": ["{{api-sp}}", "DivisionCodes"]
+                                }
+                            },
+                            "response": []
+                        }
+                    ],
+                    "event": [
+                        {
+                            "listen": "prerequest",
+                            "script": {
+                                "type": "text/javascript",
+                                "exec": [""]
+                            }
+                        },
+                        {
+                            "listen": "test",
+                            "script": {
+                                "type": "text/javascript",
+                                "exec": [""]
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "SERVICE PROVIDER",
+            "item": [
+                {
+                    "name": "CREATE",
+                    "item": [
+                        {
+                            "name": "CREATE MarketFunctionConfiguration 1",
+                            "event": [
+                                {
+                                    "listen": "test",
+                                    "script": {
+                                        "exec": [
+                                            "var jsonData = pm.response.json();\r",
+                                            "if(jsonData && jsonData.id) {\r",
+                                            "    pm.environment.set(\"env_marketFunctionConfigId\", jsonData.id);\r",
+                                            "}"
+                                        ],
+                                        "type": "text/javascript"
+                                    }
+                                }
+                            ],
+                            "request": {
+                                "method": "POST",
+                                "header": [],
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "{\r\n    \"marketFunction\": {\r\n        \"code\": \"DSO001\"\r\n    },\r\n    \"division\": {\r\n        \"code\": \"01\"\r\n    },\r\n    \"marketService\": {\r\n        \"code\": \"TRA\"\r\n    }\r\n}",
+                                    "options": {
+                                        "raw": {
+                                            "language": "json"
+                                        }
+                                    }
+                                },
+                                "url": {
+                                    "raw": "{{url}}/{{api-sp}}/MarketFunctionConfiguration",
+                                    "host": ["{{url}}"],
+                                    "path": [
+                                        "{{api-sp}}",
+                                        "MarketFunctionConfiguration"
+                                    ]
+                                }
+                            },
+                            "response": []
+                        },
+                        {
+                            "name": "CREATE MarketFunctionConfiguration 1 (diff division)",
+                            "event": [
+                                {
+                                    "listen": "test",
+                                    "script": {
+                                        "exec": [
+                                            "var jsonData = pm.response.json();\r",
+                                            "if(jsonData && jsonData.id) {\r",
+                                            "    pm.environment.set(\"env_marketFunctionConfigId\", jsonData.id);\r",
+                                            "}"
+                                        ],
+                                        "type": "text/javascript"
+                                    }
+                                }
+                            ],
+                            "request": {
+                                "method": "POST",
+                                "header": [],
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "{\r\n    \"marketFunction\": {\r\n        \"code\": \"SUP001\"\r\n    },\r\n    \"division\": {\r\n        \"code\": \"02\"\r\n    },\r\n    \"marketService\": {\r\n        \"code\": \"TRA\"\r\n    }\r\n}",
+                                    "options": {
+                                        "raw": {
+                                            "language": "json"
+                                        }
+                                    }
+                                },
+                                "url": {
+                                    "raw": "{{url}}/{{api-sp}}/MarketFunctionConfiguration",
+                                    "host": ["{{url}}"],
+                                    "path": [
+                                        "{{api-sp}}",
+                                        "MarketFunctionConfiguration"
+                                    ]
+                                }
+                            },
+                            "response": []
+                        },
+                        {
+                            "name": "CREATE MarketFunctionConfiguration 3",
+                            "event": [
+                                {
+                                    "listen": "test",
+                                    "script": {
+                                        "exec": [
+                                            "var jsonData = pm.response.json();\r",
+                                            "if(jsonData && jsonData.id) {\r",
+                                            "    pm.environment.set(\"env_marketFunctionConfigId\", jsonData.id);\r",
+                                            "}"
+                                        ],
+                                        "type": "text/javascript"
+                                    }
+                                }
+                            ],
+                            "request": {
+                                "method": "POST",
+                                "header": [],
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "{\r\n    \"marketFunction\": {\r\n        \"code\": \"MRO001\"\r\n    },\r\n    \"division\": {\r\n        \"code\": \"01\"\r\n    },\r\n    \"marketService\": {\r\n        \"code\": \"DIS\"\r\n    }\r\n}",
+                                    "options": {
+                                        "raw": {
+                                            "language": "json"
+                                        }
+                                    }
+                                },
+                                "url": {
+                                    "raw": "{{url}}/{{api-sp}}/MarketFunctionConfiguration",
+                                    "host": ["{{url}}"],
+                                    "path": [
+                                        "{{api-sp}}",
+                                        "MarketFunctionConfiguration"
+                                    ]
+                                }
+                            },
+                            "response": []
+                        }
+                    ],
+                    "event": [
+                        {
+                            "listen": "prerequest",
+                            "script": {
+                                "type": "text/javascript",
+                                "exec": [""]
+                            }
+                        },
+                        {
+                            "listen": "test",
+                            "script": {
+                                "type": "text/javascript",
+                                "exec": [""]
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "READ",
+                    "item": [
+                        {
+                            "name": "READ $metadata",
+                            "event": [
+                                {
+                                    "listen": "test",
+                                    "script": {
+                                        "exec": [
+                                            "pm.test(`Read ${pm.request.url.path[3]}. Successful GET request UTILITIESCLOUDSOLUTION-2916`, function () {\r",
+                                            "    pm.expect(pm.response.code).to.be.oneOf([200, 201]);\r",
+                                            "});"
+                                        ],
+                                        "type": "text/javascript"
+                                    }
+                                }
+                            ],
+                            "protocolProfileBehavior": {
+                                "disableBodyPruning": true
+                            },
+                            "request": {
+                                "method": "GET",
+                                "header": [],
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "",
+                                    "options": {
+                                        "raw": {
+                                            "language": "json"
+                                        }
+                                    }
+                                },
+                                "url": {
+                                    "raw": "{{url}}/{{api-sp}}/$metadata",
+                                    "host": ["{{url}}"],
+                                    "path": ["{{api-sp}}", "$metadata"]
+                                }
+                            },
+                            "response": []
+                        },
+                        {
+                            "name": "READ MarketFunctionConfiguration",
+                            "event": [
+                                {
+                                    "listen": "test",
+                                    "script": {
+                                        "exec": [
+                                            "pm.test(`Read ${pm.request.url.path[3]}. Successful GET request UTILITIESCLOUDSOLUTION-2916`, function () {\r",
+                                            "    pm.expect(pm.response.code).to.be.oneOf([200, 201]);\r",
+                                            "});"
+                                        ],
+                                        "type": "text/javascript"
+                                    }
+                                }
+                            ],
+                            "protocolProfileBehavior": {
+                                "disableBodyPruning": true
+                            },
+                            "request": {
+                                "method": "GET",
+                                "header": [],
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "",
+                                    "options": {
+                                        "raw": {
+                                            "language": "json"
+                                        }
+                                    }
+                                },
+                                "url": {
+                                    "raw": "{{url}}/{{api-sp}}/MarketFunctionConfiguration",
+                                    "host": ["{{url}}"],
+                                    "path": [
+                                        "{{api-sp}}",
+                                        "MarketFunctionConfiguration"
+                                    ],
+                                    "query": [
+                                        {
+                                            "key": "$filter",
+                                            "value": "marketService/code eq '{{env_marketFunctionConfigService}}' and division/code eq '{{env_marketFunctionConfigDivision}}'",
+                                            "disabled": true
+                                        }
+                                    ]
+                                }
+                            },
+                            "response": []
+                        }
+                    ],
+                    "event": [
+                        {
+                            "listen": "prerequest",
+                            "script": {
+                                "type": "text/javascript",
+                                "exec": [""]
+                            }
+                        },
+                        {
+                            "listen": "test",
+                            "script": {
+                                "type": "text/javascript",
+                                "exec": [""]
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "UPDATE",
+                    "item": [
+                        {
+                            "name": "UPDATE MarketFunctionConfiguration",
+                            "event": [
+                                {
+                                    "listen": "test",
+                                    "script": {
+                                        "exec": [
+                                            "pm.test(`Update ${pm.request.url.path[3]}. Successful PUT request UTILITIESCLOUDSOLUTION-2916`, function () {\r",
+                                            "    pm.expect(pm.response.code).to.be.oneOf([200, 201]);\r",
+                                            "});"
+                                        ],
+                                        "type": "text/javascript"
+                                    }
+                                }
+                            ],
+                            "request": {
+                                "method": "PUT",
+                                "header": [],
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "{\r\n    \"marketFunction\": {\r\n        \"code\": \"MRO001\"\r\n    }\r\n}",
+                                    "options": {
+                                        "raw": {
+                                            "language": "json"
+                                        }
+                                    }
+                                },
+                                "url": {
+                                    "raw": "{{url}}/{{api-sp}}/MarketFunctionConfiguration(code='TRA',code_001='01')",
+                                    "host": ["{{url}}"],
+                                    "path": [
+                                        "{{api-sp}}",
+                                        "MarketFunctionConfiguration(code='TRA',code_001='01')"
+                                    ]
+                                }
+                            },
+                            "response": []
+                        },
+                        {
+                            "name": "UPDATE MarketFunctionConfiguration marketFunction",
+                            "event": [
+                                {
+                                    "listen": "test",
+                                    "script": {
+                                        "exec": [
+                                            "pm.test(`Update ${pm.request.url.path[3]}. Successful PATCH request UTILITIESCLOUDSOLUTION-2916`, function () {\r",
+                                            "    pm.expect(pm.response.code).to.be.oneOf([200, 201]);\r",
+                                            "});"
+                                        ],
+                                        "type": "text/javascript"
+                                    }
+                                }
+                            ],
+                            "request": {
+                                "method": "PATCH",
+                                "header": [],
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "{\r\n    \"marketFunction\": {\r\n        \"code\": \"DSO001\"\r\n    }\r\n}",
+                                    "options": {
+                                        "raw": {
+                                            "language": "json"
+                                        }
+                                    }
+                                },
+                                "url": {
+                                    "raw": "{{url}}/{{api-sp}}/MarketFunctionConfiguration(code='TRA',code_001='01')",
+                                    "host": ["{{url}}"],
+                                    "path": [
+                                        "{{api-sp}}",
+                                        "MarketFunctionConfiguration(code='TRA',code_001='01')"
+                                    ]
+                                }
+                            },
+                            "response": []
+                        }
+                    ],
+                    "event": [
+                        {
+                            "listen": "prerequest",
+                            "script": {
+                                "type": "text/javascript",
+                                "exec": [""]
+                            }
+                        },
+                        {
+                            "listen": "test",
+                            "script": {
+                                "type": "text/javascript",
+                                "exec": [""]
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "DELETE",
+                    "item": [
+                        {
+                            "name": "DELETE MarketFunctionConfiguration",
+                            "event": [
+                                {
+                                    "listen": "test",
+                                    "script": {
+                                        "exec": [
+                                            "pm.test(`Delete ${pm.request.url.path[3]}. Receive \"DELETE Method Not Allowed\" UTILITIESCLOUDSOLUTION-2916`, function () {\r",
+                                            "    pm.expect(pm.response.code).to.be.oneOf([405]);\r",
+                                            "});"
+                                        ],
+                                        "type": "text/javascript"
+                                    }
+                                }
+                            ],
+                            "request": {
+                                "method": "DELETE",
+                                "header": [],
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "",
+                                    "options": {
+                                        "raw": {
+                                            "language": "json"
+                                        }
+                                    }
+                                },
+                                "url": {
+                                    "raw": "{{url}}/{{api-sp}}/MarketFunctionConfiguration(code='TRA',code_001='01')",
+                                    "host": ["{{url}}"],
+                                    "path": [
+                                        "{{api-sp}}",
+                                        "MarketFunctionConfiguration(code='TRA',code_001='01')"
+                                    ]
+                                }
+                            },
+                            "response": []
+                        }
+                    ],
+                    "event": [
+                        {
+                            "listen": "prerequest",
+                            "script": {
+                                "type": "text/javascript",
+                                "exec": [""]
+                            }
+                        },
+                        {
+                            "listen": "test",
+                            "script": {
+                                "type": "text/javascript",
+                                "exec": [""]
+                            }
+                        }
+                    ]
+                }
+            ],
+            "event": [
+                {
+                    "listen": "prerequest",
+                    "script": {
+                        "type": "text/javascript",
+                        "exec": [""]
+                    }
+                },
+                {
+                    "listen": "test",
+                    "script": {
+                        "type": "text/javascript",
+                        "exec": [""]
+                    }
+                }
+            ]
+        }
+    ],
+    "auth": {
+        "type": "bearer",
+        "bearer": [
+            {
+                "key": "token",
+                "value": "{{jwt}}",
+                "type": "string"
+            }
+        ]
+    },
+    "event": [
+        {
+            "listen": "prerequest",
+            "script": {
+                "type": "text/javascript",
+                "exec": [""]
+            }
+        },
+        {
+            "listen": "test",
+            "script": {
+                "type": "text/javascript",
+                "exec": [""]
+            }
+        }
+    ],
+    "variable": [
+        {
+            "key": "api-sp",
+            "value": "api/serviceProvider/v1/config"
+        },
+        {
+            "key": "entity",
+            "value": ""
+        }
+    ]
+}

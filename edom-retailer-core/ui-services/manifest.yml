@@ -1,0 +1,18 @@
+# Generated manifest.yml based on template version 0.1.0
+# appName = c4u-foundation-retailer-ui-services
+# language=nodejs
+# multitenancy=false
+---
+applications:
+    # -----------------------------------------------------------------------------------
+    # Backend Service
+    # -----------------------------------------------------------------------------------
+    - name: c4u-foundation-retailer-ui-services
+      random-route: true # for development only
+      path: gen/srv
+      memory: 256M
+      services:
+          - c4u-foundation-retailer-xsuaa
+          - c4u-foundation-retailer-app-logs
+          - edom-retailer-sm
+          - dynatrace-service

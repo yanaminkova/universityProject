@@ -1,0 +1,14 @@
+[
+    {
+        "id": "d67a0918-2c75-4e4f-badc-43000509e36f",
+        "netAmount": 2110,
+        "orderDate": "2021-10-07",
+        "distributionChannel_code": "D1",
+        "division_code": "01",
+        "salesOrganization_id": "e7fb8da8-8473-41ba-8c8e-96f90fc41742",
+        "displayId": "UI_DEMO",
+        "processingStatus_code": "02",
+        "cancellationStatus_code": null,
+        "isBlocked": false
+    }
+]

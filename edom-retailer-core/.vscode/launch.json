@@ -1,0 +1,105 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "cds run",
+            "type": "node",
+            "request": "launch",
+            "program": "${workspaceFolder}/.vscode/cds",
+            "args": ["run", "--with-mocks"],
+            "skipFiles": ["<node_internals>/**"],
+            "internalConsoleOptions": "openOnSessionStart",
+            "console": "internalConsole",
+            "autoAttachChildProcesses": true
+        },
+        {
+            "env": {
+                "CDS_ENV": "edom-retailer-dev"
+            },
+            "command": "cds run --production",
+            "name": "cds run edom-retailer-dev",
+            "request": "launch",
+            "type": "node-terminal",
+            "skipFiles": ["<node_internals>/**"]
+        },
+        {
+            "env": {
+                "CDS_ENV": "edom-retailer-test"
+            },
+            "command": "cds run --production",
+            "name": "cds run edom-retailer-test",
+            "request": "launch",
+            "type": "node-terminal",
+            "skipFiles": ["<node_internals>/**"]
+        },
+        {
+            "name": "cds deploy",
+            "type": "node",
+            "request": "launch",
+            "program": "${workspaceFolder}/.vscode/cds",
+            "args": ["deploy"],
+            "skipFiles": ["<node_internals>/**"],
+            "internalConsoleOptions": "openOnSessionStart",
+            "console": "internalConsole",
+            "autoAttachChildProcesses": true
+        },
+        {
+            "name": "upgradeTenants",
+            "type": "node",
+            "request": "launch",
+            "program": "${workspaceFolder}/srv/hooks/upgradeTenants",
+            "args": [],
+            "skipFiles": ["<node_internals>/**"],
+            "internalConsoleOptions": "openOnSessionStart",
+            "console": "integratedTerminal",
+            "autoAttachChildProcesses": true
+        },
+        {
+            "env": {
+                "CDS_ENV": "edom-retailer-dev"
+            },
+            "name": "upgradeEM",
+            "type": "node",
+            "request": "launch",
+            "program": "${workspaceFolder}/srv/hooks/upgradeEM",
+            "args": [],
+            "skipFiles": ["<node_internals>/**"],
+            "internalConsoleOptions": "openOnSessionStart",
+            "console": "integratedTerminal",
+            "autoAttachChildProcesses": true
+        },
+        {
+            "name": "vscode-jest-tests",
+            "type": "node",
+            "request": "launch",
+            "program": "${workspaceFolder}/node_modules/jest/bin/jest",
+            "args": ["--runInBand"],
+            "cwd": "${workspaceFolder}",
+            "console": "integratedTerminal",
+            "internalConsoleOptions": "neverOpen",
+            "disableOptimisticBPs": true
+        },
+        {
+            "name": "start-ui-mock",
+            "type": "node",
+            "request": "launch",
+            "program": "${workspaceFolder}/node_modules/@ui5/cli/bin/ui5",
+            "args": ["serve", "--config", "app/ui5-cap.yaml"],
+            "skipFiles": ["<node_internals>/**"],
+            "internalConsoleOptions": "openOnSessionStart",
+            "console": "integratedTerminal",
+            "autoAttachChildProcesses": true
+        },
+        {
+            "command": "cds run",
+            "cwd": "${workspaceFolder}/ui-services",
+            "name": "cds run ui",
+            "request": "launch",
+            "type": "node-terminal",
+            "skipFiles": ["<node_internals>/**"]
+        }
+    ]
+}

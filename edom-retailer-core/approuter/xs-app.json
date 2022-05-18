@@ -1,0 +1,48 @@
+{
+    "authenticationMethod": "route",
+    "welcomeFile": "/cp.portal",
+    "logout": {
+        "logoutEndpoint": "/cp.portal/logout",
+        "logoutPage": "/cp.portal/logoff.html"
+    },
+    "routes": [
+        {
+            "source": "^/api/v1/ui/(.*)$",
+            "target": "/api/v1/ui/$1",
+            "destination": "ui-services-api",
+            "authenticationType": "xsuaa"
+        },
+        {
+            "source": "^/index.html",
+            "localDir": "resources"
+        },
+        {
+            "source": "^/favicon.ico",
+            "localDir": "resources"
+        },
+        {
+            "source": "^/css/(.*)$",
+            "target": "css/$1",
+            "localDir": "resources"
+        },
+        {
+            "source": "^/api/billing/v1/billableItems/confirm",
+            "target": "/billableItems/confirm",
+            "destination": "srv-api",
+            "authenticationType": "basic",
+            "csrfProtection": false
+        },
+        {
+            "source": "^(/.*)",
+            "target": "$1",
+            "service": "html5-apps-repo-rt",
+            "authenticationType": "xsuaa"
+        },
+        {
+            "source": "^/mtx/v1/(.*)$",
+            "target": "/mtx/v1/$1",
+            "destination": "srv-api",
+            "authenticationType": "xsuaa"
+        }
+    ]
+}

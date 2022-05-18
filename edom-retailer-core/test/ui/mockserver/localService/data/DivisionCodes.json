@@ -1,0 +1,17 @@
+[
+    {
+        "code": "01",
+        "name": "Electricity",
+        "descr": null
+    },
+    {
+        "code": "02",
+        "name": "Gas",
+        "descr": null
+    },
+    {
+        "code": "03",
+        "name": "Water",
+        "descr": null
+    }
+]

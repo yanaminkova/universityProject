@@ -1,0 +1,51 @@
+{
+    "event": "sap/billing/sb/ce/sap/billing/sb/subscription/expirationNotification/v1",
+    "data": {
+        "sequenceNumber": 2,
+        "subscriptionId": "97943B42-D2B7-469F-A150-6C7BE8CB9B09",
+        "subscriptionDocumentId": "8",
+        "eventType": "expirationNotification",
+        "eventLogEntryId": "40169523-4214-4DE2-99F3-E9C218417DAF",
+        "changedSubscriptionAspects": [],
+        "tags": ["Expired", "0 days"],
+        "subscription": {
+            "metaData": { "version": 2 },
+            "subscriptionDocumentId": "8",
+            "subscriptionId": "97943B42-D2B7-469F-A150-6C7BE8CB9B09",
+            "status": "Canceled",
+            "customer": { "id": "525803175" },
+            "market": {
+                "id": "DE",
+                "timeZone": "Europe/Berlin",
+                "currency": "EUR"
+            },
+            "validFrom": "2021-04-18T22:00:00.000Z",
+            "billingCycle": "anniversary-quarterly",
+            "nextScheduledBillingDate": "2021-07-18T22:00:00.000Z",
+            "billingCycleReferenceDate": "2021-04-18T22:00:00.000Z",
+            "numberOfCyclesBilledTogether": 1,
+            "cancellationPolicy": { "allowMidBillCycleExpiration": false },
+            "cancellationReason": "POSTMAN Test",
+            "requestedCancellationDate": "2021-10-05T22:00:00.000Z",
+            "canceledWithOverruledTerms": false,
+            "customReferences": [],
+            "externalObjectReferences": [],
+            "notificationSettings": [],
+            "isPending": false,
+            "createdAt": "2021-04-19T14:33:44.383Z",
+            "createdBy": "sebastian.hof@sap.com",
+            "changedAt": "2021-04-19T14:33:44.383Z",
+            "changedBy": "sebastian.hof@sap.com",
+            "documentNumber": 8
+        }
+    },
+    "headers": {
+        "specversion": "1.0",
+        "type": "sap.billing.sb.subscription.expirationNotification.v1",
+        "source": "/eu10/sap.billing.sb",
+        "id": "074FCFFF-C03C-4340-81AC-223AFE49FC24",
+        "time": "2021-04-19T14:33:44.383Z",
+        "datacontenttype": "application/json"
+    },
+    "inbound": true
+}

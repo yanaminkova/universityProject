@@ -1,0 +1,29 @@
+{
+    "event": "topic:+/+/+/ce/sap/s4/beh/contractaccount/v1/ContractAccount/Changed/v1",
+    "data": {
+        "ContractAccount": "9121",
+        "ContractAccountCategory": "Y1",
+        "ContractAccountExtReference": ""
+    },
+    "msg": {
+        "req": {
+            "authInfo": {},
+            "query": {},
+            "headers": {}
+        }
+    },
+    "headers": {
+        "type": "sap.s4.beh.contractaccount.v1.ContractAccount.Changed.v1",
+        "specversion": "1.0",
+        "source": "/default/sap.s4.beh/0LOALS1",
+        "id": "fa163e6e-ef55-1edb-be9a-400ff87e9430",
+        "time": "2021-08-09T05:24:00Z",
+        "datacontenttype": "application/json",
+        "data": {
+            "ContractAccount": "9121",
+            "ContractAccountCategory": "Y1",
+            "ContractAccountExtReference": ""
+        }
+    },
+    "inbound": true
+}

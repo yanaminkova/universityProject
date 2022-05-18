@@ -1,0 +1,22 @@
+{
+    "emname": "c4u-foundation-retailer",
+    "namespace": "default/sap.c4u.retail/-",
+    "version": "1.1.0",
+    "instanceType": "reuse",
+    "options": {
+        "management": true,
+        "messagingrest": true,
+        "messaging": true
+    },
+    "rules": {
+        "queueRules": {
+            "publishFilter": ["${namespace}/*"],
+            "subscribeFilter": ["${namespace}/*"]
+        },
+        "topicRules": {
+            "publishFilter": ["${namespace}/*"],
+            "subscribeFilter": ["*"]
+        }
+    },
+    "authorities": ["$ACCEPT_GRANTED_AUTHORITIES"]
+}

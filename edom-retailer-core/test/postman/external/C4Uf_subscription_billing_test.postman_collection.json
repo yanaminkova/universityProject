@@ -1,0 +1,1756 @@
+{
+    "info": {
+        "_postman_id": "5fc79dd8-9007-4ce3-8049-3fc2c434b383",
+        "name": "C4Uf_subscription_billing_test",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "item": [
+        {
+            "name": "JWT",
+            "item": [
+                {
+                    "name": "{{jwtProtocol}}://{{uaa-domain}}/oauth/token C4UF",
+                    "event": [
+                        {
+                            "listen": "test",
+                            "script": {
+                                "exec": [
+                                    "",
+                                    "var jsonData = JSON.parse(responseBody);",
+                                    "if(jsonData && jsonData.access_token){",
+                                    "    postman.setEnvironmentVariable(\"jwt\", jsonData.access_token);",
+                                    "}",
+                                    "pm.test(\"Successful POST request\", function () {",
+                                    "     pm.expect(pm.response.code).to.be.oneOf([200]);",
+                                    "});",
+                                    "",
+                                    "",
+                                    "if (pm.environment.get(\"url\").includes(\"test\")) {",
+                                    "    postman.setEnvironmentVariable(\"env_featureFlag\", true);",
+                                    "}",
+                                    "else if (pm.environment.get(\"url\").includes(\"stage\"))   {",
+                                    "    postman.setEnvironmentVariable(\"env_featureFlag\", true);",
+                                    "}",
+                                    "else if (pm.environment.get(\"url\").includes(\"staging\"))   {",
+                                    "    postman.setEnvironmentVariable(\"env_featureFlag\", true);",
+                                    "} else {",
+                                    "    postman.setEnvironmentVariable(\"env_featureFlag\", false);",
+                                    "}",
+                                    ""
+                                ],
+                                "type": "text/javascript"
+                            }
+                        },
+                        {
+                            "listen": "prerequest",
+                            "script": {
+                                "exec": [""],
+                                "type": "text/javascript"
+                            }
+                        }
+                    ],
+                    "request": {
+                        "auth": {
+                            "type": "noauth"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "X-CorrelationID",
+                                "value": "",
+                                "disabled": true
+                            },
+                            {
+                                "key": "Content-Type",
+                                "value": "application/x-www-form-urlencoded"
+                            }
+                        ],
+                        "body": {
+                            "mode": "urlencoded",
+                            "urlencoded": [
+                                {
+                                    "key": "response_type",
+                                    "value": "token",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "grant_type",
+                                    "value": "client_credentials",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "client_id",
+                                    "value": "{{uaa_client_id}}",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "client_secret",
+                                    "value": "{{uaa_client_secret}}",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "scope",
+                                    "value": "",
+                                    "type": "text"
+                                }
+                            ]
+                        },
+                        "url": {
+                            "raw": "{{jwtProtocol}}://{{uaa-domain}}/oauth/token",
+                            "protocol": "{{jwtProtocol}}",
+                            "host": ["{{uaa-domain}}"],
+                            "path": ["oauth", "token"]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "{{jwtProtocol}}://{{uaa-domain}}/oauth/token SB",
+                    "event": [
+                        {
+                            "listen": "test",
+                            "script": {
+                                "exec": [
+                                    "var jsonData = JSON.parse(responseBody);",
+                                    "if(jsonData && jsonData.access_token){",
+                                    "    postman.setEnvironmentVariable(\"sb_jwt\", jsonData.access_token);",
+                                    "}",
+                                    "",
+                                    "pm.test(\"Successful POST request\", function () {",
+                                    "     pm.expect(pm.response.code).to.be.oneOf([200]);",
+                                    "});"
+                                ],
+                                "type": "text/javascript"
+                            }
+                        },
+                        {
+                            "listen": "prerequest",
+                            "script": {
+                                "exec": [""],
+                                "type": "text/javascript"
+                            }
+                        }
+                    ],
+                    "request": {
+                        "auth": {
+                            "type": "noauth"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "X-CorrelationID",
+                                "value": "",
+                                "disabled": true
+                            },
+                            {
+                                "key": "Content-Type",
+                                "value": "application/x-www-form-urlencoded"
+                            }
+                        ],
+                        "body": {
+                            "mode": "urlencoded",
+                            "urlencoded": [
+                                {
+                                    "key": "response_type",
+                                    "value": "token",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "grant_type",
+                                    "value": "client_credentials",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "client_id",
+                                    "value": "{{uaa_sb_client_id}}",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "client_secret",
+                                    "value": "{{uaa_sb_client_secret}}",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "scope",
+                                    "value": "",
+                                    "type": "text"
+                                }
+                            ]
+                        },
+                        "url": {
+                            "raw": "{{jwtProtocol}}://{{uaa-domain}}/oauth/token",
+                            "protocol": "{{jwtProtocol}}",
+                            "host": ["{{uaa-domain}}"],
+                            "path": ["oauth", "token"]
+                        }
+                    },
+                    "response": []
+                }
+            ]
+        },
+        {
+            "name": "FEATURE FLAGS",
+            "item": [
+                {
+                    "name": "GET: all feature flags",
+                    "event": [
+                        {
+                            "listen": "test",
+                            "script": {
+                                "exec": [
+                                    "pm.test(\"/api/v1/features/export\", function () {",
+                                    "    pm.expect(pm.response.code).to.be.oneOf([200]);",
+                                    "",
+                                    "    const responseJSON = pm.response.json();",
+                                    "    const { flags } = responseJSON;",
+                                    "",
+                                    "    const tenantId = pm.environment.get('tenant_id');",
+                                    "",
+                                    "    const flagsHashMap = flags.reduce((hashMap, flag) => {",
+                                    "        const tenantShipment = flag.directShipments",
+                                    "            .find(directShipment => directShipment.receivers",
+                                    "                .some(receiver => receiver === tenantId)",
+                                    "            );",
+                                    "        ",
+                                    "        let variationIndex = !flag.enabled ",
+                                    "            ? flag.offVariationIndex ",
+                                    "            : tenantShipment ",
+                                    "                ? tenantShipment.variationIndex ",
+                                    "                : flag.defaultVariationIndex;",
+                                    "        ",
+                                    "",
+                                    "        hashMap[flag.id] = flag.variations[variationIndex] === 'true';",
+                                    "        return hashMap;",
+                                    "    }, {});",
+                                    "",
+                                    "    pm.environment.set('env_featureFlags', JSON.stringify(flagsHashMap));",
+                                    "});",
+                                    ""
+                                ],
+                                "type": "text/javascript"
+                            }
+                        }
+                    ],
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{feature_flag_uri}}/api/v1/features/export",
+                            "host": ["{{feature_flag_uri}}"],
+                            "path": ["api", "v1", "features", "export"]
+                        }
+                    },
+                    "response": []
+                }
+            ],
+            "auth": {
+                "type": "basic",
+                "basic": [
+                    {
+                        "key": "password",
+                        "value": "{{feature_flag_password}}",
+                        "type": "string"
+                    },
+                    {
+                        "key": "username",
+                        "value": "{{feature_flag_username}}",
+                        "type": "string"
+                    }
+                ]
+            },
+            "event": [
+                {
+                    "listen": "prerequest",
+                    "script": {
+                        "type": "text/javascript",
+                        "exec": [""]
+                    }
+                },
+                {
+                    "listen": "test",
+                    "script": {
+                        "type": "text/javascript",
+                        "exec": [""]
+                    }
+                }
+            ]
+        },
+        {
+            "name": "CONFIGURATION DATA",
+            "item": [
+                {
+                    "name": "Customer Order Item Type Codes",
+                    "item": [
+                        {
+                            "name": "CREATE CustomerOrderItemTypeCodes USB1",
+                            "event": [
+                                {
+                                    "listen": "test",
+                                    "script": {
+                                        "exec": [
+                                            "\r",
+                                            "// pm.test(\"CREATE CustomerOrderItemUtilitiesSubsequentDocumentCodes. Successful GET request\", function () {\r",
+                                            "    // pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
+                                            "// });"
+                                        ],
+                                        "type": "text/javascript"
+                                    }
+                                }
+                            ],
+                            "request": {
+                                "auth": {
+                                    "type": "bearer",
+                                    "bearer": [
+                                        {
+                                            "key": "token",
+                                            "value": "{{jwt}}",
+                                            "type": "string"
+                                        }
+                                    ]
+                                },
+                                "method": "POST",
+                                "header": [],
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "{\r\n    \"name\": \"Subscription\",\r\n    \"descr\": null,\r\n    \"code\": \"USB1\"\r\n}",
+                                    "options": {
+                                        "raw": {
+                                            "language": "json"
+                                        }
+                                    }
+                                },
+                                "url": {
+                                    "raw": "{{url}}/api/v1/CustomerOrderItemTypeCodes",
+                                    "host": ["{{url}}"],
+                                    "path": [
+                                        "api",
+                                        "v1",
+                                        "CustomerOrderItemTypeCodes"
+                                    ]
+                                }
+                            },
+                            "response": []
+                        }
+                    ]
+                },
+                {
+                    "name": "Sales Processing Status Codes",
+                    "item": [
+                        {
+                            "name": "CREATE Sales Processing Status Code 00",
+                            "event": [
+                                {
+                                    "listen": "test",
+                                    "script": {
+                                        "exec": [
+                                            "pm.test(\"CREATE Sales Processing Status Code 00. Successful PUT request UTILITIESCLOUDSOLUTION-2971\", function () {\r",
+                                            "     pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
+                                            "});"
+                                        ],
+                                        "type": "text/javascript"
+                                    }
+                                }
+                            ],
+                            "request": {
+                                "method": "PUT",
+                                "header": [
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "application/json;IEEE754Compatible=true",
+                                        "type": "text"
+                                    }
+                                ],
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "{\r\n    \"code\": \"00\",\r\n    \"name\": \"Initial\",\r\n    \"descr\": \"Initial\",\r\n    \"isDefault\":true\r\n}\r\n",
+                                    "options": {
+                                        "raw": {
+                                            "language": "json"
+                                        }
+                                    }
+                                },
+                                "url": {
+                                    "raw": "{{url}}/api/v1/SalesProcessingStatusCodes('00')",
+                                    "host": ["{{url}}"],
+                                    "path": [
+                                        "api",
+                                        "v1",
+                                        "SalesProcessingStatusCodes('00')"
+                                    ]
+                                }
+                            },
+                            "response": []
+                        },
+                        {
+                            "name": "CREATE Sales Processing Status Code 01",
+                            "event": [
+                                {
+                                    "listen": "test",
+                                    "script": {
+                                        "exec": [
+                                            "pm.test(\"CREATE Sales Processing Status Code 01. Successful PUT request UTILITIESCLOUDSOLUTION-2971\", function () {\r",
+                                            "     pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
+                                            "});"
+                                        ],
+                                        "type": "text/javascript"
+                                    }
+                                }
+                            ],
+                            "request": {
+                                "method": "PUT",
+                                "header": [
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "application/json;IEEE754Compatible=true",
+                                        "type": "text"
+                                    }
+                                ],
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "{\r\n    \"code\": \"01\",\r\n    \"name\": \"Open\",\r\n    \"descr\": \"Open\",\r\n    \"isDefault\": false\r\n}\r\n",
+                                    "options": {
+                                        "raw": {
+                                            "language": "json"
+                                        }
+                                    }
+                                },
+                                "url": {
+                                    "raw": "{{url}}/api/v1/SalesProcessingStatusCodes('01')",
+                                    "host": ["{{url}}"],
+                                    "path": [
+                                        "api",
+                                        "v1",
+                                        "SalesProcessingStatusCodes('01')"
+                                    ]
+                                }
+                            },
+                            "response": []
+                        },
+                        {
+                            "name": "CREATE Sales Processing Status Code 02",
+                            "event": [
+                                {
+                                    "listen": "test",
+                                    "script": {
+                                        "exec": [
+                                            "pm.test(\"CREATE Sales Processing Status Code 02. Successful PUT request UTILITIESCLOUDSOLUTION-2971\", function () {\r",
+                                            "     pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
+                                            "});"
+                                        ],
+                                        "type": "text/javascript"
+                                    }
+                                }
+                            ],
+                            "request": {
+                                "method": "PUT",
+                                "header": [
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "application/json;IEEE754Compatible=true",
+                                        "type": "text"
+                                    }
+                                ],
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "{\r\n    \"code\": \"02\",\r\n    \"name\": \"In Process\",\r\n    \"descr\": \"In Process\",\r\n    \"isDefault\": false\r\n}\r\n",
+                                    "options": {
+                                        "raw": {
+                                            "language": "json"
+                                        }
+                                    }
+                                },
+                                "url": {
+                                    "raw": "{{url}}/api/v1/SalesProcessingStatusCodes('02')",
+                                    "host": ["{{url}}"],
+                                    "path": [
+                                        "api",
+                                        "v1",
+                                        "SalesProcessingStatusCodes('02')"
+                                    ]
+                                }
+                            },
+                            "response": []
+                        },
+                        {
+                            "name": "CREATE Sales Processing Status Code 03",
+                            "event": [
+                                {
+                                    "listen": "test",
+                                    "script": {
+                                        "exec": [
+                                            "pm.test(\"CREATE Sales Processing Status Code 03. Successful PUT request UTILITIESCLOUDSOLUTION-2971\", function () {\r",
+                                            "     pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
+                                            "});"
+                                        ],
+                                        "type": "text/javascript"
+                                    }
+                                }
+                            ],
+                            "request": {
+                                "method": "PUT",
+                                "header": [
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "application/json;IEEE754Compatible=true",
+                                        "type": "text"
+                                    }
+                                ],
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "{\r\n    \"code\": \"03\",\r\n    \"name\": \"Completed\",\r\n    \"descr\": \"Completed\",\r\n    \"isDefault\": false\r\n}\r\n",
+                                    "options": {
+                                        "raw": {
+                                            "language": "json"
+                                        }
+                                    }
+                                },
+                                "url": {
+                                    "raw": "{{url}}/api/v1/SalesProcessingStatusCodes('03')",
+                                    "host": ["{{url}}"],
+                                    "path": [
+                                        "api",
+                                        "v1",
+                                        "SalesProcessingStatusCodes('03')"
+                                    ]
+                                }
+                            },
+                            "response": []
+                        },
+                        {
+                            "name": "CREATE Sales Processing Status Code 04",
+                            "event": [
+                                {
+                                    "listen": "test",
+                                    "script": {
+                                        "exec": [
+                                            "pm.test(\"CREATE Sales Processing Status Code 04. Successful PUT request UTILITIESCLOUDSOLUTION-2971\", function () {\r",
+                                            "     pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
+                                            "});"
+                                        ],
+                                        "type": "text/javascript"
+                                    }
+                                }
+                            ],
+                            "request": {
+                                "method": "PUT",
+                                "header": [
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "application/json;IEEE754Compatible=true",
+                                        "type": "text"
+                                    }
+                                ],
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "{\r\n    \"code\": \"04\",\r\n    \"name\": \"Canceled\",\r\n    \"descr\": \"Canceled\",\r\n    \"isDefault\": false\r\n}\r\n",
+                                    "options": {
+                                        "raw": {
+                                            "language": "json"
+                                        }
+                                    }
+                                },
+                                "url": {
+                                    "raw": "{{url}}/api/v1/SalesProcessingStatusCodes('04')",
+                                    "host": ["{{url}}"],
+                                    "path": [
+                                        "api",
+                                        "v1",
+                                        "SalesProcessingStatusCodes('04')"
+                                    ]
+                                }
+                            },
+                            "response": []
+                        },
+                        {
+                            "name": "CREATE Sales Processing Status Code 05",
+                            "event": [
+                                {
+                                    "listen": "test",
+                                    "script": {
+                                        "exec": [
+                                            "pm.test(\"CREATE Sales Processing Status Code 06. Successful PUT request UTILITIESCLOUDSOLUTION-2971\", function () {\r",
+                                            "     pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
+                                            "});\r",
+                                            ""
+                                        ],
+                                        "type": "text/javascript"
+                                    }
+                                }
+                            ],
+                            "request": {
+                                "method": "PUT",
+                                "header": [
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "application/json;IEEE754Compatible=true",
+                                        "type": "text"
+                                    }
+                                ],
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "{\r\n    \"code\": \"05\",\r\n    \"name\": \"Rejected\",\r\n    \"descr\": \"Rejected\",\r\n    \"isDefault\": false\r\n}\r\n",
+                                    "options": {
+                                        "raw": {
+                                            "language": "json"
+                                        }
+                                    }
+                                },
+                                "url": {
+                                    "raw": "{{url}}/api/v1/SalesProcessingStatusCodes('05')",
+                                    "host": ["{{url}}"],
+                                    "path": [
+                                        "api",
+                                        "v1",
+                                        "SalesProcessingStatusCodes('05')"
+                                    ]
+                                }
+                            },
+                            "response": []
+                        },
+                        {
+                            "name": "CREATE Sales Processing Status Code 06",
+                            "event": [
+                                {
+                                    "listen": "test",
+                                    "script": {
+                                        "exec": [
+                                            "pm.test(\"CREATE Sales Processing Status Code 06. Successful PUT request UTILITIESCLOUDSOLUTION-2971\", function () {\r",
+                                            "     pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
+                                            "});\r",
+                                            ""
+                                        ],
+                                        "type": "text/javascript"
+                                    }
+                                }
+                            ],
+                            "request": {
+                                "method": "PUT",
+                                "header": [
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "application/json;IEEE754Compatible=true",
+                                        "type": "text"
+                                    }
+                                ],
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "{\r\n    \"code\": \"06\",\r\n    \"name\": \"In Distribution\",\r\n    \"descr\": \"In Distribution\",\r\n    \"isDefault\": false\r\n}\r\n",
+                                    "options": {
+                                        "raw": {
+                                            "language": "json"
+                                        }
+                                    }
+                                },
+                                "url": {
+                                    "raw": "{{url}}/api/v1/SalesProcessingStatusCodes('06')",
+                                    "host": ["{{url}}"],
+                                    "path": [
+                                        "api",
+                                        "v1",
+                                        "SalesProcessingStatusCodes('06')"
+                                    ]
+                                }
+                            },
+                            "response": []
+                        },
+                        {
+                            "name": "CREATE Sales Processing Status Code 07",
+                            "event": [
+                                {
+                                    "listen": "test",
+                                    "script": {
+                                        "exec": [
+                                            "pm.test(\"CREATE Sales Processing Status Code 07. Successful PUT request UTILITIESCLOUDSOLUTION-2971\", function () {\r",
+                                            "     pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
+                                            "});\r",
+                                            ""
+                                        ],
+                                        "type": "text/javascript"
+                                    }
+                                }
+                            ],
+                            "request": {
+                                "method": "PUT",
+                                "header": [
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "application/json;IEEE754Compatible=true",
+                                        "type": "text"
+                                    }
+                                ],
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "{\r\n    \"code\": \"07\",\r\n    \"name\": \"Active\",\r\n    \"descr\": \"Active\",\r\n    \"isDefault\": false\r\n}\r\n",
+                                    "options": {
+                                        "raw": {
+                                            "language": "json"
+                                        }
+                                    }
+                                },
+                                "url": {
+                                    "raw": "{{url}}/api/v1/SalesProcessingStatusCodes('07')",
+                                    "host": ["{{url}}"],
+                                    "path": [
+                                        "api",
+                                        "v1",
+                                        "SalesProcessingStatusCodes('07')"
+                                    ]
+                                }
+                            },
+                            "response": []
+                        },
+                        {
+                            "name": "CREATE Sales Processing Status Code 08",
+                            "event": [
+                                {
+                                    "listen": "test",
+                                    "script": {
+                                        "exec": [
+                                            "pm.test(\"CREATE Sales Processing Status Code 08. Successful PUT request UTILITIESCLOUDSOLUTION-2971\", function () {\r",
+                                            "     pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
+                                            "});\r",
+                                            ""
+                                        ],
+                                        "type": "text/javascript"
+                                    }
+                                }
+                            ],
+                            "request": {
+                                "method": "PUT",
+                                "header": [
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "application/json;IEEE754Compatible=true",
+                                        "type": "text"
+                                    }
+                                ],
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "{\r\n    \"code\": \"08\",\r\n    \"name\": \"In Error\",\r\n    \"descr\": \"In Error\",\r\n    \"isDefault\": false\r\n}\r\n",
+                                    "options": {
+                                        "raw": {
+                                            "language": "json"
+                                        }
+                                    }
+                                },
+                                "url": {
+                                    "raw": "{{url}}/api/v1/SalesProcessingStatusCodes('08')",
+                                    "host": ["{{url}}"],
+                                    "path": [
+                                        "api",
+                                        "v1",
+                                        "SalesProcessingStatusCodes('08')"
+                                    ]
+                                }
+                            },
+                            "response": []
+                        },
+                        {
+                            "name": "CREATE Sales Processing Status Code 09",
+                            "event": [
+                                {
+                                    "listen": "test",
+                                    "script": {
+                                        "exec": [
+                                            "pm.test(\"CREATE Sales Processing Status Code 09. Successful PUT request UTILITIESCLOUDSOLUTION-2971\", function () {\r",
+                                            "     pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
+                                            "});\r",
+                                            ""
+                                        ],
+                                        "type": "text/javascript"
+                                    }
+                                }
+                            ],
+                            "request": {
+                                "method": "PUT",
+                                "header": [
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "application/json;IEEE754Compatible=true",
+                                        "type": "text"
+                                    }
+                                ],
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "{\r\n    \"code\": \"09\",\r\n    \"name\": \"In Termination\",\r\n    \"descr\": \"In Termination\",\r\n    \"isDefault\": false\r\n}\r\n",
+                                    "options": {
+                                        "raw": {
+                                            "language": "json"
+                                        }
+                                    }
+                                },
+                                "url": {
+                                    "raw": "{{url}}/api/v1/SalesProcessingStatusCodes('09')",
+                                    "host": ["{{url}}"],
+                                    "path": [
+                                        "api",
+                                        "v1",
+                                        "SalesProcessingStatusCodes('09')"
+                                    ]
+                                }
+                            },
+                            "response": []
+                        },
+                        {
+                            "name": "CREATE Sales Processing Status Code 10",
+                            "event": [
+                                {
+                                    "listen": "test",
+                                    "script": {
+                                        "exec": [
+                                            "pm.test(\"CREATE Sales Processing Status Code 10. Successful PUT request UTILITIESCLOUDSOLUTION-2971\", function () {\r",
+                                            "     pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
+                                            "});\r",
+                                            ""
+                                        ],
+                                        "type": "text/javascript"
+                                    }
+                                }
+                            ],
+                            "request": {
+                                "method": "PUT",
+                                "header": [
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "application/json;IEEE754Compatible=true",
+                                        "type": "text"
+                                    }
+                                ],
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "{\r\n    \"code\": \"10\",\r\n    \"name\": \"Terminated\",\r\n    \"descr\": \"Terminated\",\r\n    \"isDefault\": false\r\n}\r\n",
+                                    "options": {
+                                        "raw": {
+                                            "language": "json"
+                                        }
+                                    }
+                                },
+                                "url": {
+                                    "raw": "{{url}}/api/v1/SalesProcessingStatusCodes('10')",
+                                    "host": ["{{url}}"],
+                                    "path": [
+                                        "api",
+                                        "v1",
+                                        "SalesProcessingStatusCodes('10')"
+                                    ]
+                                }
+                            },
+                            "response": []
+                        }
+                    ],
+                    "auth": {
+                        "type": "bearer",
+                        "bearer": [
+                            {
+                                "key": "token",
+                                "value": "{{jwt}}",
+                                "type": "string"
+                            }
+                        ]
+                    },
+                    "event": [
+                        {
+                            "listen": "prerequest",
+                            "script": {
+                                "type": "text/javascript",
+                                "exec": [""]
+                            }
+                        },
+                        {
+                            "listen": "test",
+                            "script": {
+                                "type": "text/javascript",
+                                "exec": [""]
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "CustomerOrderUtilitiesStatusMapping",
+                    "item": [
+                        {
+                            "name": "CREATE CustomerOrderUtilitiesStatusSourceSystems",
+                            "event": [
+                                {
+                                    "listen": "test",
+                                    "script": {
+                                        "exec": [""],
+                                        "type": "text/javascript"
+                                    }
+                                }
+                            ],
+                            "request": {
+                                "method": "POST",
+                                "header": [
+                                    {
+                                        "key": "Content-Type",
+                                        "type": "text",
+                                        "value": "application/json;IEEE754Compatible=true"
+                                    }
+                                ],
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "{\r\n    \"sourceSystemId\":\"/eu10/sap.billing.sb\",\r\n    \"destination\": \"\",\r\n    \"path\": \"\",\r\n    \"statusPath\" : \"data/subscription/status\"\r\n}",
+                                    "options": {
+                                        "raw": {
+                                            "language": "json"
+                                        }
+                                    }
+                                },
+                                "url": {
+                                    "raw": "{{url}}/api/v1/config/CustomerOrderUtilitiesStatusSourceSystems",
+                                    "host": ["{{url}}"],
+                                    "path": [
+                                        "api",
+                                        "v1",
+                                        "config",
+                                        "CustomerOrderUtilitiesStatusSourceSystems"
+                                    ]
+                                }
+                            },
+                            "response": []
+                        },
+                        {
+                            "name": "CREATE CustomerOrderUtilitiesStatusMappingTypeCodes",
+                            "event": [
+                                {
+                                    "listen": "test",
+                                    "script": {
+                                        "exec": [""],
+                                        "type": "text/javascript"
+                                    }
+                                }
+                            ],
+                            "request": {
+                                "method": "POST",
+                                "header": [
+                                    {
+                                        "key": "Content-Type",
+                                        "type": "text",
+                                        "value": "application/json;IEEE754Compatible=true"
+                                    }
+                                ],
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "{\r\n    \"code\":\"01\",\r\n    \"name\":\"EM\"\r\n}",
+                                    "options": {
+                                        "raw": {
+                                            "language": "json"
+                                        }
+                                    }
+                                },
+                                "url": {
+                                    "raw": "{{url}}/api/v1/config/CustomerOrderUtilitiesStatusMappingTypeCodes",
+                                    "host": ["{{url}}"],
+                                    "path": [
+                                        "api",
+                                        "v1",
+                                        "config",
+                                        "CustomerOrderUtilitiesStatusMappingTypeCodes"
+                                    ]
+                                }
+                            },
+                            "response": []
+                        },
+                        {
+                            "name": "CREATE CustomerOrderUtilitiesStatusMapping - Open",
+                            "event": [
+                                {
+                                    "listen": "test",
+                                    "script": {
+                                        "exec": [""],
+                                        "type": "text/javascript"
+                                    }
+                                }
+                            ],
+                            "request": {
+                                "method": "PUT",
+                                "header": [
+                                    {
+                                        "key": "Content-Type",
+                                        "type": "text",
+                                        "value": "application/json;IEEE754Compatible=true"
+                                    }
+                                ],
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "{\r\n    \"sourceSystem\" : { \"sourceSystemId\" : \"/eu10/sap.billing.sb\" },\r\n    \"sourceSystemStatus\" : \"Active\",\r\n    \"processingStatus\" : {\"code\" : \"07\"},\r\n    \"type\" : {\"code\" : \"01\" }\r\n}\r\n",
+                                    "options": {
+                                        "raw": {
+                                            "language": "json"
+                                        }
+                                    }
+                                },
+                                "url": {
+                                    "raw": "{{url}}/api/v1/config/CustomerOrderUtilitiesStatusMapping(sourceSystemId='%2Feu10%2Fsap.billing.sb',sourceSystemStatus='Active')",
+                                    "host": ["{{url}}"],
+                                    "path": [
+                                        "api",
+                                        "v1",
+                                        "config",
+                                        "CustomerOrderUtilitiesStatusMapping(sourceSystemId='%2Feu10%2Fsap.billing.sb',sourceSystemStatus='Active')"
+                                    ]
+                                }
+                            },
+                            "response": []
+                        },
+                        {
+                            "name": "CREATE CustomerOrderUtilitiesStatusMapping - Not Started",
+                            "event": [
+                                {
+                                    "listen": "test",
+                                    "script": {
+                                        "exec": [""],
+                                        "type": "text/javascript"
+                                    }
+                                }
+                            ],
+                            "request": {
+                                "method": "PUT",
+                                "header": [
+                                    {
+                                        "key": "Content-Type",
+                                        "type": "text",
+                                        "value": "application/json;IEEE754Compatible=true"
+                                    }
+                                ],
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "{\r\n    \"sourceSystem\" : { \"sourceSystemId\" : \"/eu10/sap.billing.sb\" },\r\n    \"sourceSystemStatus\" : \"Not Started\",\r\n    \"processingStatus\" : {\"code\" : \"01\"},\r\n    \"type\" : {\"code\" : \"01\" }\r\n}\r\n",
+                                    "options": {
+                                        "raw": {
+                                            "language": "json"
+                                        }
+                                    }
+                                },
+                                "url": {
+                                    "raw": "{{url}}/api/v1/config/CustomerOrderUtilitiesStatusMapping(sourceSystemId='%2Feu10%2Fsap.billing.sb',sourceSystemStatus='Not Started')",
+                                    "host": ["{{url}}"],
+                                    "path": [
+                                        "api",
+                                        "v1",
+                                        "config",
+                                        "CustomerOrderUtilitiesStatusMapping(sourceSystemId='%2Feu10%2Fsap.billing.sb',sourceSystemStatus='Not Started')"
+                                    ]
+                                }
+                            },
+                            "response": []
+                        },
+                        {
+                            "name": "CREATE CustomerOrderUtilitiesStatusMapping - Canceled",
+                            "event": [
+                                {
+                                    "listen": "test",
+                                    "script": {
+                                        "exec": [""],
+                                        "type": "text/javascript"
+                                    }
+                                }
+                            ],
+                            "request": {
+                                "method": "PUT",
+                                "header": [
+                                    {
+                                        "key": "Content-Type",
+                                        "type": "text",
+                                        "value": "application/json;IEEE754Compatible=true"
+                                    }
+                                ],
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "{\r\n    \"sourceSystem\" : { \"sourceSystemId\" : \"/eu10/sap.billing.sb\" },\r\n    \"sourceSystemStatus\" : \"Canceled\",\r\n    \"processingStatus\" : {\"code\" : \"09\"},\r\n    \"type\" : {\"code\" : \"01\" }\r\n}\r\n",
+                                    "options": {
+                                        "raw": {
+                                            "language": "json"
+                                        }
+                                    }
+                                },
+                                "url": {
+                                    "raw": "{{url}}/api/v1/config/CustomerOrderUtilitiesStatusMapping(sourceSystemId='%2Feu10%2Fsap.billing.sb',sourceSystemStatus='Canceled')",
+                                    "host": ["{{url}}"],
+                                    "path": [
+                                        "api",
+                                        "v1",
+                                        "config",
+                                        "CustomerOrderUtilitiesStatusMapping(sourceSystemId='%2Feu10%2Fsap.billing.sb',sourceSystemStatus='Canceled')"
+                                    ]
+                                }
+                            },
+                            "response": []
+                        },
+                        {
+                            "name": "CREATE CustomerOrderUtilitiesStatusMapping - Expired",
+                            "event": [
+                                {
+                                    "listen": "test",
+                                    "script": {
+                                        "exec": [""],
+                                        "type": "text/javascript"
+                                    }
+                                }
+                            ],
+                            "request": {
+                                "method": "PUT",
+                                "header": [
+                                    {
+                                        "key": "Content-Type",
+                                        "type": "text",
+                                        "value": "application/json;IEEE754Compatible=true"
+                                    }
+                                ],
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "{\r\n    \"sourceSystem\" : { \"sourceSystemId\" : \"/eu10/sap.billing.sb\" },\r\n    \"sourceSystemStatus\" : \"Expired\",\r\n    \"processingStatus\" : {\"code\" : \"03\"},\r\n    \"type\" : {\"code\" : \"01\" }\r\n}\r\n",
+                                    "options": {
+                                        "raw": {
+                                            "language": "json"
+                                        }
+                                    }
+                                },
+                                "url": {
+                                    "raw": "{{url}}/api/v1/config/CustomerOrderUtilitiesStatusMapping(sourceSystemId='%2Feu10%2Fsap.billing.sb',sourceSystemStatus='Expired')",
+                                    "host": ["{{url}}"],
+                                    "path": [
+                                        "api",
+                                        "v1",
+                                        "config",
+                                        "CustomerOrderUtilitiesStatusMapping(sourceSystemId='%2Feu10%2Fsap.billing.sb',sourceSystemStatus='Expired')"
+                                    ]
+                                }
+                            },
+                            "response": []
+                        },
+                        {
+                            "name": "CREATE CustomerOrderUtilitiesStatusMapping - Withdrawn",
+                            "event": [
+                                {
+                                    "listen": "test",
+                                    "script": {
+                                        "exec": [""],
+                                        "type": "text/javascript"
+                                    }
+                                }
+                            ],
+                            "request": {
+                                "method": "PUT",
+                                "header": [
+                                    {
+                                        "key": "Content-Type",
+                                        "type": "text",
+                                        "value": "application/json;IEEE754Compatible=true"
+                                    }
+                                ],
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "{\r\n    \"sourceSystem\" : { \"sourceSystemId\" : \"/eu10/sap.billing.sb\" },\r\n    \"sourceSystemStatus\" : \"Withdrawn\",\r\n    \"processingStatus\" : {\"code\" : \"04\"},\r\n    \"type\" : {\"code\" : \"01\" }\r\n}\r\n",
+                                    "options": {
+                                        "raw": {
+                                            "language": "json"
+                                        }
+                                    }
+                                },
+                                "url": {
+                                    "raw": "{{url}}/api/v1/config/CustomerOrderUtilitiesStatusMapping(sourceSystemId='%2Feu10%2Fsap.billing.sb',sourceSystemStatus='Withdrawn')",
+                                    "host": ["{{url}}"],
+                                    "path": [
+                                        "api",
+                                        "v1",
+                                        "config",
+                                        "CustomerOrderUtilitiesStatusMapping(sourceSystemId='%2Feu10%2Fsap.billing.sb',sourceSystemStatus='Withdrawn')"
+                                    ]
+                                }
+                            },
+                            "response": []
+                        },
+                        {
+                            "name": "CREATE CustomerOrderUtilitiesStatusMapping - Pending",
+                            "event": [
+                                {
+                                    "listen": "test",
+                                    "script": {
+                                        "exec": [""],
+                                        "type": "text/javascript"
+                                    }
+                                }
+                            ],
+                            "request": {
+                                "method": "PUT",
+                                "header": [
+                                    {
+                                        "key": "Content-Type",
+                                        "type": "text",
+                                        "value": "application/json;IEEE754Compatible=true"
+                                    }
+                                ],
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "{\r\n    \"sourceSystem\" : { \"sourceSystemId\" : \"/eu10/sap.billing.sb\" },\r\n    \"sourceSystemStatus\" : \"Pending\",\r\n    \"processingStatus\" : {\"code\" : \"01\"},\r\n    \"type\" : {\"code\" : \"01\" }\r\n}\r\n",
+                                    "options": {
+                                        "raw": {
+                                            "language": "json"
+                                        }
+                                    }
+                                },
+                                "url": {
+                                    "raw": "{{url}}/api/v1/config/CustomerOrderUtilitiesStatusMapping(sourceSystemId='%2Feu10%2Fsap.billing.sb',sourceSystemStatus='Pending')",
+                                    "host": ["{{url}}"],
+                                    "path": [
+                                        "api",
+                                        "v1",
+                                        "config",
+                                        "CustomerOrderUtilitiesStatusMapping(sourceSystemId='%2Feu10%2Fsap.billing.sb',sourceSystemStatus='Pending')"
+                                    ]
+                                }
+                            },
+                            "response": []
+                        }
+                    ],
+                    "auth": {
+                        "type": "bearer",
+                        "bearer": [
+                            {
+                                "key": "token",
+                                "value": "{{jwt}}",
+                                "type": "string"
+                            }
+                        ]
+                    },
+                    "event": [
+                        {
+                            "listen": "prerequest",
+                            "script": {
+                                "type": "text/javascript",
+                                "exec": [""]
+                            }
+                        },
+                        {
+                            "listen": "test",
+                            "script": {
+                                "type": "text/javascript",
+                                "exec": [""]
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "CREATE Customer Order",
+            "event": [
+                {
+                    "listen": "test",
+                    "script": {
+                        "exec": [
+                            "pm.test(\"CREATE Customer Order'. Successful POST request UTILITIESCLOUDSOLUTION-2971\", function () {\r",
+                            "    pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
+                            "});\r",
+                            "\r",
+                            "var jsonData = JSON.parse(responseBody);\r",
+                            "if(jsonData && jsonData.id) {\r",
+                            "    postman.setEnvironmentVariable(\"env_customerOrder_id\", jsonData.id);\r",
+                            "}"
+                        ],
+                        "type": "text/javascript"
+                    }
+                },
+                {
+                    "listen": "prerequest",
+                    "script": {
+                        "exec": [""],
+                        "type": "text/javascript"
+                    }
+                }
+            ],
+            "request": {
+                "auth": {
+                    "type": "bearer",
+                    "bearer": [
+                        {
+                            "key": "token",
+                            "value": "{{jwt}}",
+                            "type": "string"
+                        }
+                    ]
+                },
+                "method": "POST",
+                "header": [],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\r\n    \"processingStatus\": {\r\n        \"code\": \"00\"\r\n    },\r\n    \"items\": [\r\n        {\r\n            \"id\": \"{{env_customerOrderItem_id}}\",\r\n            \"type\": {\r\n                \"code\": \"USB1\"\r\n            },\r\n            \"processingStatus\": {\r\n                \"code\": \"00\"\r\n            }\r\n        }\r\n    ]\r\n}",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    }
+                },
+                "url": {
+                    "raw": "{{url}}/api/v1/CustomerOrder",
+                    "host": ["{{url}}"],
+                    "path": ["api", "v1", "CustomerOrder"]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "CREATE single Subscription",
+            "event": [
+                {
+                    "listen": "test",
+                    "script": {
+                        "exec": [
+                            "pm.test(\"CREATE Subscription. Successful POST request UTILITIESCLOUDSOLUTION-2971\", function () {\r",
+                            "    pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
+                            "});\r",
+                            "\r",
+                            "var jsonData = JSON.parse(responseBody);\r",
+                            "if(jsonData && jsonData.subscriptionId) {\r",
+                            "    postman.setEnvironmentVariable(\"env_sb_subscription_id\", jsonData.subscriptionId);\r",
+                            "    postman.setEnvironmentVariable(\"env_sb_subscription_displayId\", jsonData.subscriptionDocumentId);\r",
+                            "    postman.setEnvironmentVariable(\"env_sb_subscription_version\", jsonData.metaData.version);\r",
+                            "}"
+                        ],
+                        "type": "text/javascript"
+                    }
+                },
+                {
+                    "listen": "prerequest",
+                    "script": {
+                        "exec": [
+                            "const moment = require('moment');\r",
+                            "const currentDate = moment().format(\"YYYY-MM-DDTHH:mm:ssZ\");\r",
+                            "postman.setEnvironmentVariable(\"currentDate\", currentDate);"
+                        ],
+                        "type": "text/javascript"
+                    }
+                }
+            ],
+            "request": {
+                "auth": {
+                    "type": "bearer",
+                    "bearer": [
+                        {
+                            "key": "token",
+                            "value": "{{sb_jwt}}",
+                            "type": "string"
+                        }
+                    ]
+                },
+                "method": "POST",
+                "header": [],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\r\n    \"customer\": {\r\n        \"id\": \"{{env_sb_customer_id}}\"\r\n    },\r\n    \"market\": {\r\n        \"id\": \"electricity\"\r\n    },\r\n    \"validFrom\": \"{{currentDate}}\",\r\n    \"subscriptionProfile\": {\r\n        \"id\": \"non_commodity\"\r\n    },\r\n    \"snapshots\": [\r\n        {\r\n            \"effectiveDate\": \"{{currentDate}}\",\r\n            \"items\": [\r\n                {\r\n                    \"itemId\": \"01\",\r\n                    \"product\": {\r\n                        \"id\": \"{{env_sb_product_id}}\"\r\n                    },\r\n                    \"contractAccount\": \"SEHO\"\r\n                }\r\n            ]\r\n        }\r\n    ]\r\n}",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    }
+                },
+                "url": {
+                    "raw": "{{sb_url}}/api/subscription/v1/subscriptions/",
+                    "host": ["{{sb_url}}"],
+                    "path": ["api", "subscription", "v1", "subscriptions", ""]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "UPDATE Customer Order item with SB reference",
+            "event": [
+                {
+                    "listen": "test",
+                    "script": {
+                        "exec": [
+                            "pm.test(\"UPDATE Customer Order item with SB reference. Successful PUT request UTILITIESCLOUDSOLUTION-2971\", function () {\r",
+                            "    pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
+                            "});\r",
+                            "setTimeout(function(){}, parseInt(postman.getEnvironmentVariable(\"timeout\")));"
+                        ],
+                        "type": "text/javascript"
+                    }
+                }
+            ],
+            "request": {
+                "auth": {
+                    "type": "bearer",
+                    "bearer": [
+                        {
+                            "key": "token",
+                            "value": "{{jwt}}",
+                            "type": "string"
+                        }
+                    ]
+                },
+                "method": "PUT",
+                "header": [],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\r\n    \"subsequentDocument\": {\r\n        \"id\": \"{{env_sb_subscription_id}}\",\r\n        \"displayId\": \"{{env_sb_subscription_displayId}}\"\r\n    }\r\n}",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    }
+                },
+                "url": {
+                    "raw": "{{url}}/api/v1/CustomerOrder({{env_customerOrder_id}})/items(id='{{env_customerOrderItem_id}}')/utilitiesAspect",
+                    "host": ["{{url}}"],
+                    "path": [
+                        "api",
+                        "v1",
+                        "CustomerOrder({{env_customerOrder_id}})",
+                        "items(id='{{env_customerOrderItem_id}}')",
+                        "utilitiesAspect"
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "READ possible cancellation date",
+            "event": [
+                {
+                    "listen": "test",
+                    "script": {
+                        "exec": [
+                            "pm.test(\"READ possible cancellation date. Successful GET request UTILITIESCLOUDSOLUTION-2971\", function () {\r",
+                            "    pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
+                            "});\r",
+                            "\r",
+                            "var jsonData = JSON.parse(responseBody);\r",
+                            "if(jsonData && jsonData.effectiveExpirationDate) {\r",
+                            "    postman.setEnvironmentVariable(\"env_sb_effectiveExpirationDate\", jsonData.effectiveExpirationDate);\r",
+                            "}"
+                        ],
+                        "type": "text/javascript"
+                    }
+                },
+                {
+                    "listen": "prerequest",
+                    "script": {
+                        "exec": [
+                            "const moment = require('moment');\r",
+                            "const currentDate = moment().format(\"YYYY-MM-DD\");\r",
+                            "postman.setEnvironmentVariable(\"currentDate\", currentDate);"
+                        ],
+                        "type": "text/javascript"
+                    }
+                }
+            ],
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "request": {
+                "auth": {
+                    "type": "bearer",
+                    "bearer": [
+                        {
+                            "key": "token",
+                            "value": "{{sb_jwt}}",
+                            "type": "string"
+                        }
+                    ]
+                },
+                "method": "GET",
+                "header": [],
+                "body": {
+                    "mode": "raw",
+                    "raw": "",
+                    "options": {
+                        "raw": {
+                            "language": "javascript"
+                        }
+                    }
+                },
+                "url": {
+                    "raw": "{{sb_url}}/api/subscription/v1/subscriptions/{{env_sb_subscription_id}}/computedcancellationdate?requestedCancellationDate={{currentDate}}",
+                    "host": ["{{sb_url}}"],
+                    "path": [
+                        "api",
+                        "subscription",
+                        "v1",
+                        "subscriptions",
+                        "{{env_sb_subscription_id}}",
+                        "computedcancellationdate"
+                    ],
+                    "query": [
+                        {
+                            "key": "requestedCancellationDate",
+                            "value": "{{currentDate}}"
+                        }
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "CANCEL Subscription by ID",
+            "event": [
+                {
+                    "listen": "prerequest",
+                    "script": {
+                        "exec": [""],
+                        "type": "text/javascript"
+                    }
+                },
+                {
+                    "listen": "test",
+                    "script": {
+                        "exec": [
+                            "pm.test(\"CANCEL Subscription by ID. Successful POST request UTILITIESCLOUDSOLUTION-2971\", function () {\r",
+                            "    pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
+                            "});\r",
+                            "\r",
+                            "var jsonData = JSON.parse(responseBody);\r",
+                            "if(jsonData && jsonData.subscriptionId) {\r",
+                            "    postman.setEnvironmentVariable(\"env_sb_subscription_version\", jsonData.metaData.version);\r",
+                            "}\r",
+                            "\r",
+                            "setTimeout(function(){}, parseInt(postman.getEnvironmentVariable(\"timeout\")));"
+                        ],
+                        "type": "text/javascript"
+                    }
+                }
+            ],
+            "request": {
+                "auth": {
+                    "type": "bearer",
+                    "bearer": [
+                        {
+                            "key": "token",
+                            "value": "{{sb_jwt}}",
+                            "type": "string"
+                        }
+                    ]
+                },
+                "method": "POST",
+                "header": [],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\r\n  \"metaData\": {\r\n    \"version\": {{env_sb_subscription_version}}\r\n  },\r\n  \"requestedCancellationDate\": \"{{env_sb_effectiveExpirationDate}}\",\r\n  \"cancellationReason\": \"POSTMAN Test\"\r\n}",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    }
+                },
+                "url": {
+                    "raw": "{{sb_url}}/api/subscription/v1/subscriptions/{{env_sb_subscription_id}}/cancellation",
+                    "host": ["{{sb_url}}"],
+                    "path": [
+                        "api",
+                        "subscription",
+                        "v1",
+                        "subscriptions",
+                        "{{env_sb_subscription_id}}",
+                        "cancellation"
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "READ CustomerOrder with updated ProcessingStatus (09)",
+            "event": [
+                {
+                    "listen": "test",
+                    "script": {
+                        "exec": [
+                            "pm.test(\"READ CustomerOrder with updated ProcessingStatus (09). Successful GET request UTILITIESCLOUDSOLUTION-2971\", function () {\r",
+                            "    pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
+                            "\r",
+                            "    var jsonData = JSON.parse(responseBody);\r",
+                            "    if(jsonData && jsonData.id) {\r",
+                            "        pm.expect(jsonData.processingStatus.code).to.be.equal(\"09\");\r",
+                            "        pm.expect(jsonData.items[0].processingStatus.code).to.be.equal(\"09\");\r",
+                            "    }\r",
+                            "    setTimeout(function(){}, parseInt(postman.getEnvironmentVariable(\"timeout\")));\r",
+                            "});"
+                        ],
+                        "type": "text/javascript"
+                    }
+                },
+                {
+                    "listen": "prerequest",
+                    "script": {
+                        "exec": [""],
+                        "type": "text/javascript"
+                    }
+                }
+            ],
+            "request": {
+                "auth": {
+                    "type": "bearer",
+                    "bearer": [
+                        {
+                            "key": "token",
+                            "value": "{{jwt}}",
+                            "type": "string"
+                        }
+                    ]
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                    "raw": "{{url}}/api/v1/CustomerOrder({{env_customerOrder_id}})?$expand=items",
+                    "host": ["{{url}}"],
+                    "path": [
+                        "api",
+                        "v1",
+                        "CustomerOrder({{env_customerOrder_id}})"
+                    ],
+                    "query": [
+                        {
+                            "key": "$expand",
+                            "value": "items"
+                        }
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "REVERSE Cancellation of a Subscription by ID",
+            "event": [
+                {
+                    "listen": "prerequest",
+                    "script": {
+                        "exec": [
+                            "const moment = require('moment');\r",
+                            "const currentDate = moment().format(\"YYYY-MM-DDTHH:mm:ssZ\");\r",
+                            "postman.setEnvironmentVariable(\"currentDate\", currentDate);"
+                        ],
+                        "type": "text/javascript"
+                    }
+                },
+                {
+                    "listen": "test",
+                    "script": {
+                        "exec": [
+                            "pm.test(\"REVERSE cancellation of Subscription by ID. Successful POST request UTILITIESCLOUDSOLUTION-2971\", function () {\r",
+                            "    pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
+                            "});\r",
+                            "\r",
+                            "setTimeout(function(){}, parseInt(postman.getEnvironmentVariable(\"timeout\")));"
+                        ],
+                        "type": "text/javascript"
+                    }
+                }
+            ],
+            "request": {
+                "auth": {
+                    "type": "bearer",
+                    "bearer": [
+                        {
+                            "key": "token",
+                            "value": "{{sb_jwt}}",
+                            "type": "string"
+                        }
+                    ]
+                },
+                "method": "POST",
+                "header": [],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\r\n  \"metaData\": {\r\n    \"version\": \"{{env_sb_subscription_version}}\"\r\n  },\r\n  \"changedAt\": \"{{currentDate}}\"\r\n}",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    }
+                },
+                "url": {
+                    "raw": "{{sb_url}}/api/subscription/v1/subscriptions/{{env_sb_subscription_id}}/cancellationreversal",
+                    "host": ["{{sb_url}}"],
+                    "path": [
+                        "api",
+                        "subscription",
+                        "v1",
+                        "subscriptions",
+                        "{{env_sb_subscription_id}}",
+                        "cancellationreversal"
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "READ CustomerOrder with updated ProcessingStatus (07)",
+            "event": [
+                {
+                    "listen": "test",
+                    "script": {
+                        "exec": [
+                            "pm.test(\"READ CustomerOrder with updated ProcessingStatus (07). Successful GET request UTILITIESCLOUDSOLUTION-2971\", function () {\r",
+                            "    pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
+                            "\r",
+                            "    var jsonData = JSON.parse(responseBody);\r",
+                            "    if(jsonData && jsonData.id) {\r",
+                            "        pm.expect(jsonData.processingStatus.code).to.be.equal(\"07\");\r",
+                            "        pm.expect(jsonData.items[0].processingStatus.code).to.be.equal(\"07\");\r",
+                            "    }\r",
+                            "});\r",
+                            "\r",
+                            ""
+                        ],
+                        "type": "text/javascript"
+                    }
+                }
+            ],
+            "request": {
+                "auth": {
+                    "type": "bearer",
+                    "bearer": [
+                        {
+                            "key": "token",
+                            "value": "{{jwt}}",
+                            "type": "string"
+                        }
+                    ]
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                    "raw": "{{url}}/api/v1/CustomerOrder({{env_customerOrder_id}})?$expand=items",
+                    "host": ["{{url}}"],
+                    "path": [
+                        "api",
+                        "v1",
+                        "CustomerOrder({{env_customerOrder_id}})"
+                    ],
+                    "query": [
+                        {
+                            "key": "$expand",
+                            "value": "items"
+                        }
+                    ]
+                }
+            },
+            "response": []
+        }
+    ],
+    "event": [
+        {
+            "listen": "prerequest",
+            "script": {
+                "type": "text/javascript",
+                "exec": [""]
+            }
+        },
+        {
+            "listen": "test",
+            "script": {
+                "type": "text/javascript",
+                "exec": [""]
+            }
+        }
+    ]
+}

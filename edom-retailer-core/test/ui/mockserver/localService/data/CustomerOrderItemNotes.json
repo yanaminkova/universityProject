@@ -1,0 +1,26 @@
+[
+    {
+        "up__up__id": "d67a0918-2c75-4e4f-badc-43000509e36f",
+        "up__id": "100001",
+        "id": "320682be-f5eb-4047-b177-4d6e9beffc47",
+        "textType_code": "00002",
+        "text": "€100 with first yearly bill",
+        "isBlocked": false
+    },
+    {
+        "up__up__id": "d67a0918-2c75-4e4f-badc-43000509e36f",
+        "up__id": "100001",
+        "id": "ed068b96-bb45-4ba0-8c1c-13a0b8f80128",
+        "textType_code": "00001",
+        "text": "20%  on base charge for 24 months if all subs are active",
+        "isBlocked": false
+    },
+    {
+        "up__up__id": "d67a0918-2c75-4e4f-badc-43000509e36f",
+        "up__id": "300002",
+        "id": "7917b099-b66b-425f-ac12-5fe8b5283512",
+        "textType_code": "00002",
+        "text": "€150 after confirmation",
+        "isBlocked": false
+    }
+]

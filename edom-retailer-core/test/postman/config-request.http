@@ -1,0 +1,47 @@
+@srv = http://localhost:4004
+@admin = Authorization: Basic admin:admin
+
+
+### Fetch StatusConfigurations
+GET {{srv}}/api/internal/config/StatusConfigurations
+{{admin}}
+
+### Fetch StatusConfigurations expand texts
+GET {{srv}}/api/internal/config/StatusConfigurations(ID='300',IsActiveEntity=true)
+    ?$expand=texts
+{{admin}}
+
+### Create New StatusConfigurations
+POST {{srv}}/api/internal/config/StatusConfigurations
+Content-Type: application/json;IEEE754Compatible=true
+{{admin}}
+
+{
+    "ID": "400"
+}
+
+### Fetch created StatusConfigurations
+GET {{srv}}/api/internal/config/StatusConfigurations(ID='400',IsActiveEntity=false)
+    ?$select=HasActiveEntity,HasDraftEntity,IsActiveEntity
+{{admin}}
+
+### Fetch created StatusConfigurations with expand texts
+GET {{srv}}/api/internal/config/StatusConfigurations(ID='400',IsActiveEntity=false)
+    ?$select=HasActiveEntity,HasDraftEntity,IsActiveEntity
+    &$expand=texts
+{{admin}}
+
+### CRASH HAPPENS IN THIS REQUEST
+### Fetch created StatusConfigurations with localized texts navigations
+GET {{srv}}/api/internal/config/StatusConfigurations(ID='300',IsActiveEntity=false)/texts
+    ?$count=true&$skip=0&$top=10
+{{admin}}    
+
+### Fetch created StatusConfigurations with localized texts navigations
+GET {{srv}}/api/internal/config/StatusConfigurations(ID='999',IsActiveEntity=false)/texts
+    ?$count=true&$skip=0&$top=10
+{{admin}}    
+
+### Fetch dummyData StatusConfigurations with localized texts navigations
+GET {{srv}}/api/internal/config/StatusConfigurations(ID='400',IsActiveEntity=false)/texts
+    ?$count=true&$skip=0&$top=10

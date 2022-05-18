@@ -1,0 +1,554 @@
+{
+    "info": {
+        "_postman_id": "0f8d0eff-21a1-48e0-916c-7d0f80da63d4",
+        "name": "C4UF_JOB_SCHEDULER",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "item": [
+        {
+            "name": "JWT",
+            "item": [
+                {
+                    "name": "{{jwtProtocol}}://{{uaa-domain}}/oauth/token",
+                    "event": [
+                        {
+                            "listen": "test",
+                            "script": {
+                                "exec": [
+                                    "",
+                                    "var jsonData = JSON.parse(responseBody);",
+                                    "if(jsonData && jsonData.access_token){",
+                                    "    postman.setEnvironmentVariable(\"jwt\", jsonData.access_token);",
+                                    "}",
+                                    "",
+                                    "pm.test(\"Successful POST request\", function () {",
+                                    "     pm.expect(pm.response.code).to.be.oneOf([200]);",
+                                    "});",
+                                    "",
+                                    "if (pm.environment.get(\"url\").includes('test')) {",
+                                    "    postman.setEnvironmentVariable(\"env_featureFlag\", false)",
+                                    "} else if (pm.environment.get(\"url\").includes('stage')) {",
+                                    "    postman.setEnvironmentVariable(\"env_featureFlag\", false)",
+                                    "} else if (pm.environment.get(\"url\").includes('staging')) {",
+                                    "    postman.setEnvironmentVariable(\"env_featureFlag\", false)",
+                                    "} else {",
+                                    "    postman.setEnvironmentVariable(\"env_featureFlag\", true)",
+                                    "}"
+                                ],
+                                "type": "text/javascript"
+                            }
+                        },
+                        {
+                            "listen": "prerequest",
+                            "script": {
+                                "exec": [""],
+                                "type": "text/javascript"
+                            }
+                        }
+                    ],
+                    "request": {
+                        "auth": {
+                            "type": "noauth"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "X-CorrelationID",
+                                "value": "",
+                                "disabled": true
+                            },
+                            {
+                                "key": "Content-Type",
+                                "value": "application/x-www-form-urlencoded"
+                            }
+                        ],
+                        "body": {
+                            "mode": "urlencoded",
+                            "urlencoded": [
+                                {
+                                    "key": "response_type",
+                                    "value": "token",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "grant_type",
+                                    "value": "client_credentials",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "client_id",
+                                    "value": "{{uaa_client_id}}",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "client_secret",
+                                    "value": "{{uaa_client_secret}}",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "scope",
+                                    "value": "",
+                                    "type": "text"
+                                }
+                            ]
+                        },
+                        "url": {
+                            "raw": "{{jwtProtocol}}://{{uaa-domain}}/oauth/token",
+                            "protocol": "{{jwtProtocol}}",
+                            "host": ["{{uaa-domain}}"],
+                            "path": ["oauth", "token"]
+                        }
+                    },
+                    "response": []
+                }
+            ]
+        },
+        {
+            "name": "JOB SCHEDULER",
+            "item": [
+                {
+                    "name": "CREATE JOB",
+                    "event": [
+                        {
+                            "listen": "test",
+                            "script": {
+                                "exec": [
+                                    "if (pm.environment.get('env_featureFlag') === 'true') {\r",
+                                    "    pm.test(`${pm.request.url.path[3]} with. Successful POST request`, function () {\r",
+                                    "        pm.expect(pm.response.code).to.be.oneOf([200, 201]);\r",
+                                    "    });\r",
+                                    "\r",
+                                    "    var jsonData = pm.response.json();\r",
+                                    "    if(jsonData && jsonData.jobId) {\r",
+                                    "        pm.environment.set(\"env_jobId\", jsonData.jobId);\r",
+                                    "    }\r",
+                                    "}"
+                                ],
+                                "type": "text/javascript"
+                            }
+                        }
+                    ],
+                    "request": {
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "{{jwt}}",
+                                    "type": "string"
+                                }
+                            ]
+                        },
+                        "method": "POST",
+                        "header": [],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{     \r\n        \"name\": \"GET MDIClient {{$randomInt}}\",\r\n        \"description\": \"cron job that calls GET MDIClient\",\r\n        \"action\": \"https://edom-retailer-dev-srv.cfapps.eu10.hana.ondemand.com/api/mdiClient/v1\",\r\n        \"active\": true,\r\n        \"httpMethod\": \"GET\",\r\n        \"schedules\": [\r\n            {\r\n                \"cron\": \"* * * * * */10 0\",\r\n                \"description\": \"this schedule runs every 10 minutes\",\r\n                \"active\": true,\r\n                \"startTime\": {\r\n                    \"date\": \"2021-11-01 04:30 +0000\",\r\n                    \"format\": \"YYYY-MM-DD HH:mm Z\"\r\n                }\r\n            }\r\n        ]\r\n}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{url}}/{{api-jobsched}}/Job",
+                            "host": ["{{url}}"],
+                            "path": ["{{api-jobsched}}", "Job"]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "CREATE JOB  w  Default 5 min",
+                    "event": [
+                        {
+                            "listen": "test",
+                            "script": {
+                                "exec": [
+                                    "if (pm.environment.get('env_featureFlag') === 'true') {\r",
+                                    "    pm.test(`${pm.request.url.path[3]} with. Successful POST request`, function () {\r",
+                                    "        pm.expect(pm.response.code).to.be.oneOf([200, 201]);\r",
+                                    "    });\r",
+                                    "\r",
+                                    "    var jsonData = pm.response.json();\r",
+                                    "    if(jsonData && jsonData.jobId) {\r",
+                                    "        pm.environment.set(\"env_jobId\", jsonData.jobId);\r",
+                                    "    }\r",
+                                    "}"
+                                ],
+                                "type": "text/javascript"
+                            }
+                        }
+                    ],
+                    "request": {
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "{{jwt}}",
+                                    "type": "string"
+                                }
+                            ]
+                        },
+                        "method": "POST",
+                        "header": [],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{     \r\n        \"name\": \"GET MDIClient {{$randomInt}}\",\r\n        \"description\": \"cron job that calls GET MDIClient\",\r\n        \"action\": \"https://edom-retailer-dev-srv.cfapps.eu10.hana.ondemand.com/api/mdiClient/v1\",\r\n        \"active\": true,\r\n        \"httpMethod\": \"GET\",\r\n        \"schedules\": [\r\n            {\r\n                \"description\": \"this schedule runs every 5 minutes\",\r\n                \"active\": true,\r\n                \"startTime\": {\r\n                    \"date\": \"2021-11-01 04:30 +0000\",\r\n                    \"format\": \"YYYY-MM-DD HH:mm Z\"\r\n                }\r\n            }\r\n        ]\r\n}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{url}}/{{api-jobsched}}/Job",
+                            "host": ["{{url}}"],
+                            "path": ["{{api-jobsched}}", "Job"]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "CREATE JOB  One-Time",
+                    "event": [
+                        {
+                            "listen": "test",
+                            "script": {
+                                "exec": [
+                                    "if (pm.environment.get('env_featureFlag') === 'true') {\r",
+                                    "    pm.test(`${pm.request.url.path[3]} with. Successful POST request`, function () {\r",
+                                    "        pm.expect(pm.response.code).to.be.oneOf([200, 201]);\r",
+                                    "    });\r",
+                                    "\r",
+                                    "    var jsonData = pm.response.json();\r",
+                                    "    if(jsonData && jsonData.jobId) {\r",
+                                    "        pm.environment.set(\"env_jobId\", jsonData.jobId);\r",
+                                    "    }\r",
+                                    "}"
+                                ],
+                                "type": "text/javascript"
+                            }
+                        }
+                    ],
+                    "request": {
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "{{jwt}}",
+                                    "type": "string"
+                                }
+                            ]
+                        },
+                        "method": "POST",
+                        "header": [],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{     \r\n        \"name\": \"GET MDIClient {{$randomInt}}\",\r\n        \"description\": \"cron job that calls GET MDIClient\",\r\n        \"action\": \"https://edom-retailer-dev-srv.cfapps.eu10.hana.ondemand.com/api/mdiClient/v1\",\r\n        \"active\": true,\r\n        \"httpMethod\": \"GET\",\r\n        \"schedules\": [\r\n            {\r\n                \"description\": \"this schedule runs once\",\r\n                \"time\": {\r\n                    \"date\": \"2021-05-05 23:30 +0000\",\r\n                    \"format\": \"YYYY-MM-DD HH:mm Z\"\r\n                }\r\n            }\r\n        ]\r\n}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{url}}/{{api-jobsched}}/Job",
+                            "host": ["{{url}}"],
+                            "path": ["{{api-jobsched}}", "Job"]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "CREATE JOB  One-Time no Format",
+                    "event": [
+                        {
+                            "listen": "test",
+                            "script": {
+                                "exec": [
+                                    "if (pm.environment.get('env_featureFlag') === 'true') {\r",
+                                    "    pm.test(`${pm.request.url.path[3]} with. Successful POST request`, function () {\r",
+                                    "        pm.expect(pm.response.code).to.be.oneOf([200, 201]);\r",
+                                    "    });\r",
+                                    "\r",
+                                    "    var jsonData = pm.response.json();\r",
+                                    "    if(jsonData && jsonData.jobId) {\r",
+                                    "        pm.environment.set(\"env_jobId\", jsonData.jobId);\r",
+                                    "    }\r",
+                                    "}"
+                                ],
+                                "type": "text/javascript"
+                            }
+                        }
+                    ],
+                    "request": {
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "{{jwt}}",
+                                    "type": "string"
+                                }
+                            ]
+                        },
+                        "method": "POST",
+                        "header": [],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{     \r\n        \"name\": \"GET MDIClient {{$randomInt}}\",\r\n        \"description\": \"cron job that calls GET MDIClient\",\r\n        \"action\": \"https://edom-retailer-dev-srv.cfapps.eu10.hana.ondemand.com/api/mdiClient/v1\",\r\n        \"active\": true,\r\n        \"httpMethod\": \"GET\",\r\n        \"schedules\": [\r\n            {\r\n                \"description\": \"this schedule runs once\",\r\n                \"time\": {\r\n                    \"date\": \"now\"\r\n                }\r\n            }\r\n        ]\r\n}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{url}}/{{api-jobsched}}/Job",
+                            "host": ["{{url}}"],
+                            "path": ["{{api-jobsched}}", "Job"]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "READ JOBS",
+                    "event": [
+                        {
+                            "listen": "test",
+                            "script": {
+                                "exec": [
+                                    "if (pm.environment.get('env_featureFlag') === 'true') {\r",
+                                    "    pm.test(`${pm.request.url.path[3]} with. Successful POST request`, function () {\r",
+                                    "        pm.expect(pm.response.code).to.be.oneOf([200, 201]);\r",
+                                    "    });\r",
+                                    "}"
+                                ],
+                                "type": "text/javascript"
+                            }
+                        }
+                    ],
+                    "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                    },
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json",
+                                "type": "text"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{url}}/{{api-jobsched}}/Job",
+                            "host": ["{{url}}"],
+                            "path": ["{{api-jobsched}}", "Job"]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "READ JOBS W Filter",
+                    "event": [
+                        {
+                            "listen": "test",
+                            "script": {
+                                "exec": [
+                                    "if (pm.environment.get('env_featureFlag') === 'true') {\r",
+                                    "    pm.test(`${pm.request.url.path[3]} with. Successful POST request`, function () {\r",
+                                    "        pm.expect(pm.response.code).to.be.oneOf([200, 201]);\r",
+                                    "    });\r",
+                                    "}"
+                                ],
+                                "type": "text/javascript"
+                            }
+                        }
+                    ],
+                    "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                    },
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json",
+                                "type": "text"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{url}}/{{api-jobsched}}/Job?$filter=description eq 'cron job that calls GET MDIClient'",
+                            "host": ["{{url}}"],
+                            "path": ["{{api-jobsched}}", "Job"],
+                            "query": [
+                                {
+                                    "key": "$filter",
+                                    "value": "description eq 'cron job that calls GET MDIClient'"
+                                }
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "READ SPECIFIC JOB",
+                    "event": [
+                        {
+                            "listen": "test",
+                            "script": {
+                                "exec": [
+                                    "if (pm.environment.get('env_featureFlag') === 'true') {\r",
+                                    "    pm.test(`${pm.request.url.path[3]} with. Successful POST request`, function () {\r",
+                                    "        pm.expect(pm.response.code).to.be.oneOf([200, 201]);\r",
+                                    "    });\r",
+                                    "}"
+                                ],
+                                "type": "text/javascript"
+                            }
+                        }
+                    ],
+                    "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                    },
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json",
+                                "type": "text"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{url}}/{{api-jobsched}}/Job({{env_jobId}})",
+                            "host": ["{{url}}"],
+                            "path": ["{{api-jobsched}}", "Job({{env_jobId}})"]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "DELETE JOB",
+                    "event": [
+                        {
+                            "listen": "test",
+                            "script": {
+                                "exec": [
+                                    "if (pm.environment.get('env_featureFlag') === 'true') {\r",
+                                    "    pm.test(`${pm.request.url.path[3]} with. Successful POST request`, function () {\r",
+                                    "        pm.expect(pm.response.code).to.be.oneOf([204]);\r",
+                                    "    });\r",
+                                    "}"
+                                ],
+                                "type": "text/javascript"
+                            }
+                        }
+                    ],
+                    "request": {
+                        "method": "DELETE",
+                        "header": [],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{url}}/{{api-jobsched}}/Job({{env_jobId}})",
+                            "host": ["{{url}}"],
+                            "path": ["{{api-jobsched}}", "Job({{env_jobId}})"]
+                        }
+                    },
+                    "response": []
+                }
+            ]
+        }
+    ],
+    "auth": {
+        "type": "bearer",
+        "bearer": [
+            {
+                "key": "token",
+                "value": "{{jwt}}",
+                "type": "string"
+            }
+        ]
+    },
+    "event": [
+        {
+            "listen": "prerequest",
+            "script": {
+                "type": "text/javascript",
+                "exec": [""]
+            }
+        },
+        {
+            "listen": "test",
+            "script": {
+                "type": "text/javascript",
+                "exec": [""]
+            }
+        }
+    ],
+    "variable": [
+        {
+            "key": "api-bp",
+            "value": "api/beta/businesspartner/v2"
+        },
+        {
+            "key": "api-config",
+            "value": "api/config/v1"
+        },
+        {
+            "key": "api-bp-config",
+            "value": "api/beta/businesspartner/v2/config"
+        },
+        {
+            "key": "jira-issue",
+            "value": "UTILITIESCLOUDSOLUTION-2916"
+        },
+        {
+            "key": "api-jobsched",
+            "value": "api/jobscheduler/v1",
+            "type": "string"
+        }
+    ]
+}

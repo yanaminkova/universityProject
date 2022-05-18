@@ -1,0 +1,140 @@
+code;name;descr
+000000;Business Partner (Gen.);Business Partner (General)
+BBP000;Vendor;Vendor
+BBP001;Bidder;Bidder
+BBP002;Portal Provider;Portal Provider
+BBP003;Plant;Plant
+BBP004;Purchasing Firm;Purchasing Firm
+BBP005;Service Performer;Service Performer
+BBP006;Invoicing Party;Invoicing Party
+BBP010;Freelance;Freelance
+BKK010;Account Holder;Account Holder
+BKK020;Authorized Drawer;Authorized Drawer
+BKK030;Correspondence Recipient;Correspondence Recipient
+BKK200;Acct Maintenance Officer;Account Maintenance Officer
+BUP001;Contact Person;Contact Person
+BUP002;Prospect;Prospect
+BUP003;Employee;Employee
+BUP004;Organizational Unit;Organizational Unit
+BUP005;Internet User;Internet User
+CACSA1;Commission Contract Part.;Commission Contract Partner
+CACSA2;Commission Clerk;Commission Clerk
+CACSA3;Agents;Agents
+CBIH10;External Person;External Person
+CBIH20;Authority;Authority
+CLERK1;First Processor;First Processor
+CLERK2;Second Processor;Second Processor
+CMS001;Collateral Partner;CMS Collateral Partner
+CRM000;Sold-To Party;Sold-To Party
+CRM002;Goods Recipient;Goods Recipient
+CRM003;Payer;Payer
+CRM004;Bill-To Party;Bill-To Party
+CRM007;Supplier;Supplier
+CRM010;Carrier;Carrier
+CRM012;Consolidator;Consolidating Plant
+CRM013;Remanufacturer;Remanufacturer
+FLCU00;FI Customer;Business Partner FI Customer
+FLCU01;Customer;Business Partner Customer
+FLVN00;FI Vendor;Business Partner Vendor
+FLVN01;Vendor;Business Partner Vendor
+FS0000;Financial Services BP;Financial Services Business Partner
+FS0003;BP Differentiation;BP Financial Services with Differentiation
+FS0KNE;Borrower Entity;Business Partner Borrower Entity
+HEA010;Doctor;Doctor
+HEA020;External Physician;External Physician
+HEA030;Health Center;Health Center
+HEA040;Laboratory;Laboratory
+HEA050;External Company;External Company
+HR1000;HR- Payee;Human Resources Payee
+LM0001;Warehouse Worker;Warehouse Worker
+MKK;Contract Partner;Contract Partner
+PSSP01;Sponsor;Sponsor
+RCFAGY;Agency;Agency
+RCFBRA;Branch Role;
+RCFVEN;Service Provider;Service Provider
+RTP010;Beneficiary;Retirement Plan Beneficiary
+RTP050;Deceased Ret.Plan Holder;Deceased Holder of a Retirement Plan
+TM0001;Driver;Driver
+TR0100;Main Loan Partner;Main Loan Partner
+TR0101;Borrower;Borrower
+TR0110;Prospect;Prospect
+TR0113;Credit Standing Check;Credit Standing Check
+TR0115;Special Arrangement;Special Arrangement
+TR0120;Cust. Authorized Drawer;Authorized Drawer
+TR0121;Other Loan Partner;Other Loan Partner with Customer Account
+TR0150;Issuer;Issuer
+TR0151;Counterparty;Counterparty
+TR0152;Depository Bank;Depository Bank
+TR0153;Paying Bank;Paying Bank
+TR0154;Beneficiary;Beneficiary
+TR0155;Global Custodian;Global Custodian
+TR0156;Local Agent;Local Agent
+TR0157;Place of Settlement;Place of Settlement
+TR0160;Ultimate Borrower;Ultimate Borrower
+TR0200;Guarantor;Guarantor
+TR0202;Alternative Payer;Alternative Payer
+TR0203;Collector;Collector
+TR0600;Master Tenant w.Cust.Acct;Master Tenant with Customer Account
+TR0601;Tenant (w/o Cust.Account);Tenant (Without Customer Account)
+TR0602;Landlord w.Vendor Account;Landlord with a Vendor Account
+TR0603;Partner w. Customer Acct;Partner with a Customer Account
+TR0604;Partner w. Vendor Account;Partner with a Vendor Account
+TR0605;Owner (Customer);Owner (Customer)
+TR0606;Manager w. Vendor Acct;Manager w. Vendor Acct
+TR0610;Tenant Ext.Compar.Apartmt;Tenant External Comparative Apartment
+TR0622;Subsidizer;Subsidizer
+TR0624;Subsidizer (w.Cust.Acct);Subsidizer (with Customer Account)
+TR0630;Court;Court
+TR0635;State Central Bank;State Central Bank
+TR0636;Bank for Rent Deposit;Bank for Rent Deposit
+TR0640;Applicant;Applicant
+TR0641;Co-Applicant;Co-Applicant
+TR0645;Authorized Occupant;Authorized Occupant
+TR0646;Auth. to Suggest Tenant;Authorized to Suggest Tenant
+TR0655;Guarantor;Guarantor
+TR0700;Policyholder;Policyholder
+TR0701;Insurer;Insurer
+TR0702;Person Insured;Person Insured
+TR0703;Bank;Bank
+TR0704;Insurance Tracking Vendor;Insurance Tracking Vendor
+TR0705;Payer;Payer
+TR0706;Insurance Company Agent;Insurance Company Agent
+TR0800;Owner;Owner
+TR0801;Broker;Broker
+TR0802;Notary;Notary
+TR0803;Property Developer;Property Developer
+TR0804;Primary Contractor;Primary Contractor
+TR0805;Primary Receiver;Primary Receiver
+TR0806;Administrator;Administrator
+TR0807;Technology;Technology
+TR0808;Janitor;Janitor
+TR0809;Architect;Architect
+TR0810;Land Registry;Land Registry
+TR0811;Legal Owner;Legal Owner
+TR0812;Land Lease Right Holder;Land Lease Right Holder
+TR0813;Occupant;Occupant
+TR0814;Assignment Planner;Assignment Planner
+TR0815;Appraiser;Appraiser
+TR0817;Reservation Requester;Reservation Requester
+TR0818;Cust. Bill-To Party;Cust. Bill-To Party
+TR0820;Survey Office;Survey Office
+TR0821;Tax Office;Tax Office
+TR0822;Creditor;Creditor
+TR0823;Holder;Holder (of Land Rights)
+TR0824;Obligated Party;Obligated Party (Regarding Land Rights)
+TR0825;Property Tax Office;Property Tax Office - Municipality
+TR0826;Stamp Tax Office;Stamp Tax Office
+TR0850;Corresp. Partner (priv.);Correspondence Partner (Priv.)
+TR0860;Corresp. Partner (Bus.);Correspondence Partner (Bus.)
+TR0990;Loan Contract Officer;Loan Contract Officer
+TR0991;Loan Rollover Officer;Loan Rollover Officer
+TR0992;Loan Accounting Officer;Loan Accounting Officer
+TR0995;Loans Officer;Loans Officer
+TR0997;SCS Clerk;Service Charge Settlement Clerk
+TR0998;Clerk;Clerk
+TXS001;Investor;Investor
+UDM000;Collections Management;Business Partner Collections Management
+UKM000;SAP Credit Management;SAP Credit Management
+VLC001;End Customer;End Customer
+WFVN00;FI Workforce Creditor;FI Workforce Creditor
+ZIBTST;Ingo's Site Role;Ingo's Site Role

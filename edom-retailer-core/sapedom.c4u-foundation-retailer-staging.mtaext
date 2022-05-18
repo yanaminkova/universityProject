@@ -1,0 +1,82 @@
+## SAP Cloud for Utilities Foundation Retailer MTA configuration for staging deployment
+# Verify with mbt mtad-gen -e ./sapedom.c4u-foundation-retailer-staging.mtaext
+_schema-version: "3.1"
+extends: com.sap.c4u.foundation.retailer.core
+ID: com.sap.c4u.foundation.retailer.core.staging
+parameters:
+  broker-credentials: "<%= brokerCredentials %>"
+  xsappname: c4u-foundation-retailer-staging
+  displayName: SAP Cloud for Utilities Foundation Retailer Staging
+modules:
+  - name: c4u-foundation-retailer-srv
+    requires:
+      - name: c4u-foundation-retailer-autoscaler
+        parameters:
+          config:
+            instance_min_count: 2
+            instance_max_count: 10
+            scaling_rules:
+              - metric_type: memoryutil
+                threshold: 80
+                operator: '>='
+                adjustment: '+1'
+              - metric_type: memoryutil 
+                threshold: 60
+                operator: '<' 
+                cool_down_secs: 300
+                adjustment: '-1'
+              - metric_type: cpu
+                threshold: 80
+                operator: '>='
+                adjustment: '+1'
+              - metric_type: cpu 
+                threshold: 60
+                operator: '<' 
+                cool_down_secs: 300
+                adjustment: '-1'
+              - metric_type: responsetime
+                threshold: 500
+                operator: '>='
+                adjustment: '+1'
+              - metric_type: responsetime 
+                threshold: 300
+                operator: '<' 
+                cool_down_secs: 300
+                adjustment: '-1'
+    properties:
+      CDS_MULTITENANCY_DEPS:
+        - c4u-foundation-retailer-dest
+        - c4u-foundation-retailer-pdm
+        - c4u-foundation-retailer-drm
+        - c4u-foundation-retailer-em
+        - c4u-foundation-retailer-job
+        - c4u-foundation-retailer-portal
+  - name: c4u-foundation-retailer-app
+    parameters:
+      routes:
+        - route: "*.${xsappname}.${domain}"
+  - name: c4u-foundation-retailer-broker
+    requires:
+      - name: srv-binding
+        properties:
+          SBF_CATALOG_FILE: catalog-staging.json
+          SBF_SERVICE_CONFIG:
+            c4u-foundation-retailer-staging-api:
+              extend_credentials:
+                per_plan:
+                  standard:
+                    endpoints:
+                      v1: ~{srv-url}/api/v1                     
+resources:
+  - name: c4u-foundation-retailer-dest
+    parameters:
+      service-name: c4u-foundation-retailer-dest
+  - name: c4u-foundation-retailer-sm
+    parameters:
+      service-name: c4u-foundation-retailer-sm
+  - name: c4u-foundation-retailer-app-logs
+    parameters:
+      service-name: c4u-foundation-retailer-app-logs
+  - name: c4u-foundation-retailer-audit
+    parameters:
+      service-name: c4u-foundation-retailer-audit

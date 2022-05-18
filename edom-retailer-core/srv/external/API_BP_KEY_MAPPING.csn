@@ -1,0 +1,210 @@
+{
+  "definitions": {
+    "API_BP_KEY_MAPPING": {
+      "kind": "service"
+    },
+    "API_BP_KEY_MAPPING.BPToKeyMapping": {
+      "kind": "entity",
+      "@cds.persistence.skip": true,
+      "elements": {
+        "Id": {
+          "key": true,
+          "type": "cds.UUID"
+        },
+        "AuthorizationGroup": {
+          "type": "cds.String",
+          "length": 4
+        },
+        "KeymappingGroupID": {
+          "type": "cds.UUID"
+        },
+        "BusinessSystemId_Id": {
+          "type": "cds.UUID"
+        }
+      }
+    },
+    "API_BP_KEY_MAPPING.BPToMultipleAssignmentMapping": {
+      "kind": "entity",
+      "@cds.persistence.skip": true,
+      "elements": {
+        "Id": {
+          "key": true,
+          "type": "cds.UUID"
+        },
+        "Object_Id": {
+          "type": "cds.String",
+          "length": 10
+        },
+        "Object_Indicator": {
+          "type": "cds.String",
+          "length": 1
+        },
+        "ChildKeyMappingId": {
+          "type": "cds.UUID"
+        },
+        "ParentKeyMappingId": {
+          "type": "cds.UUID"
+        },
+        "BusinessSystemId_Id": {
+          "type": "cds.UUID"
+        },
+        "Parent_Id": {
+          "type": "cds.UUID"
+        },
+        "BusinessPartner": {
+          "type": "cds.String",
+          "length": 10
+        },
+        "to_BusinessSystem": {
+          "type": "cds.Association",
+          "target": "API_BP_KEY_MAPPING.BusinessSystem",
+          "on": [
+            {
+              "ref": [
+                "to_BusinessSystem",
+                "Id"
+              ]
+            },
+            "=",
+            {
+              "ref": [
+                "BusinessSystemId_Id"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "API_BP_KEY_MAPPING.BusinessPartnerKeyMapping": {
+      "kind": "entity",
+      "@cds.persistence.skip": true,
+      "elements": {
+        "Id": {
+          "key": true,
+          "type": "cds.UUID"
+        },
+        "BusinessSystemId_Id": {
+          "type": "cds.UUID"
+        },
+        "BusinessPartnerId": {
+          "type": "cds.UUID"
+        },
+        "BusinessPartner": {
+          "type": "cds.String",
+          "length": 10
+        },
+        "BusinessPartnerExternalId": {
+          "type": "cds.String",
+          "length": 100
+        },
+        "Supplier": {
+          "type": "cds.String",
+          "length": 10
+        },
+        "Customer": {
+          "type": "cds.String",
+          "length": 10
+        },
+        "KeymappingGroupID": {
+          "type": "cds.UUID"
+        },
+        "IAMId": {
+          "type": "cds.String",
+          "length": 100
+        },
+        "isExternal": {
+          "type": "cds.Boolean"
+        },
+        "AuthorizationGroup": {
+          "type": "cds.String",
+          "length": 4
+        },
+        "to_MultipleAssignmentBPKeyMapping": {
+          "type": "cds.Association",
+          "target": "API_BP_KEY_MAPPING.MultipleAssignmentBPKeyMapping",
+          "cardinality": {
+            "max": "*"
+          }
+        },
+        "to_BusinessSystem": {
+          "type": "cds.Association",
+          "target": "API_BP_KEY_MAPPING.BusinessSystem",
+          "on": [
+            {
+              "ref": [
+                "to_BusinessSystem",
+                "Id"
+              ]
+            },
+            "=",
+            {
+              "ref": [
+                "BusinessSystemId_Id"
+              ]
+            }
+          ]
+        },
+        "to_BPCustomerMapping": {
+          "type": "cds.Association",
+          "target": "API_BP_KEY_MAPPING.BPToMultipleAssignmentMapping",
+          "cardinality": {
+            "max": "*"
+          }
+        },
+        "to_BPSupplierMapping": {
+          "type": "cds.Association",
+          "target": "API_BP_KEY_MAPPING.BPToMultipleAssignmentMapping",
+          "cardinality": {
+            "max": "*"
+          }
+        },
+        "to_BusinessPartner": {
+          "type": "cds.Association",
+          "target": "API_BP_KEY_MAPPING.BPToKeyMapping"
+        }
+      }
+    },
+    "API_BP_KEY_MAPPING.BusinessSystem": {
+      "kind": "entity",
+      "@cds.persistence.skip": true,
+      "elements": {
+        "Id": {
+          "key": true,
+          "type": "cds.UUID"
+        },
+        "BusinessSystem": {
+          "type": "cds.String",
+          "length": 60
+        },
+        "SAPClientId": {
+          "type": "cds.String",
+          "length": 3
+        }
+      }
+    },
+    "API_BP_KEY_MAPPING.MultipleAssignmentBPKeyMapping": {
+      "kind": "entity",
+      "@cds.persistence.skip": true,
+      "elements": {
+        "Id": {
+          "key": true,
+          "type": "cds.UUID"
+        },
+        "Object_Id": {
+          "type": "cds.String",
+          "length": 10
+        },
+        "Parent_Id": {
+          "type": "cds.UUID"
+        },
+        "Object_Indicator": {
+          "type": "cds.String",
+          "length": 1
+        },
+        "KeymappingGroupID": {
+          "type": "cds.UUID"
+        }
+      }
+    }
+  }
+} 

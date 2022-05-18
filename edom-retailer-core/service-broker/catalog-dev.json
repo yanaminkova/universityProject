@@ -1,0 +1,29 @@
+{
+    "services": [
+        {
+            "name": "c4u-foundation-retailer-dev-api",
+            "id": "cc266901-6795-423c-8d1b-3fca1009a84e",
+            "description": "Access SAP Cloud for Utilities Foundation Retailer Development API.",
+            "bindable": true,
+            "metadata": {
+                "displayName": "SAP Cloud for Utilities Foundation Retailer Development API",
+                "longDescription": "Access SAP Cloud for Utilities Foundation Retailer Development API.",
+                "sap": {
+                    "tenant_aware": true,
+                    "instance_isolation": true,
+                    "support_btp_brand": true
+                }
+            },
+            "plans": [
+                {
+                    "name": "standard",
+                    "id": "94721426-3571-45d3-8ad0-e94b1f82ca61",
+                    "description": "Standard Plan",
+                    "free": true,
+                    "bindable": true,
+                    "plan_updateable": true
+                }
+            ]
+        }
+    ]
+}

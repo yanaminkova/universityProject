@@ -1,0 +1,1913 @@
+[
+    {
+        "@odata.context": "$metadata#Logs",
+        "value": [
+            {
+                "instance": {
+                    "type": {
+                        "code": "HAWA"
+                    },
+                    "isProductHighlyViscous": false,
+                    "areProductEffectiveParameterValuesAssigned": false,
+                    "isProductEnvironmentallyRelevant": false,
+                    "isApprovedBatchRecordRequired": false,
+                    "isInBulkTransport": false,
+                    "isConfigurable": false,
+                    "isMarkedForDeletion": false,
+                    "isBatchManagementRequired": false,
+                    "displayId": "4063",
+                    "isRelevantForHazardousSubstances": false,
+                    "isProductLocked": false,
+                    "salesAspect": {
+                        "transportationGroup": {
+                            "code": "0001"
+                        },
+                        "division": {
+                            "code": "00"
+                        },
+                        "stackingFactor": 0,
+                        "excessVolumeTolerance": "0.0",
+                        "isClosedPackagingProduct": false,
+                        "salesStatusValidityDate": "2021-12-01",
+                        "salesStatus": {
+                            "code": "01"
+                        },
+                        "excessWeightTolerance": "0.0"
+                    },
+                    "qualityInspectionAspect": {
+                        "isActive": false
+                    },
+                    "productionAspect": {
+                        "totalShelfLifeStoragePercent": 0,
+                        "totalShelfLife": 0
+                    },
+                    "description": [
+                        {
+                            "lang": "en",
+                            "content": "Text."
+                        },
+                        {
+                            "lang": "ru",
+                            "content": "Text in russian."
+                        }
+                    ],
+                    "unitOfMeasures": [
+                        {
+                            "measurementUnit": {
+                                "code": "PCE"
+                            }
+                        }
+                    ],
+                    "document": {
+                        "pageCount": "000",
+                        "isCreatedByCAD": false
+                    },
+                    "servicePartsManagementAspect": {
+                        "overcapacityTolerance": "0.0",
+                        "hasVariableTareWeight": false,
+                        "maximumCapacity": "0.000"
+                    },
+                    "name": [
+                        {
+                            "lang": "en",
+                            "content": "name in english"
+                        },
+                        {
+                            "lang": "ru",
+                            "content": "name in russian"
+                        }
+                    ],
+                    "unitOfMeasureConversions": [
+                        {
+                            "quantityDenominator": "1.0",
+                            "measurementUnit2": {
+                                "code": "PCE"
+                            },
+                            "quantityNumerator": "1.0",
+                            "measurementUnit1": {
+                                "code": "PCE"
+                            }
+                        }
+                    ],
+                    "id": "ca3aac87-bd9b-4cce-adb1-8443dbd2b61d",
+                    "baseUnitOfMeasure": {
+                        "code": "PCE"
+                    }
+                },
+                "localIds": [
+                    {
+                        "context": {
+                            "application": "MDI",
+                            "tenant": "S4MDIPRDCT",
+                            "type": "sap.odm.product.Product",
+                            "additionalContext": "sap.oitc.20"
+                        },
+                        "status": "active",
+                        "localId": "4063"
+                    },
+                    {
+                        "context": {
+                            "application": "MDI",
+                            "tenant": "S4MDIPRDCT",
+                            "type": "sap.odm.product.Product",
+                            "additionalContext": "sap.oitc.929"
+                        },
+                        "status": "active",
+                        "localId": "ca3aac87-bd9b-4cce-adb1-8443dbd2b61d"
+                    },
+                    {
+                        "context": {
+                            "application": "s4",
+                            "tenant": "0LOALS1",
+                            "type": "sap.odm.product.Product",
+                            "additionalContext": "sap.oitc.20"
+                        },
+                        "status": "active",
+                        "localId": "4063"
+                    }
+                ],
+                "event": "created",
+                "versionId": "d3510043-5032-4541-89d4-3fac137fb9d5"
+            },
+            {
+                "instance": {
+                    "type": {
+                        "code": "HAWA"
+                    },
+                    "isProductHighlyViscous": false,
+                    "areProductEffectiveParameterValuesAssigned": false,
+                    "isProductEnvironmentallyRelevant": false,
+                    "isApprovedBatchRecordRequired": false,
+                    "isInBulkTransport": false,
+                    "isConfigurable": false,
+                    "isMarkedForDeletion": false,
+                    "isBatchManagementRequired": false,
+                    "displayId": "4062",
+                    "isRelevantForHazardousSubstances": false,
+                    "isProductLocked": false,
+                    "salesAspect": {
+                        "transportationGroup": {
+                            "code": "0001"
+                        },
+                        "stackingFactor": 0,
+                        "excessVolumeTolerance": "0.0",
+                        "isClosedPackagingProduct": false,
+                        "salesStatusValidityDate": "2021-12-01",
+                        "salesStatus": {
+                            "code": "01"
+                        },
+                        "excessWeightTolerance": "0.0"
+                    },
+                    "qualityInspectionAspect": {
+                        "isActive": false
+                    },
+                    "productionAspect": {
+                        "totalShelfLifeStoragePercent": 0,
+                        "totalShelfLife": 0
+                    },
+                    "description": [
+                        {
+                            "lang": "en",
+                            "content": "Basic text."
+                        },
+                        {
+                            "lang": "ru",
+                            "content": "Basic text in russian."
+                        }
+                    ],
+                    "unitOfMeasures": [
+                        {
+                            "measurementUnit": {
+                                "code": "PCE"
+                            }
+                        }
+                    ],
+                    "document": {
+                        "pageCount": "000",
+                        "isCreatedByCAD": false
+                    },
+                    "servicePartsManagementAspect": {
+                        "overcapacityTolerance": "0.0",
+                        "hasVariableTareWeight": false,
+                        "maximumCapacity": "0.000"
+                    },
+                    "name": [
+                        {
+                            "lang": "en",
+                            "content": "name in english"
+                        },
+                        {
+                            "lang": "ru",
+                            "content": "name in russian"
+                        }
+                    ],
+                    "unitOfMeasureConversions": [
+                        {
+                            "quantityDenominator": "1.0",
+                            "measurementUnit2": {
+                                "code": "PCE"
+                            },
+                            "quantityNumerator": "1.0",
+                            "measurementUnit1": {
+                                "code": "PCE"
+                            }
+                        }
+                    ],
+                    "id": "ba3aac87-bd9b-4cce-adb1-8443dbd2b61d",
+                    "baseUnitOfMeasure": {
+                        "code": "PCE"
+                    }
+                },
+                "localIds": [
+                    {
+                        "context": {
+                            "application": "MDI",
+                            "tenant": "S4MDIPRDCT",
+                            "type": "sap.odm.product.Product",
+                            "additionalContext": "sap.oitc.20"
+                        },
+                        "status": "active",
+                        "localId": "4062"
+                    },
+                    {
+                        "context": {
+                            "application": "MDI",
+                            "tenant": "S4MDIPRDCT",
+                            "type": "sap.odm.product.Product",
+                            "additionalContext": "sap.oitc.929"
+                        },
+                        "status": "active",
+                        "localId": "ca3aac87-bd9b-4cce-adb1-8443dbd2b61d"
+                    },
+                    {
+                        "context": {
+                            "application": "s4",
+                            "tenant": "0LOALS1",
+                            "type": "sap.odm.product.Product",
+                            "additionalContext": "sap.oitc.20"
+                        },
+                        "status": "active",
+                        "localId": "4062"
+                    }
+                ],
+                "event": "created",
+                "versionId": "b3510043-5032-4541-89d4-3fac137fb9d5"
+            }
+        ],
+        "@odata.nextLink": "/v1/odm/2.3.0/sap.odm.product.Product/events?$deltatoken=F3uCu5u2.3.0u48u8u272u341u331u11u7u140u7u299u315u5u11u4u345u12u6u55u18u709u1043u705u38u9u640u11u496u1683u11u20u7u1058u23u11u68u1394u709u1043u705u1145u933u815u986u496u1683u914u847u685u1058u750u832u3u282u1u0u0"
+    },
+    {
+        "@odata.context": "$metadata#Logs",
+        "value": [
+            {
+                "instance": {
+                    "type": {
+                        "code": "HAWA"
+                    },
+                    "isProductHighlyViscous": false,
+                    "areProductEffectiveParameterValuesAssigned": false,
+                    "isProductEnvironmentallyRelevant": false,
+                    "isApprovedBatchRecordRequired": false,
+                    "isInBulkTransport": false,
+                    "isConfigurable": false,
+                    "isMarkedForDeletion": false,
+                    "isBatchManagementRequired": false,
+                    "displayId": "4063",
+                    "isRelevantForHazardousSubstances": false,
+                    "isProductLocked": false,
+                    "salesAspect": {
+                        "transportationGroup": {
+                            "code": "0001"
+                        },
+                        "division": {
+                            "code": "00"
+                        },
+                        "stackingFactor": 0,
+                        "excessVolumeTolerance": "0.0",
+                        "isClosedPackagingProduct": false,
+                        "salesStatusValidityDate": "2021-12-01",
+                        "salesStatus": {
+                            "code": "01"
+                        },
+                        "excessWeightTolerance": "0.0"
+                    },
+                    "qualityInspectionAspect": {
+                        "isActive": false
+                    },
+                    "productionAspect": {
+                        "totalShelfLifeStoragePercent": 0,
+                        "totalShelfLife": 0
+                    },
+                    "description": [
+                        {
+                            "lang": "en",
+                            "content": "Text."
+                        },
+                        {
+                            "lang": "ru",
+                            "content": "Text in russian."
+                        }
+                    ],
+                    "unitOfMeasures": [
+                        {
+                            "measurementUnit": {
+                                "code": "PCE"
+                            }
+                        }
+                    ],
+                    "document": {
+                        "pageCount": "000",
+                        "isCreatedByCAD": false
+                    },
+                    "servicePartsManagementAspect": {
+                        "overcapacityTolerance": "0.0",
+                        "hasVariableTareWeight": false,
+                        "maximumCapacity": "0.000"
+                    },
+                    "name": [
+                        {
+                            "lang": "en",
+                            "content": "name in english"
+                        },
+                        {
+                            "lang": "ru",
+                            "content": "name in russian"
+                        }
+                    ],
+                    "unitOfMeasureConversions": [
+                        {
+                            "quantityDenominator": "1.0",
+                            "measurementUnit2": {
+                                "code": "PCE"
+                            },
+                            "quantityNumerator": "1.0",
+                            "measurementUnit1": {
+                                "code": "PCE"
+                            }
+                        }
+                    ],
+                    "id": "ca3aac87-bd9b-4cce-adb1-8443dbd2b62d",
+                    "baseUnitOfMeasure": {
+                        "code": "PCE"
+                    }
+                },
+                "localIds": [
+                    {
+                        "context": {
+                            "application": "MDI",
+                            "tenant": "S4MDIPRDCT",
+                            "type": "sap.odm.product.Product",
+                            "additionalContext": "sap.oitc.20"
+                        },
+                        "status": "active",
+                        "localId": "4063"
+                    },
+                    {
+                        "context": {
+                            "application": "MDI",
+                            "tenant": "S4MDIPRDCT",
+                            "type": "sap.odm.product.Product",
+                            "additionalContext": "sap.oitc.929"
+                        },
+                        "status": "active",
+                        "localId": "ca3aac87-bd9b-4cce-adb1-8443dbd2b62d"
+                    },
+                    {
+                        "context": {
+                            "application": "s4",
+                            "tenant": "0LOALS1",
+                            "type": "sap.odm.product.Product",
+                            "additionalContext": "sap.oitc.20"
+                        },
+                        "status": "active",
+                        "localId": "4063"
+                    }
+                ],
+                "event": "created",
+                "versionId": "d3510043-5032-4541-89d4-3fac137fb9d5"
+            },
+            {
+                "instance": {
+                    "type": {
+                        "code": "HAWA"
+                    },
+                    "isProductHighlyViscous": false,
+                    "areProductEffectiveParameterValuesAssigned": false,
+                    "isProductEnvironmentallyRelevant": false,
+                    "isApprovedBatchRecordRequired": false,
+                    "isInBulkTransport": false,
+                    "isConfigurable": false,
+                    "isMarkedForDeletion": false,
+                    "isBatchManagementRequired": false,
+                    "displayId": "4062",
+                    "isRelevantForHazardousSubstances": false,
+                    "isProductLocked": false,
+                    "salesAspect": {
+                        "transportationGroup": {
+                            "code": "0001"
+                        },
+                        "stackingFactor": 0,
+                        "excessVolumeTolerance": "0.0",
+                        "isClosedPackagingProduct": false,
+                        "salesStatusValidityDate": "2021-12-01",
+                        "salesStatus": {
+                            "code": "01"
+                        },
+                        "excessWeightTolerance": "0.0"
+                    },
+                    "qualityInspectionAspect": {
+                        "isActive": false
+                    },
+                    "productionAspect": {
+                        "totalShelfLifeStoragePercent": 0,
+                        "totalShelfLife": 0
+                    },
+                    "description": [
+                        {
+                            "lang": "en",
+                            "content": "Basic text."
+                        },
+                        {
+                            "lang": "ru",
+                            "content": "Basic text in russian."
+                        }
+                    ],
+                    "unitOfMeasures": [
+                        {
+                            "measurementUnit": {
+                                "code": "PCE"
+                            }
+                        }
+                    ],
+                    "document": {
+                        "pageCount": "000",
+                        "isCreatedByCAD": false
+                    },
+                    "servicePartsManagementAspect": {
+                        "overcapacityTolerance": "0.0",
+                        "hasVariableTareWeight": false,
+                        "maximumCapacity": "0.000"
+                    },
+                    "name": [
+                        {
+                            "lang": "en",
+                            "content": "name in english"
+                        },
+                        {
+                            "lang": "ru",
+                            "content": "name in russian"
+                        }
+                    ],
+                    "unitOfMeasureConversions": [
+                        {
+                            "quantityDenominator": "1.0",
+                            "measurementUnit2": {
+                                "code": "PCE"
+                            },
+                            "quantityNumerator": "1.0",
+                            "measurementUnit1": {
+                                "code": "PCE"
+                            }
+                        }
+                    ],
+                    "id": "ba3aac87-bd9b-4cce-adb1-8443dbd2b63d",
+                    "baseUnitOfMeasure": {
+                        "code": "PCE"
+                    }
+                },
+                "localIds": [
+                    {
+                        "context": {
+                            "application": "MDI",
+                            "tenant": "S4MDIPRDCT",
+                            "type": "sap.odm.product.Product",
+                            "additionalContext": "sap.oitc.20"
+                        },
+                        "status": "active",
+                        "localId": "4062"
+                    },
+                    {
+                        "context": {
+                            "application": "MDI",
+                            "tenant": "S4MDIPRDCT",
+                            "type": "sap.odm.product.Product",
+                            "additionalContext": "sap.oitc.929"
+                        },
+                        "status": "active",
+                        "localId": "ca3aac87-bd9b-4cce-adb1-8443dbd2b63d"
+                    },
+                    {
+                        "context": {
+                            "application": "s4",
+                            "tenant": "0LOALS1",
+                            "type": "sap.odm.product.Product",
+                            "additionalContext": "sap.oitc.20"
+                        },
+                        "status": "active",
+                        "localId": "4062"
+                    }
+                ],
+                "event": "created",
+                "versionId": "b3510043-5032-4541-89d4-3fac137fb9d5"
+            }
+        ],
+        "@odata.nextLink": "/v1/odm/2.3.0/sap.odm.product.Product/events?$deltatoken=F3uCu5u2.3.0u48u8u272u341u331u11u7u140u7u299u315u5u11u4u345u12u6u55u18u709u1043u705u38u9u640u11u496u1683u11u20u7u1058u23u11u68u1394u709u1043u705u1145u933u815u986u496u1683u914u847u685u1058u750u832u3u282u1u0u1"
+    },
+    {
+        "@odata.context": "$metadata#Logs",
+        "value": [
+            {
+                "instance": {
+                    "type": {
+                        "code": "HAWA"
+                    },
+                    "isProductHighlyViscous": false,
+                    "areProductEffectiveParameterValuesAssigned": false,
+                    "isProductEnvironmentallyRelevant": false,
+                    "isApprovedBatchRecordRequired": false,
+                    "isInBulkTransport": false,
+                    "isConfigurable": false,
+                    "isMarkedForDeletion": false,
+                    "isBatchManagementRequired": false,
+                    "displayId": "4063",
+                    "isRelevantForHazardousSubstances": false,
+                    "isProductLocked": false,
+                    "salesAspect": {
+                        "transportationGroup": {
+                            "code": "0001"
+                        },
+                        "division": {
+                            "code": "00"
+                        },
+                        "stackingFactor": 0,
+                        "excessVolumeTolerance": "0.0",
+                        "isClosedPackagingProduct": false,
+                        "salesStatusValidityDate": "2021-12-01",
+                        "salesStatus": {
+                            "code": "01"
+                        },
+                        "excessWeightTolerance": "0.0"
+                    },
+                    "qualityInspectionAspect": {
+                        "isActive": false
+                    },
+                    "productionAspect": {
+                        "totalShelfLifeStoragePercent": 0,
+                        "totalShelfLife": 0
+                    },
+                    "description": [
+                        {
+                            "lang": "en",
+                            "content": "Text."
+                        },
+                        {
+                            "lang": "ru",
+                            "content": "Text in russian."
+                        }
+                    ],
+                    "unitOfMeasures": [
+                        {
+                            "measurementUnit": {
+                                "code": "PCE"
+                            }
+                        }
+                    ],
+                    "document": {
+                        "pageCount": "000",
+                        "isCreatedByCAD": false
+                    },
+                    "servicePartsManagementAspect": {
+                        "overcapacityTolerance": "0.0",
+                        "hasVariableTareWeight": false,
+                        "maximumCapacity": "0.000"
+                    },
+                    "name": [
+                        {
+                            "lang": "en",
+                            "content": "name in english"
+                        },
+                        {
+                            "lang": "ru",
+                            "content": "name in russian"
+                        }
+                    ],
+                    "unitOfMeasureConversions": [
+                        {
+                            "quantityDenominator": "1.0",
+                            "measurementUnit2": {
+                                "code": "PCE"
+                            },
+                            "quantityNumerator": "1.0",
+                            "measurementUnit1": {
+                                "code": "PCE"
+                            }
+                        }
+                    ],
+                    "id": "ca3aac87-bd9b-4cce-adb1-8443dbd2b64d",
+                    "baseUnitOfMeasure": {
+                        "code": "PCE"
+                    }
+                },
+                "localIds": [
+                    {
+                        "context": {
+                            "application": "MDI",
+                            "tenant": "S4MDIPRDCT",
+                            "type": "sap.odm.product.Product",
+                            "additionalContext": "sap.oitc.20"
+                        },
+                        "status": "active",
+                        "localId": "4063"
+                    },
+                    {
+                        "context": {
+                            "application": "MDI",
+                            "tenant": "S4MDIPRDCT",
+                            "type": "sap.odm.product.Product",
+                            "additionalContext": "sap.oitc.929"
+                        },
+                        "status": "active",
+                        "localId": "ca3aac87-bd9b-4cce-adb1-8443dbd2b64d"
+                    },
+                    {
+                        "context": {
+                            "application": "s4",
+                            "tenant": "0LOALS1",
+                            "type": "sap.odm.product.Product",
+                            "additionalContext": "sap.oitc.20"
+                        },
+                        "status": "active",
+                        "localId": "4063"
+                    }
+                ],
+                "event": "created",
+                "versionId": "d3510043-5032-4541-89d4-3fac137fb9d5"
+            },
+            {
+                "instance": {
+                    "type": {
+                        "code": "HAWA"
+                    },
+                    "isProductHighlyViscous": false,
+                    "areProductEffectiveParameterValuesAssigned": false,
+                    "isProductEnvironmentallyRelevant": false,
+                    "isApprovedBatchRecordRequired": false,
+                    "isInBulkTransport": false,
+                    "isConfigurable": false,
+                    "isMarkedForDeletion": false,
+                    "isBatchManagementRequired": false,
+                    "displayId": "4062",
+                    "isRelevantForHazardousSubstances": false,
+                    "isProductLocked": false,
+                    "salesAspect": {
+                        "transportationGroup": {
+                            "code": "0001"
+                        },
+                        "stackingFactor": 0,
+                        "excessVolumeTolerance": "0.0",
+                        "isClosedPackagingProduct": false,
+                        "salesStatusValidityDate": "2021-12-01",
+                        "salesStatus": {
+                            "code": "01"
+                        },
+                        "excessWeightTolerance": "0.0"
+                    },
+                    "qualityInspectionAspect": {
+                        "isActive": false
+                    },
+                    "productionAspect": {
+                        "totalShelfLifeStoragePercent": 0,
+                        "totalShelfLife": 0
+                    },
+                    "description": [
+                        {
+                            "lang": "en",
+                            "content": "Basic text."
+                        },
+                        {
+                            "lang": "ru",
+                            "content": "Basic text in russian."
+                        }
+                    ],
+                    "unitOfMeasures": [
+                        {
+                            "measurementUnit": {
+                                "code": "PCE"
+                            }
+                        }
+                    ],
+                    "document": {
+                        "pageCount": "000",
+                        "isCreatedByCAD": false
+                    },
+                    "servicePartsManagementAspect": {
+                        "overcapacityTolerance": "0.0",
+                        "hasVariableTareWeight": false,
+                        "maximumCapacity": "0.000"
+                    },
+                    "name": [
+                        {
+                            "lang": "en",
+                            "content": "name in english"
+                        },
+                        {
+                            "lang": "ru",
+                            "content": "name in russian"
+                        }
+                    ],
+                    "unitOfMeasureConversions": [
+                        {
+                            "quantityDenominator": "1.0",
+                            "measurementUnit2": {
+                                "code": "PCE"
+                            },
+                            "quantityNumerator": "1.0",
+                            "measurementUnit1": {
+                                "code": "PCE"
+                            }
+                        }
+                    ],
+                    "id": "ba3aac87-bd9b-4cce-adb1-8443dbd2b65d",
+                    "baseUnitOfMeasure": {
+                        "code": "PCE"
+                    }
+                },
+                "localIds": [
+                    {
+                        "context": {
+                            "application": "MDI",
+                            "tenant": "S4MDIPRDCT",
+                            "type": "sap.odm.product.Product",
+                            "additionalContext": "sap.oitc.20"
+                        },
+                        "status": "active",
+                        "localId": "4062"
+                    },
+                    {
+                        "context": {
+                            "application": "MDI",
+                            "tenant": "S4MDIPRDCT",
+                            "type": "sap.odm.product.Product",
+                            "additionalContext": "sap.oitc.929"
+                        },
+                        "status": "active",
+                        "localId": "ca3aac87-bd9b-4cce-adb1-8443dbd2b65d"
+                    },
+                    {
+                        "context": {
+                            "application": "s4",
+                            "tenant": "0LOALS1",
+                            "type": "sap.odm.product.Product",
+                            "additionalContext": "sap.oitc.20"
+                        },
+                        "status": "active",
+                        "localId": "4062"
+                    }
+                ],
+                "event": "created",
+                "versionId": "b3510043-5032-4541-89d4-3fac137fb9d5"
+            }
+        ],
+        "@odata.nextLink": "/v1/odm/2.3.0/sap.odm.product.Product/events?$deltatoken=F3uCu5u2.3.0u48u8u272u341u331u11u7u140u7u299u315u5u11u4u345u12u6u55u18u709u1043u705u38u9u640u11u496u1683u11u20u7u1058u23u11u68u1394u709u1043u705u1145u933u815u986u496u1683u914u847u685u1058u750u832u3u282u1u0u2"
+    },
+    {
+        "@odata.context": "$metadata#Logs",
+        "value": [
+            {
+                "instance": {
+                    "type": {
+                        "code": "HAWA"
+                    },
+                    "isProductHighlyViscous": false,
+                    "areProductEffectiveParameterValuesAssigned": false,
+                    "isProductEnvironmentallyRelevant": false,
+                    "isApprovedBatchRecordRequired": false,
+                    "isInBulkTransport": false,
+                    "isConfigurable": false,
+                    "isMarkedForDeletion": false,
+                    "isBatchManagementRequired": false,
+                    "displayId": "4063",
+                    "isRelevantForHazardousSubstances": false,
+                    "isProductLocked": false,
+                    "salesAspect": {
+                        "transportationGroup": {
+                            "code": "0001"
+                        },
+                        "division": {
+                            "code": "00"
+                        },
+                        "stackingFactor": 0,
+                        "excessVolumeTolerance": "0.0",
+                        "isClosedPackagingProduct": false,
+                        "salesStatusValidityDate": "2021-12-01",
+                        "salesStatus": {
+                            "code": "01"
+                        },
+                        "excessWeightTolerance": "0.0"
+                    },
+                    "qualityInspectionAspect": {
+                        "isActive": false
+                    },
+                    "productionAspect": {
+                        "totalShelfLifeStoragePercent": 0,
+                        "totalShelfLife": 0
+                    },
+                    "description": [
+                        {
+                            "lang": "en",
+                            "content": "Text."
+                        },
+                        {
+                            "lang": "ru",
+                            "content": "Text in russian."
+                        }
+                    ],
+                    "unitOfMeasures": [
+                        {
+                            "measurementUnit": {
+                                "code": "PCE"
+                            }
+                        }
+                    ],
+                    "document": {
+                        "pageCount": "000",
+                        "isCreatedByCAD": false
+                    },
+                    "servicePartsManagementAspect": {
+                        "overcapacityTolerance": "0.0",
+                        "hasVariableTareWeight": false,
+                        "maximumCapacity": "0.000"
+                    },
+                    "name": [
+                        {
+                            "lang": "en",
+                            "content": "name in english"
+                        },
+                        {
+                            "lang": "ru",
+                            "content": "name in russian"
+                        }
+                    ],
+                    "unitOfMeasureConversions": [
+                        {
+                            "quantityDenominator": "1.0",
+                            "measurementUnit2": {
+                                "code": "PCE"
+                            },
+                            "quantityNumerator": "1.0",
+                            "measurementUnit1": {
+                                "code": "PCE"
+                            }
+                        }
+                    ],
+                    "id": "ca3aac87-bd9b-4cce-adb1-8443dbd2b66d",
+                    "baseUnitOfMeasure": {
+                        "code": "PCE"
+                    }
+                },
+                "localIds": [
+                    {
+                        "context": {
+                            "application": "MDI",
+                            "tenant": "S4MDIPRDCT",
+                            "type": "sap.odm.product.Product",
+                            "additionalContext": "sap.oitc.20"
+                        },
+                        "status": "active",
+                        "localId": "4063"
+                    },
+                    {
+                        "context": {
+                            "application": "MDI",
+                            "tenant": "S4MDIPRDCT",
+                            "type": "sap.odm.product.Product",
+                            "additionalContext": "sap.oitc.929"
+                        },
+                        "status": "active",
+                        "localId": "ca3aac87-bd9b-4cce-adb1-8443dbd2b66d"
+                    },
+                    {
+                        "context": {
+                            "application": "s4",
+                            "tenant": "0LOALS1",
+                            "type": "sap.odm.product.Product",
+                            "additionalContext": "sap.oitc.20"
+                        },
+                        "status": "active",
+                        "localId": "4063"
+                    }
+                ],
+                "event": "created",
+                "versionId": "d3510043-5032-4541-89d4-3fac137fb9d5"
+            },
+            {
+                "instance": {
+                    "type": {
+                        "code": "HAWA"
+                    },
+                    "isProductHighlyViscous": false,
+                    "areProductEffectiveParameterValuesAssigned": false,
+                    "isProductEnvironmentallyRelevant": false,
+                    "isApprovedBatchRecordRequired": false,
+                    "isInBulkTransport": false,
+                    "isConfigurable": false,
+                    "isMarkedForDeletion": false,
+                    "isBatchManagementRequired": false,
+                    "displayId": "4062",
+                    "isRelevantForHazardousSubstances": false,
+                    "isProductLocked": false,
+                    "salesAspect": {
+                        "transportationGroup": {
+                            "code": "0001"
+                        },
+                        "stackingFactor": 0,
+                        "excessVolumeTolerance": "0.0",
+                        "isClosedPackagingProduct": false,
+                        "salesStatusValidityDate": "2021-12-01",
+                        "salesStatus": {
+                            "code": "01"
+                        },
+                        "excessWeightTolerance": "0.0"
+                    },
+                    "qualityInspectionAspect": {
+                        "isActive": false
+                    },
+                    "productionAspect": {
+                        "totalShelfLifeStoragePercent": 0,
+                        "totalShelfLife": 0
+                    },
+                    "description": [
+                        {
+                            "lang": "en",
+                            "content": "Basic text."
+                        },
+                        {
+                            "lang": "ru",
+                            "content": "Basic text in russian."
+                        }
+                    ],
+                    "unitOfMeasures": [
+                        {
+                            "measurementUnit": {
+                                "code": "PCE"
+                            }
+                        }
+                    ],
+                    "document": {
+                        "pageCount": "000",
+                        "isCreatedByCAD": false
+                    },
+                    "servicePartsManagementAspect": {
+                        "overcapacityTolerance": "0.0",
+                        "hasVariableTareWeight": false,
+                        "maximumCapacity": "0.000"
+                    },
+                    "name": [
+                        {
+                            "lang": "en",
+                            "content": "name in english"
+                        },
+                        {
+                            "lang": "ru",
+                            "content": "name in russian"
+                        }
+                    ],
+                    "unitOfMeasureConversions": [
+                        {
+                            "quantityDenominator": "1.0",
+                            "measurementUnit2": {
+                                "code": "PCE"
+                            },
+                            "quantityNumerator": "1.0",
+                            "measurementUnit1": {
+                                "code": "PCE"
+                            }
+                        }
+                    ],
+                    "id": "ba3aac87-bd9b-4cce-adb1-8443dbd2b67d",
+                    "baseUnitOfMeasure": {
+                        "code": "PCE"
+                    }
+                },
+                "localIds": [
+                    {
+                        "context": {
+                            "application": "MDI",
+                            "tenant": "S4MDIPRDCT",
+                            "type": "sap.odm.product.Product",
+                            "additionalContext": "sap.oitc.20"
+                        },
+                        "status": "active",
+                        "localId": "4062"
+                    },
+                    {
+                        "context": {
+                            "application": "MDI",
+                            "tenant": "S4MDIPRDCT",
+                            "type": "sap.odm.product.Product",
+                            "additionalContext": "sap.oitc.929"
+                        },
+                        "status": "active",
+                        "localId": "ca3aac87-bd9b-4cce-adb1-8443dbd2b67d"
+                    },
+                    {
+                        "context": {
+                            "application": "s4",
+                            "tenant": "0LOALS1",
+                            "type": "sap.odm.product.Product",
+                            "additionalContext": "sap.oitc.20"
+                        },
+                        "status": "active",
+                        "localId": "4062"
+                    }
+                ],
+                "event": "created",
+                "versionId": "b3510043-5032-4541-89d4-3fac137fb9d5"
+            }
+        ],
+        "@odata.nextLink": "/v1/odm/2.3.0/sap.odm.product.Product/events?$deltatoken=F3uCu5u2.3.0u48u8u272u341u331u11u7u140u7u299u315u5u11u4u345u12u6u55u18u709u1043u705u38u9u640u11u496u1683u11u20u7u1058u23u11u68u1394u709u1043u705u1145u933u815u986u496u1683u914u847u685u1058u750u832u3u282u1u0u3"
+    },
+    {
+        "@odata.context": "$metadata#Logs",
+        "value": [
+            {
+                "instance": {
+                    "type": {
+                        "code": "HAWA"
+                    },
+                    "isProductHighlyViscous": false,
+                    "areProductEffectiveParameterValuesAssigned": false,
+                    "isProductEnvironmentallyRelevant": false,
+                    "isApprovedBatchRecordRequired": false,
+                    "isInBulkTransport": false,
+                    "isConfigurable": false,
+                    "isMarkedForDeletion": false,
+                    "isBatchManagementRequired": false,
+                    "displayId": "4021",
+                    "isRelevantForHazardousSubstances": false,
+                    "isProductLocked": false,
+                    "salesAspect": {
+                        "stackingFactor": 0,
+                        "excessVolumeTolerance": "0.0",
+                        "isClosedPackagingProduct": false,
+                        "excessWeightTolerance": "0.0",
+                        "division": {
+                            "code": "00"
+                        }
+                    },
+                    "qualityInspectionAspect": {
+                        "isActive": false
+                    },
+                    "productionAspect": {
+                        "totalShelfLifeStoragePercent": 0,
+                        "totalShelfLife": 0
+                    },
+                    "unitOfMeasures": [
+                        {
+                            "measurementUnit": {
+                                "code": "PCE"
+                            }
+                        }
+                    ],
+                    "document": {
+                        "pageCount": "000",
+                        "isCreatedByCAD": false
+                    },
+                    "servicePartsManagementAspect": {
+                        "overcapacityTolerance": "0.0",
+                        "hasVariableTareWeight": false,
+                        "maximumCapacity": "0.000"
+                    },
+                    "name": [
+                        {
+                            "lang": "en",
+                            "content": "25.11 test 2 final 3 (changed 6)"
+                        }
+                    ],
+                    "unitOfMeasureConversions": [
+                        {
+                            "quantityDenominator": "1.0",
+                            "measurementUnit2": {
+                                "code": "PCE"
+                            },
+                            "quantityNumerator": "1.0",
+                            "measurementUnit1": {
+                                "code": "PCE"
+                            }
+                        }
+                    ],
+                    "id": "88bf7178-e5d0-47eb-a11f-c9c4e986d5a3",
+                    "baseUnitOfMeasure": {
+                        "code": "PCE"
+                    }
+                },
+                "localIds": [
+                    {
+                        "context": {
+                            "application": "MDI",
+                            "tenant": "S4MDIPRDCT",
+                            "type": "sap.odm.product.Product",
+                            "additionalContext": "sap.oitc.20"
+                        },
+                        "status": "active",
+                        "localId": "4021"
+                    },
+                    {
+                        "context": {
+                            "application": "MDI",
+                            "tenant": "S4MDIPRDCT",
+                            "type": "sap.odm.product.Product",
+                            "additionalContext": "sap.oitc.929"
+                        },
+                        "status": "active",
+                        "localId": "88bf7178-e5d0-47eb-a11f-c9c4e986d5a3"
+                    },
+                    {
+                        "context": {
+                            "application": "s4",
+                            "tenant": "0LOALS1",
+                            "type": "sap.odm.product.Product",
+                            "additionalContext": "sap.oitc.20"
+                        },
+                        "status": "active",
+                        "localId": "4021"
+                    }
+                ],
+                "event": "created",
+                "versionId": "80d304f4-d38e-4ac2-8b24-6b843782df44"
+            },
+            {
+                "instance": {
+                    "baseUnitOfMeasure": {
+                        "code": "TST"
+                    },
+                    "unitOfMeasureConversions": [
+                        {
+                            "measurementUnit1": {
+                                "code": "PF"
+                            },
+                            "measurementUnit2": {
+                                "code": "TST"
+                            },
+                            "quantityDenominator": "1.0",
+                            "quantityNumerator": "48.0"
+                        },
+                        {
+                            "measurementUnit1": {
+                                "code": "TST"
+                            },
+                            "measurementUnit2": {
+                                "code": "TST"
+                            },
+                            "quantityDenominator": "1.0",
+                            "quantityNumerator": "1.0"
+                        }
+                    ],
+                    "name": [
+                        {
+                            "lang": "zh",
+                            "content": "贸易货物 0011，计划已完成，定期处理"
+                        },
+                        {
+                            "lang": "th",
+                            "content": "สินค้าเพื่อขาย 0011, PD, การจัดหาปกติ"
+                        },
+                        {
+                            "lang": "ko",
+                            "content": "교역품 0011, PD, 정기 처리"
+                        },
+                        {
+                            "lang": "ro",
+                            "content": "Prod.comerc.0011,PD, agent prel.obişnuit"
+                        },
+                        {
+                            "lang": "sl",
+                            "content": "Trgovsko blago 0011, PD, redna nabava"
+                        },
+                        {
+                            "lang": "hr",
+                            "content": "TrgRoba 0011, TčkPonNaručiv, RedNabava"
+                        },
+                        {
+                            "lang": "ms",
+                            "content": "Barangan Prdgngan 0011,PD,Tatacara Biasa"
+                        },
+                        {
+                            "lang": "uk",
+                            "content": "Промисловий товар 0011,PD, регул.загот."
+                        },
+                        {
+                            "lang": "et",
+                            "content": "Kaub. toode 0011, PD, tavatöötlus"
+                        },
+                        {
+                            "lang": "ar",
+                            "content": "بضائع تجارية 0011،انتهى التخطيط، م.عادية"
+                        },
+                        {
+                            "lang": "he",
+                            "content": "סחורה 0011, PD, רכש רגיל"
+                        },
+                        {
+                            "lang": "cs",
+                            "content": "Obch. zboží 0011,PD,prav.zprac."
+                        },
+                        {
+                            "lang": "de",
+                            "content": "Handelsware 0011, PD, Reguläre Beschaff."
+                        },
+                        {
+                            "lang": "en",
+                            "content": "Trading Good 0011,PD,Regular Proc."
+                        },
+                        {
+                            "lang": "fr",
+                            "content": "Prod. commercial. 0011,PD, Trait. rég."
+                        },
+                        {
+                            "lang": "el",
+                            "content": "Εμπόρευμα 0011,PD,Κανον.Διαδικ."
+                        },
+                        {
+                            "lang": "hu",
+                            "content": "Ker. áru 0011, PD, szokásos beszerzés"
+                        },
+                        {
+                            "lang": "it",
+                            "content": "Articolo comm. 0011,PD, appr. regolare"
+                        },
+                        {
+                            "lang": "ja",
+                            "content": "商品 0011、PD、定期処理"
+                        },
+                        {
+                            "lang": "da",
+                            "content": "Handelsvare 0011, PD, regulær anskaf."
+                        },
+                        {
+                            "lang": "pl",
+                            "content": "Towar handlowy 0011,PD,nabycie regularne"
+                        },
+                        {
+                            "lang": "zf",
+                            "content": "貿易貨物 0011、PD、一般處理"
+                        },
+                        {
+                            "lang": "nl",
+                            "content": "Hand.goed. 0011, PD, normale verwerking"
+                        },
+                        {
+                            "lang": "no",
+                            "content": "Handelsvare 0011, PD, regulær ansk."
+                        },
+                        {
+                            "lang": "pt",
+                            "content": "Prod.comerc.0011, PD, suprimento regular"
+                        },
+                        {
+                            "lang": "sk",
+                            "content": "Obchodný tovar 0011,PD,regul.obstar."
+                        },
+                        {
+                            "lang": "ru",
+                            "content": "Торг. изделие 0011, PD, рег. заготовка"
+                        },
+                        {
+                            "lang": "es",
+                            "content": "Mercadería 0011,PD, proc.habitual"
+                        },
+                        {
+                            "lang": "tr",
+                            "content": "Ticari ürün 0011,PD, düzenli tedarik"
+                        },
+                        {
+                            "lang": "fi",
+                            "content": "Kauppatavara 0011,PD,säännöll. hankinta"
+                        },
+                        {
+                            "lang": "sv",
+                            "content": "Handelsvara 0011,PD,vanlig anskaffning"
+                        },
+                        {
+                            "lang": "bg",
+                            "content": "Търг.стока 0011,PD,редовно снабдяване"
+                        },
+                        {
+                            "lang": "lt",
+                            "content": "Prekybos gam. 0011,PD,reguliarus apdor."
+                        },
+                        {
+                            "lang": "lv",
+                            "content": "Tirdzn. prece 0011, PD, regulāra sagāde"
+                        },
+                        {
+                            "lang": "ca",
+                            "content": "Mercaderia 0011, PD, proc.regular"
+                        },
+                        {
+                            "lang": "sh",
+                            "content": "Trgovačka roba 0011, DN, red.nabavka"
+                        },
+                        {
+                            "lang": "hi",
+                            "content": "व्यापार वस्तु 0011,PD,नियमित कार्यविधि"
+                        },
+                        {
+                            "lang": "kk",
+                            "content": "Сауда тауары 0011, PD, жүйелі дайындық"
+                        },
+                        {
+                            "lang": "vi",
+                            "content": "Thương phẩm 0011,PD,b.ph x.lý th.xuyên"
+                        }
+                    ],
+                    "servicePartsManagementAspect": {
+                        "overcapacityTolerance": "0.0",
+                        "hasVariableTareWeight": false,
+                        "maximumCapacity": "0.000"
+                    },
+                    "document": {
+                        "isCreatedByCAD": false,
+                        "pageCount": "000"
+                    },
+                    "unitOfMeasures": [
+                        {
+                            "measurementUnit": {
+                                "code": "PF"
+                            }
+                        },
+                        {
+                            "measurementUnit": {
+                                "code": "TST"
+                            }
+                        }
+                    ],
+                    "plants": [
+                        {
+                            "id": "1010",
+                            "isBatchManagementRequired": false,
+                            "isMarkedForDeletion": false,
+                            "isNegativeStockAllowed": false
+                        }
+                    ],
+                    "financialAspect": {
+                        "costingPlantData": [
+                            {
+                                "id": "1010",
+                                "isFixedPriceCoProduct": false,
+                                "isProductCostingRelevant": false,
+                                "costingLotSize": "0.0"
+                            }
+                        ]
+                    },
+                    "internationalTradeAspect": {
+                        "internationalTradePlants": [
+                            {
+                                "id": "1010"
+                            }
+                        ]
+                    },
+                    "productionAspect": {
+                        "totalShelfLifeStoragePercent": 0,
+                        "totalShelfLife": 0,
+                        "expirationDate": "B",
+                        "productPlanningPlants": [
+                            {
+                                "isItemRelevantToJITDeliverySchedules": false,
+                                "isCorrectionFactorRequired": false,
+                                "purchaseOrderRoundingValue": "0.0",
+                                "minimumLotSize": "0.0",
+                                "reOrderThresholdQuantity": "0.0",
+                                "id": "1010",
+                                "fixedLotSize": "0.0",
+                                "forecastModelResetIndicator": false,
+                                "minimumSafetyStockQuantity": "0.0",
+                                "isProductWithdrawnFromProductionBin": false,
+                                "setupAndTearDownTime": "0.00",
+                                "safetyStockQuantity": "0.0",
+                                "maximumStockQuantity": "0.0",
+                                "isRepetitiveManufacturingAllowed": false,
+                                "isCoProduct": false,
+                                "maximumLotSize": "0.0",
+                                "periodType": {
+                                    "code": "M"
+                                },
+                                "cycleCountingIndicator": false
+                            }
+                        ],
+                        "productMovementPlants": [
+                            {
+                                "isBulkComponent": false,
+                                "isOriginalBatchManagementAllowed": false,
+                                "isUnlimitedOverdeliveryAllowed": false,
+                                "id": "1010"
+                            }
+                        ],
+                        "productSCMPlants": [
+                            {
+                                "safetyViolationPenalty": "0.000",
+                                "arePeggingAlertsRequired": false,
+                                "useReceiptElementFullQuantity": false,
+                                "useLocationDependentShelfLife": false,
+                                "useStockElementFullQuantity": false,
+                                "locationDependentMinShelfLife": 0,
+                                "id": "1010",
+                                "productDependentStorageCost": "0.000"
+                            }
+                        ]
+                    },
+                    "procurementAspect": {
+                        "procurementPlants": [
+                            {
+                                "isAutomaticPurchaseOrderAllowed": false,
+                                "isCriticalPart": false,
+                                "isSourceListRequired": false,
+                                "id": "1010"
+                            }
+                        ]
+                    },
+                    "qualityInspectionAspect": {
+                        "isActive": false,
+                        "plants": [
+                            {
+                                "isDocumentationRequired": false,
+                                "hasPostToInspectionStock": false,
+                                "inspectionIntervalInDays": 0,
+                                "id": "1010"
+                            }
+                        ]
+                    },
+                    "salesAspect": {
+                        "transportationGroup": {
+                            "code": "0001"
+                        },
+                        "stackingFactor": 0,
+                        "itemCategoryGroup": {
+                            "code": "NORM"
+                        },
+                        "excessVolumeTolerance": "0.0",
+                        "isClosedPackagingProduct": false,
+                        "division": {
+                            "code": "00"
+                        },
+                        "excessWeightTolerance": "0.0",
+                        "salesTaxes": [
+                            {
+                                "country": {
+                                    "code": "DE"
+                                },
+                                "taxRateType": {
+                                    "code": "1"
+                                },
+                                "taxType": {
+                                    "code": "TTX1"
+                                }
+                            }
+                        ],
+                        "salesDistributionChains": [
+                            {
+                                "minimumOrderQuantity": "0.0",
+                                "cashDiscountIndicator": true,
+                                "itemCategoryGroup": {
+                                    "code": "NORM"
+                                },
+                                "deliveryQuantityUnit": {
+                                    "code": "TST"
+                                },
+                                "deliveryNoteMinimumDeliveryQuantity": "0.0",
+                                "deliveryQuantity": "0.0",
+                                "productHasAttributeId10": false,
+                                "id": "1010",
+                                "distributionChannel": {
+                                    "code": "10"
+                                },
+                                "productHasAttributeId06": false,
+                                "productHasAttributeId07": false,
+                                "productHasAttributeId04": false,
+                                "productHasAttributeId05": false,
+                                "productHasAttributeId08": false,
+                                "productHasAttributeId09": false,
+                                "minimumMakeToOrderQuantity": "0.0",
+                                "isMarkedForDeletion": false,
+                                "productHasAttributeId02": false,
+                                "productHasAttributeId03": false,
+                                "variableSalesUnitIsNotAllowed": false,
+                                "productHasAttributeId01": false
+                            }
+                        ],
+                        "salesPlant": [
+                            {
+                                "capacityPlanningQuantityInBaseUom": "0.0",
+                                "id": "1010"
+                            }
+                        ]
+                    },
+                    "isProductLocked": false,
+                    "isRelevantForHazardousSubstances": false,
+                    "displayId": "WMTEST1",
+                    "isBatchManagementRequired": false,
+                    "isMarkedForDeletion": false,
+                    "isConfigurable": false,
+                    "isInBulkTransport": false,
+                    "isApprovedBatchRecordRequired": false,
+                    "isProductEnvironmentallyRelevant": false,
+                    "areProductEffectiveParameterValuesAssigned": false,
+                    "isProductHighlyViscous": false,
+                    "type": {
+                        "code": "HAWA"
+                    },
+                    "productGroupLocalIdS4": "L001",
+                    "id": "42c84eab-7e4c-4681-a036-3d0148ca3ff2"
+                },
+                "localIds": [
+                    {
+                        "context": {
+                            "application": "MDI",
+                            "tenant": "S4MDIPRDCT",
+                            "type": "sap.odm.product.Product",
+                            "additionalContext": "sap.oitc.20"
+                        },
+                        "status": "active",
+                        "localId": "WMTEST1"
+                    },
+                    {
+                        "context": {
+                            "application": "MDI",
+                            "tenant": "S4MDIPRDCT",
+                            "type": "sap.odm.product.Product",
+                            "additionalContext": "sap.oitc.929"
+                        },
+                        "status": "active",
+                        "localId": "42c84eab-7e4c-4681-a036-3d0148ca3ff2"
+                    },
+                    {
+                        "context": {
+                            "application": "s4",
+                            "tenant": "0LOALS1",
+                            "type": "sap.odm.product.Product",
+                            "additionalContext": "sap.oitc.20"
+                        },
+                        "status": "active",
+                        "localId": "WMTEST1"
+                    }
+                ],
+                "event": "created",
+                "versionId": "b8e6a062-d86b-4f60-93f3-de58536fe1ee"
+            }
+        ],
+        "@odata.nextLink": "/v1/odm/2.3.0/sap.odm.product.Product/events?$deltatoken=F3uCu5u2.3.0u60u335u272u341u331u316u333u315u319u299u315u132u186u288u8u323u12u65u1394u709u1043u705u1145u933u815u986u496u1683u724u709u685u13u750u23u70u1475u871u1124u705u1145u1014u815u1148u496u1683u914u847u685u1058u750u832u3u282u1u0u0"
+    },
+    {
+        "@odata.context": "$metadata#Logs",
+        "value": [
+            {
+                "instance": {
+                    "baseUnitOfMeasure": {
+                        "code": "PCE"
+                    },
+                    "unitOfMeasureConversions": [
+                        {
+                            "measurementUnit1": {
+                                "code": "PCE"
+                            },
+                            "measurementUnit2": {
+                                "code": "PCE"
+                            },
+                            "quantityDenominator": "1.0",
+                            "quantityNumerator": "1.0"
+                        }
+                    ],
+                    "name": [
+                        {
+                            "lang": "en",
+                            "content": "Test"
+                        }
+                    ],
+                    "servicePartsManagementAspect": {
+                        "overcapacityTolerance": "0.0",
+                        "hasVariableTareWeight": false,
+                        "maximumCapacity": "0.000"
+                    },
+                    "document": {
+                        "isCreatedByCAD": false,
+                        "pageCount": "000"
+                    },
+                    "unitOfMeasures": [
+                        {
+                            "measurementUnit": {
+                                "code": "PCE"
+                            }
+                        }
+                    ],
+                    "productionAspect": {
+                        "totalShelfLifeStoragePercent": 0,
+                        "totalShelfLife": 0
+                    },
+                    "qualityInspectionAspect": {
+                        "isActive": false
+                    },
+                    "salesAspect": {
+                        "stackingFactor": 0,
+                        "excessVolumeTolerance": "0.0",
+                        "isClosedPackagingProduct": false,
+                        "excessWeightTolerance": "0.0"
+                    },
+                    "isProductLocked": false,
+                    "isRelevantForHazardousSubstances": false,
+                    "displayId": "4081",
+                    "isBatchManagementRequired": false,
+                    "isMarkedForDeletion": false,
+                    "isConfigurable": false,
+                    "isInBulkTransport": false,
+                    "isApprovedBatchRecordRequired": false,
+                    "isProductEnvironmentallyRelevant": false,
+                    "areProductEffectiveParameterValuesAssigned": false,
+                    "isProductHighlyViscous": false,
+                    "type": {
+                        "code": "HAWA"
+                    },
+                    "id": "e353ac64-8b13-433d-bb35-5af2389e1be1"
+                },
+                "localIds": [
+                    {
+                        "context": {
+                            "application": "MDI",
+                            "tenant": "S4MDIPRDCT",
+                            "type": "sap.odm.product.Product",
+                            "additionalContext": "sap.oitc.20"
+                        },
+                        "status": "active",
+                        "localId": "4081"
+                    },
+                    {
+                        "context": {
+                            "application": "MDI",
+                            "tenant": "S4MDIPRDCT",
+                            "type": "sap.odm.product.Product",
+                            "additionalContext": "sap.oitc.929"
+                        },
+                        "status": "active",
+                        "localId": "e353ac64-8b13-433d-bb35-5af2389e1be1"
+                    },
+                    {
+                        "context": {
+                            "application": "s4",
+                            "tenant": "0LOALS1",
+                            "type": "sap.odm.product.Product",
+                            "additionalContext": "sap.oitc.20"
+                        },
+                        "status": "active",
+                        "localId": "4081"
+                    }
+                ],
+                "event": "created",
+                "versionId": "9c9ed4e5-098f-4538-9436-b21cbe7cbbb5"
+            },
+            {
+                "instance": {
+                    "baseUnitOfMeasure": {
+                        "code": "PCE"
+                    },
+                    "unitOfMeasureConversions": [
+                        {
+                            "measurementUnit1": {
+                                "code": "PCE"
+                            },
+                            "measurementUnit2": {
+                                "code": "PCE"
+                            },
+                            "quantityDenominator": "1.0",
+                            "quantityNumerator": "1.0"
+                        }
+                    ],
+                    "name": [
+                        {
+                            "lang": "en",
+                            "content": "ZML_MAT_01"
+                        }
+                    ],
+                    "servicePartsManagementAspect": {
+                        "overcapacityTolerance": "0.0",
+                        "hasVariableTareWeight": false,
+                        "maximumCapacity": "0.000"
+                    },
+                    "document": {
+                        "isCreatedByCAD": false,
+                        "pageCount": "000"
+                    },
+                    "unitOfMeasures": [
+                        {
+                            "measurementUnit": {
+                                "code": "PCE"
+                            }
+                        }
+                    ],
+                    "plants": [
+                        {
+                            "id": "1010",
+                            "isBatchManagementRequired": false,
+                            "isMarkedForDeletion": false,
+                            "isNegativeStockAllowed": false,
+                            "profitCenterLocalIdS4": "CT100"
+                        }
+                    ],
+                    "financialAspect": {
+                        "costingPlantData": [
+                            {
+                                "id": "1010",
+                                "isFixedPriceCoProduct": false,
+                                "isProductCostingRelevant": false,
+                                "costingLotSize": "0.0"
+                            }
+                        ]
+                    },
+                    "internationalTradeAspect": {
+                        "internationalTradePlants": [
+                            {
+                                "id": "1010"
+                            }
+                        ]
+                    },
+                    "productionAspect": {
+                        "totalShelfLifeStoragePercent": 0,
+                        "totalShelfLife": 0,
+                        "productPlanningPlants": [
+                            {
+                                "isItemRelevantToJITDeliverySchedules": false,
+                                "isCorrectionFactorRequired": false,
+                                "purchaseOrderRoundingValue": "0.0",
+                                "minimumLotSize": "0.0",
+                                "reOrderThresholdQuantity": "0.0",
+                                "id": "1010",
+                                "fixedLotSize": "0.0",
+                                "forecastModelResetIndicator": false,
+                                "minimumSafetyStockQuantity": "0.0",
+                                "isProductWithdrawnFromProductionBin": false,
+                                "setupAndTearDownTime": "0.00",
+                                "safetyStockQuantity": "0.0",
+                                "maximumStockQuantity": "0.0",
+                                "isRepetitiveManufacturingAllowed": false,
+                                "isCoProduct": false,
+                                "maximumLotSize": "0.0",
+                                "periodType": {
+                                    "code": "M"
+                                },
+                                "cycleCountingIndicator": false
+                            }
+                        ],
+                        "productMovementPlants": [
+                            {
+                                "isBulkComponent": false,
+                                "isOriginalBatchManagementAllowed": false,
+                                "isUnlimitedOverdeliveryAllowed": false,
+                                "id": "1010"
+                            }
+                        ],
+                        "productSCMPlants": [
+                            {
+                                "safetyViolationPenalty": "0.000",
+                                "arePeggingAlertsRequired": false,
+                                "useReceiptElementFullQuantity": false,
+                                "useLocationDependentShelfLife": false,
+                                "useStockElementFullQuantity": false,
+                                "locationDependentMinShelfLife": 0,
+                                "id": "1010",
+                                "productDependentStorageCost": "0.000"
+                            }
+                        ]
+                    },
+                    "procurementAspect": {
+                        "procurementPlants": [
+                            {
+                                "isAutomaticPurchaseOrderAllowed": false,
+                                "isCriticalPart": false,
+                                "isSourceListRequired": false,
+                                "id": "1010"
+                            }
+                        ]
+                    },
+                    "qualityInspectionAspect": {
+                        "isActive": false,
+                        "plants": [
+                            {
+                                "isDocumentationRequired": false,
+                                "hasPostToInspectionStock": false,
+                                "inspectionIntervalInDays": 0,
+                                "id": "1010"
+                            }
+                        ]
+                    },
+                    "salesAspect": {
+                        "stackingFactor": 0,
+                        "itemCategoryGroup": {
+                            "code": "0002"
+                        },
+                        "excessVolumeTolerance": "0.0",
+                        "isClosedPackagingProduct": false,
+                        "excessWeightTolerance": "0.0",
+                        "salesTaxes": [
+                            {
+                                "country": {
+                                    "code": "DE"
+                                },
+                                "taxRateType": {
+                                    "code": "0"
+                                },
+                                "taxType": {
+                                    "code": "TTX1"
+                                }
+                            }
+                        ],
+                        "salesDistributionChains": [
+                            {
+                                "minimumOrderQuantity": "0.0",
+                                "cashDiscountIndicator": true,
+                                "itemCategoryGroup": {
+                                    "code": "0002"
+                                },
+                                "deliveryQuantityUnit": {
+                                    "code": "PCE"
+                                },
+                                "deliveryNoteMinimumDeliveryQuantity": "0.0",
+                                "deliveryQuantity": "0.0",
+                                "productHasAttributeId10": false,
+                                "id": "1010",
+                                "distributionChannel": {
+                                    "code": "10"
+                                },
+                                "productHasAttributeId06": false,
+                                "productHasAttributeId07": false,
+                                "productHasAttributeId04": false,
+                                "productHasAttributeId05": false,
+                                "productHasAttributeId08": false,
+                                "productHasAttributeId09": false,
+                                "minimumMakeToOrderQuantity": "0.0",
+                                "isMarkedForDeletion": false,
+                                "productHasAttributeId02": false,
+                                "productHasAttributeId03": false,
+                                "variableSalesUnitIsNotAllowed": false,
+                                "productHasAttributeId01": false
+                            }
+                        ],
+                        "salesPlant": [
+                            {
+                                "capacityPlanningQuantityInBaseUom": "0.0",
+                                "id": "1010"
+                            }
+                        ]
+                    },
+                    "isProductLocked": false,
+                    "isRelevantForHazardousSubstances": false,
+                    "displayId": "ZML_KMAT_01",
+                    "isBatchManagementRequired": false,
+                    "isMarkedForDeletion": false,
+                    "isConfigurable": true,
+                    "isInBulkTransport": false,
+                    "isApprovedBatchRecordRequired": false,
+                    "isProductEnvironmentallyRelevant": false,
+                    "areProductEffectiveParameterValuesAssigned": false,
+                    "isProductHighlyViscous": false,
+                    "type": {
+                        "code": "KMAT"
+                    },
+                    "id": "4314f96e-be78-4c92-8410-acc39a9c88cf"
+                },
+                "localIds": [
+                    {
+                        "context": {
+                            "application": "MDI",
+                            "tenant": "S4MDIPRDCT",
+                            "type": "sap.odm.product.Product",
+                            "additionalContext": "sap.oitc.20"
+                        },
+                        "status": "active",
+                        "localId": "ZML_KMAT_01"
+                    },
+                    {
+                        "context": {
+                            "application": "MDI",
+                            "tenant": "S4MDIPRDCT",
+                            "type": "sap.odm.product.Product",
+                            "additionalContext": "sap.oitc.929"
+                        },
+                        "status": "active",
+                        "localId": "4314f96e-be78-4c92-8410-acc39a9c88cf"
+                    },
+                    {
+                        "context": {
+                            "application": "s4",
+                            "tenant": "0LOALS1",
+                            "type": "sap.odm.product.Product",
+                            "additionalContext": "sap.oitc.20"
+                        },
+                        "status": "active",
+                        "localId": "ZML_KMAT_01"
+                    }
+                ],
+                "event": "created",
+                "versionId": "6d9afb5e-fa4f-4bcb-a842-f7e00f4f70fe"
+            }
+        ],
+        "@odata.deltaLink": "/v1/odm/2.3.0/sap.odm.product.Product/events?$deltatoken=F3uAu5u2.3.0u3u282u1u0u70u1475u871u1124u705u1145u1014u815u1148u496u1683u914u847u685u1058u750u832"
+    }
+]

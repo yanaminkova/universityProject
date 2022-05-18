@@ -1,0 +1,207 @@
+{
+    "_version": "1.34.2",
+    "sap.app": {
+        "id": "com.sap.c4u.foundation.retailer.customerorder",
+        "type": "application",
+        "i18n": "i18n/i18n.properties",
+        "applicationVersion": {
+            "version": "1.0.0"
+        },
+        "title": "{{appTitle}}",
+        "description": "{{appDescription}}",
+        "dataSources": {
+            "mainService": {
+                "uri": "/api/v1/ui/",
+                "type": "OData",
+                "settings": {
+                    "odataVersion": "4.0",
+                    "localUri": "localService/metadata.xml"
+                }
+            }
+        },
+        "offline": false,
+        "resources": "resources.json",
+        "sourceTemplate": {
+            "id": "ui5template.fiorielements.v4.lrop",
+            "version": "1.0.0"
+        },
+        "crossNavigation": {
+            "inbounds": {
+                "configApplicationDisplay": {
+                    "semanticObject": "CustomerOrder",
+                    "action": "manage",
+                    "signature": {
+                        "parameters": {},
+                        "additionalParameters": "allowed"
+                    },
+                    "icon": "sap-icon://customer-order-entry"
+                }
+            },
+            "outbounds": {}
+        }
+    },
+    "sap.ui": {
+        "technology": "UI5",
+        "icons": {
+            "icon": "",
+            "favIcon": "",
+            "phone": "",
+            "phone@2": "",
+            "tablet": "",
+            "tablet@2": ""
+        },
+        "deviceTypes": {
+            "desktop": true,
+            "tablet": true,
+            "phone": true
+        }
+    },
+    "sap.ui5": {
+        "resources": {
+            "js": [],
+            "css": []
+        },
+        "dependencies": {
+            "minUI5Version": "1.76.0",
+            "libs": {
+                "sap.ui.core": {},
+                "sap.ui.export": {},
+                "sap.ui.mdc": {},
+                "sap.fe.core": {},
+                "sap.fe.templates": {},
+                "sap.fe.placeholder": {},
+                "sap.fe.macros": {},
+                "sap.f": {},
+                "sap.ushell": {},
+                "sap.ui.integration": {},
+                "sap.ui.vk": {},
+                "sap.ui.vbm": {},
+                "sap.suite.ui.microchart": {}
+            }
+        },
+        "models": {
+            "i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "uri": "i18n/i18n.properties"
+            },
+            "": {
+                "dataSource": "mainService",
+                "preload": true,
+                "settings": {
+                    "synchronizationMode": "None",
+                    "operationMode": "Server",
+                    "autoExpandSelect": true,
+                    "earlyRequests": true
+                }
+            }
+        },
+        "rootView": {
+            "viewName": "sap.fe.templates.RootContainer.view.Fcl",
+            "type": "XML",
+            "async": true,
+            "id": "appRootView"
+        },
+        "routing": {
+            "config": {
+                "routerClass": "sap.f.routing.Router",
+                "flexibleColumnLayout": {
+                    "defaultTwoColumnLayoutType": "TwoColumnsMidExpanded",
+                    "defaultThreeColumnLayoutType": "ThreeColumnsEndExpanded"
+                }
+            },
+            "routes": [
+                {
+                    "pattern": ":?query:",
+                    "name": "CustomerOrderList",
+                    "target": ["CustomerOrderList"]
+                },
+                {
+                    "pattern": "CustomerOrder({key}):?query:",
+                    "name": "CustomerOrderObjectPage",
+                    "target": ["CustomerOrderList", "CustomerOrderObjectPage"]
+                },
+                {
+                    "pattern": "CustomerOrder({key})/items({key2}):?query:",
+                    "name": "CustomerOrderItemsObjectPage",
+                    "target": [
+                        "CustomerOrderList",
+                        "CustomerOrderObjectPage",
+                        "CustomerOrderItemsObjectPage"
+                    ]
+                }
+            ],
+            "targets": {
+                "CustomerOrderList": {
+                    "type": "Component",
+                    "id": "CustomerOrderList",
+                    "name": "sap.fe.templates.ListReport",
+                    "controlAggregation": "beginColumnPages",
+                    "contextPattern": "",
+                    "options": {
+                        "settings": {
+                            "entitySet": "CustomerOrder",
+                            "variantManagement": "Page",
+                            "navigation": {
+                                "CustomerOrder": {
+                                    "detail": {
+                                        "route": "CustomerOrderObjectPage"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "CustomerOrderObjectPage": {
+                    "type": "Component",
+                    "id": "CustomerOrderObjectPage",
+                    "name": "sap.fe.templates.ObjectPage",
+                    "controlAggregation": "midColumnPages",
+                    "contextPattern": "/CustomerOrder({key})",
+                    "options": {
+                        "settings": {
+                            "editableHeaderContent": false,
+                            "entitySet": "CustomerOrder",
+                            "navigation": {
+                                "items": {
+                                    "detail": {
+                                        "route": "CustomerOrderItemsObjectPage"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "CustomerOrderItemsObjectPage": {
+                    "type": "Component",
+                    "id": "CustomerOrderItemsObjectPage",
+                    "name": "sap.fe.templates.ObjectPage",
+                    "controlAggregation": "endColumnPages",
+                    "contextPattern": "/CustomerOrder({key})/items({key2})",
+                    "options": {
+                        "settings": {
+                            "editableHeaderContent": false,
+                            "entitySet": "CustomerOrderItems"
+                        }
+                    }
+                }
+            }
+        },
+        "contentDensities": {
+            "compact": true,
+            "cozy": true
+        }
+    },
+    "sap.platform.abap": {
+        "_version": "1.1.0",
+        "uri": ""
+    },
+    "sap.platform.hcp": {
+        "_version": "1.1.0",
+        "uri": ""
+    },
+    "sap.fiori": {
+        "_version": "1.1.0",
+        "registrationIds": [],
+        "archeType": "transactional"
+    }
+}

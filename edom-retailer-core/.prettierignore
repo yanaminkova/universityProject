@@ -1,0 +1,7 @@
+**/folder-to-exclude/**/*
+coverage
+s4hana_pipeline
+*.md
+docs
+target
+*.min.css

@@ -1,0 +1,1326 @@
+{
+    "d": {
+        "trans_uuid": "42010AEE-2AA4-1EEA-B9D7-EF344A1C1BF0",
+        "trans_doc_no": "",
+        "client_uuid": "41cb2954-f9eb-4ca7-9ce3-89cdd94202d8",
+        "trans_uuid_ext": "42010AEE2AA41EEAB9D7EF344A1C3BF0",
+        "trans_uuid_mid": "AF9E6t0OCy2UUo7gyOgjcABvurxS",
+        "trans_tstmp": "1598352065000.0000000",
+        "trans_direct": "I",
+        "trans_uuid_aggr": "00000000-0000-0000-0000-000000000000",
+        "aggr_type": "",
+        "src_syst_uuid": "MUS",
+        "src_syst_type": "SAP",
+        "sender_id": "SP_SUP_C4U_1",
+        "sender_cl_id": "",
+        "receiver_id": "SP_SUP_C4U_1",
+        "receiver_cl_id": "",
+        "trans_exchg_meth": "OData",
+        "payload_ext": "",
+        "payload_int": "",
+        "asynchronous": false,
+        "execute_prio": "0.0000000",
+        "retry_counter": 0,
+        "software_build_id": "",
+        "auth_grp": "",
+        "to_bo_header": {
+            "results": [
+                {
+                    "bo_uuid": "0a754cce-19fd-4653-8f10-8a4fc452de0d",
+                    "bo_ext_uuid": "10000000207098",
+                    "bo_ext_uuid_prev": "",
+                    "bo_status": "",
+                    "operation": "",
+                    "operation_tstmp": "0.0000000",
+                    "com_acc_uuid": "4deb74b6-4a59-4940-94a5-7f25d74a3e9a",
+                    "bu_partner_uuid": "",
+                    "proc_cluster": "GPKE",
+                    "tech_msg_id": "",
+                    "tech_msg_version": "",
+                    "bus_msg_id": "BM_GPKE_SUPN_SOS_CONF",
+                    "response_cat": "",
+                    "user_uuid": "",
+                    "blocked": false,
+                    "to_bo_data": {
+                        "results": [
+                            {
+                                "bo_data_uuid": "1208002d-fa72-42be-bd2a-c2036b75e006",
+                                "data_seq_no": "00000000001",
+                                "path": "/UBD_CONTEXT/",
+                                "field": "POD_ID",
+                                "value": "15000000124"
+                            },
+                            {
+                                "bo_data_uuid": "79cc85d3-a683-41ba-99e8-800d8471759c",
+                                "data_seq_no": "00000000002",
+                                "path": "/POD[1]/DATA[1]/",
+                                "field": "POD_ID",
+                                "value": "15000000124"
+                            },
+                            {
+                                "bo_data_uuid": "28206ae6-82db-48ba-8e89-edaac55c61db",
+                                "data_seq_no": "00000000003",
+                                "path": "/POD[1]/DATA[1]/",
+                                "field": "POD_CATEGORY",
+                                "value": "MaLo"
+                            },
+                            {
+                                "bo_data_uuid": "6c336ca7-c019-43b2-8896-0fabe8dbd187",
+                                "data_seq_no": "00000000004",
+                                "path": "/POD[1]/DATA[1]/",
+                                "field": "SUPPLY_DIRECTION",
+                                "value": "Consumption"
+                            },
+                            {
+                                "bo_data_uuid": "efd290f4-0f44-4422-bc8c-020aebfa64b6",
+                                "data_seq_no": "00000000005",
+                                "path": "/POD[1]/DATA[1]/",
+                                "field": "SETTLEMENT_TERRITORY",
+                                "value": "10YDE-VNBNET---I"
+                            },
+                            {
+                                "bo_data_uuid": "8b0e2356-c242-45f0-839a-7657ab82d666",
+                                "data_seq_no": "00000000006",
+                                "path": "/POD[1]/DATA[1]/",
+                                "field": "COTROL_AREA",
+                                "value": "10YDE-VNBNET---I"
+                            },
+                            {
+                                "bo_data_uuid": "7022101c-b2e3-46ef-8cd0-1708f49416bf",
+                                "data_seq_no": "00000000007",
+                                "path": "/POD[1]/DATA[1]/",
+                                "field": "SETTLEMENT_UNIT",
+                                "value": "BE_SAG"
+                            },
+                            {
+                                "bo_data_uuid": "a0989da8-1173-4003-ba0c-949edcbd7ec7",
+                                "data_seq_no": "00000000008",
+                                "path": "/POD[1]/DATA[1]/",
+                                "field": "ASSIGNED_MOS",
+                                "value": "SP_MOS"
+                            },
+                            {
+                                "bo_data_uuid": "d4bd46a1-e135-4e92-9c5f-32b37d1755f5",
+                                "data_seq_no": "00000000009",
+                                "path": "/POD[1]/DATA[1]/",
+                                "field": "ASSIGNED_TRANSMITTER",
+                                "value": "SP_TSO"
+                            },
+                            {
+                                "bo_data_uuid": "b4a32420-bb88-41e0-8cf9-e04a56712b7d",
+                                "data_seq_no": "00000000010",
+                                "path": "/POD[1]/DATA[1]/MARKET_AREA_DATA[1]/",
+                                "field": "MARKET_AREA",
+                                "value": "10YDE-VNBNET---I"
+                            },
+                            {
+                                "bo_data_uuid": "34f10008-ef35-43bd-bf3b-5233a14870e0",
+                                "data_seq_no": "00000000011",
+                                "path": "/POD[1]/DATA[1]/SETTLEMENT_UNIT_DATA[1]/",
+                                "field": "SETTLEMENT_UNIT",
+                                "value": "BE_SAG"
+                            },
+                            {
+                                "bo_data_uuid": "8331ceaa-7214-4aff-b7d6-1ff87ca43ce5",
+                                "data_seq_no": "00000000012",
+                                "path": "/POD[1]/DATA[1]/ESTIM_WORK_DAYPARDEP/",
+                                "field": "ESTIM_WORK_DAYPARDEP_QUANT",
+                                "value": "12"
+                            },
+                            {
+                                "bo_data_uuid": "38df6bc5-e138-4969-ae3f-dc52917785df",
+                                "data_seq_no": "00000000013",
+                                "path": "/POD[1]/DATA[1]/ESTIM_WORK_DAYPARDEP/",
+                                "field": "UNIT_OF_MEASURE",
+                                "value": "kWh/K"
+                            },
+                            {
+                                "bo_data_uuid": "14d8c647-3450-4808-8005-d83f2a0cdf44",
+                                "data_seq_no": "00000000014",
+                                "path": "/POD[1]/DATA[1]/ESTIM_ANNU_QUANT_TOTAL/",
+                                "field": "ESTIM_ANNUAL_QUANT_TOTAL",
+                                "value": "12"
+                            },
+                            {
+                                "bo_data_uuid": "679b7654-3152-49ef-bed6-b095a4b1726e",
+                                "data_seq_no": "00000000015",
+                                "path": "/POD[1]/DATA[1]/ESTIM_ANNU_QUANT_TOTAL/",
+                                "field": "UNIT_OF_MEASURE",
+                                "value": "Kilowatthour"
+                            },
+                            {
+                                "bo_data_uuid": "230e784e-7134-474f-b019-9465b2ba1f5d",
+                                "data_seq_no": "00000000016",
+                                "path": "/POD[1]/DATA[1]/CUSOTMER_QUANTITY/",
+                                "field": "CUSOTMER_QUANTITY",
+                                "value": "11"
+                            },
+                            {
+                                "bo_data_uuid": "c51bca56-fdec-4f57-8ee2-904953529140",
+                                "data_seq_no": "00000000017",
+                                "path": "/POD[1]/DATA[1]/CUSOTMER_QUANTITY/",
+                                "field": "UNIT_OF_MEASURE",
+                                "value": "Kilowatthour"
+                            },
+                            {
+                                "bo_data_uuid": "c6eb0cdd-bea3-400e-b45e-c787d298141f",
+                                "data_seq_no": "00000000018",
+                                "path": "/POD[1]/DATA[1]/CUSTOMER_VALUE/",
+                                "field": "CUSTOMER_QUANTITY",
+                                "value": "11"
+                            },
+                            {
+                                "bo_data_uuid": "4b8f6b5c-5698-4a23-a95f-22c7774a44f0",
+                                "data_seq_no": "00000000019",
+                                "path": "/POD[1]/DATA[1]/CUSTOMER_VALUE/",
+                                "field": "UNIT_OF_MEASURE",
+                                "value": "Kilowatthour"
+                            },
+                            {
+                                "bo_data_uuid": "a3529ecf-886a-48c0-acf9-4d362e7696e5",
+                                "data_seq_no": "00000000020",
+                                "path": "/POD[1]/DATA[2]/",
+                                "field": "POD_ID",
+                                "value": "DE00014545768S0000000000000003054"
+                            },
+                            {
+                                "bo_data_uuid": "3beda1a6-cf24-4f8a-a256-3fde5fe3d3f0",
+                                "data_seq_no": "00000000021",
+                                "path": "/POD[1]/DATA[2]/",
+                                "field": "POD_CATEGORY",
+                                "value": "MeLo"
+                            },
+                            {
+                                "bo_data_uuid": "73baaef1-79fa-4cac-8479-284297f734df",
+                                "data_seq_no": "00000000022",
+                                "path": "/POD[1]/DATA[2]/",
+                                "field": "VOLTAGE_LEVEL_EXT",
+                                "value": "MaximumVoltage"
+                            },
+                            {
+                                "bo_data_uuid": "4849cec6-603d-4536-9eb3-9f50b4b8b7ee",
+                                "data_seq_no": "00000000023",
+                                "path": "/POD[1]/DATA[2]/",
+                                "field": "BILLING_MP_OPERATION",
+                                "value": "JA"
+                            },
+                            {
+                                "bo_data_uuid": "1e863121-2798-4e6f-8e72-e1972877136e",
+                                "data_seq_no": "00000000024",
+                                "path": "/POD[1]/DATA[2]/",
+                                "field": "ASSIGNED_MOS",
+                                "value": "SP_MOS"
+                            },
+                            {
+                                "bo_data_uuid": "dd21e96f-f40d-45d7-8321-a8ad7715ff76",
+                                "data_seq_no": "00000000025",
+                                "path": "/POD[1]/DATA[2]/",
+                                "field": "GAS_QUALITY",
+                                "value": "HGas"
+                            },
+                            {
+                                "bo_data_uuid": "ef7be76c-a10e-4841-968c-7d70494af8a0",
+                                "data_seq_no": "00000000026",
+                                "path": "/POD[1]/DATA[2]/",
+                                "field": "LOSS_FACTOR",
+                                "value": "1"
+                            },
+                            {
+                                "bo_data_uuid": "aea78eef-ae4d-4a40-b079-fe237e23cd55",
+                                "data_seq_no": "00000000027",
+                                "path": "/SUPPLY_SCENARIO[1]/REQUEST/",
+                                "field": "POD_ID",
+                                "value": "DE00014545768S0000000000000003054"
+                            },
+                            {
+                                "bo_data_uuid": "8e87bc5f-da4d-476e-a5c0-19a33ecc02ae",
+                                "data_seq_no": "00000000028",
+                                "path": "/SUPPLY_SCENARIO[1]/REQUEST/",
+                                "field": "KEY_DATE",
+                                "value": "20200825"
+                            },
+                            {
+                                "bo_data_uuid": "85cd3718-40c5-4ac3-8b73-5435aa1066d7",
+                                "data_seq_no": "00000000029",
+                                "path": "/SUPPLY_SCENARIO[1]/REQUEST/",
+                                "field": "POD_REL_DEPTH",
+                                "value": "01"
+                            },
+                            {
+                                "bo_data_uuid": "2071aed8-fe05-47c1-9ce2-ac8132976070",
+                                "data_seq_no": "00000000030",
+                                "path": "/SUPPLY_SCENARIO[1]/DATA[1]/GRID_LIST[1]/",
+                                "field": "GRID_ID",
+                                "value": "SP_DSO_345"
+                            },
+                            {
+                                "bo_data_uuid": "bf84a107-def4-4a92-a3dd-9280e418a28d",
+                                "data_seq_no": "00000000031",
+                                "path": "/SUPPLY_SCENARIO[1]/DATA[1]/GRID_LIST[1]/",
+                                "field": "GRID_START_DATE",
+                                "value": "20000101"
+                            },
+                            {
+                                "bo_data_uuid": "51d8c00d-b1b3-49b0-9384-01106dc08a4a",
+                                "data_seq_no": "00000000032",
+                                "path": "/SUPPLY_SCENARIO[1]/DATA[1]/GRID_LIST[1]/",
+                                "field": "GRID_END_DATE",
+                                "value": "99991231"
+                            },
+                            {
+                                "bo_data_uuid": "256f4e58-16f2-4aba-b5d2-4015e4f80947",
+                                "data_seq_no": "00000000033",
+                                "path": "/SUPPLY_SCENARIO[1]/DATA[1]/SP_LIST[1]/",
+                                "field": "SP_EXT_ID",
+                                "value": "SP_TSO"
+                            },
+                            {
+                                "bo_data_uuid": "0621a81b-d9b3-407b-876b-5083e85d3cdb",
+                                "data_seq_no": "00000000034",
+                                "path": "/SUPPLY_SCENARIO[1]/DATA[1]/SP_LIST[1]/",
+                                "field": "SERVICE_CAT",
+                                "value": "Transmission"
+                            },
+                            {
+                                "bo_data_uuid": "82bccbb1-668a-4736-b701-79847a6385bc",
+                                "data_seq_no": "00000000035",
+                                "path": "/SUPPLY_SCENARIO[1]/DATA[1]/SP_LIST[1]/",
+                                "field": "SERVICE_START",
+                                "value": "20000101"
+                            },
+                            {
+                                "bo_data_uuid": "c9e9739c-b017-4ad0-93cd-71b1333dc959",
+                                "data_seq_no": "00000000036",
+                                "path": "/SUPPLY_SCENARIO[1]/DATA[1]/SP_LIST[1]/",
+                                "field": "SERVICE_END",
+                                "value": "99991231"
+                            },
+                            {
+                                "bo_data_uuid": "303e4aaf-291c-4d09-8884-0663ebd97bf8",
+                                "data_seq_no": "00000000037",
+                                "path": "/SUPPLY_SCENARIO[1]/DATA[1]/SP_LIST[1]/",
+                                "field": "SP_EXT_CODELIST_ID",
+                                "value": "9"
+                            },
+                            {
+                                "bo_data_uuid": "bdfe0a51-ef15-4416-a8f7-bf35e7580013",
+                                "data_seq_no": "00000000038",
+                                "path": "/SUPPLY_SCENARIO[1]/DATA[1]/SP_LIST[2]/",
+                                "field": "SP_EXT_ID",
+                                "value": "SP_DSO_345_EXT"
+                            },
+                            {
+                                "bo_data_uuid": "60543d55-6304-414e-a4ec-743409e23c46",
+                                "data_seq_no": "00000000039",
+                                "path": "/SUPPLY_SCENARIO[1]/DATA[1]/SP_LIST[2]/",
+                                "field": "SERVICE_CAT",
+                                "value": "Distribution"
+                            },
+                            {
+                                "bo_data_uuid": "4c095bad-62e4-42eb-8c1a-38acc0b4f568",
+                                "data_seq_no": "00000000040",
+                                "path": "/SUPPLY_SCENARIO[1]/DATA[1]/SP_LIST[2]/",
+                                "field": "SERVICE_START",
+                                "value": "20000101"
+                            },
+                            {
+                                "bo_data_uuid": "c7b37290-dfce-4f17-9c4d-f734fdc7c986",
+                                "data_seq_no": "00000000041",
+                                "path": "/SUPPLY_SCENARIO[1]/DATA[1]/SP_LIST[2]/",
+                                "field": "SERVICE_END",
+                                "value": "99991231"
+                            },
+                            {
+                                "bo_data_uuid": "0812443a-5e39-4e2d-a3c5-d1a475749204",
+                                "data_seq_no": "00000000042",
+                                "path": "/SUPPLY_SCENARIO[1]/DATA[1]/SP_LIST[2]/",
+                                "field": "SP_EXT_CODELIST_ID",
+                                "value": "9"
+                            },
+                            {
+                                "bo_data_uuid": "f01dc3ca-881e-4f76-8f5c-8b32d003389d",
+                                "data_seq_no": "00000000043",
+                                "path": "/SUPPLY_SCENARIO[1]/DATA[2]/",
+                                "field": "POD_ID",
+                                "value": "DE00014545768S0000000000000003054"
+                            },
+                            {
+                                "bo_data_uuid": "246949ea-d43f-40b8-b274-7f432238a52f",
+                                "data_seq_no": "00000000044",
+                                "path": "/SUPPLY_SCENARIO[1]/DATA[2]/GRID_LIST[1]/",
+                                "field": "GRID_ID",
+                                "value": "SP_DSO_345"
+                            },
+                            {
+                                "bo_data_uuid": "f278c45a-3fab-40e0-a4cc-1c6bc1030c80",
+                                "data_seq_no": "00000000045",
+                                "path": "/SUPPLY_SCENARIO[1]/DATA[2]/GRID_LIST[1]/",
+                                "field": "GRID_START_DATE",
+                                "value": "20000101"
+                            },
+                            {
+                                "bo_data_uuid": "308af2a7-0496-4495-8b7f-b00c13a7f2bb",
+                                "data_seq_no": "00000000046",
+                                "path": "/SUPPLY_SCENARIO[1]/DATA[2]/GRID_LIST[1]/",
+                                "field": "GRID_END_DATE",
+                                "value": "99991231"
+                            },
+                            {
+                                "bo_data_uuid": "b0be7434-10c2-4d5f-861b-68debaf5e426",
+                                "data_seq_no": "00000000047",
+                                "path": "/SUPPLY_SCENARIO[1]/DATA[2]/",
+                                "field": "POD_CATEGORY",
+                                "value": "MeLo"
+                            },
+                            {
+                                "bo_data_uuid": "091ef80f-ced8-43f4-af79-df296a139bd1",
+                                "data_seq_no": "00000000048",
+                                "path": "/SUPPLY_SCENARIO[1]/DATA[2]/SP_LIST[1]/",
+                                "field": "SP_EXT_ID",
+                                "value": "SP_DSO_345_EXT"
+                            },
+                            {
+                                "bo_data_uuid": "b9e2cfaa-eeac-48df-b082-bc34e662b46b",
+                                "data_seq_no": "00000000049",
+                                "path": "/SUPPLY_SCENARIO[1]/DATA[2]/SP_LIST[1]/",
+                                "field": "SERVICE_CAT",
+                                "value": "Distribution"
+                            },
+                            {
+                                "bo_data_uuid": "761fa4d7-a856-4e56-85dd-9c01e76b7641",
+                                "data_seq_no": "00000000050",
+                                "path": "/SUPPLY_SCENARIO[1]/DATA[2]/SP_LIST[1]/",
+                                "field": "SERVICE_START",
+                                "value": "20000101"
+                            },
+                            {
+                                "bo_data_uuid": "412e325f-a2c5-4646-bb07-de747642e9e5",
+                                "data_seq_no": "00000000051",
+                                "path": "/SUPPLY_SCENARIO[1]/DATA[2]/SP_LIST[1]/",
+                                "field": "SERVICE_END",
+                                "value": "99991231"
+                            },
+                            {
+                                "bo_data_uuid": "61c5846b-1a6a-4433-8172-20490f041324",
+                                "data_seq_no": "00000000052",
+                                "path": "/SUPPLY_SCENARIO[1]/DATA[2]/SP_LIST[1]/",
+                                "field": "SP_EXT_CODELIST_ID",
+                                "value": "9"
+                            },
+                            {
+                                "bo_data_uuid": "3943ed2c-458e-4392-8f73-577beff3ba50",
+                                "data_seq_no": "00000000053",
+                                "path": "/NAME_ADDRESS[1]/DATA[1]/",
+                                "field": "POD_ID",
+                                "value": "DE00014545768S0000000000000003054"
+                            },
+                            {
+                                "bo_data_uuid": "898f386a-ccbc-4075-a640-9273ef6d5c55",
+                                "data_seq_no": "00000000054",
+                                "path": "/NAME_ADDRESS[1]/DATA[1]/",
+                                "field": "NAME_ADDRESS_CAT",
+                                "value": "NaAdrMRCard"
+                            },
+                            {
+                                "bo_data_uuid": "82fbdf82-86a5-4f3d-b6bd-b8102634757e",
+                                "data_seq_no": "00000000055",
+                                "path": "/NAME_ADDRESS[1]/DATA[1]/",
+                                "field": "NAME_CAT",
+                                "value": "Person"
+                            },
+                            {
+                                "bo_data_uuid": "5cd340b9-1ecd-4bee-a21c-ce440afefbc2",
+                                "data_seq_no": "00000000056",
+                                "path": "/NAME_ADDRESS[1]/DATA[1]/",
+                                "field": "LAST_NAME_COMP_NAME1",
+                                "value": "XXMALOI0100514115135"
+                            },
+                            {
+                                "bo_data_uuid": "0d30f562-11c5-406e-b57a-025bbb6377fd",
+                                "data_seq_no": "00000000057",
+                                "path": "/NAME_ADDRESS[1]/DATA[1]/",
+                                "field": "FIRST_NAME_COMP_NAME2",
+                                "value": "XXMALOI0100514115135"
+                            },
+                            {
+                                "bo_data_uuid": "53596ef3-2bfd-4e34-88cc-ee94326eef3b",
+                                "data_seq_no": "00000000058",
+                                "path": "/NAME_ADDRESS[1]/DATA[1]/",
+                                "field": "COUNTRY",
+                                "value": "DE"
+                            },
+                            {
+                                "bo_data_uuid": "a5cb1c8a-09e4-4df4-bfb8-490f404356ae",
+                                "data_seq_no": "00000000059",
+                                "path": "/NAME_ADDRESS[1]/DATA[1]/",
+                                "field": "POSTAL_CODE",
+                                "value": "69190"
+                            },
+                            {
+                                "bo_data_uuid": "1e622cbc-0e93-4fc2-b6ea-c78ad0dadd87",
+                                "data_seq_no": "00000000060",
+                                "path": "/NAME_ADDRESS[1]/DATA[1]/",
+                                "field": "CITY",
+                                "value": "Walldorf"
+                            },
+                            {
+                                "bo_data_uuid": "b83e6f97-8001-4946-9b66-e7f15f9c6803",
+                                "data_seq_no": "00000000061",
+                                "path": "/NAME_ADDRESS[1]/DATA[1]/",
+                                "field": "STREET",
+                                "value": "Neurottstrasse"
+                            },
+                            {
+                                "bo_data_uuid": "fc17f2cf-7da7-430b-9399-2d129ea2d2d6",
+                                "data_seq_no": "00000000062",
+                                "path": "/NAME_ADDRESS[1]/DATA[2]/",
+                                "field": "NAME_ADDRESS_CAT",
+                                "value": "NaAdrCustomerOfSupp"
+                            },
+                            {
+                                "bo_data_uuid": "95089a05-c6a5-49ff-ad35-b513fe92a6f4",
+                                "data_seq_no": "00000000063",
+                                "path": "/NAME_ADDRESS[1]/DATA[2]/",
+                                "field": "NAME_CAT",
+                                "value": "Person"
+                            },
+                            {
+                                "bo_data_uuid": "9643d6fe-d519-4440-b71f-dac4b52ad36a",
+                                "data_seq_no": "00000000064",
+                                "path": "/NAME_ADDRESS[1]/DATA[2]/",
+                                "field": "LAST_NAME_COMP_NAME1",
+                                "value": "XXMALOI0100514115135"
+                            },
+                            {
+                                "bo_data_uuid": "b8ce32ab-888a-455f-9aa9-f3e651fc8807",
+                                "data_seq_no": "00000000065",
+                                "path": "/NAME_ADDRESS[1]/DATA[2]/",
+                                "field": "FIRST_NAME_COMP_NAME2",
+                                "value": "XXMALOI0100514115135"
+                            },
+                            {
+                                "bo_data_uuid": "3e39497d-ed55-440b-822e-72e908b4fe10",
+                                "data_seq_no": "00000000066",
+                                "path": "/NAME_ADDRESS[1]/DATA[2]/",
+                                "field": "CUST_NO_SUPPL",
+                                "value": "CustomerNumberAtSupplier"
+                            },
+                            {
+                                "bo_data_uuid": "b49219cf-5f1e-47f9-a8fb-6532cf68fc2b",
+                                "data_seq_no": "00000000067",
+                                "path": "/NAME_ADDRESS[1]/DATA[3]/",
+                                "field": "NAME_ADDRESS_CAT",
+                                "value": "NaAdrCorrespondenceCustomerOfSupp"
+                            },
+                            {
+                                "bo_data_uuid": "72b93d78-6154-404f-b8e8-78e3ad4cfd82",
+                                "data_seq_no": "00000000068",
+                                "path": "/NAME_ADDRESS[1]/DATA[3]/",
+                                "field": "NAME_CAT",
+                                "value": "Person"
+                            },
+                            {
+                                "bo_data_uuid": "66d9e62b-2abd-41e5-b9f7-dba37b140332",
+                                "data_seq_no": "00000000069",
+                                "path": "/NAME_ADDRESS[1]/DATA[3]/",
+                                "field": "LAST_NAME_COMP_NAME1",
+                                "value": "XXMALOI0100514115135"
+                            },
+                            {
+                                "bo_data_uuid": "c19b14c4-a546-441b-b877-fa2ab2c16fdd",
+                                "data_seq_no": "00000000070",
+                                "path": "/NAME_ADDRESS[1]/DATA[3]/",
+                                "field": "FIRST_NAME_COMP_NAME2",
+                                "value": "XXMALOI0100514115135"
+                            },
+                            {
+                                "bo_data_uuid": "aeefac6c-a179-4cb6-b2fa-c1a123c0925b",
+                                "data_seq_no": "00000000071",
+                                "path": "/NAME_ADDRESS[1]/DATA[3]/",
+                                "field": "COUNTRY",
+                                "value": "DE"
+                            },
+                            {
+                                "bo_data_uuid": "11d32cde-7d98-44ec-96e3-b9abccf9b47b",
+                                "data_seq_no": "00000000072",
+                                "path": "/NAME_ADDRESS[1]/DATA[3]/",
+                                "field": "POSTAL_CODE",
+                                "value": "69190"
+                            },
+                            {
+                                "bo_data_uuid": "96c7119b-762d-41bb-9cca-91a7171aa011",
+                                "data_seq_no": "00000000073",
+                                "path": "/NAME_ADDRESS[1]/DATA[3]/",
+                                "field": "CITY",
+                                "value": "Walldorf"
+                            },
+                            {
+                                "bo_data_uuid": "f64264e2-ff8f-4c79-ad29-1539e3104bb0",
+                                "data_seq_no": "00000000074",
+                                "path": "/NAME_ADDRESS[1]/DATA[3]/",
+                                "field": "STREET",
+                                "value": "Neurottstrasse"
+                            },
+                            {
+                                "bo_data_uuid": "95a5a551-c104-43fd-95b8-b41451306895",
+                                "data_seq_no": "00000000075",
+                                "path": "/NAME_ADDRESS[1]/DATA[4]/",
+                                "field": "NAME_ADDRESS_CAT",
+                                "value": "NaAdrPoD"
+                            },
+                            {
+                                "bo_data_uuid": "77249acb-cb53-4200-a9df-e8fbdbdf6dcb",
+                                "data_seq_no": "00000000076",
+                                "path": "/NAME_ADDRESS[1]/DATA[4]/",
+                                "field": "COUNTRY",
+                                "value": "DE"
+                            },
+                            {
+                                "bo_data_uuid": "81c68115-186d-4032-b01b-8b63475668fd",
+                                "data_seq_no": "00000000077",
+                                "path": "/NAME_ADDRESS[1]/DATA[4]/",
+                                "field": "POSTAL_CODE",
+                                "value": "69190"
+                            },
+                            {
+                                "bo_data_uuid": "1c12cfad-dc36-411f-be5a-b2c331898c01",
+                                "data_seq_no": "00000000078",
+                                "path": "/NAME_ADDRESS[1]/DATA[4]/",
+                                "field": "CITY",
+                                "value": "Walldorf"
+                            },
+                            {
+                                "bo_data_uuid": "a6c2ced4-698a-4420-aa57-16d199fc1f00",
+                                "data_seq_no": "00000000079",
+                                "path": "/NAME_ADDRESS[1]/DATA[4]/",
+                                "field": "STREET",
+                                "value": "Neurottstrasse"
+                            },
+                            {
+                                "bo_data_uuid": "994e62af-102c-4546-a307-e8ae603d5d9c",
+                                "data_seq_no": "00000000080",
+                                "path": "/NAME_ADDRESS[1]/DATA[4]/",
+                                "field": "HOUSE_NUMBER",
+                                "value": "1001"
+                            },
+                            {
+                                "bo_data_uuid": "a04fb55f-aa8a-4f15-92e7-09d683177780",
+                                "data_seq_no": "00000000081",
+                                "path": "/DEVICE[1]/DATA[1]/",
+                                "field": "POD_ID",
+                                "value": "15000000124"
+                            },
+                            {
+                                "bo_data_uuid": "d4f1768d-2892-4364-bc20-a0d22e046473",
+                                "data_seq_no": "00000000082",
+                                "path": "/DEVICE[1]/DATA[1]/",
+                                "field": "DEVICE_TYPE",
+                                "value": "Meter"
+                            },
+                            {
+                                "bo_data_uuid": "2764fd70-365e-41f7-b245-f370abf40ce4",
+                                "data_seq_no": "00000000083",
+                                "path": "/DEVICE[1]/DATA[1]/REGISTER_LIST[1]/",
+                                "field": "OBIS_DATA_USAGE",
+                                "value": "OBISDataMaLo"
+                            },
+                            {
+                                "bo_data_uuid": "dcfe2877-ef97-4c82-b05f-105b82080611",
+                                "data_seq_no": "00000000084",
+                                "path": "/DEVICE[1]/DATA[1]/REGISTER_LIST[1]/",
+                                "field": "OBIS_CODE",
+                                "value": "1-1:1.9.1"
+                            },
+                            {
+                                "bo_data_uuid": "70ad3656-0165-4631-aac7-01db5fbc0527",
+                                "data_seq_no": "00000000085",
+                                "path": "/DEVICE[1]/DATA[1]/REGISTER_LIST[1]/",
+                                "field": "TARIF_ALLOC",
+                                "value": "OnPeak"
+                            },
+                            {
+                                "bo_data_uuid": "f10c99a0-aad3-486b-ace0-9f7c1532539f",
+                                "data_seq_no": "00000000086",
+                                "path": "/DEVICE[1]/DATA[1]/REGISTER_LIST[1]/",
+                                "field": "CONS_TYPE",
+                                "value": "PowerLight"
+                            },
+                            {
+                                "bo_data_uuid": "0e93e5f2-d065-49dc-9649-eb1890b379ba",
+                                "data_seq_no": "00000000087",
+                                "path": "/DEVICE[1]/DATA[1]/REGISTER_LIST[1]/",
+                                "field": "HEAT_CONSUMPT",
+                                "value": "StorageHeating"
+                            },
+                            {
+                                "bo_data_uuid": "81a2b475-1e8f-484b-b4b2-ea4abd6a6653",
+                                "data_seq_no": "00000000088",
+                                "path": "/DEVICE[1]/DATA[1]/REGISTER_LIST[1]/",
+                                "field": "APPL_INTERRUPT",
+                                "value": "Interruptable"
+                            },
+                            {
+                                "bo_data_uuid": "8b94816e-3f3e-4219-adc2-2399b4a62c9b",
+                                "data_seq_no": "00000000089",
+                                "path": "/DEVICE[1]/DATA[1]/REGISTER_LIST[1]/MARKET_ROLE_OBIS[1]/",
+                                "field": "MARKET_ROLE_OBIS_TYPE",
+                                "value": "Supplier"
+                            },
+                            {
+                                "bo_data_uuid": "091be206-a90c-4cd7-9626-e7a73e95b2ea",
+                                "data_seq_no": "00000000090",
+                                "path": "/DEVICE[1]/DATA[1]/REGISTER_LIST[1]/MARKET_ROLE_OBIS[1]/",
+                                "field": "MARKET_ROLE_OBIS_VALUE",
+                                "value": "GridUsageBilling"
+                            },
+                            {
+                                "bo_data_uuid": "b382ba15-1d43-4b79-83bd-95306a6d807c",
+                                "data_seq_no": "00000000091",
+                                "path": "/DEVICE[1]/DATA[2]/",
+                                "field": "POD_ID",
+                                "value": "15000000124"
+                            },
+                            {
+                                "bo_data_uuid": "93a9ea56-03b6-415a-95b5-5ca4b772d903",
+                                "data_seq_no": "00000000092",
+                                "path": "/DEVICE[1]/DATA[2]/",
+                                "field": "DEVICE_TYPE",
+                                "value": "Meter"
+                            },
+                            {
+                                "bo_data_uuid": "a9f1b5ea-535b-4006-bc1d-a9732c8e1733",
+                                "data_seq_no": "00000000093",
+                                "path": "/DEVICE[1]/DATA[2]/",
+                                "field": "METERTYPE_CODE",
+                                "value": "ElectronicHouseholdMeter"
+                            },
+                            {
+                                "bo_data_uuid": "4b174dab-c572-4632-abf0-f0dd1a62016f",
+                                "data_seq_no": "00000000094",
+                                "path": "/DEVICE[1]/DATA[2]/",
+                                "field": "METERTYPE_VALUE",
+                                "value": "EDL40"
+                            },
+                            {
+                                "bo_data_uuid": "1fcce4bf-c18b-4b5d-8c78-c46bdad777b3",
+                                "data_seq_no": "00000000095",
+                                "path": "/DEVICE[1]/DATA[2]/",
+                                "field": "METERSIZE_VALUE",
+                                "value": "G10GasMeter"
+                            },
+                            {
+                                "bo_data_uuid": "f31c9e2a-7176-45a6-95f7-f0ad0ddddec2",
+                                "data_seq_no": "00000000096",
+                                "path": "/DEVICE[1]/DATA[2]/",
+                                "field": "RATENUMBER_CODE",
+                                "value": "SingleRate"
+                            },
+                            {
+                                "bo_data_uuid": "f1916b74-1d30-4f7d-9176-6e23b6cfbc73",
+                                "data_seq_no": "00000000097",
+                                "path": "/DEVICE[1]/DATA[2]/",
+                                "field": "ENERGY_DIRECTION",
+                                "value": "UnidirectionalMeter"
+                            },
+                            {
+                                "bo_data_uuid": "b485af92-e79c-4e1c-97f0-aa616a7885ff",
+                                "data_seq_no": "00000000098",
+                                "path": "/DEVICE[1]/DATA[2]/",
+                                "field": "REM_METER_SHUTD",
+                                "value": "RemoteShutdownAvailable"
+                            },
+                            {
+                                "bo_data_uuid": "f652ba0b-90b4-4949-9c69-f47aa46c3fa0",
+                                "data_seq_no": "00000000099",
+                                "path": "/DEVICE[1]/DATA[2]/",
+                                "field": "DATALOG_TYPE",
+                                "value": "RemoteReadingMeter"
+                            },
+                            {
+                                "bo_data_uuid": "20121825-1c04-44d1-8a31-9fc10005b454",
+                                "data_seq_no": "00000000100",
+                                "path": "/DEVICE[1]/DATA[2]/",
+                                "field": "REF_TO_SMART_METER_GATEWAY",
+                                "value": "SmartmeterGateway"
+                            },
+                            {
+                                "bo_data_uuid": "38637272-d9dd-401c-ab20-3eb42ba9b4f4",
+                                "data_seq_no": "00000000101",
+                                "path": "/DEVICE[1]/DATA[2]/REGISTER_LIST[1]/",
+                                "field": "OBIS_DATA_USAGE",
+                                "value": "OBISDataMetering"
+                            },
+                            {
+                                "bo_data_uuid": "3642d5eb-f64d-45c9-a9b1-6b97c58d8679",
+                                "data_seq_no": "00000000102",
+                                "path": "/DEVICE[1]/DATA[2]/REGISTER_LIST[1]/",
+                                "field": "REG_INT_POSITONS",
+                                "value": "2"
+                            },
+                            {
+                                "bo_data_uuid": "5bf727db-e917-4aa0-992b-5472fef7bdf7",
+                                "data_seq_no": "00000000103",
+                                "path": "/DEVICE[1]/DATA[2]/REGISTER_LIST[1]/",
+                                "field": "REG_DEC_PLACES",
+                                "value": "3"
+                            },
+                            {
+                                "bo_data_uuid": "9ab83e59-22f3-445e-b71d-a1ba02ecaad2",
+                                "data_seq_no": "00000000104",
+                                "path": "/DEVICE[1]/DATA[2]/REGISTER_LIST[1]/",
+                                "field": "OBIS_CODE",
+                                "value": "1-1:1.9.1"
+                            },
+                            {
+                                "bo_data_uuid": "8377b557-27e3-4902-bd73-575727a87087",
+                                "data_seq_no": "00000000105",
+                                "path": "/DEVICE[1]/DATA[2]/REGISTER_LIST[1]/",
+                                "field": "TARIF_ALLOC",
+                                "value": "OnPeak"
+                            },
+                            {
+                                "bo_data_uuid": "5b961b9d-8e7d-4b8f-9b14-25d97335acf5",
+                                "data_seq_no": "00000000106",
+                                "path": "/DEVICE[1]/DATA[2]/REGISTER_LIST[1]/",
+                                "field": "REG_LABEL",
+                                "value": "HT"
+                            },
+                            {
+                                "bo_data_uuid": "16c17688-73ad-4876-bcc8-faa07b5e2864",
+                                "data_seq_no": "00000000107",
+                                "path": "/DEVICE[1]/DATA[2]/DEVICE_NUMBER[1]/",
+                                "field": "DEVICE_NUMBER",
+                                "value": "MeterNumber"
+                            },
+                            {
+                                "bo_data_uuid": "d3d112e0-e53b-4187-ae0d-243434186b6e",
+                                "data_seq_no": "00000000108",
+                                "path": "/DEVICE[1]/DATA[3]/",
+                                "field": "POD_ID",
+                                "value": "15000000124"
+                            },
+                            {
+                                "bo_data_uuid": "d33d6267-5e06-4e56-991a-f1ea14640175",
+                                "data_seq_no": "00000000109",
+                                "path": "/DEVICE[1]/DATA[3]/",
+                                "field": "DEVICE_TYPE",
+                                "value": "QuantityCorrector"
+                            },
+                            {
+                                "bo_data_uuid": "a219a473-22bf-4bb8-a250-e0022d7af3ff",
+                                "data_seq_no": "00000000110",
+                                "path": "/DEVICE[1]/DATA[3]/",
+                                "field": "CORRECTOR_TYPE",
+                                "value": "DensityCorretor"
+                            },
+                            {
+                                "bo_data_uuid": "8c212821-e13c-41a0-bf84-bb653692a3d0",
+                                "data_seq_no": "00000000111",
+                                "path": "/DEVICE[1]/DATA[3]/",
+                                "field": "REF_TO_METER",
+                                "value": "MeterNumber"
+                            },
+                            {
+                                "bo_data_uuid": "3f1e9385-27fd-4168-ba3c-a0c0844ef191",
+                                "data_seq_no": "00000000112",
+                                "path": "/DEVICE[1]/DATA[3]/DEVICE_NUMBER[1]/",
+                                "field": "DEVICE_NUMBER",
+                                "value": "VolumeCorrector"
+                            },
+                            {
+                                "bo_data_uuid": "21855202-290e-4238-94be-c464163bb7ce",
+                                "data_seq_no": "00000000113",
+                                "path": "/DEVICE[1]/DATA[4]/",
+                                "field": "POD_ID",
+                                "value": "15000000124"
+                            },
+                            {
+                                "bo_data_uuid": "ad2b75c6-0d76-4d47-ab34-844448ae4e24",
+                                "data_seq_no": "00000000114",
+                                "path": "/DEVICE[1]/DATA[4]/",
+                                "field": "DEVICE_TYPE",
+                                "value": "Transformer"
+                            },
+                            {
+                                "bo_data_uuid": "9d60ebcc-865d-49ee-af58-42d14f5157b9",
+                                "data_seq_no": "00000000115",
+                                "path": "/DEVICE[1]/DATA[4]/",
+                                "field": "TRANSFORM_TYPE",
+                                "value": "BlockTransformer"
+                            },
+                            {
+                                "bo_data_uuid": "b40b7358-7388-4923-adff-bc40c69e60e7",
+                                "data_seq_no": "00000000116",
+                                "path": "/DEVICE[1]/DATA[4]/",
+                                "field": "TRANSFORM_CONST",
+                                "value": "1"
+                            },
+                            {
+                                "bo_data_uuid": "40c20cd6-95df-47f6-b49d-33dd711991f1",
+                                "data_seq_no": "00000000117",
+                                "path": "/DEVICE[1]/DATA[4]/",
+                                "field": "REF_TO_METER",
+                                "value": "MeterNumber"
+                            },
+                            {
+                                "bo_data_uuid": "f45570a7-4e20-4293-9573-b4158b9a9ca6",
+                                "data_seq_no": "00000000118",
+                                "path": "/DEVICE[1]/DATA[4]/DEVICE_NUMBER[1]/",
+                                "field": "DEVICE_NUMBER",
+                                "value": "Transformer"
+                            },
+                            {
+                                "bo_data_uuid": "6abc438c-b732-42ef-926f-c95569854868",
+                                "data_seq_no": "00000000119",
+                                "path": "/DEVICE[1]/DATA[5]/",
+                                "field": "POD_ID",
+                                "value": "15000000124"
+                            },
+                            {
+                                "bo_data_uuid": "f6f8d836-ef82-47d3-a9aa-22f587c8685c",
+                                "data_seq_no": "00000000120",
+                                "path": "/DEVICE[1]/DATA[5]/",
+                                "field": "DEVICE_TYPE",
+                                "value": "CommunicationDevice"
+                            },
+                            {
+                                "bo_data_uuid": "58625d78-f792-49bf-80e4-1cc57615a7ce",
+                                "data_seq_no": "00000000121",
+                                "path": "/DEVICE[1]/DATA[5]/",
+                                "field": "COMM_EQUIP_TYPE",
+                                "value": "GSMCommunicationEquipment"
+                            },
+                            {
+                                "bo_data_uuid": "4fbb5ec9-58f9-40bc-8c20-16582335cad2",
+                                "data_seq_no": "00000000122",
+                                "path": "/DEVICE[1]/DATA[5]/",
+                                "field": "REF_TO_METER",
+                                "value": "1ABC0123456789"
+                            },
+                            {
+                                "bo_data_uuid": "ea1b1dc7-3e0d-4398-8246-41aff0bc1c21",
+                                "data_seq_no": "00000000123",
+                                "path": "/DEVICE[1]/DATA[5]/DEVICE_NUMBER[1]/",
+                                "field": "DEVICE_NUMBER",
+                                "value": "CommunicationEquipment"
+                            },
+                            {
+                                "bo_data_uuid": "7fcb8beb-0c07-4c05-b8e2-d1f6e6fc7817",
+                                "data_seq_no": "00000000124",
+                                "path": "/DEVICE[1]/DATA[6]/",
+                                "field": "POD_ID",
+                                "value": "15000000124"
+                            },
+                            {
+                                "bo_data_uuid": "060e92d8-ad16-4151-9a2a-136bdcc78c28",
+                                "data_seq_no": "00000000125",
+                                "path": "/DEVICE[1]/DATA[6]/",
+                                "field": "DEVICE_TYPE",
+                                "value": "ControlDevice"
+                            },
+                            {
+                                "bo_data_uuid": "c7e36203-a289-4338-88c2-78cd1b8a3d0f",
+                                "data_seq_no": "00000000126",
+                                "path": "/DEVICE[1]/DATA[6]/",
+                                "field": "CONTR_UNIT_TYPE",
+                                "value": "RateTimeSwitch"
+                            },
+                            {
+                                "bo_data_uuid": "d6e1ece4-0642-4dea-a967-9124b5893092",
+                                "data_seq_no": "00000000127",
+                                "path": "/DEVICE[1]/DATA[6]/",
+                                "field": "REF_TO_METER",
+                                "value": "MeterNumber"
+                            },
+                            {
+                                "bo_data_uuid": "08c90c48-cc5d-41d8-9503-71751d580a45",
+                                "data_seq_no": "00000000128",
+                                "path": "/DEVICE[1]/DATA[6]/DEVICE_NUMBER[1]/",
+                                "field": "DEVICE_NUMBER",
+                                "value": "TechControlDevice"
+                            },
+                            {
+                                "bo_data_uuid": "9cfb5b2f-4305-49e6-b286-ab3a29a14463",
+                                "data_seq_no": "00000000129",
+                                "path": "/DEVICE[1]/DATA[7]/",
+                                "field": "POD_ID",
+                                "value": "15000000124"
+                            },
+                            {
+                                "bo_data_uuid": "d040f85f-d539-4963-a8f0-b219cbdc482c",
+                                "data_seq_no": "00000000130",
+                                "path": "/DEVICE[1]/DATA[7]/",
+                                "field": "DEVICE_TYPE",
+                                "value": "SmartMeterGateway"
+                            },
+                            {
+                                "bo_data_uuid": "f507b42e-f13a-4600-ada4-0e30a4a1ca99",
+                                "data_seq_no": "00000000131",
+                                "path": "/DEVICE[1]/DATA[7]/DEVICE_NUMBER[1]/",
+                                "field": "DEVICE_NUMBER",
+                                "value": "1ABC0123456789"
+                            },
+                            {
+                                "bo_data_uuid": "53582806-d22f-4071-a989-575a636445d5",
+                                "data_seq_no": "00000000132",
+                                "path": "/DEVICE[1]/DATA[8]/",
+                                "field": "POD_ID",
+                                "value": "15000000124"
+                            },
+                            {
+                                "bo_data_uuid": "81555c67-d801-464a-ade1-326e6939eb82",
+                                "data_seq_no": "00000000133",
+                                "path": "/DEVICE[1]/DATA[8]/",
+                                "field": "DEVICE_TYPE",
+                                "value": "ControlBox"
+                            },
+                            {
+                                "bo_data_uuid": "2d15ccb5-71ea-45c3-b895-831791275091",
+                                "data_seq_no": "00000000134",
+                                "path": "/DEVICE[1]/DATA[8]/",
+                                "field": "REF_TO_SMART_METER_GATEWAY",
+                                "value": "SmartmeterGateway"
+                            },
+                            {
+                                "bo_data_uuid": "d981a0e4-7d18-4b04-b3cf-79d7f8c07847",
+                                "data_seq_no": "00000000135",
+                                "path": "/DEVICE[1]/DATA[8]/DEVICE_NUMBER[1]/",
+                                "field": "DEVICE_NUMBER",
+                                "value": "1ABC0123456789"
+                            },
+                            {
+                                "bo_data_uuid": "a99999bb-a532-4d51-b9d7-64fbf40df908",
+                                "data_seq_no": "00000000136",
+                                "path": "/PROFILE_DEFINITION[1]/DATA[1]/",
+                                "field": "PROFILE_DATA_TYPE",
+                                "value": "ProfileData"
+                            },
+                            {
+                                "bo_data_uuid": "54a0c319-7401-412f-b394-52a38902ae3d",
+                                "data_seq_no": "00000000137",
+                                "path": "/PROFILE_DEFINITION[1]/DATA[1]/",
+                                "field": "PROFILE_1",
+                                "value": "XYZ"
+                            },
+                            {
+                                "bo_data_uuid": "15077f57-f8d1-4858-b602-089fac06edae",
+                                "data_seq_no": "00000000138",
+                                "path": "/PROFILE_DEFINITION[1]/DATA[1]/",
+                                "field": "PROFILE_NORM_TYPE",
+                                "value": "StandardLoadProfile"
+                            },
+                            {
+                                "bo_data_uuid": "17e5ef47-a992-4624-bb00-951b5dd0efea",
+                                "data_seq_no": "00000000139",
+                                "path": "/PROFILE_DEFINITION[1]/DATA[1]/",
+                                "field": "PROFILE_NORM_CODE",
+                                "value": "SyntheticProfile"
+                            },
+                            {
+                                "bo_data_uuid": "78d9b17d-0a0c-46f3-8746-94245aaf3038",
+                                "data_seq_no": "00000000140",
+                                "path": "/PROFILE_DEFINITION[2]/DATA[1]/",
+                                "field": "PROFILE_DATA_TYPE",
+                                "value": "LoadProfile"
+                            },
+                            {
+                                "bo_data_uuid": "3ef6e5cc-fd1b-4ffd-bd22-137d6cd544dc",
+                                "data_seq_no": "00000000141",
+                                "path": "/PROFILE_DEFINITION[2]/DATA[1]/",
+                                "field": "PROFILE_1",
+                                "value": "XYZ"
+                            },
+                            {
+                                "bo_data_uuid": "eb85231b-d087-432f-a782-ebd0104716f5",
+                                "data_seq_no": "00000000142",
+                                "path": "/PROFILE_DEFINITION[2]/DATA[1]/",
+                                "field": "LOAD_PROFILE_ASSIGNED_BY",
+                                "value": "AssignedByBDEW"
+                            },
+                            {
+                                "bo_data_uuid": "b64a2cc7-9e5e-4f93-817f-c059dd2f7154",
+                                "data_seq_no": "00000000143",
+                                "path": "/PROFILE_DEFINITION[2]/DATA[1]/",
+                                "field": "PROFILE_NORM_TYPE",
+                                "value": "LoadProfile"
+                            },
+                            {
+                                "bo_data_uuid": "b247193b-da07-414a-b823-06dc4a46b20d",
+                                "data_seq_no": "00000000144",
+                                "path": "/PROFILE_DEFINITION[2]/DATA[1]/",
+                                "field": "PROFILE_NORM_CODE",
+                                "value": "SyntheticProfile"
+                            },
+                            {
+                                "bo_data_uuid": "2806bdd2-a225-412c-b30b-cea6612689dd",
+                                "data_seq_no": "00000000145",
+                                "path": "/PROFILE_DEFINITION[2]/DATA[1]/",
+                                "field": "TEMPERATURE_MP",
+                                "value": "TempMeasurePoint"
+                            },
+                            {
+                                "bo_data_uuid": "c48c1989-a9f4-4e93-9ca3-d08175ef991f",
+                                "data_seq_no": "00000000146",
+                                "path": "/PROFILE_DEFINITION[2]/DATA[1]/",
+                                "field": "SERVICE_PROVIDER",
+                                "value": "Provider"
+                            },
+                            {
+                                "bo_data_uuid": "6e81282d-e4df-49c6-945f-d2b11007d6d1",
+                                "data_seq_no": "00000000147",
+                                "path": "/PROFILE_DEFINITION[2]/DATA[1]/",
+                                "field": "SP_EXT_CODELIST_ID",
+                                "value": "293"
+                            },
+                            {
+                                "bo_data_uuid": "c45127f8-e421-4972-b605-352d7ffa4999",
+                                "data_seq_no": "00000000148",
+                                "path": "/PROFILE_DEFINITION[3]/DATA[1]/",
+                                "field": "PROFILE_DATA_TYPE",
+                                "value": "ProfileGroupData"
+                            },
+                            {
+                                "bo_data_uuid": "a738257e-8fb9-4409-9c99-c319fb49d1ee",
+                                "data_seq_no": "00000000149",
+                                "path": "/PROFILE_DEFINITION[3]/DATA[1]/",
+                                "field": "PROFILE_1",
+                                "value": "XYZ"
+                            },
+                            {
+                                "bo_data_uuid": "5f009bcb-9a9a-4017-9207-aa1fb989d138",
+                                "data_seq_no": "00000000150",
+                                "path": "/PROFILE_DEFINITION[3]/DATA[1]/",
+                                "field": "PROFILE_NORM_TYPE",
+                                "value": "DailyParameterDependentLoadProfile"
+                            },
+                            {
+                                "bo_data_uuid": "be900190-ccbd-4610-ae55-59f44abc1001",
+                                "data_seq_no": "00000000151",
+                                "path": "/PROFILE_DEFINITION[3]/DATA[1]/",
+                                "field": "PROFILE_NORM_CODE",
+                                "value": "SyntheticProfile"
+                            },
+                            {
+                                "bo_data_uuid": "46210e99-f8f5-407d-b281-f126bfb8c3c4",
+                                "data_seq_no": "00000000152",
+                                "path": "/PROFILE_DEFINITION[3]/DATA[1]/",
+                                "field": "TEMPERATURE_MP",
+                                "value": "TempMeasurePoint"
+                            },
+                            {
+                                "bo_data_uuid": "75ae782b-41cb-4b35-b2c3-78f314bf3daf",
+                                "data_seq_no": "00000000153",
+                                "path": "/PROFILE_DEFINITION[3]/DATA[1]/",
+                                "field": "SERVICE_PROVIDER",
+                                "value": "Provider"
+                            },
+                            {
+                                "bo_data_uuid": "c39d200d-60d6-46fc-9ad0-a7ae4e4741e3",
+                                "data_seq_no": "00000000154",
+                                "path": "/PROFILE_DEFINITION[3]/DATA[1]/",
+                                "field": "SP_EXT_CODELIST_ID",
+                                "value": "293"
+                            },
+                            {
+                                "bo_data_uuid": "be30310a-b3c2-4b7e-8b3a-9bb7c7dc8a8f",
+                                "data_seq_no": "00000000155",
+                                "path": "/DIVERSE[1]/DATA/",
+                                "field": "TRANSACTION_REASON",
+                                "value": "MoveInOut"
+                            },
+                            {
+                                "bo_data_uuid": "4dba9c2c-409d-4d14-a5c0-e4b009e5e564",
+                                "data_seq_no": "00000000156",
+                                "path": "/DIVERSE[1]/DATA/",
+                                "field": "RESPONSE_STATUS",
+                                "value": "ConfirmationWithoutCorrection"
+                            },
+                            {
+                                "bo_data_uuid": "4fa28dc8-5c72-43b4-944d-29a5d1b6473f",
+                                "data_seq_no": "00000000157",
+                                "path": "/DIVERSE[1]/DATA/",
+                                "field": "CONTRACT_START_DATE",
+                                "value": "20170702"
+                            },
+                            {
+                                "bo_data_uuid": "4825fbba-d153-4534-b7f2-47f5e068d4eb",
+                                "data_seq_no": "00000000158",
+                                "path": "/DIVERSE[1]/DATA/",
+                                "field": "CONTRACT_END_DATE",
+                                "value": "20190702"
+                            },
+                            {
+                                "bo_data_uuid": "d89748e1-a933-4f6a-8626-85a5936107a2",
+                                "data_seq_no": "00000000159",
+                                "path": "/DIVERSE[1]/DATA/FREE_TEXT[1]/",
+                                "field": "TEXT_CAT",
+                                "value": "AdditionalInformation"
+                            },
+                            {
+                                "bo_data_uuid": "793ad4c4-1300-4651-a1bd-9d660dcc1b6b",
+                                "data_seq_no": "00000000160",
+                                "path": "/DIVERSE[1]/DATA/FREE_TEXT[1]/",
+                                "field": "TEXT_COUNT",
+                                "value": "0001"
+                            },
+                            {
+                                "bo_data_uuid": "15ef9b17-e4a7-43a0-a530-b72b3dad9d52",
+                                "data_seq_no": "00000000161",
+                                "path": "/DIVERSE[1]/DATA/FREE_TEXT[1]/",
+                                "field": "FREE_TEXT",
+                                "value": "Text"
+                            },
+                            {
+                                "bo_data_uuid": "09309559-e81f-4262-a54a-b2c492caf79a",
+                                "data_seq_no": "00000000162",
+                                "path": "/DIVERSE[1]/DATA/",
+                                "field": "TRANS_REASON_ADD",
+                                "value": "MoveInOut"
+                            },
+                            {
+                                "bo_data_uuid": "0fd2700c-4970-42e3-b50a-34ab0fb64e92",
+                                "data_seq_no": "00000000163",
+                                "path": "/DIVERSE[1]/DATA/",
+                                "field": "SETTL_START_DATE",
+                                "value": "20190606"
+                            },
+                            {
+                                "bo_data_uuid": "71bf8395-3980-4cbb-9cc9-f05d017369d5",
+                                "data_seq_no": "00000000164",
+                                "path": "/DIVERSE[1]/DATA/",
+                                "field": "SETTL_END_DATE",
+                                "value": "20190606"
+                            },
+                            {
+                                "bo_data_uuid": "19b986bb-0de3-4177-851a-5ef026e1f723",
+                                "data_seq_no": "00000000165",
+                                "path": "/CHARGERS_INFO[1]/DATA[1]/",
+                                "field": "OBIS_CODE",
+                                "value": "1-1:1.9.1"
+                            },
+                            {
+                                "bo_data_uuid": "a6ccc913-d32c-4e89-a5f3-1dbcd0a02e89",
+                                "data_seq_no": "00000000166",
+                                "path": "/CHARGERS_INFO[2]/DATA[1]/",
+                                "field": "DATA_QUALIFIER",
+                                "value": "TaxData"
+                            },
+                            {
+                                "bo_data_uuid": "9d61baab-4392-42d1-a705-75557df9b528",
+                                "data_seq_no": "00000000167",
+                                "path": "/CHARGERS_INFO[2]/DATA[1]/",
+                                "field": "OBIS_CODE",
+                                "value": "1-1:1.9.1"
+                            },
+                            {
+                                "bo_data_uuid": "d40c0f04-3429-4d35-a872-c5b245b3fb7b",
+                                "data_seq_no": "00000000168",
+                                "path": "/CHARGERS_INFO[2]/DATA[1]/",
+                                "field": "TAX_INFO_CODE",
+                                "value": "ElectricityTaxExempt"
+                            },
+                            {
+                                "bo_data_uuid": "85c9c754-e64e-4cb2-aa05-d1375bc17c72",
+                                "data_seq_no": "00000000169",
+                                "path": "/CHARGERS_INFO[3]/DATA[1]/",
+                                "field": "DATA_QUALIFIER",
+                                "value": "DiscountData"
+                            },
+                            {
+                                "bo_data_uuid": "666eb74f-f2b4-4820-a5c2-373350c499a5",
+                                "data_seq_no": "00000000170",
+                                "path": "/CHARGERS_INFO[3]/DATA[1]/",
+                                "field": "DISCOUNT_RATE",
+                                "value": "1"
+                            },
+                            {
+                                "bo_data_uuid": "c3466d32-57f8-4016-bfa4-91de9e2ce6d8",
+                                "data_seq_no": "00000000171",
+                                "path": "/POD_DATES[1]/DATA[1]/",
+                                "field": "REF_POD_CATEGORY",
+                                "value": "MaLo"
+                            },
+                            {
+                                "bo_data_uuid": "d7cfacd8-1c75-4251-91bd-ed0906a2c7d5",
+                                "data_seq_no": "00000000172",
+                                "path": "/POD_DATES[1]/DATA[1]/",
+                                "field": "BILLING_YEAR_START",
+                                "value": "20190708"
+                            },
+                            {
+                                "bo_data_uuid": "1f97c473-8098-4995-ba54-6f743486f88a",
+                                "data_seq_no": "00000000173",
+                                "path": "/POD_DATES[1]/DATA[1]/",
+                                "field": "SUPP_BILL_PERIOD",
+                                "value": "HalfYear"
+                            },
+                            {
+                                "bo_data_uuid": "8bc21c6a-cbdd-4930-b922-555e1ddc7946",
+                                "data_seq_no": "00000000174",
+                                "path": "/POD_DATES[1]/DATA[1]/",
+                                "field": "NEXT_MR_DATE",
+                                "value": "05010501"
+                            },
+                            {
+                                "bo_data_uuid": "9369f5df-79bd-4c96-81f4-1c1cae0650c0",
+                                "data_seq_no": "00000000175",
+                                "path": "/POD_DATES[1]/DATA[1]/",
+                                "field": "NEXT_MR_FORMAT",
+                                "value": "MeterReadingPeriod"
+                            },
+                            {
+                                "bo_data_uuid": "cc87bd9d-612b-4da0-88b5-0cf103b6a594",
+                                "data_seq_no": "00000000176",
+                                "path": "/POD_DATES[1]/DATA[1]/",
+                                "field": "MR_PERIOD_LENGTH",
+                                "value": "Quarter"
+                            },
+                            {
+                                "bo_data_uuid": "86e5a178-ca12-4d57-84b1-7dd7deca8eb3",
+                                "data_seq_no": "00000000177",
+                                "path": "/POD_DATES[1]/DATA[1]/",
+                                "field": "GRID_USAGE_BILLING_DATE",
+                                "value": "0802"
+                            },
+                            {
+                                "bo_data_uuid": "ccf0a69a-99bc-447a-886c-eac7c6eac371",
+                                "data_seq_no": "00000000178",
+                                "path": "/POD_DATES[1]/DATA[1]/",
+                                "field": "GRID_USAGE_BILLING_DATE_FORMAT",
+                                "value": "106"
+                            },
+                            {
+                                "bo_data_uuid": "278bbffa-2c24-4bb0-90fe-bc47707171a3",
+                                "data_seq_no": "00000000179",
+                                "path": "/POD_DATES[1]/DATA[1]/",
+                                "field": "NEXT_GRID_USAGE_BILL_YEAR",
+                                "value": "2017"
+                            },
+                            {
+                                "bo_data_uuid": "8553d659-e190-4469-8608-d2c11e3df4ca",
+                                "data_seq_no": "00000000180",
+                                "path": "/POD_DATES[1]/DATA[1]/",
+                                "field": "GRID_USAGE_BILL_INTERVAL",
+                                "value": "HalfYear"
+                            }
+                        ]
+                    },
+                    "to_bo_id": {
+                        "results": [
+                            {
+                                "bo_id_uuid": "ea981274-a22b-4a54-a1f2-84de85af1bcd"
+                            }
+                        ]
+                    },
+                    "to_bo_rel": {
+                        "results": [
+                            {
+                                "bo_rel_uuid": "c17cd45f-3381-466b-a3ae-2a106319db66"
+                            }
+                        ]
+                    }
+                }
+            ]
+        }
+    }
+}

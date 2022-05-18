@@ -1,0 +1,56 @@
+## SAP Cloud for Utilities Foundation Retailer MTA configuration for portalsite deployments
+_schema-version: '3.1'
+ID: com.sap.c4u.foundation.retailer.portalsite
+version: 1.28.3
+description: 'SAP Cloud for Utilities Foundation Retailer Portalsite'
+
+parameters:
+    xsappname: c4u-foundation-retailer-${space}
+
+modules:
+    # ------------------------------------------------------------
+    #   SAP Cloud for Utilities Foundation Retailer PORTALSITE
+    # ------------------------------------------------------------
+    - name: c4u-foundation-retailer-portal-content
+      type: com.sap.application.content
+      path: .
+      parameters:
+          disk-quota: 256M
+          memory: 256M
+          config:
+              TENANT_HOST_PATTERN: ^(.*).${xsappname}.${domain}
+      # deployed-after:
+      #     - edom-retailer-appdeployer
+      requires:
+          - name: c4u-foundation-retailer-xsuaa
+          - name: c4u-foundation-retailer-saas-registry
+          - name: c4u-foundation-retailer-portal
+            parameters:
+                content-target: true
+                service-key:
+                    name: content-deploy-key #any valid name can be specified, will be used to create the service key for content deployment
+                    config: # the service key configs can be defined inline
+                        content-endpoint: developer
+          - name: c4u-foundation-retailer-html5-repo
+
+resources:
+    - name: c4u-foundation-retailer-xsuaa
+      type: org.cloudfoundry.existing-service
+
+    - name: c4u-foundation-retailer-saas-registry
+      type: org.cloudfoundry.existing-service
+
+    - name: c4u-foundation-retailer-portal
+      type: org.cloudfoundry.managed-service
+      parameters:
+          service-name: c4u-foundation-retailer-portal
+          service-plan: standard
+          service: portal
+          content-target: true
+          service-key:
+              name: content-deploy-key #any valid name can be specified, will be used to create the service key for content deployment
+              config: # the service key configs can be defined inline
+                  content-endpoint: developer
+
+    - name: c4u-foundation-retailer-html5-repo
+      type: org.cloudfoundry.existing-service

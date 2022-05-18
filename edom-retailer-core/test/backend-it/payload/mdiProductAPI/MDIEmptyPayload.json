@@ -1,0 +1,5 @@
+{
+    "@odata.context": "$metadata#Logs",
+    "value": [],
+    "@odata.deltaLink": "/v1/odm/2.3.0/sap.odm.product.Product/events?$deltatoken=F3uAu5u2.3.0u3u274u1u0u62u126u15u505u126u422u402u209u317u202u777u204u321u207u391u226u224"
+}

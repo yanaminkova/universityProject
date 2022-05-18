@@ -1,0 +1,88 @@
+{
+    "_version": "3.0.0",
+    "identification": {
+        "id": "com.sap.c4u.foundation.retailer.portalsite",
+        "entityType": "bundle"
+    },
+    "payload": {
+        "catalogs": [
+            {
+                "_version": "3.0.0",
+                "identification": {
+                    "id": "com.sap.c4u.foundation.retailer.portalsite.catalog",
+                    "title": "Home Catalog",
+                    "entityType": "catalog"
+                },
+                "payload": {
+                    "viz": []
+                }
+            }
+        ],
+        "groups": [
+            {
+                "_version": "3.0.0",
+                "identification": {
+                    "id": "com.sap.c4u.foundation.retailer.portalsite.home",
+                    "title": "Home",
+                    "entityType": "group"
+                },
+                "payload": {
+                    "viz": [
+                        {
+                            "id": "com.sap.c4u.foundation.retailer.portalsite.customer-order",
+                            "vizId": "CustomerOrder-manage",
+                            "appId": "com.sap.c4u.foundation.retailer.customerorder"
+                        }
+                    ]
+                }
+            }
+        ],
+        "sites": [
+            {
+                "_version": "3.0.0",
+                "identification": {
+                    "id": "com.sap.c4u.foundation.retailer.portalsite.site",
+                    "entityType": "site",
+                    "title": "Cloud for Utilities Foundation Retailer Launchpad",
+                    "description": "Cloud for Utilities Foundation Retailer Launchpad"
+                },
+                "payload": {
+                    "config": {
+                        "ushellConfig": {
+                            "renderers": {
+                                "fiori2": {
+                                    "componentData": {
+                                        "config": {
+                                            "applications": {
+                                                "Shell-home": {}
+                                            },
+                                            "enableSearch": true,
+                                            "enablePersonalization": true,
+                                            "enableSetTheme": true,
+                                            "enableSetLanguage": true
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "groupsOrder": [
+                        "com.sap.c4u.foundation.retailer.portalsite.home"
+                    ],
+                    "sap.cloud.portal": {
+                        "config": {
+                            "theme.id": "sap_fiori_3",
+                            "theme.active": [
+                                "sap_fiori_3",
+                                "sap_fiori_3_dark",
+                                "sap_belize_hcb",
+                                "sap_belize_hcw"
+                            ],
+                            "ui5VersionNumber": "1.98.0"
+                        }
+                    }
+                }
+            }
+        ]
+    }
+}

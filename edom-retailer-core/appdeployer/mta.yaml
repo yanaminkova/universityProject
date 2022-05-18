@@ -1,0 +1,49 @@
+## SAP Cloud for Utilities Foundation Retailer MTA configuration for appdeployer deployments
+_schema-version: '3.1'
+ID: com.sap.c4u.foundation.retailer.appdeployer
+version: 1.28.3
+description: 'SAP Cloud for Utilities Foundation Retailer Appdeployer'
+
+parameters:
+    xsappname: c4u-foundation-retailer-${space}
+
+modules:
+    # ------------------------------------------------------------
+    #   SAP Cloud for Utilities Foundation Retailer APPDEPLOYER
+    # ------------------------------------------------------------
+    - name: c4u-foundation-retailer-appdeployer
+      type: com.sap.html5.application-content
+      path: ./
+      parameters:
+          memory: 256M
+          disk-quota: 512M
+      requires:
+          - name: c4u-foundation-retailer-html5-repo
+            parameters:
+                content-target: true
+      build-parameters:
+          requires:
+              - name: customer-order-ui
+                artifacts:
+                    - './*'
+                target-path: resources/customer-order/
+
+    # ------------------------------------------------------------
+    #   SAP Cloud for Utilities Foundation Retailer CUSTOMERORDER UI APP
+    # ------------------------------------------------------------
+    - name: customer-order-ui
+      type: html5
+      path: ../app/customer-order/
+      build-parameters:
+          builder: custom
+          commands:
+              - npm install
+              - npm run build
+          supported-platforms: []
+          build-result: dist
+
+          # ------------------------------------------------------------
+
+resources:
+    - name: c4u-foundation-retailer-html5-repo
+      type: org.cloudfoundry.existing-service

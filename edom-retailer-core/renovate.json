@@ -1,0 +1,17 @@
+{
+    "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+    "extends": ["config:base"],
+    "ignoreDeps": ["@sap/odm", "msw"],
+    "packageRules": [
+        {
+            "matchPackagePatterns": ["@sap/cds", "@sap/cds-mtx", "@sap/cds-dk"],
+            "groupName": "CDS",
+            "groupSlug": "cds"
+        },
+        {
+            "matchDepTypes": ["devDependencies"],
+            "groupName": "Dev Dependencies",
+            "groupSlug": "devdeps"
+        }
+    ]
+}

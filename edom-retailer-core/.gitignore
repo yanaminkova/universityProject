@@ -1,0 +1,70 @@
+# CAP
+_out
+*.db
+*.db-wal
+*.db-shm
+*.db-journal
+*.db-shm
+*.db-wal 
+
+connection.properties
+default-*.json
+gen/
+node_modules/
+target/
+
+# Jest
+coverage/
+
+# Web IDE, App Studio
+.che/
+.gen/
+
+# MTA
+*_mta_build_tmp
+*.mtar
+mta_archives/
+*.mta
+
+# Docs
+docs/content/
+
+# Other
+.DS_Store
+*.orig
+*.log
+.settings/
+
+*.iml
+*.flattened-pom.xml
+test\postman\edom_consumer_dev.postman_environment.json
+example-env.json
+
+# UI5
+dist/
+appdeployer/resources/
+
+# IDEs
+.idea/
+
+# Java
+.project
+
+# CI/CD pipeline
+coverage/
+s4hana_pipeline/
+eslint-checkstyle.xml
+eslint-cilint.xml
+.scannerwork
+sonar-report.xml
+ersC5306533DocumentsGitHubc4u-cn-edomretailer_edom
+
+# Misc
+Makefile*
+.env
+sapedom.edom-retailer-lab.mtaext
+mtad.yaml
+
+# SonarLint
+settings.json
+

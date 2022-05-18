@@ -1,0 +1,24 @@
+general:
+  buildTool: 'mta'
+  artifactType: 'mta'
+  #gitHttpsCredentialsId: 'github-tools'
+  gitSshKeyCredentialsId: 'ACE_GITHUB_WDF_TECHNICAL_USER' # use this property if your project is hosted at GH Walldorf
+  themistoUrl: 'https://themisto-dwc-triel.cert.cfapps.eu10.hana.ondemand.com' # replace placeholder
+  themistoCredentialsId: 'dwc-triel-themisto' # replace placeholder
+  verbose: true
+
+stages:
+  Release:
+    downloadArtifactsFromNexus: true
+    stageLocking: false
+  Confirm:
+    manualConfirmation: false
+
+steps:
+  artifactPrepareVersion:
+    versioningType: 'cloud' # do not use 'cloud_noTag', Jenkins needs the tagged commit
+  executeBuild:
+    xMakeJobNameTemplate: ght-ice/ght-ice-$edom-retailer-core-SP-REL-common_indirectshipment
+  # this step is only know to the pipeline because the extension calls the 'dwcStageRelease', which imports the 'uploadServiceToDwc' script
+  uploadServiceToDwc:
+    appname: 'c4u-foundation-retailer-srv' # display name of the service in CF

@@ -1,0 +1,81 @@
+## SAP Cloud for Utilities Foundation Retailer MTA configuration for test deployment
+# Verify with mbt mtad-gen -e ./sapedom.edom-retailer-test.mtaext
+_schema-version: '3.1'
+extends: com.sap.c4u.foundation.retailer.core
+ID: com.sap.c4u.foundation.retailer.core.test
+parameters:
+    broker-credentials: '<%= brokerCredentials %>'
+    displayName: SAP Cloud for Utilities Foundation Retailer Test
+modules:
+    - name: c4u-foundation-retailer-srv
+      requires:
+          - name: c4u-foundation-retailer-autoscaler
+            parameters:
+                config:
+                    instance_min_count: 1
+                    instance_max_count: 2
+                    scaling_rules:
+                        - metric_type: memoryutil
+                          threshold: 90
+                          operator: '>='
+                          cool_down_secs: 300
+                          adjustment: '+1'
+                        - metric_type: memoryutil
+                          threshold: 60
+                          operator: '<'
+                          cool_down_secs: 300
+                          adjustment: '-1'
+                        - metric_type: cpu
+                          threshold: 90
+                          operator: '>='
+                          cool_down_secs: 300
+                          adjustment: '+1'
+                        - metric_type: cpu
+                          threshold: 60
+                          operator: '<'
+                          cool_down_secs: 300
+                          adjustment: '-1'
+    - name: c4u-foundation-retailer-broker
+      requires:
+          - name: srv-binding
+            properties:
+                SBF_CATALOG_FILE: catalog-test.json
+                SBF_SERVICE_CONFIG:
+                    c4u-foundation-retailer-test-api:
+                        extend_credentials:
+                            per_plan:
+                                standard:
+                                    endpoints:
+                                        v1: ~{srv-url}/api/v1
+
+resources:
+    - name: c4u-foundation-retailer-drm
+      parameters:
+          config:
+              retention-configs:
+                  dataSubjects:
+                      - dataSubjectRole: BusinessPartner
+                        dataSubjectDescription: 'BusinessPartner'
+                        dataSubjectDescriptionKey: BusinessPartner
+                        dataSubjectBaseURL: ~{srv-binding/srv-url}
+                        dataSubjectInformationEndPoint: '/api/v1/dpp/drm/dataSubjectInformation'
+                        dataSubjectDeletionEndPoint: '/api/v1/dpp/drm/dataSubjectDeletion'
+                        dataSubjectsDestroyingEndPoint: '/api/v1/dpp/drm/dataSubjectsDestroying'
+                        legalEntity:
+                            legalEntity: 'SAP SE'
+                            legalEntityDescription: 'Leading Cloud ERP company'
+                            legalEntityValueHelpEndPoint: '/api/v1/dpp/legalEntities'
+                        legalGrounds:
+                            - legalGround: CustomerOrder
+                              legalGroundDescription: 'Customer Order'
+                              legalGroundBaseURL: ~{srv-binding/srv-url}
+                              dataSubjectEndofBusinessEndPoint: '/api/v1/dpp/drm/dataSubjectEndofBusiness'
+                              dataSubjectsEndofResidenceEndPoint: '/api/v1/dpp/drm/dataSubjectsEndofResidence'
+                              dataSubjectsEndofResidenceConfirmationEndPoint: '/api/v1/dpp/drm/dataSubjectsEndofResidenceConfirmation'
+                              dataSubjectLegalEntitiesEndPoint: '/api/v1/dpp/drm/dataSubjectLegalEntities'
+                              dataSubjectLastRetentionStartDatesEndPoint: '/api/v1/dpp/drm/dataSubjectLastRetentionStartDates'
+                              dataSubjectLegalGroundDeletionEndPoint: '/api/v1/dpp/drm/dataSubjectLegalGroundDeletion'
+                              dataSubjectsLegalGroundDestroyingEndPoint: '/api/v1/dpp/drm/dataSubjectsLegalGroundDestroying'
+                              startTimes:
+                                  - startTime: endOfBusinessDate
+                                    startTimeDescription: 'Timestamp on which the CustomerOrder has been closed'

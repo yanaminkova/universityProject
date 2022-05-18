@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta
+            name="sap.ushellConfig.crossPlatformDefaults"
+            content='{
+            "services": {
+                "PluginManager": {
+                    "config": {
+                        "loadPluginsFromSite": true
+                    }
+                },
+                "Container": {
+                    "adapter": {
+                        "config": {
+                            "systemProperties": {
+                            },
+                            "userProfile": {
+                                "metadata": {},
+                                "defaults": {
+                                    "email": "test.user@sap.com",
+                                    "firstName": "Test",
+                                    "lastName": "User",
+                                    "fullName": "Test User",
+                                    "id": "USERT",
+                                    "language": "EN",
+                                    "languageBcp47": "en",
+                                    "sapDateFormat": "1",
+                                    "tislcal": [],
+                                    "numberFormat": "",
+                                    "rtl": false,
+                                    "theme": "sap_belize",
+                                    "sapTimeFormat": "0",
+                                    "timeZone": "CET"
+                                }
+                            },
+                            "userProfilePersonalization": {
+                                "sapDateFormat": "1",
+                                "theme": "sap_fiori_3",
+                                "sapTimeFormat": "0",
+                                "timeZone": "CET",
+                                "contentDensity": "cozy"
+                            }
+                        }
+                    }
+                },
+                "CommonDataModel": {
+                    "adapter": {
+                        "config": {
+                            "ignoreSiteDataPersonalization": true,
+                            "siteDataUrl": "./CDMMock.json"
+                        }
+                    }
+                },
+                "LaunchPage": {
+                    "adapter": {
+                        "module": "sap.ushell.adapters.cdm.v3.LaunchPageAdapter"
+                    }
+                },
+                "Ui5ComponentLoader": {
+                    "config": {
+                        "amendedLoading": true
+                    }
+                }
+            }
+        }'
+        />
+        <title>{{appTitle}}</title>
+        <script
+            id="sap-ui-bootstrap"
+            src="https://sapui5.hana.ondemand.com/1.98.0/resources/sap/ushell/bootstrap/cdm.js"
+            data-sap-ui-theme-roots="{}"
+            data-sap-ui-versionedLibCss="true"
+        ></script>
+    </head>
+    <body class="sapUiBody" id="content">
+        <div id="canvas">
+            <div class="sapMShellBG sapUiGlobalBackgroundImage"></div>
+        </div>
+    </body>
+</html>

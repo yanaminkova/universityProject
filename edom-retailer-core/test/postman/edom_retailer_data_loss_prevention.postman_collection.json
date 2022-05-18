@@ -1,0 +1,1206 @@
+{
+    "info": {
+        "_postman_id": "e71428f6-261d-4700-b871-7055aa8b3d5c",
+        "name": "edom_retailer_data_loss_prevention_test",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "item": [
+        {
+            "name": "PRE-DEPLOYMENT",
+            "item": [
+                {
+                    "name": "JWT",
+                    "item": [
+                        {
+                            "name": "{{jwtProtocol}}://{{uaa-domain}}/oauth/token",
+                            "event": [
+                                {
+                                    "listen": "test",
+                                    "script": {
+                                        "exec": [
+                                            "",
+                                            "var jsonData = JSON.parse(responseBody);",
+                                            "if(jsonData && jsonData.access_token){",
+                                            "    postman.setEnvironmentVariable(\"jwt\", jsonData.access_token);",
+                                            "}",
+                                            "pm.test(\"Successful POST request\", function () {",
+                                            "     pm.expect(pm.response.code).to.be.oneOf([200]);",
+                                            "});",
+                                            "",
+                                            "pm.test(\"Check mtcallback scope\", function (){",
+                                            "    var jsonData = JSON.parse(responseBody);",
+                                            "    pm.expect(jsonData.scope).to.not.include(\"mtcallback\");",
+                                            "});"
+                                        ],
+                                        "type": "text/javascript"
+                                    }
+                                },
+                                {
+                                    "listen": "prerequest",
+                                    "script": {
+                                        "exec": [""],
+                                        "type": "text/javascript"
+                                    }
+                                }
+                            ],
+                            "request": {
+                                "auth": {
+                                    "type": "noauth"
+                                },
+                                "method": "POST",
+                                "header": [
+                                    {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                    },
+                                    {
+                                        "key": "X-CorrelationID",
+                                        "value": "",
+                                        "disabled": true
+                                    },
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "application/x-www-form-urlencoded"
+                                    }
+                                ],
+                                "body": {
+                                    "mode": "urlencoded",
+                                    "urlencoded": [
+                                        {
+                                            "key": "response_type",
+                                            "value": "token",
+                                            "type": "text"
+                                        },
+                                        {
+                                            "key": "grant_type",
+                                            "value": "client_credentials",
+                                            "type": "text"
+                                        },
+                                        {
+                                            "key": "client_id",
+                                            "value": "{{uaa_client_id}}",
+                                            "type": "text"
+                                        },
+                                        {
+                                            "key": "client_secret",
+                                            "value": "{{uaa_client_secret}}",
+                                            "type": "text"
+                                        },
+                                        {
+                                            "key": "scope",
+                                            "value": "",
+                                            "type": "text"
+                                        }
+                                    ]
+                                },
+                                "url": {
+                                    "raw": "{{jwtProtocol}}://{{uaa-domain}}/oauth/token",
+                                    "protocol": "{{jwtProtocol}}",
+                                    "host": ["{{uaa-domain}}"],
+                                    "path": ["oauth", "token"]
+                                }
+                            },
+                            "response": []
+                        }
+                    ]
+                },
+                {
+                    "name": "CONFIGURATION DATA",
+                    "item": [
+                        {
+                            "name": "Sales Processing Status Codes",
+                            "item": [
+                                {
+                                    "name": "CREATE Sales Processing Status Code 00",
+                                    "event": [
+                                        {
+                                            "listen": "test",
+                                            "script": {
+                                                "exec": [
+                                                    "pm.test(\"CREATE Sales Processing Status Code 00. Successful PUT request UTILITIESCLOUDSOLUTION-2971\", function () {\r",
+                                                    "     pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
+                                                    "});"
+                                                ],
+                                                "type": "text/javascript"
+                                            }
+                                        }
+                                    ],
+                                    "request": {
+                                        "method": "PUT",
+                                        "header": [
+                                            {
+                                                "key": "Content-Type",
+                                                "value": "application/json;IEEE754Compatible=true",
+                                                "type": "text"
+                                            }
+                                        ],
+                                        "body": {
+                                            "mode": "raw",
+                                            "raw": "{\r\n    \"code\": \"00\",\r\n    \"name\": \"Initial\",\r\n    \"descr\": \"Initial\",\r\n    \"isDefault\":true\r\n}\r\n",
+                                            "options": {
+                                                "raw": {
+                                                    "language": "json"
+                                                }
+                                            }
+                                        },
+                                        "url": {
+                                            "raw": "{{url}}/api/v1/SalesProcessingStatusCodes('00')",
+                                            "host": ["{{url}}"],
+                                            "path": [
+                                                "api",
+                                                "v1",
+                                                "SalesProcessingStatusCodes('00')"
+                                            ]
+                                        }
+                                    },
+                                    "response": []
+                                },
+                                {
+                                    "name": "CREATE Sales Processing Status Code 01",
+                                    "event": [
+                                        {
+                                            "listen": "test",
+                                            "script": {
+                                                "exec": [
+                                                    "pm.test(\"CREATE Sales Processing Status Code 01. Successful PUT request UTILITIESCLOUDSOLUTION-2971\", function () {\r",
+                                                    "     pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
+                                                    "});"
+                                                ],
+                                                "type": "text/javascript"
+                                            }
+                                        }
+                                    ],
+                                    "request": {
+                                        "method": "PUT",
+                                        "header": [
+                                            {
+                                                "key": "Content-Type",
+                                                "value": "application/json;IEEE754Compatible=true",
+                                                "type": "text"
+                                            }
+                                        ],
+                                        "body": {
+                                            "mode": "raw",
+                                            "raw": "{\r\n    \"code\": \"01\",\r\n    \"name\": \"Open\",\r\n    \"descr\": \"Open\",\r\n    \"isDefault\": false\r\n}\r\n",
+                                            "options": {
+                                                "raw": {
+                                                    "language": "json"
+                                                }
+                                            }
+                                        },
+                                        "url": {
+                                            "raw": "{{url}}/api/v1/SalesProcessingStatusCodes('01')",
+                                            "host": ["{{url}}"],
+                                            "path": [
+                                                "api",
+                                                "v1",
+                                                "SalesProcessingStatusCodes('01')"
+                                            ]
+                                        }
+                                    },
+                                    "response": []
+                                },
+                                {
+                                    "name": "CREATE Sales Processing Status Code 02",
+                                    "event": [
+                                        {
+                                            "listen": "test",
+                                            "script": {
+                                                "exec": [
+                                                    "pm.test(\"CREATE Sales Processing Status Code 02. Successful PUT request UTILITIESCLOUDSOLUTION-2971\", function () {\r",
+                                                    "     pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
+                                                    "});"
+                                                ],
+                                                "type": "text/javascript"
+                                            }
+                                        }
+                                    ],
+                                    "request": {
+                                        "method": "PUT",
+                                        "header": [
+                                            {
+                                                "key": "Content-Type",
+                                                "value": "application/json;IEEE754Compatible=true",
+                                                "type": "text"
+                                            }
+                                        ],
+                                        "body": {
+                                            "mode": "raw",
+                                            "raw": "{\r\n    \"code\": \"02\",\r\n    \"name\": \"In Process\",\r\n    \"descr\": \"In Process\",\r\n    \"isDefault\": false\r\n}\r\n",
+                                            "options": {
+                                                "raw": {
+                                                    "language": "json"
+                                                }
+                                            }
+                                        },
+                                        "url": {
+                                            "raw": "{{url}}/api/v1/SalesProcessingStatusCodes('02')",
+                                            "host": ["{{url}}"],
+                                            "path": [
+                                                "api",
+                                                "v1",
+                                                "SalesProcessingStatusCodes('02')"
+                                            ]
+                                        }
+                                    },
+                                    "response": []
+                                },
+                                {
+                                    "name": "CREATE Sales Processing Status Code 03",
+                                    "event": [
+                                        {
+                                            "listen": "test",
+                                            "script": {
+                                                "exec": [
+                                                    "pm.test(\"CREATE Sales Processing Status Code 03. Successful PUT request UTILITIESCLOUDSOLUTION-2971\", function () {\r",
+                                                    "     pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
+                                                    "});"
+                                                ],
+                                                "type": "text/javascript"
+                                            }
+                                        }
+                                    ],
+                                    "request": {
+                                        "method": "PUT",
+                                        "header": [
+                                            {
+                                                "key": "Content-Type",
+                                                "value": "application/json;IEEE754Compatible=true",
+                                                "type": "text"
+                                            }
+                                        ],
+                                        "body": {
+                                            "mode": "raw",
+                                            "raw": "{\r\n    \"code\": \"03\",\r\n    \"name\": \"Completed\",\r\n    \"descr\": \"Completed\",\r\n    \"isDefault\": false\r\n}\r\n",
+                                            "options": {
+                                                "raw": {
+                                                    "language": "json"
+                                                }
+                                            }
+                                        },
+                                        "url": {
+                                            "raw": "{{url}}/api/v1/SalesProcessingStatusCodes('03')",
+                                            "host": ["{{url}}"],
+                                            "path": [
+                                                "api",
+                                                "v1",
+                                                "SalesProcessingStatusCodes('03')"
+                                            ]
+                                        }
+                                    },
+                                    "response": []
+                                },
+                                {
+                                    "name": "CREATE Sales Processing Status Code 04",
+                                    "event": [
+                                        {
+                                            "listen": "test",
+                                            "script": {
+                                                "exec": [
+                                                    "pm.test(\"CREATE Sales Processing Status Code 04. Successful PUT request UTILITIESCLOUDSOLUTION-2971\", function () {\r",
+                                                    "     pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
+                                                    "});"
+                                                ],
+                                                "type": "text/javascript"
+                                            }
+                                        }
+                                    ],
+                                    "request": {
+                                        "method": "PUT",
+                                        "header": [
+                                            {
+                                                "key": "Content-Type",
+                                                "value": "application/json;IEEE754Compatible=true",
+                                                "type": "text"
+                                            }
+                                        ],
+                                        "body": {
+                                            "mode": "raw",
+                                            "raw": "{\r\n    \"code\": \"04\",\r\n    \"name\": \"Canceled\",\r\n    \"descr\": \"Canceled\",\r\n    \"isDefault\": false\r\n}\r\n",
+                                            "options": {
+                                                "raw": {
+                                                    "language": "json"
+                                                }
+                                            }
+                                        },
+                                        "url": {
+                                            "raw": "{{url}}/api/v1/SalesProcessingStatusCodes('04')",
+                                            "host": ["{{url}}"],
+                                            "path": [
+                                                "api",
+                                                "v1",
+                                                "SalesProcessingStatusCodes('04')"
+                                            ]
+                                        }
+                                    },
+                                    "response": []
+                                },
+                                {
+                                    "name": "CREATE Sales Processing Status Code 05",
+                                    "event": [
+                                        {
+                                            "listen": "test",
+                                            "script": {
+                                                "exec": [
+                                                    "pm.test(\"CREATE Sales Processing Status Code 06. Successful PUT request UTILITIESCLOUDSOLUTION-2971\", function () {\r",
+                                                    "     pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
+                                                    "});\r",
+                                                    ""
+                                                ],
+                                                "type": "text/javascript"
+                                            }
+                                        }
+                                    ],
+                                    "request": {
+                                        "method": "PUT",
+                                        "header": [
+                                            {
+                                                "key": "Content-Type",
+                                                "value": "application/json;IEEE754Compatible=true",
+                                                "type": "text"
+                                            }
+                                        ],
+                                        "body": {
+                                            "mode": "raw",
+                                            "raw": "{\r\n    \"code\": \"05\",\r\n    \"name\": \"Rejected\",\r\n    \"descr\": \"Rejected\",\r\n    \"isDefault\": false\r\n}\r\n",
+                                            "options": {
+                                                "raw": {
+                                                    "language": "json"
+                                                }
+                                            }
+                                        },
+                                        "url": {
+                                            "raw": "{{url}}/api/v1/SalesProcessingStatusCodes('05')",
+                                            "host": ["{{url}}"],
+                                            "path": [
+                                                "api",
+                                                "v1",
+                                                "SalesProcessingStatusCodes('05')"
+                                            ]
+                                        }
+                                    },
+                                    "response": []
+                                },
+                                {
+                                    "name": "CREATE Sales Processing Status Code 06",
+                                    "event": [
+                                        {
+                                            "listen": "test",
+                                            "script": {
+                                                "exec": [
+                                                    "pm.test(\"CREATE Sales Processing Status Code 06. Successful PUT request UTILITIESCLOUDSOLUTION-2971\", function () {\r",
+                                                    "     pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
+                                                    "});\r",
+                                                    ""
+                                                ],
+                                                "type": "text/javascript"
+                                            }
+                                        }
+                                    ],
+                                    "request": {
+                                        "method": "PUT",
+                                        "header": [
+                                            {
+                                                "key": "Content-Type",
+                                                "value": "application/json;IEEE754Compatible=true",
+                                                "type": "text"
+                                            }
+                                        ],
+                                        "body": {
+                                            "mode": "raw",
+                                            "raw": "{\r\n    \"code\": \"06\",\r\n    \"name\": \"In Distribution\",\r\n    \"descr\": \"In Distribution\",\r\n    \"isDefault\": false\r\n}\r\n",
+                                            "options": {
+                                                "raw": {
+                                                    "language": "json"
+                                                }
+                                            }
+                                        },
+                                        "url": {
+                                            "raw": "{{url}}/api/v1/SalesProcessingStatusCodes('06')",
+                                            "host": ["{{url}}"],
+                                            "path": [
+                                                "api",
+                                                "v1",
+                                                "SalesProcessingStatusCodes('06')"
+                                            ]
+                                        }
+                                    },
+                                    "response": []
+                                },
+                                {
+                                    "name": "CREATE Sales Processing Status Code 07",
+                                    "event": [
+                                        {
+                                            "listen": "test",
+                                            "script": {
+                                                "exec": [
+                                                    "pm.test(\"CREATE Sales Processing Status Code 07. Successful PUT request UTILITIESCLOUDSOLUTION-2971\", function () {\r",
+                                                    "     pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
+                                                    "});\r",
+                                                    ""
+                                                ],
+                                                "type": "text/javascript"
+                                            }
+                                        }
+                                    ],
+                                    "request": {
+                                        "method": "PUT",
+                                        "header": [
+                                            {
+                                                "key": "Content-Type",
+                                                "value": "application/json;IEEE754Compatible=true",
+                                                "type": "text"
+                                            }
+                                        ],
+                                        "body": {
+                                            "mode": "raw",
+                                            "raw": "{\r\n    \"code\": \"07\",\r\n    \"name\": \"Active\",\r\n    \"descr\": \"Active\",\r\n    \"isDefault\": false\r\n}\r\n",
+                                            "options": {
+                                                "raw": {
+                                                    "language": "json"
+                                                }
+                                            }
+                                        },
+                                        "url": {
+                                            "raw": "{{url}}/api/v1/SalesProcessingStatusCodes('07')",
+                                            "host": ["{{url}}"],
+                                            "path": [
+                                                "api",
+                                                "v1",
+                                                "SalesProcessingStatusCodes('07')"
+                                            ]
+                                        }
+                                    },
+                                    "response": []
+                                },
+                                {
+                                    "name": "CREATE Sales Processing Status Code 08",
+                                    "event": [
+                                        {
+                                            "listen": "test",
+                                            "script": {
+                                                "exec": [
+                                                    "pm.test(\"CREATE Sales Processing Status Code 08. Successful PUT request UTILITIESCLOUDSOLUTION-2971\", function () {\r",
+                                                    "     pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
+                                                    "});\r",
+                                                    ""
+                                                ],
+                                                "type": "text/javascript"
+                                            }
+                                        }
+                                    ],
+                                    "request": {
+                                        "method": "PUT",
+                                        "header": [
+                                            {
+                                                "key": "Content-Type",
+                                                "value": "application/json;IEEE754Compatible=true",
+                                                "type": "text"
+                                            }
+                                        ],
+                                        "body": {
+                                            "mode": "raw",
+                                            "raw": "{\r\n    \"code\": \"08\",\r\n    \"name\": \"In Error\",\r\n    \"descr\": \"In Error\",\r\n    \"isDefault\": false\r\n}\r\n",
+                                            "options": {
+                                                "raw": {
+                                                    "language": "json"
+                                                }
+                                            }
+                                        },
+                                        "url": {
+                                            "raw": "{{url}}/api/v1/SalesProcessingStatusCodes('08')",
+                                            "host": ["{{url}}"],
+                                            "path": [
+                                                "api",
+                                                "v1",
+                                                "SalesProcessingStatusCodes('08')"
+                                            ]
+                                        }
+                                    },
+                                    "response": []
+                                },
+                                {
+                                    "name": "CREATE Sales Processing Status Code 09",
+                                    "event": [
+                                        {
+                                            "listen": "test",
+                                            "script": {
+                                                "exec": [
+                                                    "pm.test(\"CREATE Sales Processing Status Code 09. Successful PUT request UTILITIESCLOUDSOLUTION-2971\", function () {\r",
+                                                    "     pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
+                                                    "});\r",
+                                                    ""
+                                                ],
+                                                "type": "text/javascript"
+                                            }
+                                        }
+                                    ],
+                                    "request": {
+                                        "method": "PUT",
+                                        "header": [
+                                            {
+                                                "key": "Content-Type",
+                                                "value": "application/json;IEEE754Compatible=true",
+                                                "type": "text"
+                                            }
+                                        ],
+                                        "body": {
+                                            "mode": "raw",
+                                            "raw": "{\r\n    \"code\": \"09\",\r\n    \"name\": \"In Termination\",\r\n    \"descr\": \"In Termination\",\r\n    \"isDefault\": false\r\n}\r\n",
+                                            "options": {
+                                                "raw": {
+                                                    "language": "json"
+                                                }
+                                            }
+                                        },
+                                        "url": {
+                                            "raw": "{{url}}/api/v1/SalesProcessingStatusCodes('09')",
+                                            "host": ["{{url}}"],
+                                            "path": [
+                                                "api",
+                                                "v1",
+                                                "SalesProcessingStatusCodes('09')"
+                                            ]
+                                        }
+                                    },
+                                    "response": []
+                                },
+                                {
+                                    "name": "CREATE Sales Processing Status Code 10",
+                                    "event": [
+                                        {
+                                            "listen": "test",
+                                            "script": {
+                                                "exec": [
+                                                    "pm.test(\"CREATE Sales Processing Status Code 10. Successful PUT request UTILITIESCLOUDSOLUTION-2971\", function () {\r",
+                                                    "     pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
+                                                    "});\r",
+                                                    ""
+                                                ],
+                                                "type": "text/javascript"
+                                            }
+                                        }
+                                    ],
+                                    "request": {
+                                        "method": "PUT",
+                                        "header": [
+                                            {
+                                                "key": "Content-Type",
+                                                "value": "application/json;IEEE754Compatible=true",
+                                                "type": "text"
+                                            }
+                                        ],
+                                        "body": {
+                                            "mode": "raw",
+                                            "raw": "{\r\n    \"code\": \"10\",\r\n    \"name\": \"Terminated\",\r\n    \"descr\": \"Terminated\",\r\n    \"isDefault\": false\r\n}\r\n",
+                                            "options": {
+                                                "raw": {
+                                                    "language": "json"
+                                                }
+                                            }
+                                        },
+                                        "url": {
+                                            "raw": "{{url}}/api/v1/SalesProcessingStatusCodes('10')",
+                                            "host": ["{{url}}"],
+                                            "path": [
+                                                "api",
+                                                "v1",
+                                                "SalesProcessingStatusCodes('10')"
+                                            ]
+                                        }
+                                    },
+                                    "response": []
+                                }
+                            ]
+                        },
+                        {
+                            "name": "UnitOfMeasuresCodes",
+                            "item": [
+                                {
+                                    "name": "UnitOfMeasuresCodes EA",
+                                    "event": [
+                                        {
+                                            "listen": "test",
+                                            "script": {
+                                                "exec": [
+                                                    "pm.test(\"CREATE UnitOfMeasuresCodes - EA. Successful POST request\", function () {\r",
+                                                    "    pm.expect(pm.response.code).to.be.oneOf([200,201,400]);\r",
+                                                    "});\r",
+                                                    "\r",
+                                                    "const jsonData = pm.response.json();\r",
+                                                    "const unitOfMeasureCodeEA = 'EA';\r",
+                                                    "\r",
+                                                    "if (pm.response.code == 400) {\r",
+                                                    "    pm.expect(jsonData.error.message == \"Entity already exists\" );\r",
+                                                    "    pm.collectionVariables.set(\"unitOfMeasureCodeEA\", unitOfMeasureCodeEA);\r",
+                                                    "} else if (pm.response.code == 200 || 201  ) {\r",
+                                                    "    pm.collectionVariables.set(\"unitOfMeasureCodeEA\", jsonData.code);\r",
+                                                    "}"
+                                                ],
+                                                "type": "text/javascript"
+                                            }
+                                        }
+                                    ],
+                                    "request": {
+                                        "method": "POST",
+                                        "header": [],
+                                        "body": {
+                                            "mode": "raw",
+                                            "raw": "{\r\n    \"name\": \"Each\",\r\n    \"descr\": null,\r\n    \"code\": \"EA\"\r\n}",
+                                            "options": {
+                                                "raw": {
+                                                    "language": "json"
+                                                }
+                                            }
+                                        },
+                                        "url": {
+                                            "raw": "{{url}}/api/v1/UnitOfMeasuresCodes",
+                                            "host": ["{{url}}"],
+                                            "path": [
+                                                "api",
+                                                "v1",
+                                                "UnitOfMeasuresCodes"
+                                            ]
+                                        }
+                                    },
+                                    "response": []
+                                }
+                            ]
+                        },
+                        {
+                            "name": "DivisionCodes",
+                            "item": [
+                                {
+                                    "name": "CREATE DivisionCodes 03",
+                                    "event": [
+                                        {
+                                            "listen": "test",
+                                            "script": {
+                                                "exec": [
+                                                    "pm.test(\"CREATE DivisionCodes - 03. Successful POST request\", function () {\r",
+                                                    "    pm.expect(pm.response.code).to.be.oneOf([200,201,400]);\r",
+                                                    "});\r",
+                                                    "\r",
+                                                    "const jsonData = pm.response.json();\r",
+                                                    "const divisionCode03 = '03';\r",
+                                                    "\r",
+                                                    "if (pm.response.code == 400) {\r",
+                                                    "    pm.expect(jsonData.error.message == \"Entity already exists\" );\r",
+                                                    "    pm.collectionVariables.set(\"divisionCode03\", divisionCode03);\r",
+                                                    "} else if (pm.response.code == 200 || 201  ) {\r",
+                                                    "    pm.collectionVariables.set(\"divisionCode03\", jsonData.code);\r",
+                                                    "}"
+                                                ],
+                                                "type": "text/javascript"
+                                            }
+                                        }
+                                    ],
+                                    "request": {
+                                        "method": "POST",
+                                        "header": [
+                                            {
+                                                "key": "Content-Type",
+                                                "value": "application/json;IEEE754Compatible=true",
+                                                "type": "text"
+                                            }
+                                        ],
+                                        "body": {
+                                            "mode": "raw",
+                                            "raw": "{\r\n    \"name\": \"Water\",\r\n    \"descr\": null,\r\n    \"code\": \"03\"\r\n}",
+                                            "options": {
+                                                "raw": {
+                                                    "language": "json"
+                                                }
+                                            }
+                                        },
+                                        "url": {
+                                            "raw": "{{url}}/api/v1/DivisionCodes",
+                                            "host": ["{{url}}"],
+                                            "path": [
+                                                "api",
+                                                "v1",
+                                                "DivisionCodes"
+                                            ]
+                                        }
+                                    },
+                                    "response": []
+                                }
+                            ]
+                        },
+                        {
+                            "name": "CustomerOrderItemTypeCodes",
+                            "item": [
+                                {
+                                    "name": "CREATE CustomerOrderItemTypeCodes UCM1",
+                                    "event": [
+                                        {
+                                            "listen": "test",
+                                            "script": {
+                                                "exec": [
+                                                    "pm.test(\"CREATE CustomerOrderItemTypeCode UCM1. Successful POST request\", function () {\r",
+                                                    "    pm.expect(pm.response.code).to.be.oneOf([200,201,400]);\r",
+                                                    "});\r",
+                                                    "\r",
+                                                    "const jsonData = pm.response.json();\r",
+                                                    "const itemTypeCodeUCM1 = 'UCM1';\r",
+                                                    "\r",
+                                                    "if (pm.response.code == 400) {\r",
+                                                    "    pm.expect(jsonData.error.message == \"Entity already exists\" );\r",
+                                                    "    pm.collectionVariables.set(\"itemTypeCodeUCM1\", itemTypeCodeUCM1);\r",
+                                                    "} else if (pm.response.code == 200 || 201  ) {\r",
+                                                    "    pm.collectionVariables.set(\"itemTypeCodeUCM1\", jsonData.code);\r",
+                                                    "}"
+                                                ],
+                                                "type": "text/javascript"
+                                            }
+                                        }
+                                    ],
+                                    "request": {
+                                        "method": "POST",
+                                        "header": [],
+                                        "body": {
+                                            "mode": "raw",
+                                            "raw": "{\r\n    \"name\": \"Utilities\",\r\n    \"descr\": null,\r\n    \"code\": \"UCM1\"\r\n}",
+                                            "options": {
+                                                "raw": {
+                                                    "language": "json"
+                                                }
+                                            }
+                                        },
+                                        "url": {
+                                            "raw": "{{url}}/api/v1/CustomerOrderItemTypeCodes",
+                                            "host": ["{{url}}"],
+                                            "path": [
+                                                "api",
+                                                "v1",
+                                                "CustomerOrderItemTypeCodes"
+                                            ]
+                                        }
+                                    },
+                                    "response": []
+                                },
+                                {
+                                    "name": "CREATE CustomerOrderItemTypeCodes USB1",
+                                    "event": [
+                                        {
+                                            "listen": "test",
+                                            "script": {
+                                                "exec": [
+                                                    "pm.test(\"CREATE CustomerOrderItemTypeCode USB1. Successful POST request\", function () {\r",
+                                                    "    pm.expect(pm.response.code).to.be.oneOf([200,201,400]);\r",
+                                                    "});\r",
+                                                    "\r",
+                                                    "const jsonData = pm.response.json();\r",
+                                                    "const itemTypeCodeUSB1 = 'USB1';\r",
+                                                    "\r",
+                                                    "if (pm.response.code == 400) {\r",
+                                                    "    pm.expect(jsonData.error.message == \"Entity already exists\" );\r",
+                                                    "    pm.collectionVariables.set(\"itemTypeCodeUSB1\", itemTypeCodeUSB1);\r",
+                                                    "} else if (pm.response.code == 200 || 201  ) {\r",
+                                                    "    pm.collectionVariables.set(\"itemTypeCodeUSB1\", jsonData.code);\r",
+                                                    "}"
+                                                ],
+                                                "type": "text/javascript"
+                                            }
+                                        }
+                                    ],
+                                    "request": {
+                                        "method": "POST",
+                                        "header": [],
+                                        "body": {
+                                            "mode": "raw",
+                                            "raw": "{\r\n    \"name\": \"Subscription\",\r\n    \"descr\": null,\r\n    \"code\": \"USB1\"\r\n}",
+                                            "options": {
+                                                "raw": {
+                                                    "language": "json"
+                                                }
+                                            }
+                                        },
+                                        "url": {
+                                            "raw": "{{url}}/api/v1/CustomerOrderItemTypeCodes",
+                                            "host": ["{{url}}"],
+                                            "path": [
+                                                "api",
+                                                "v1",
+                                                "CustomerOrderItemTypeCodes"
+                                            ]
+                                        }
+                                    },
+                                    "response": []
+                                },
+                                {
+                                    "name": "CREATE CustomerOrderItemTypeCodes UMT1",
+                                    "event": [
+                                        {
+                                            "listen": "test",
+                                            "script": {
+                                                "exec": [
+                                                    "pm.test(\"CREATE CustomerOrderItemTypeCode UMT1. Successful POST request\", function () {\r",
+                                                    "    pm.expect(pm.response.code).to.be.oneOf([200,201,400]);\r",
+                                                    "});\r",
+                                                    "\r",
+                                                    "const jsonData = pm.response.json();\r",
+                                                    "const itemTypeCodeUMT1 = 'UMT1';\r",
+                                                    "\r",
+                                                    "if (pm.response.code == 400) {\r",
+                                                    "    pm.expect(jsonData.error.message == \"Entity already exists\" );\r",
+                                                    "    pm.collectionVariables.set(\"itemTypeCodeUMT1\", itemTypeCodeUMT1);\r",
+                                                    "} else if (pm.response.code == 200 || 201  ) {\r",
+                                                    "    pm.collectionVariables.set(\"itemTypeCodeUMT1\", jsonData.code);\r",
+                                                    "}"
+                                                ],
+                                                "type": "text/javascript"
+                                            }
+                                        }
+                                    ],
+                                    "request": {
+                                        "method": "POST",
+                                        "header": [],
+                                        "body": {
+                                            "mode": "raw",
+                                            "raw": "{\r\n    \"name\": \"Physical\",\r\n    \"descr\": null,\r\n    \"code\": \"UMT1\"\r\n}",
+                                            "options": {
+                                                "raw": {
+                                                    "language": "json"
+                                                }
+                                            }
+                                        },
+                                        "url": {
+                                            "raw": "{{url}}/api/v1/CustomerOrderItemTypeCodes",
+                                            "host": ["{{url}}"],
+                                            "path": [
+                                                "api",
+                                                "v1",
+                                                "CustomerOrderItemTypeCodes"
+                                            ]
+                                        }
+                                    },
+                                    "response": []
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "name": "CREATE Customer Order",
+                    "event": [
+                        {
+                            "listen": "prerequest",
+                            "script": {
+                                "exec": [
+                                    "pm.collectionVariables.set(\"orderDate\", new Date().toISOString().split(\"T\")[0]);"
+                                ],
+                                "type": "text/javascript"
+                            }
+                        },
+                        {
+                            "listen": "test",
+                            "script": {
+                                "exec": [
+                                    "pm.test(\"CREATE Customer Order\", function () {\r",
+                                    "    pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
+                                    "});\r",
+                                    "\r",
+                                    "let customerOrderCountVarName = \"customerOrderNumber\",\r",
+                                    "    customerOrderIdListVarName = \"customerOrderIds\",\r",
+                                    "    customerOrderCount =  parseInt(pm.environment.get(\"customerOrderCountDefault\")),\r",
+                                    "    customerOrderIdList = [];\r",
+                                    "\r",
+                                    "if (pm.collectionVariables.get(customerOrderCountVarName)) {\r",
+                                    "    customerOrderCount = parseInt(pm.collectionVariables.get(customerOrderCountVarName));\r",
+                                    "    customerOrderIdList = pm.environment.get(customerOrderIdListVarName);\r",
+                                    "}\r",
+                                    "\r",
+                                    "let jsonData = JSON.parse(responseBody);\r",
+                                    "\r",
+                                    "customerOrderIdList.push(jsonData.id);\r",
+                                    "pm.environment.set(customerOrderIdListVarName, customerOrderIdList);\r",
+                                    "\r",
+                                    "if (customerOrderCount > 1) {\r",
+                                    "    customerOrderCount--;\r",
+                                    "    pm.collectionVariables.set(customerOrderCountVarName, customerOrderCount);\r",
+                                    "    postman.setNextRequest(\"CREATE Customer Order\");\r",
+                                    "} else {\r",
+                                    "    pm.collectionVariables.unset(customerOrderCountVarName);\r",
+                                    "}"
+                                ],
+                                "type": "text/javascript"
+                            }
+                        }
+                    ],
+                    "request": {
+                        "method": "POST",
+                        "header": [],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\r\n    \"displayId\": \"{{$timestamp}}\",\r\n    \"orderDate\": \"{{orderDate}}\",\r\n    \"processingStatus\": {\r\n        \"code\": \"01\"\r\n    },\r\n    \"netAmount\": 4,\r\n    \"division\": {\r\n        \"code\": \"{{divisionCode03}}\"\r\n    },\r\n    \"items\": [\r\n        {\r\n            \"id\": \"100001\",\r\n            \"type\": {\r\n                \"code\": \"{{itemTypeCodeUCM1}}\"\r\n            },\r\n            \"processingStatus\": {\r\n                \"code\": \"01\"\r\n            },\r\n            \"quantity\": 1,\r\n            \"quantityUnit\": {\r\n                \"code\": \"{{unitOfMeasureCodeEA}}\"\r\n            },\r\n            \"netAmount\": 1\r\n        },\r\n        {\r\n            \"id\": \"100002\",\r\n            \"parentItemId\": \"100001\",\r\n            \"type\": {\r\n                \"code\": \"{{itemTypeCodeUSB1}}\"\r\n            },\r\n            \"processingStatus\": {\r\n                \"code\": \"01\"\r\n            },\r\n            \"quantity\": 1,\r\n            \"quantityUnit\": {\r\n                \"code\": \"{{unitOfMeasureCodeEA}}\"\r\n            },\r\n            \"netAmount\": 1\r\n        },\r\n        {\r\n            \"id\": \"100003\",\r\n            \"parentItemId\": \"100001\",\r\n            \"type\": {\r\n                \"code\": \"{{itemTypeCodeUMT1}}\"\r\n            },\r\n            \"processingStatus\": {\r\n                \"code\": \"01\"\r\n            },\r\n            \"quantity\": 1,\r\n            \"quantityUnit\": {\r\n                \"code\": \"{{unitOfMeasureCodeEA}}\"\r\n            },\r\n            \"netAmount\": 1\r\n        },\r\n        {\r\n            \"id\": \"100004\",\r\n            \"type\": {\r\n                \"code\": \"{{itemTypeCodeUSB1}}\"\r\n            },\r\n            \"processingStatus\": {\r\n                \"code\": \"01\"\r\n            },\r\n            \"quantity\": 1,\r\n            \"quantityUnit\": {\r\n                \"code\": \"{{unitOfMeasureCodeEA}}\"\r\n            },\r\n            \"netAmount\": 1\r\n        }\r\n    ]\r\n}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{url}}/api/v1/CustomerOrder",
+                            "host": ["{{url}}"],
+                            "path": ["api", "v1", "CustomerOrder"]
+                        }
+                    },
+                    "response": []
+                }
+            ]
+        },
+        {
+            "name": "POST-DEPLOYMENT",
+            "item": [
+                {
+                    "name": "JWT",
+                    "item": [
+                        {
+                            "name": "{{jwtProtocol}}://{{uaa-domain}}/oauth/token",
+                            "event": [
+                                {
+                                    "listen": "test",
+                                    "script": {
+                                        "exec": [
+                                            "",
+                                            "var jsonData = JSON.parse(responseBody);",
+                                            "if(jsonData && jsonData.access_token){",
+                                            "    postman.setEnvironmentVariable(\"jwt\", jsonData.access_token);",
+                                            "}",
+                                            "pm.test(\"Successful POST request\", function () {",
+                                            "     pm.expect(pm.response.code).to.be.oneOf([200]);",
+                                            "});",
+                                            "",
+                                            "pm.test(\"Check mtcallback scope\", function (){",
+                                            "    var jsonData = JSON.parse(responseBody);",
+                                            "    pm.expect(jsonData.scope).to.not.include(\"mtcallback\");",
+                                            "});"
+                                        ],
+                                        "type": "text/javascript"
+                                    }
+                                },
+                                {
+                                    "listen": "prerequest",
+                                    "script": {
+                                        "exec": [""],
+                                        "type": "text/javascript"
+                                    }
+                                }
+                            ],
+                            "request": {
+                                "auth": {
+                                    "type": "noauth"
+                                },
+                                "method": "POST",
+                                "header": [
+                                    {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                    },
+                                    {
+                                        "key": "X-CorrelationID",
+                                        "value": "",
+                                        "disabled": true
+                                    },
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "application/x-www-form-urlencoded"
+                                    }
+                                ],
+                                "body": {
+                                    "mode": "urlencoded",
+                                    "urlencoded": [
+                                        {
+                                            "key": "response_type",
+                                            "value": "token",
+                                            "type": "text"
+                                        },
+                                        {
+                                            "key": "grant_type",
+                                            "value": "client_credentials",
+                                            "type": "text"
+                                        },
+                                        {
+                                            "key": "client_id",
+                                            "value": "{{uaa_client_id}}",
+                                            "type": "text"
+                                        },
+                                        {
+                                            "key": "client_secret",
+                                            "value": "{{uaa_client_secret}}",
+                                            "type": "text"
+                                        },
+                                        {
+                                            "key": "scope",
+                                            "value": "",
+                                            "type": "text"
+                                        }
+                                    ]
+                                },
+                                "url": {
+                                    "raw": "{{jwtProtocol}}://{{uaa-domain}}/oauth/token",
+                                    "protocol": "{{jwtProtocol}}",
+                                    "host": ["{{uaa-domain}}"],
+                                    "path": ["oauth", "token"]
+                                }
+                            },
+                            "response": []
+                        }
+                    ]
+                },
+                {
+                    "name": "READ Customer Orders Count",
+                    "event": [
+                        {
+                            "listen": "test",
+                            "script": {
+                                "exec": [
+                                    "pm.test(`READ CustomerOrder count`, function () {\r",
+                                    "    pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
+                                    "    pm.expect(parseInt(responseBody)).to.be.above(0);\r",
+                                    "});\r",
+                                    ""
+                                ],
+                                "type": "text/javascript"
+                            }
+                        },
+                        {
+                            "listen": "prerequest",
+                            "script": {
+                                "exec": [""],
+                                "type": "text/javascript"
+                            }
+                        }
+                    ],
+                    "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                    },
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{url}}/api/v1/CustomerOrder/$count",
+                            "host": ["{{url}}"],
+                            "path": ["api", "v1", "CustomerOrder", "$count"]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "READ Customer Order",
+                    "event": [
+                        {
+                            "listen": "prerequest",
+                            "script": {
+                                "exec": [
+                                    "let customerOrderCountVarName = \"customerOrderNumber\",\r",
+                                    "    customerOrderIdListVarName = \"customerOrderIds\",\r",
+                                    "    customerOrderCount = parseInt(pm.environment.get(\"customerOrderCountDefault\")),\r",
+                                    "    customerOrderIdList = pm.environment.get(customerOrderIdListVarName);\r",
+                                    "\r",
+                                    "if (pm.collectionVariables.get(customerOrderCountVarName)) {\r",
+                                    "    customerOrderCount = parseInt(pm.collectionVariables.get(customerOrderCountVarName));\r",
+                                    "};\r",
+                                    "\r",
+                                    "customerOrderCount--;\r",
+                                    "pm.collectionVariables.set('customerOrderId', customerOrderIdList[customerOrderCount]);\r",
+                                    ""
+                                ],
+                                "type": "text/javascript"
+                            }
+                        },
+                        {
+                            "listen": "test",
+                            "script": {
+                                "exec": [
+                                    "pm.test(`READ CustomerOrder ${pm.collectionVariables.get(\"customerOrderId\")}`, function () {\r",
+                                    "    pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
+                                    "});\r",
+                                    "let customerOrderCountVarName = \"customerOrderNumber\",\r",
+                                    "    customerOrderCount =  parseInt(pm.environment.get(\"customerOrderCountDefault\"));\r",
+                                    "\r",
+                                    "if (pm.collectionVariables.get(customerOrderCountVarName)) {\r",
+                                    "    customerOrderCount = parseInt(pm.collectionVariables.get(customerOrderCountVarName));\r",
+                                    "}\r",
+                                    "\r",
+                                    "if (customerOrderCount > 1) {\r",
+                                    "    customerOrderCount--;\r",
+                                    "    pm.collectionVariables.set(\"customerOrderNumber\",customerOrderCount)\r",
+                                    "    postman.setNextRequest(\"READ Customer Order\");\r",
+                                    "}\r",
+                                    "else {\r",
+                                    "    pm.collectionVariables.unset(customerOrderCountVarName);\r",
+                                    "}\r",
+                                    ""
+                                ],
+                                "type": "text/javascript"
+                            }
+                        }
+                    ],
+                    "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                    },
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{url}}/api/v1/CustomerOrder({{customerOrderId}})",
+                            "host": ["{{url}}"],
+                            "path": [
+                                "api",
+                                "v1",
+                                "CustomerOrder({{customerOrderId}})"
+                            ]
+                        }
+                    },
+                    "response": []
+                }
+            ]
+        }
+    ],
+    "auth": {
+        "type": "bearer",
+        "bearer": [
+            {
+                "key": "token",
+                "value": "{{jwt}}",
+                "type": "string"
+            }
+        ]
+    },
+    "event": [
+        {
+            "listen": "prerequest",
+            "script": {
+                "type": "text/javascript",
+                "exec": [""]
+            }
+        },
+        {
+            "listen": "test",
+            "script": {
+                "type": "text/javascript",
+                "exec": [""]
+            }
+        }
+    ]
+}

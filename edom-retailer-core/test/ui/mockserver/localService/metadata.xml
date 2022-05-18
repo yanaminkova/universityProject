@@ -1,0 +1,1236 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="4.0" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+  <edmx:Reference Uri="https://oasis-tcs.github.io/odata-vocabularies/vocabularies/Org.OData.Capabilities.V1.xml">
+    <edmx:Include Alias="Capabilities" Namespace="Org.OData.Capabilities.V1"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="https://sap.github.io/odata-vocabularies/vocabularies/Common.xml">
+    <edmx:Include Alias="Common" Namespace="com.sap.vocabularies.Common.v1"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="https://oasis-tcs.github.io/odata-vocabularies/vocabularies/Org.OData.Core.V1.xml">
+    <edmx:Include Alias="Core" Namespace="Org.OData.Core.V1"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="https://sap.github.io/odata-vocabularies/vocabularies/HTML5.xml">
+    <edmx:Include Alias="HTML5" Namespace="com.sap.vocabularies.HTML5.v1"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="https://oasis-tcs.github.io/odata-vocabularies/vocabularies/Org.OData.Measures.V1.xml">
+    <edmx:Include Alias="Measures" Namespace="Org.OData.Measures.V1"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="https://sap.github.io/odata-vocabularies/vocabularies/ODM.xml">
+    <edmx:Include Alias="ODM" Namespace="com.sap.vocabularies.ODM.v1"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="https://sap.github.io/odata-vocabularies/vocabularies/PersonalData.xml">
+    <edmx:Include Alias="PersonalData" Namespace="com.sap.vocabularies.PersonalData.v1"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="https://sap.github.io/odata-vocabularies/vocabularies/UI.xml">
+    <edmx:Include Alias="UI" Namespace="com.sap.vocabularies.UI.v1"/>
+  </edmx:Reference>
+  <edmx:DataServices>
+    <Schema Namespace="CustomerOrderUIService" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+      <EntityContainer Name="EntityContainer">
+        <EntitySet Name="CustomerOrder" EntityType="CustomerOrderUIService.CustomerOrder">
+          <NavigationPropertyBinding Path="items" Target="CustomerOrderItems"/>
+          <NavigationPropertyBinding Path="distributionChannel" Target="DistributionChannelCodes"/>
+          <NavigationPropertyBinding Path="division" Target="DivisionCodes"/>
+          <NavigationPropertyBinding Path="salesOrganization" Target="SalesOrganization"/>
+          <NavigationPropertyBinding Path="processingStatus" Target="SalesProcessingStatusCodes"/>
+          <NavigationPropertyBinding Path="cancellationStatus" Target="SalesCancellationStatusCodes"/>
+        </EntitySet>
+        <EntitySet Name="CustomerOrderItems" EntityType="CustomerOrderUIService.CustomerOrderItems">
+          <NavigationPropertyBinding Path="up_" Target="CustomerOrder"/>
+          <NavigationPropertyBinding Path="product" Target="Product"/>
+          <NavigationPropertyBinding Path="quantityUnit" Target="UnitOfMeasureCodes"/>
+          <NavigationPropertyBinding Path="type" Target="CustomerOrderItemTypeCodes"/>
+          <NavigationPropertyBinding Path="processingStatus" Target="SalesProcessingStatusCodes"/>
+          <NavigationPropertyBinding Path="cancellationReason" Target="SalesCancellationReasonCodes"/>
+          <NavigationPropertyBinding Path="utilitiesAspect" Target="CustomerOrderItemUtilitiesAspect"/>
+          <NavigationPropertyBinding Path="notes" Target="CustomerOrderItemNotes"/>
+        </EntitySet>
+        <EntitySet Name="CustomerOrderItemNotes" EntityType="CustomerOrderUIService.CustomerOrderItemNotes">
+          <NavigationPropertyBinding Path="up_" Target="CustomerOrderItems"/>
+          <NavigationPropertyBinding Path="textType" Target="SalesTextTypeCodes"/>
+        </EntitySet>
+        <EntitySet Name="CustomerOrderItemUtilitiesAspect" EntityType="CustomerOrderUIService.CustomerOrderItemUtilitiesAspect">
+          <NavigationPropertyBinding Path="up_" Target="CustomerOrderItems"/>
+          <NavigationPropertyBinding Path="referenceObject" Target="CustomerOrder_items_utilitiesAspect_referenceObject"/>
+          <NavigationPropertyBinding Path="subsequentDocument" Target="CustomerOrderItemUtilitiesSubsequentDocument"/>
+        </EntitySet>
+        <EntitySet Name="Product" EntityType="CustomerOrderUIService.Product"/>
+        <EntitySet Name="CustomerOrderTypeCodes" EntityType="CustomerOrderUIService.CustomerOrderTypeCodes"/>
+        <EntitySet Name="CustomerOrderItemTypeCodes" EntityType="CustomerOrderUIService.CustomerOrderItemTypeCodes"/>
+        <EntitySet Name="SalesProcessingStatusCodes" EntityType="CustomerOrderUIService.SalesProcessingStatusCodes"/>
+        <EntitySet Name="SalesOrganization" EntityType="CustomerOrderUIService.SalesOrganization"/>
+        <EntitySet Name="DivisionCodes" EntityType="CustomerOrderUIService.DivisionCodes"/>
+        <EntitySet Name="DistributionChannelCodes" EntityType="CustomerOrderUIService.DistributionChannelCodes"/>
+        <EntitySet Name="SalesCancellationReasonCodes" EntityType="CustomerOrderUIService.SalesCancellationReasonCodes"/>
+        <EntitySet Name="UnitOfMeasureCodes" EntityType="CustomerOrderUIService.UnitOfMeasureCodes"/>
+        <EntitySet Name="SalesCancellationStatusCodes" EntityType="CustomerOrderUIService.SalesCancellationStatusCodes"/>
+        <EntitySet Name="SalesTextTypeCodes" EntityType="CustomerOrderUIService.SalesTextTypeCodes"/>
+        <EntitySet Name="CustomerOrderItemUtilitiesSubsequentDocument" EntityType="CustomerOrderUIService.CustomerOrderItemUtilitiesSubsequentDocument">
+          <NavigationPropertyBinding Path="up_" Target="CustomerOrderItemUtilitiesAspect"/>
+          <NavigationPropertyBinding Path="type" Target="CustomerOrderItemUtilitiesSubsequentDocumentCodes"/>
+        </EntitySet>
+        <EntitySet Name="CustomerOrderItemUtilitiesSubsequentDocumentCodes" EntityType="CustomerOrderUIService.CustomerOrderItemUtilitiesSubsequentDocumentCodes"/>
+        <EntitySet Name="CustomerOrder_items_utilitiesAspect_referenceObject" EntityType="CustomerOrderUIService.CustomerOrder_items_utilitiesAspect_referenceObject">
+          <NavigationPropertyBinding Path="up_" Target="CustomerOrderItemUtilitiesAspect"/>
+        </EntitySet>
+      </EntityContainer>
+      <EntityType Name="CustomerOrder">
+        <Key>
+          <PropertyRef Name="id"/>
+        </Key>
+        <Property Name="id" Type="Edm.Guid" Nullable="false"/>
+        <NavigationProperty Name="items" Type="Collection(CustomerOrderUIService.CustomerOrderItems)" Partner="up_">
+          <OnDelete Action="Cascade"/>
+        </NavigationProperty>
+        <Property Name="netAmount" Type="Edm.Decimal" Scale="6" Precision="22"/>
+        <Property Name="orderDate" Type="Edm.Date"/>
+        <NavigationProperty Name="distributionChannel" Type="CustomerOrderUIService.DistributionChannelCodes">
+          <ReferentialConstraint Property="distributionChannel_code" ReferencedProperty="code"/>
+        </NavigationProperty>
+        <Property Name="distributionChannel_code" Type="Edm.String" MaxLength="2"/>
+        <NavigationProperty Name="division" Type="CustomerOrderUIService.DivisionCodes">
+          <ReferentialConstraint Property="division_code" ReferencedProperty="code"/>
+        </NavigationProperty>
+        <Property Name="division_code" Type="Edm.String" MaxLength="2"/>
+        <NavigationProperty Name="salesOrganization" Type="CustomerOrderUIService.SalesOrganization">
+          <ReferentialConstraint Property="salesOrganization_id" ReferencedProperty="id"/>
+        </NavigationProperty>
+        <Property Name="salesOrganization_id" Type="Edm.Guid"/>
+        <Property Name="displayId" Type="Edm.String" MaxLength="40"/>
+        <NavigationProperty Name="processingStatus" Type="CustomerOrderUIService.SalesProcessingStatusCodes">
+          <ReferentialConstraint Property="processingStatus_code" ReferencedProperty="code"/>
+        </NavigationProperty>
+        <Property Name="processingStatus_code" Type="Edm.String" MaxLength="2"/>
+        <NavigationProperty Name="cancellationStatus" Type="CustomerOrderUIService.SalesCancellationStatusCodes">
+          <ReferentialConstraint Property="cancellationStatus_code" ReferencedProperty="code"/>
+        </NavigationProperty>
+        <Property Name="cancellationStatus_code" Type="Edm.String" MaxLength="2"/>
+        <Property Name="isBlocked" Type="Edm.Boolean" DefaultValue="false"/>
+      </EntityType>
+      <EntityType Name="CustomerOrderItems">
+        <Key>
+          <PropertyRef Name="up__id"/>
+          <PropertyRef Name="id"/>
+        </Key>
+        <NavigationProperty Name="up_" Type="CustomerOrderUIService.CustomerOrder" Nullable="false" Partner="items">
+          <ReferentialConstraint Property="up__id" ReferencedProperty="id"/>
+        </NavigationProperty>
+        <Property Name="up__id" Type="Edm.Guid" Nullable="false"/>
+        <Property Name="id" Type="Edm.String" MaxLength="6" Nullable="false"/>
+        <Property Name="alternativeId" Type="Edm.String" MaxLength="40"/>
+        <NavigationProperty Name="product" Type="CustomerOrderUIService.Product">
+          <ReferentialConstraint Property="product_id" ReferencedProperty="id"/>
+        </NavigationProperty>
+        <Property Name="product_id" Type="Edm.String" MaxLength="50"/>
+        <Property Name="quantity" Type="Edm.Decimal" Scale="6" Precision="22"/>
+        <NavigationProperty Name="quantityUnit" Type="CustomerOrderUIService.UnitOfMeasureCodes">
+          <ReferentialConstraint Property="quantityUnit_code" ReferencedProperty="code"/>
+        </NavigationProperty>
+        <Property Name="quantityUnit_code" Type="Edm.String" MaxLength="3"/>
+        <Property Name="netAmount" Type="Edm.Decimal" Scale="6" Precision="22"/>
+        <NavigationProperty Name="type" Type="CustomerOrderUIService.CustomerOrderItemTypeCodes">
+          <ReferentialConstraint Property="type_code" ReferencedProperty="code"/>
+        </NavigationProperty>
+        <Property Name="type_code" Type="Edm.String" MaxLength="4"/>
+        <NavigationProperty Name="processingStatus" Type="CustomerOrderUIService.SalesProcessingStatusCodes">
+          <ReferentialConstraint Property="processingStatus_code" ReferencedProperty="code"/>
+        </NavigationProperty>
+        <Property Name="processingStatus_code" Type="Edm.String" MaxLength="2"/>
+        <NavigationProperty Name="cancellationReason" Type="CustomerOrderUIService.SalesCancellationReasonCodes">
+          <ReferentialConstraint Property="cancellationReason_code" ReferencedProperty="code"/>
+        </NavigationProperty>
+        <Property Name="cancellationReason_code" Type="Edm.String" MaxLength="2"/>
+        <NavigationProperty Name="utilitiesAspect" Type="CustomerOrderUIService.CustomerOrderItemUtilitiesAspect" Partner="up_">
+          <OnDelete Action="Cascade"/>
+          <ReferentialConstraint Property="up__id" ReferencedProperty="up__up__id"/>
+          <ReferentialConstraint Property="id" ReferencedProperty="up__id"/>
+        </NavigationProperty>
+        <NavigationProperty Name="notes" Type="Collection(CustomerOrderUIService.CustomerOrderItemNotes)" Partner="up_">
+          <OnDelete Action="Cascade"/>
+        </NavigationProperty>
+        <Property Name="isBlocked" Type="Edm.Boolean" DefaultValue="false"/>
+      </EntityType>
+      <EntityType Name="CustomerOrderItemNotes">
+        <Key>
+          <PropertyRef Name="up__up__id"/>
+          <PropertyRef Name="up__id"/>
+          <PropertyRef Name="id"/>
+        </Key>
+        <NavigationProperty Name="up_" Type="CustomerOrderUIService.CustomerOrderItems" Nullable="false" Partner="notes">
+          <ReferentialConstraint Property="up__up__id" ReferencedProperty="up__id"/>
+          <ReferentialConstraint Property="up__id" ReferencedProperty="id"/>
+        </NavigationProperty>
+        <Property Name="up__up__id" Type="Edm.Guid" Nullable="false"/>
+        <Property Name="up__id" Type="Edm.String" MaxLength="6" Nullable="false"/>
+        <Property Name="id" Type="Edm.Guid" Nullable="false"/>
+        <NavigationProperty Name="textType" Type="CustomerOrderUIService.SalesTextTypeCodes">
+          <ReferentialConstraint Property="textType_code" ReferencedProperty="code"/>
+        </NavigationProperty>
+        <Property Name="textType_code" Type="Edm.String" MaxLength="5"/>
+        <Property Name="text" Type="Edm.String" MaxLength="5000"/>
+        <Property Name="isBlocked" Type="Edm.Boolean" DefaultValue="false"/>
+      </EntityType>
+      <EntityType Name="CustomerOrderItemUtilitiesAspect">
+        <Key>
+          <PropertyRef Name="up__up__id"/>
+          <PropertyRef Name="up__id"/>
+        </Key>
+        <NavigationProperty Name="up_" Type="CustomerOrderUIService.CustomerOrderItems" Nullable="false" Partner="utilitiesAspect">
+          <ReferentialConstraint Property="up__up__id" ReferencedProperty="up__id"/>
+          <ReferentialConstraint Property="up__id" ReferencedProperty="id"/>
+        </NavigationProperty>
+        <Property Name="up__up__id" Type="Edm.Guid" Nullable="false"/>
+        <Property Name="up__id" Type="Edm.String" MaxLength="6" Nullable="false"/>
+        <Property Name="formerServiceProvider" Type="Edm.String" MaxLength="40"/>
+        <NavigationProperty Name="referenceObject" Type="CustomerOrderUIService.CustomerOrder_items_utilitiesAspect_referenceObject" Partner="up_">
+          <OnDelete Action="Cascade"/>
+          <ReferentialConstraint Property="up__up__id" ReferencedProperty="up__up__up__id"/>
+          <ReferentialConstraint Property="up__id" ReferencedProperty="up__up__id"/>
+        </NavigationProperty>
+        <NavigationProperty Name="subsequentDocument" Type="CustomerOrderUIService.CustomerOrderItemUtilitiesSubsequentDocument" Partner="up_">
+          <OnDelete Action="Cascade"/>
+          <ReferentialConstraint Property="up__up__id" ReferencedProperty="up__up__up__id"/>
+          <ReferentialConstraint Property="up__id" ReferencedProperty="up__up__id"/>
+        </NavigationProperty>
+        <Property Name="isBlocked" Type="Edm.Boolean" DefaultValue="false"/>
+      </EntityType>
+      <EntityType Name="Product">
+        <Key>
+          <PropertyRef Name="id"/>
+        </Key>
+        <Property Name="id" Type="Edm.String" MaxLength="50" Nullable="false"/>
+        <Property Name="displayId" Type="Edm.String" MaxLength="40"/>
+        <Property Name="name" Type="Edm.String" MaxLength="255"/>
+      </EntityType>
+      <EntityType Name="CustomerOrderTypeCodes">
+        <Key>
+          <PropertyRef Name="code"/>
+        </Key>
+        <Property Name="code" Type="Edm.String" MaxLength="4" Nullable="false"/>
+        <Property Name="name" Type="Edm.String" MaxLength="255"/>
+        <Property Name="descr" Type="Edm.String" MaxLength="1000"/>
+      </EntityType>
+      <EntityType Name="CustomerOrderItemTypeCodes">
+        <Key>
+          <PropertyRef Name="code"/>
+        </Key>
+        <Property Name="code" Type="Edm.String" MaxLength="4" Nullable="false"/>
+        <Property Name="name" Type="Edm.String" MaxLength="255"/>
+        <Property Name="descr" Type="Edm.String" MaxLength="1000"/>
+      </EntityType>
+      <EntityType Name="SalesProcessingStatusCodes">
+        <Key>
+          <PropertyRef Name="code"/>
+        </Key>
+        <Property Name="code" Type="Edm.String" MaxLength="2" Nullable="false"/>
+        <Property Name="name" Type="Edm.String" MaxLength="255"/>
+        <Property Name="descr" Type="Edm.String" MaxLength="1000"/>
+      </EntityType>
+      <EntityType Name="SalesOrganization">
+        <Key>
+          <PropertyRef Name="id"/>
+        </Key>
+        <Property Name="id" Type="Edm.Guid" Nullable="false"/>
+        <Property Name="displayId" Type="Edm.String" MaxLength="4"/>
+        <Property Name="name" Type="Edm.String" MaxLength="20"/>
+      </EntityType>
+      <EntityType Name="DivisionCodes">
+        <Key>
+          <PropertyRef Name="code"/>
+        </Key>
+        <Property Name="code" Type="Edm.String" MaxLength="2" Nullable="false"/>
+        <Property Name="name" Type="Edm.String" MaxLength="255"/>
+        <Property Name="descr" Type="Edm.String" MaxLength="1000"/>
+      </EntityType>
+      <EntityType Name="DistributionChannelCodes">
+        <Key>
+          <PropertyRef Name="code"/>
+        </Key>
+        <Property Name="code" Type="Edm.String" MaxLength="2" Nullable="false"/>
+        <Property Name="name" Type="Edm.String" MaxLength="255"/>
+        <Property Name="descr" Type="Edm.String" MaxLength="1000"/>
+      </EntityType>
+      <EntityType Name="SalesCancellationReasonCodes">
+        <Key>
+          <PropertyRef Name="code"/>
+        </Key>
+        <Property Name="code" Type="Edm.String" MaxLength="2" Nullable="false"/>
+        <Property Name="name" Type="Edm.String" MaxLength="255"/>
+        <Property Name="descr" Type="Edm.String" MaxLength="1000"/>
+      </EntityType>
+      <EntityType Name="UnitOfMeasureCodes">
+        <Key>
+          <PropertyRef Name="code"/>
+        </Key>
+        <Property Name="code" Type="Edm.String" MaxLength="3" Nullable="false"/>
+        <Property Name="name" Type="Edm.String" MaxLength="255"/>
+        <Property Name="descr" Type="Edm.String" MaxLength="1000"/>
+      </EntityType>
+      <EntityType Name="SalesCancellationStatusCodes">
+        <Key>
+          <PropertyRef Name="code"/>
+        </Key>
+        <Property Name="code" Type="Edm.String" MaxLength="2" Nullable="false"/>
+        <Property Name="name" Type="Edm.String" MaxLength="255"/>
+        <Property Name="descr" Type="Edm.String" MaxLength="1000"/>
+      </EntityType>
+      <EntityType Name="SalesTextTypeCodes">
+        <Key>
+          <PropertyRef Name="code"/>
+        </Key>
+        <Property Name="code" Type="Edm.String" MaxLength="5" Nullable="false"/>
+        <Property Name="name" Type="Edm.String" MaxLength="255"/>
+        <Property Name="descr" Type="Edm.String" MaxLength="1000"/>
+      </EntityType>
+      <EntityType Name="CustomerOrderItemUtilitiesSubsequentDocument">
+        <Key>
+          <PropertyRef Name="up__up__up__id"/>
+          <PropertyRef Name="up__up__id"/>
+          <PropertyRef Name="id"/>
+        </Key>
+        <NavigationProperty Name="up_" Type="CustomerOrderUIService.CustomerOrderItemUtilitiesAspect" Nullable="false" Partner="subsequentDocument">
+          <ReferentialConstraint Property="up__up__up__id" ReferencedProperty="up__up__id"/>
+          <ReferentialConstraint Property="up__up__id" ReferencedProperty="up__id"/>
+        </NavigationProperty>
+        <Property Name="up__up__up__id" Type="Edm.Guid" Nullable="false"/>
+        <Property Name="up__up__id" Type="Edm.String" MaxLength="6" Nullable="false"/>
+        <Property Name="id" Type="Edm.Guid" Nullable="false"/>
+        <Property Name="displayId" Type="Edm.String" MaxLength="40"/>
+        <NavigationProperty Name="type" Type="CustomerOrderUIService.CustomerOrderItemUtilitiesSubsequentDocumentCodes">
+          <ReferentialConstraint Property="type_code" ReferencedProperty="code"/>
+        </NavigationProperty>
+        <Property Name="type_code" Type="Edm.String" MaxLength="4"/>
+        <Property Name="isBlocked" Type="Edm.Boolean" DefaultValue="false"/>
+      </EntityType>
+      <EntityType Name="CustomerOrderItemUtilitiesSubsequentDocumentCodes">
+        <Key>
+          <PropertyRef Name="code"/>
+        </Key>
+        <Property Name="code" Type="Edm.String" MaxLength="4" Nullable="false"/>
+        <Property Name="name" Type="Edm.String" MaxLength="255"/>
+        <Property Name="descr" Type="Edm.String" MaxLength="1000"/>
+        <Property Name="urlPattern" Type="Edm.String" MaxLength="2048"/>
+        <Property Name="url" Type="Edm.String" MaxLength="2048"/>
+      </EntityType>
+      <EntityType Name="CustomerOrder_items_utilitiesAspect_referenceObject">
+        <Key>
+          <PropertyRef Name="up__up__up__id"/>
+          <PropertyRef Name="up__up__id"/>
+          <PropertyRef Name="meter"/>
+        </Key>
+        <NavigationProperty Name="up_" Type="CustomerOrderUIService.CustomerOrderItemUtilitiesAspect" Nullable="false" Partner="referenceObject">
+          <ReferentialConstraint Property="up__up__up__id" ReferencedProperty="up__up__id"/>
+          <ReferentialConstraint Property="up__up__id" ReferencedProperty="up__id"/>
+        </NavigationProperty>
+        <Property Name="up__up__up__id" Type="Edm.Guid" Nullable="false"/>
+        <Property Name="up__up__id" Type="Edm.String" MaxLength="6" Nullable="false"/>
+        <Property Name="meter" Type="Edm.String" MaxLength="40" Nullable="false"/>
+        <Property Name="installation" Type="Edm.String" MaxLength="40"/>
+        <Property Name="endOfBusinessDate" Type="Edm.DateTimeOffset"/>
+        <Property Name="maxDeletionDate" Type="Edm.DateTimeOffset"/>
+        <Property Name="isBlocked" Type="Edm.Boolean" DefaultValue="false"/>
+      </EntityType>
+      <Annotations Target="CustomerOrderUIService.CustomerOrder">
+        <Annotation Term="UI.SelectionFields">
+          <Collection>
+            <PropertyPath>displayId</PropertyPath>
+            <PropertyPath>processingStatus_code</PropertyPath>
+            <PropertyPath>orderDate</PropertyPath>
+            <PropertyPath>salesOrganization_id</PropertyPath>
+            <PropertyPath>division_code</PropertyPath>
+          </Collection>
+        </Annotation>
+        <Annotation Term="UI.Identification">
+          <Collection>
+            <Record Type="UI.DataField">
+              <PropertyValue Property="Value" Path="displayId"/>
+            </Record>
+          </Collection>
+        </Annotation>
+        <Annotation Term="UI.LineItem">
+          <Collection>
+            <Record Type="UI.DataField">
+              <PropertyValue Property="Value" Path="displayId"/>
+              <Annotation Term="HTML5.CssDefaults">
+                <Record Type="HTML5.CssDefaultsType">
+                  <PropertyValue Property="width" String="auto"/>
+                </Record>
+              </Annotation>
+            </Record>
+            <Record Type="UI.DataField">
+              <PropertyValue Property="Value" Path="processingStatus_code"/>
+              <PropertyValue Property="Label" String="Processing Status"/>
+              <Annotation Term="HTML5.CssDefaults">
+                <Record Type="HTML5.CssDefaultsType">
+                  <PropertyValue Property="width" String="auto"/>
+                </Record>
+              </Annotation>
+            </Record>
+            <Record Type="UI.DataField">
+              <PropertyValue Property="Value" Path="orderDate"/>
+              <Annotation Term="HTML5.CssDefaults">
+                <Record Type="HTML5.CssDefaultsType">
+                  <PropertyValue Property="width" String="auto"/>
+                </Record>
+              </Annotation>
+            </Record>
+            <Record Type="UI.DataField">
+              <PropertyValue Property="Value" Path="salesOrganization_id"/>
+              <PropertyValue Property="Label" String="Sales Organization"/>
+              <Annotation Term="HTML5.CssDefaults">
+                <Record Type="HTML5.CssDefaultsType">
+                  <PropertyValue Property="width" String="auto"/>
+                </Record>
+              </Annotation>
+            </Record>
+            <Record Type="UI.DataField">
+              <PropertyValue Property="Value" Path="division_code"/>
+              <PropertyValue Property="Label" String="Division"/>
+              <Annotation Term="HTML5.CssDefaults">
+                <Record Type="HTML5.CssDefaultsType">
+                  <PropertyValue Property="width" String="auto"/>
+                </Record>
+              </Annotation>
+            </Record>
+            <Record Type="UI.DataFieldForAnnotation">
+              <PropertyValue Property="Target" AnnotationPath="@UI.DataPoint#netamount"/>
+              <Annotation Term="HTML5.CssDefaults">
+                <Record Type="HTML5.CssDefaultsType">
+                  <PropertyValue Property="width" String="auto"/>
+                </Record>
+              </Annotation>
+            </Record>
+          </Collection>
+        </Annotation>
+        <Annotation Term="UI.HeaderInfo">
+          <Record Type="UI.HeaderInfoType">
+            <PropertyValue Property="TypeName" String="Customer Order"/>
+            <PropertyValue Property="TypeNamePlural" String="Customer Orders"/>
+            <PropertyValue Property="Title">
+              <Record Type="UI.DataField">
+                <PropertyValue Property="Value" Path="displayId"/>
+              </Record>
+            </PropertyValue>
+          </Record>
+        </Annotation>
+        <Annotation Term="UI.HeaderFacets">
+          <Collection>
+            <Record Type="UI.ReferenceFacet">
+              <PropertyValue Property="Target" AnnotationPath="@UI.DataPoint#status"/>
+            </Record>
+            <Record Type="UI.ReferenceFacet">
+              <PropertyValue Property="Label" String="Net Amount (€)"/>
+              <PropertyValue Property="Target" AnnotationPath="@UI.DataPoint#netamount"/>
+            </Record>
+          </Collection>
+        </Annotation>
+        <Annotation Term="UI.Facets">
+          <Collection>
+            <Record Type="UI.ReferenceFacet">
+              <PropertyValue Property="Label" String="General Information"/>
+              <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#generalInformation"/>
+            </Record>
+            <Record Type="UI.ReferenceFacet">
+              <PropertyValue Property="Label" String="Items"/>
+              <PropertyValue Property="Target" AnnotationPath="items/@UI.LineItem"/>
+            </Record>
+          </Collection>
+        </Annotation>
+        <Annotation Term="UI.DataPoint" Qualifier="status">
+          <Record Type="UI.DataPointType">
+            <PropertyValue Property="Title" String="Status"/>
+            <PropertyValue Property="Value" Path="processingStatus/name"/>
+          </Record>
+        </Annotation>
+        <Annotation Term="UI.DataPoint" Qualifier="netamount">
+          <Record Type="UI.DataPointType">
+            <PropertyValue Property="Value" Path="netAmount"/>
+            <PropertyValue Property="Title" String="Net Amount (€)"/>
+            <PropertyValue Property="ValueFormat">
+              <Record Type="UI.NumberFormat">
+                <PropertyValue Property="ScaleFactor" Decimal="1000"/>
+                <PropertyValue Property="NumberOfFractionalDigits" Int="2"/>
+              </Record>
+            </PropertyValue>
+          </Record>
+        </Annotation>
+        <Annotation Term="UI.FieldGroup" Qualifier="generalInformation">
+          <Record Type="UI.FieldGroupType">
+            <PropertyValue Property="Data">
+              <Collection>
+                <Record Type="UI.DataField">
+                  <PropertyValue Property="Value" Path="orderDate"/>
+                </Record>
+                <Record Type="UI.DataField">
+                  <PropertyValue Property="Label" String="Sales Area"/>
+                  <PropertyValue Property="Value" Path="salesOrganization/displayId"/>
+                </Record>
+                <Record Type="UI.DataField">
+                  <PropertyValue Property="Label" String="Distribution Channel"/>
+                  <PropertyValue Property="Value" Path="distributionChannel/name"/>
+                </Record>
+                <Record Type="UI.DataField">
+                  <PropertyValue Property="Label" String="Division"/>
+                  <PropertyValue Property="Value" Path="division/name"/>
+                </Record>
+                <Record Type="UI.DataField">
+                  <PropertyValue Property="Label" String="Cancellation Status"/>
+                  <PropertyValue Property="Value" Path="cancellationStatus/name"/>
+                </Record>
+              </Collection>
+            </PropertyValue>
+          </Record>
+        </Annotation>
+      </Annotations>
+      <Annotations Target="CustomerOrderUIService.EntityContainer/CustomerOrder">
+        <Annotation Term="Capabilities.DeleteRestrictions">
+          <Record Type="Capabilities.DeleteRestrictionsType">
+            <PropertyValue Property="Deletable" Bool="false"/>
+          </Record>
+        </Annotation>
+        <Annotation Term="Capabilities.SearchRestrictions">
+          <Record Type="Capabilities.SearchRestrictionsType">
+            <PropertyValue Property="Searchable" Bool="false"/>
+          </Record>
+        </Annotation>
+        <Annotation Term="Capabilities.FilterRestrictions">
+          <Record Type="Capabilities.FilterRestrictionsType">
+            <PropertyValue Property="FilterExpressionRestrictions">
+              <Collection>
+                <Record Type="Capabilities.FilterExpressionRestrictionType">
+                  <PropertyValue Property="Property" PropertyPath="orderDate"/>
+                  <PropertyValue Property="AllowedExpressions" String="SingleValue"/>
+                </Record>
+              </Collection>
+            </PropertyValue>
+          </Record>
+        </Annotation>
+        <Annotation Term="ODM.root" Bool="true"/>
+        <Annotation Term="PersonalData.EntitySemantics" String="Other"/>
+      </Annotations>
+      <Annotations Target="CustomerOrderUIService.CustomerOrder/id">
+        <Annotation Term="UI.Hidden" Bool="true"/>
+        <Annotation Term="PersonalData.FieldSemantics" String="ContractRelatedID"/>
+        <Annotation Term="Core.Description" String="The unique identifier of the customer order."/>
+      </Annotations>
+      <Annotations Target="CustomerOrderUIService.CustomerOrder/items">
+        <Annotation Term="Core.Description" String="Customer order items."/>
+      </Annotations>
+      <Annotations Target="CustomerOrderUIService.CustomerOrder/netAmount">
+        <Annotation Term="Common.Label" String="Net Amount (€)"/>
+        <Annotation Term="Core.Description" String="Amount of the payment."/>
+      </Annotations>
+      <Annotations Target="CustomerOrderUIService.CustomerOrder/orderDate">
+        <Annotation Term="Common.Label" String="Order Date"/>
+        <Annotation Term="Core.Description" String="The date of the customer order. This is the date on which the customer has initiated the order. It represents the date on the order document, not the date of order creation in the SAP system."/>
+      </Annotations>
+      <Annotations Target="CustomerOrderUIService.CustomerOrder/distributionChannel">
+        <Annotation Term="UI.Hidden" Bool="true"/>
+        <Annotation Term="Core.Description" String="A channel through which products or services reach customers."/>
+      </Annotations>
+      <Annotations Target="CustomerOrderUIService.CustomerOrder/distributionChannel_code">
+        <Annotation Term="UI.Hidden" Bool="true"/>
+        <Annotation Term="Core.Description" String="A channel through which products or services reach customers."/>
+      </Annotations>
+      <Annotations Target="CustomerOrderUIService.CustomerOrder/division">
+        <Annotation Term="Common.Label" String="Division"/>
+        <Annotation Term="Core.Description" String="A way of grouping materials, products, or services."/>
+      </Annotations>
+      <Annotations Target="CustomerOrderUIService.CustomerOrder/division_code">
+        <Annotation Term="Common.Label" String="Division"/>
+        <Annotation Term="Common.Text" Path="division/name">
+          <Annotation Term="UI.TextArrangement" EnumMember="UI.TextArrangementType/TextOnly"/>
+        </Annotation>
+        <Annotation Term="Common.ValueListWithFixedValues" Bool="true"/>
+        <Annotation Term="Common.ValueList">
+          <Record Type="Common.ValueListType">
+            <PropertyValue Property="CollectionPath" String="DivisionCodes"/>
+            <PropertyValue Property="Parameters">
+              <Collection>
+                <Record Type="Common.ValueListParameterOut">
+                  <PropertyValue Property="LocalDataProperty" PropertyPath="division_code"/>
+                  <PropertyValue Property="ValueListProperty" String="code"/>
+                </Record>
+                <Record Type="Common.ValueListParameterDisplayOnly">
+                  <PropertyValue Property="ValueListProperty" String="name"/>
+                </Record>
+                <Record Type="Common.ValueListParameterDisplayOnly">
+                  <PropertyValue Property="ValueListProperty" String="descr"/>
+                </Record>
+              </Collection>
+            </PropertyValue>
+          </Record>
+        </Annotation>
+        <Annotation Term="Core.Description" String="A way of grouping materials, products, or services."/>
+      </Annotations>
+      <Annotations Target="CustomerOrderUIService.CustomerOrder/salesOrganization">
+        <Annotation Term="Common.Label" String="Sales Organization"/>
+        <Annotation Term="Core.Description" String="An organizational unit responsible for the sale of certain products or services."/>
+      </Annotations>
+      <Annotations Target="CustomerOrderUIService.CustomerOrder/salesOrganization_id">
+        <Annotation Term="Common.Label" String="Sales Organization"/>
+        <Annotation Term="Common.Text" Path="salesOrganization/name">
+          <Annotation Term="UI.TextArrangement" EnumMember="UI.TextArrangementType/TextOnly"/>
+        </Annotation>
+        <Annotation Term="Common.ValueList">
+          <Record Type="Common.ValueListType">
+            <PropertyValue Property="CollectionPath" String="SalesOrganization"/>
+            <PropertyValue Property="SearchSupported" Bool="true"/>
+            <PropertyValue Property="Parameters">
+              <Collection>
+                <Record Type="Common.ValueListParameterOut">
+                  <PropertyValue Property="LocalDataProperty" PropertyPath="salesOrganization_id"/>
+                  <PropertyValue Property="ValueListProperty" String="id"/>
+                </Record>
+                <Record Type="Common.ValueListParameterDisplayOnly">
+                  <PropertyValue Property="ValueListProperty" String="displayId"/>
+                </Record>
+                <Record Type="Common.ValueListParameterDisplayOnly">
+                  <PropertyValue Property="ValueListProperty" String="name"/>
+                </Record>
+              </Collection>
+            </PropertyValue>
+          </Record>
+        </Annotation>
+        <Annotation Term="Core.Description" String="An organizational unit responsible for the sale of certain products or services."/>
+      </Annotations>
+      <Annotations Target="CustomerOrderUIService.CustomerOrder/displayId">
+        <Annotation Term="Common.Label" String="Customer Order ID"/>
+        <Annotation Term="Core.Description" String="Number of the customer order."/>
+      </Annotations>
+      <Annotations Target="CustomerOrderUIService.CustomerOrder/processingStatus">
+        <Annotation Term="Common.Label" String="Processing Status"/>
+        <Annotation Term="Core.Description" String="Specifies the processing status of the customer order."/>
+      </Annotations>
+      <Annotations Target="CustomerOrderUIService.CustomerOrder/processingStatus_code">
+        <Annotation Term="Common.Label" String="Processing Status"/>
+        <Annotation Term="Common.Text" Path="processingStatus/name">
+          <Annotation Term="UI.TextArrangement" EnumMember="UI.TextArrangementType/TextOnly"/>
+        </Annotation>
+        <Annotation Term="Common.ValueListWithFixedValues" Bool="true"/>
+        <Annotation Term="Common.ValueList">
+          <Record Type="Common.ValueListType">
+            <PropertyValue Property="CollectionPath" String="SalesProcessingStatusCodes"/>
+            <PropertyValue Property="Parameters">
+              <Collection>
+                <Record Type="Common.ValueListParameterOut">
+                  <PropertyValue Property="LocalDataProperty" PropertyPath="processingStatus_code"/>
+                  <PropertyValue Property="ValueListProperty" String="code"/>
+                </Record>
+                <Record Type="Common.ValueListParameterDisplayOnly">
+                  <PropertyValue Property="ValueListProperty" String="name"/>
+                </Record>
+              </Collection>
+            </PropertyValue>
+          </Record>
+        </Annotation>
+        <Annotation Term="Core.Description" String="Specifies the processing status of the customer order."/>
+      </Annotations>
+      <Annotations Target="CustomerOrderUIService.CustomerOrder/cancellationStatus">
+        <Annotation Term="UI.Hidden" Bool="true"/>
+        <Annotation Term="Core.Description" String="Rejection status of the entire customer order."/>
+      </Annotations>
+      <Annotations Target="CustomerOrderUIService.CustomerOrder/cancellationStatus_code">
+        <Annotation Term="UI.Hidden" Bool="true"/>
+        <Annotation Term="Core.Description" String="Rejection status of the entire customer order."/>
+      </Annotations>
+      <Annotations Target="CustomerOrderUIService.CustomerOrder/isBlocked">
+        <Annotation Term="UI.Hidden" Bool="true"/>
+        <Annotation Term="Core.Computed" Bool="true"/>
+        <Annotation Term="Core.Description" String="Set to True if data subject residence period is over."/>
+      </Annotations>
+      <Annotations Target="CustomerOrderUIService.CustomerOrderItems">
+        <Annotation Term="UI.LineItem">
+          <Collection>
+            <Record Type="UI.DataField">
+              <PropertyValue Property="Value" Path="id"/>
+              <PropertyValue Property="Label" String="Item ID"/>
+              <Annotation Term="HTML5.CssDefaults">
+                <Record Type="HTML5.CssDefaultsType">
+                  <PropertyValue Property="width" String="auto"/>
+                </Record>
+              </Annotation>
+            </Record>
+            <Record Type="UI.DataField">
+              <PropertyValue Property="Value" Path="product/name"/>
+              <PropertyValue Property="Label" String="Product"/>
+              <Annotation Term="HTML5.CssDefaults">
+                <Record Type="HTML5.CssDefaultsType">
+                  <PropertyValue Property="width" String="auto"/>
+                </Record>
+              </Annotation>
+            </Record>
+            <Record Type="UI.DataField">
+              <PropertyValue Property="Value" Path="quantity"/>
+              <PropertyValue Property="Label" String="Quantity"/>
+              <Annotation Term="HTML5.CssDefaults">
+                <Record Type="HTML5.CssDefaultsType">
+                  <PropertyValue Property="width" String="auto"/>
+                </Record>
+              </Annotation>
+            </Record>
+            <Record Type="UI.DataFieldForAnnotation">
+              <PropertyValue Property="Target" AnnotationPath="@UI.DataPoint#netamount"/>
+              <Annotation Term="HTML5.CssDefaults">
+                <Record Type="HTML5.CssDefaultsType">
+                  <PropertyValue Property="width" String="auto"/>
+                </Record>
+              </Annotation>
+            </Record>
+            <Record Type="UI.DataField">
+              <PropertyValue Property="Value" Path="processingStatus/name"/>
+              <PropertyValue Property="Label" String="Processing Status"/>
+              <Annotation Term="HTML5.CssDefaults">
+                <Record Type="HTML5.CssDefaultsType">
+                  <PropertyValue Property="width" String="auto"/>
+                </Record>
+              </Annotation>
+            </Record>
+            <Record Type="UI.DataField">
+              <PropertyValue Property="Value" Path="type/name"/>
+              <PropertyValue Property="Label" String="Item Type"/>
+              <Annotation Term="HTML5.CssDefaults">
+                <Record Type="HTML5.CssDefaultsType">
+                  <PropertyValue Property="width" String="auto"/>
+                </Record>
+              </Annotation>
+            </Record>
+          </Collection>
+        </Annotation>
+        <Annotation Term="UI.HeaderInfo">
+          <Record Type="UI.HeaderInfoType">
+            <PropertyValue Property="TypeName" String="Customer Order Item"/>
+            <PropertyValue Property="TypeNamePlural" String="Customer Order Items"/>
+            <PropertyValue Property="Title">
+              <Record Type="UI.DataField">
+                <PropertyValue Property="Label" String="Customer Order Item"/>
+                <PropertyValue Property="Value" Path="id"/>
+              </Record>
+            </PropertyValue>
+            <PropertyValue Property="Description">
+              <Record Type="UI.DataField">
+                <PropertyValue Property="Value" Path="product/name"/>
+              </Record>
+            </PropertyValue>
+          </Record>
+        </Annotation>
+        <Annotation Term="UI.HeaderFacets">
+          <Collection>
+            <Record Type="UI.ReferenceFacet">
+              <PropertyValue Property="Target" AnnotationPath="@UI.DataPoint#status"/>
+            </Record>
+            <Record Type="UI.ReferenceFacet">
+              <PropertyValue Property="Target" AnnotationPath="@UI.DataPoint#itemType"/>
+            </Record>
+          </Collection>
+        </Annotation>
+        <Annotation Term="UI.Facets">
+          <Collection>
+            <Record Type="UI.ReferenceFacet">
+              <PropertyValue Property="Label" String="General Information"/>
+              <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#generalInformation"/>
+            </Record>
+            <Record Type="UI.ReferenceFacet">
+              <PropertyValue Property="Label" String="Subsequent Document"/>
+              <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#subsequentdoc"/>
+            </Record>
+            <Record Type="UI.ReferenceFacet">
+              <PropertyValue Property="Label" String="Notes"/>
+              <PropertyValue Property="Target" AnnotationPath="notes/@UI.LineItem"/>
+            </Record>
+          </Collection>
+        </Annotation>
+        <Annotation Term="UI.FieldGroup" Qualifier="generalInformation">
+          <Record Type="UI.FieldGroupType">
+            <PropertyValue Property="Data">
+              <Collection>
+                <Record Type="UI.DataField">
+                  <PropertyValue Property="Label" String="Product ID"/>
+                  <PropertyValue Property="Value" Path="product/displayId"/>
+                </Record>
+                <Record Type="UI.DataField">
+                  <PropertyValue Property="Label" String="Product Name"/>
+                  <PropertyValue Property="Value" Path="product/name"/>
+                </Record>
+                <Record Type="UI.DataField">
+                  <PropertyValue Property="Label" String="Quantity"/>
+                  <PropertyValue Property="Value" Path="quantity"/>
+                </Record>
+                <Record Type="UI.DataFieldForAnnotation">
+                  <PropertyValue Property="Target" AnnotationPath="@UI.DataPoint#netamount"/>
+                  <PropertyValue Property="Label" String="Net Amount (€)"/>
+                </Record>
+                <Record Type="UI.DataField">
+                  <PropertyValue Property="Label" String="Cancellation Reason"/>
+                  <PropertyValue Property="Value" Path="cancellationReason/name"/>
+                </Record>
+              </Collection>
+            </PropertyValue>
+          </Record>
+        </Annotation>
+        <Annotation Term="UI.FieldGroup" Qualifier="subsequentdoc">
+          <Record Type="UI.FieldGroupType">
+            <PropertyValue Property="Data">
+              <Collection>
+                <Record Type="UI.DataFieldWithUrl">
+                  <PropertyValue Property="Label" String="Document ID"/>
+                  <PropertyValue Property="Value" Path="utilitiesAspect/subsequentDocument/displayId"/>
+                  <PropertyValue Property="Url" Path="utilitiesAspect/subsequentDocument/type/url"/>
+                </Record>
+                <Record Type="UI.DataField">
+                  <PropertyValue Property="Label" String="Document Type"/>
+                  <PropertyValue Property="Value" Path="utilitiesAspect/subsequentDocument/type/name"/>
+                </Record>
+              </Collection>
+            </PropertyValue>
+          </Record>
+        </Annotation>
+        <Annotation Term="UI.DataPoint" Qualifier="netamount">
+          <Record Type="UI.DataPointType">
+            <PropertyValue Property="Value" Path="netAmount"/>
+            <PropertyValue Property="Title" String="Net Amount (€)"/>
+            <PropertyValue Property="ValueFormat">
+              <Record Type="UI.NumberFormat">
+                <PropertyValue Property="ScaleFactor" Decimal="1000"/>
+                <PropertyValue Property="NumberOfFractionalDigits" Int="2"/>
+              </Record>
+            </PropertyValue>
+          </Record>
+        </Annotation>
+        <Annotation Term="UI.DataPoint" Qualifier="status">
+          <Record Type="UI.DataPointType">
+            <PropertyValue Property="Title" String="Status"/>
+            <PropertyValue Property="Value" Path="processingStatus/name"/>
+          </Record>
+        </Annotation>
+        <Annotation Term="UI.DataPoint" Qualifier="itemType">
+          <Record Type="UI.DataPointType">
+            <PropertyValue Property="Title" String="Item Type"/>
+            <PropertyValue Property="Value" Path="type/name"/>
+          </Record>
+        </Annotation>
+      </Annotations>
+      <Annotations Target="CustomerOrderUIService.EntityContainer/CustomerOrderItems">
+        <Annotation Term="Capabilities.DeleteRestrictions">
+          <Record Type="Capabilities.DeleteRestrictionsType">
+            <PropertyValue Property="Deletable" Bool="false"/>
+          </Record>
+        </Annotation>
+        <Annotation Term="PersonalData.EntitySemantics" String="Other"/>
+      </Annotations>
+      <Annotations Target="CustomerOrderUIService.CustomerOrderItems/up_">
+        <Annotation Term="UI.Hidden" Bool="true"/>
+      </Annotations>
+      <Annotations Target="CustomerOrderUIService.CustomerOrderItems/up__id">
+        <Annotation Term="UI.Hidden" Bool="true"/>
+      </Annotations>
+      <Annotations Target="CustomerOrderUIService.CustomerOrderItems/id">
+        <Annotation Term="PersonalData.FieldSemantics" String="ContractRelatedID"/>
+        <Annotation Term="Core.Description" String="Identifier of an item in a customer order."/>
+      </Annotations>
+      <Annotations Target="CustomerOrderUIService.CustomerOrderItems/alternativeId">
+        <Annotation Term="UI.Hidden" Bool="true"/>
+        <Annotation Term="PersonalData.FieldSemantics" String="ContractRelatedID"/>
+        <Annotation Term="Core.Description" String="An alternative identifier of the customer order item."/>
+      </Annotations>
+      <Annotations Target="CustomerOrderUIService.CustomerOrderItems/product">
+        <Annotation Term="UI.Hidden" Bool="true"/>
+        <Annotation Term="Core.Description" String="Product of the item."/>
+      </Annotations>
+      <Annotations Target="CustomerOrderUIService.CustomerOrderItems/product_id">
+        <Annotation Term="UI.Hidden" Bool="true"/>
+        <Annotation Term="Core.Description" String="Product of the item."/>
+      </Annotations>
+      <Annotations Target="CustomerOrderUIService.CustomerOrderItems/quantity">
+        <Annotation Term="Measures.Unit" Path="quantityUnit_code"/>
+        <Annotation Term="Core.Description" String="Quantity of the item product."/>
+      </Annotations>
+      <Annotations Target="CustomerOrderUIService.CustomerOrderItems/quantityUnit">
+        <Annotation Term="UI.Hidden" Bool="true"/>
+        <Annotation Term="Core.Description" String="Unit of measurement of the item quantity."/>
+      </Annotations>
+      <Annotations Target="CustomerOrderUIService.CustomerOrderItems/quantityUnit_code">
+        <Annotation Term="UI.Hidden" Bool="true"/>
+        <Annotation Term="Common.IsUnit" Bool="true"/>
+        <Annotation Term="Core.Description" String="Unit of measurement of the item quantity."/>
+      </Annotations>
+      <Annotations Target="CustomerOrderUIService.CustomerOrderItems/netAmount">
+        <Annotation Term="Common.Label" String="Net Amount (€)"/>
+        <Annotation Term="Core.Description" String="Net value of an item in a customer order in document currency."/>
+      </Annotations>
+      <Annotations Target="CustomerOrderUIService.CustomerOrderItems/type">
+        <Annotation Term="UI.Hidden" Bool="true"/>
+        <Annotation Term="Core.Description" String="Identifier for the characteristics of an item. The item type distinguishes between different item types such as free of charge or text items and determines how the system processes the item."/>
+      </Annotations>
+      <Annotations Target="CustomerOrderUIService.CustomerOrderItems/type_code">
+        <Annotation Term="UI.Hidden" Bool="true"/>
+        <Annotation Term="Core.Description" String="Identifier for the characteristics of an item. The item type distinguishes between different item types such as free of charge or text items and determines how the system processes the item."/>
+      </Annotations>
+      <Annotations Target="CustomerOrderUIService.CustomerOrderItems/processingStatus">
+        <Annotation Term="UI.Hidden" Bool="true"/>
+        <Annotation Term="Core.Description" String="Processing status of an item."/>
+      </Annotations>
+      <Annotations Target="CustomerOrderUIService.CustomerOrderItems/processingStatus_code">
+        <Annotation Term="UI.Hidden" Bool="true"/>
+        <Annotation Term="Core.Description" String="Processing status of an item."/>
+      </Annotations>
+      <Annotations Target="CustomerOrderUIService.CustomerOrderItems/cancellationReason">
+        <Annotation Term="UI.Hidden" Bool="true"/>
+        <Annotation Term="Core.Description" String="Specifies the reason for canceling a customer order item."/>
+      </Annotations>
+      <Annotations Target="CustomerOrderUIService.CustomerOrderItems/cancellationReason_code">
+        <Annotation Term="UI.Hidden" Bool="true"/>
+        <Annotation Term="Core.Description" String="Specifies the reason for canceling a customer order item."/>
+      </Annotations>
+      <Annotations Target="CustomerOrderUIService.CustomerOrderItems/utilitiesAspect">
+        <Annotation Term="Core.Description" String="Utilities customer order attributes."/>
+      </Annotations>
+      <Annotations Target="CustomerOrderUIService.CustomerOrderItems/notes">
+        <Annotation Term="Core.Description" String="Additional notes to an item."/>
+      </Annotations>
+      <Annotations Target="CustomerOrderUIService.CustomerOrderItems/isBlocked">
+        <Annotation Term="UI.Hidden" Bool="true"/>
+        <Annotation Term="Core.Computed" Bool="true"/>
+        <Annotation Term="Core.Description" String="Set to True if data subject residence period is over."/>
+      </Annotations>
+      <Annotations Target="CustomerOrderUIService.CustomerOrderItemNotes">
+        <Annotation Term="UI.LineItem">
+          <Collection>
+            <Record Type="UI.DataField">
+              <PropertyValue Property="Label" String="Note Type"/>
+              <PropertyValue Property="Value" Path="textType/name"/>
+              <Annotation Term="HTML5.CssDefaults">
+                <Record Type="HTML5.CssDefaultsType">
+                  <PropertyValue Property="width" String="auto"/>
+                </Record>
+              </Annotation>
+            </Record>
+            <Record Type="UI.DataField">
+              <PropertyValue Property="Label" String="Text"/>
+              <PropertyValue Property="Value" Path="text"/>
+              <Annotation Term="HTML5.CssDefaults">
+                <Record Type="HTML5.CssDefaultsType">
+                  <PropertyValue Property="width" String="auto"/>
+                </Record>
+              </Annotation>
+            </Record>
+          </Collection>
+        </Annotation>
+      </Annotations>
+      <Annotations Target="CustomerOrderUIService.EntityContainer/CustomerOrderItemNotes">
+        <Annotation Term="Capabilities.DeleteRestrictions">
+          <Record Type="Capabilities.DeleteRestrictionsType">
+            <PropertyValue Property="Deletable" Bool="false"/>
+          </Record>
+        </Annotation>
+        <Annotation Term="PersonalData.EntitySemantics" String="Other"/>
+      </Annotations>
+      <Annotations Target="CustomerOrderUIService.CustomerOrderItemNotes/up_">
+        <Annotation Term="UI.Hidden" Bool="true"/>
+      </Annotations>
+      <Annotations Target="CustomerOrderUIService.CustomerOrderItemNotes/up__up__id">
+        <Annotation Term="UI.Hidden" Bool="true"/>
+      </Annotations>
+      <Annotations Target="CustomerOrderUIService.CustomerOrderItemNotes/up__id">
+        <Annotation Term="UI.Hidden" Bool="true"/>
+      </Annotations>
+      <Annotations Target="CustomerOrderUIService.CustomerOrderItemNotes/id">
+        <Annotation Term="UI.Hidden" Bool="true"/>
+        <Annotation Term="PersonalData.IsPotentiallyPersonal" Bool="true"/>
+        <Annotation Term="Core.Description" String="Identifier of a note."/>
+      </Annotations>
+      <Annotations Target="CustomerOrderUIService.CustomerOrderItemNotes/textType">
+        <Annotation Term="UI.Hidden" Bool="true"/>
+        <Annotation Term="Core.Description" String="Text type of the customer order item note."/>
+      </Annotations>
+      <Annotations Target="CustomerOrderUIService.CustomerOrderItemNotes/textType_code">
+        <Annotation Term="UI.Hidden" Bool="true"/>
+        <Annotation Term="Core.Description" String="Text type of the customer order item note."/>
+      </Annotations>
+      <Annotations Target="CustomerOrderUIService.CustomerOrderItemNotes/text">
+        <Annotation Term="PersonalData.IsPotentiallyPersonal" Bool="true"/>
+        <Annotation Term="Core.Description" String="Text of the customer order item note."/>
+      </Annotations>
+      <Annotations Target="CustomerOrderUIService.CustomerOrderItemNotes/isBlocked">
+        <Annotation Term="UI.Hidden" Bool="true"/>
+        <Annotation Term="Core.Computed" Bool="true"/>
+        <Annotation Term="Core.Description" String="Set to True if data subject residence period is over."/>
+      </Annotations>
+      <Annotations Target="CustomerOrderUIService.CustomerOrderItemUtilitiesAspect/up_">
+        <Annotation Term="UI.Hidden" Bool="true"/>
+      </Annotations>
+      <Annotations Target="CustomerOrderUIService.CustomerOrderItemUtilitiesAspect/up__up__id">
+        <Annotation Term="UI.Hidden" Bool="true"/>
+      </Annotations>
+      <Annotations Target="CustomerOrderUIService.CustomerOrderItemUtilitiesAspect/up__id">
+        <Annotation Term="UI.Hidden" Bool="true"/>
+      </Annotations>
+      <Annotations Target="CustomerOrderUIService.CustomerOrderItemUtilitiesAspect/formerServiceProvider">
+        <Annotation Term="Core.Description" String="Former service provider."/>
+      </Annotations>
+      <Annotations Target="CustomerOrderUIService.CustomerOrderItemUtilitiesAspect/referenceObject">
+        <Annotation Term="Core.Description" String="Reference object attributes."/>
+      </Annotations>
+      <Annotations Target="CustomerOrderUIService.CustomerOrderItemUtilitiesAspect/subsequentDocument">
+        <Annotation Term="Core.Description" String="Attributes of the subsequent document."/>
+      </Annotations>
+      <Annotations Target="CustomerOrderUIService.CustomerOrderItemUtilitiesAspect/isBlocked">
+        <Annotation Term="UI.Hidden" Bool="true"/>
+        <Annotation Term="Core.Computed" Bool="true"/>
+        <Annotation Term="Core.Description" String="Set to True if data subject residence period is over."/>
+      </Annotations>
+      <Annotations Target="CustomerOrderUIService.EntityContainer/Product">
+        <Annotation Term="ODM.root" Bool="true"/>
+      </Annotations>
+      <Annotations Target="CustomerOrderUIService.Product/id">
+        <Annotation Term="Core.Description" String="Identifier of the product."/>
+      </Annotations>
+      <Annotations Target="CustomerOrderUIService.Product/displayId">
+        <Annotation Term="Core.Description" String="Product number."/>
+      </Annotations>
+      <Annotations Target="CustomerOrderUIService.Product/name">
+        <Annotation Term="Core.Description" String="Product name."/>
+      </Annotations>
+      <Annotations Target="CustomerOrderUIService.CustomerOrderTypeCodes">
+        <Annotation Term="ODM.codeList" Bool="true"/>
+      </Annotations>
+      <Annotations Target="CustomerOrderUIService.EntityContainer/CustomerOrderTypeCodes">
+        <Annotation Term="ODM.codeList" Bool="true"/>
+      </Annotations>
+      <Annotations Target="CustomerOrderUIService.CustomerOrderTypeCodes/code">
+        <Annotation Term="Core.Description" String="A specific customer order type code."/>
+      </Annotations>
+      <Annotations Target="CustomerOrderUIService.CustomerOrderTypeCodes/name">
+        <Annotation Term="Core.Description" String="Name of the customer order type codes."/>
+        <Annotation Term="Common.Label" String="Name"/>
+      </Annotations>
+      <Annotations Target="CustomerOrderUIService.CustomerOrderTypeCodes/descr">
+        <Annotation Term="Core.Description" String="Description of the customer order type codes."/>
+        <Annotation Term="Common.Label" String="Description"/>
+      </Annotations>
+      <Annotations Target="CustomerOrderUIService.CustomerOrderItemTypeCodes">
+        <Annotation Term="ODM.codeList" Bool="true"/>
+      </Annotations>
+      <Annotations Target="CustomerOrderUIService.EntityContainer/CustomerOrderItemTypeCodes">
+        <Annotation Term="ODM.codeList" Bool="true"/>
+      </Annotations>
+      <Annotations Target="CustomerOrderUIService.CustomerOrderItemTypeCodes/code">
+        <Annotation Term="Core.Description" String="A specific customer order item type code."/>
+      </Annotations>
+      <Annotations Target="CustomerOrderUIService.CustomerOrderItemTypeCodes/name">
+        <Annotation Term="Core.Description" String="Name of the customer order item type codes."/>
+        <Annotation Term="Common.Label" String="Name"/>
+      </Annotations>
+      <Annotations Target="CustomerOrderUIService.CustomerOrderItemTypeCodes/descr">
+        <Annotation Term="Core.Description" String="Description of the customer order item type codes."/>
+        <Annotation Term="Common.Label" String="Description"/>
+      </Annotations>
+      <Annotations Target="CustomerOrderUIService.SalesProcessingStatusCodes">
+        <Annotation Term="ODM.codeList" Bool="true"/>
+      </Annotations>
+      <Annotations Target="CustomerOrderUIService.EntityContainer/SalesProcessingStatusCodes">
+        <Annotation Term="ODM.codeList" Bool="true"/>
+      </Annotations>
+      <Annotations Target="CustomerOrderUIService.SalesProcessingStatusCodes/code">
+        <Annotation Term="UI.Hidden" Bool="true"/>
+        <Annotation Term="Common.Text" Path="name"/>
+        <Annotation Term="Core.Description" String="A specific sales processing status code."/>
+      </Annotations>
+      <Annotations Target="CustomerOrderUIService.SalesProcessingStatusCodes/name">
+        <Annotation Term="Common.Label" String="Processing Status"/>
+        <Annotation Term="Core.Description" String="Name of the sales processing status codes."/>
+      </Annotations>
+      <Annotations Target="CustomerOrderUIService.SalesProcessingStatusCodes/descr">
+        <Annotation Term="Core.Description" String="Description of the sales processing status codes."/>
+        <Annotation Term="Common.Label" String="Description"/>
+      </Annotations>
+      <Annotations Target="CustomerOrderUIService.EntityContainer/SalesOrganization">
+        <Annotation Term="ODM.root" Bool="true"/>
+      </Annotations>
+      <Annotations Target="CustomerOrderUIService.SalesOrganization/id">
+        <Annotation Term="UI.Hidden" Bool="true"/>
+        <Annotation Term="Common.Text" Path="name"/>
+        <Annotation Term="Core.Description" String="The One Domain Model identifier of a SalesOrganization."/>
+      </Annotations>
+      <Annotations Target="CustomerOrderUIService.SalesOrganization/displayId">
+        <Annotation Term="Common.Label" String="Sales Organization ID"/>
+        <Annotation Term="Core.Description" String="Human-readable identifier of the sales organization."/>
+      </Annotations>
+      <Annotations Target="CustomerOrderUIService.SalesOrganization/name">
+        <Annotation Term="Common.Label" String="Sales Organization"/>
+        <Annotation Term="Core.Description" String="Name of the sales organization."/>
+      </Annotations>
+      <Annotations Target="CustomerOrderUIService.DivisionCodes">
+        <Annotation Term="ODM.codeList" Bool="true"/>
+      </Annotations>
+      <Annotations Target="CustomerOrderUIService.EntityContainer/DivisionCodes">
+        <Annotation Term="ODM.codeList" Bool="true"/>
+      </Annotations>
+      <Annotations Target="CustomerOrderUIService.DivisionCodes/code">
+        <Annotation Term="UI.Hidden" Bool="true"/>
+        <Annotation Term="Common.Text" Path="name"/>
+        <Annotation Term="Core.Description" String="A specific division code."/>
+      </Annotations>
+      <Annotations Target="CustomerOrderUIService.DivisionCodes/name">
+        <Annotation Term="Common.Label" String="Division"/>
+        <Annotation Term="Core.Description" String="Name of the division codes."/>
+      </Annotations>
+      <Annotations Target="CustomerOrderUIService.DivisionCodes/descr">
+        <Annotation Term="Core.Description" String="Description of the division codes."/>
+        <Annotation Term="Common.Label" String="Description"/>
+      </Annotations>
+      <Annotations Target="CustomerOrderUIService.DistributionChannelCodes">
+        <Annotation Term="ODM.codeList" Bool="true"/>
+      </Annotations>
+      <Annotations Target="CustomerOrderUIService.EntityContainer/DistributionChannelCodes">
+        <Annotation Term="ODM.codeList" Bool="true"/>
+      </Annotations>
+      <Annotations Target="CustomerOrderUIService.DistributionChannelCodes/code">
+        <Annotation Term="Core.Description" String="A specific distribution channel code."/>
+      </Annotations>
+      <Annotations Target="CustomerOrderUIService.DistributionChannelCodes/name">
+        <Annotation Term="Core.Description" String="Name of the distribution channel codes."/>
+        <Annotation Term="Common.Label" String="Name"/>
+      </Annotations>
+      <Annotations Target="CustomerOrderUIService.DistributionChannelCodes/descr">
+        <Annotation Term="Core.Description" String="Description of the distribution channel codes."/>
+        <Annotation Term="Common.Label" String="Description"/>
+      </Annotations>
+      <Annotations Target="CustomerOrderUIService.SalesCancellationReasonCodes">
+        <Annotation Term="ODM.codeList" Bool="true"/>
+      </Annotations>
+      <Annotations Target="CustomerOrderUIService.EntityContainer/SalesCancellationReasonCodes">
+        <Annotation Term="ODM.codeList" Bool="true"/>
+      </Annotations>
+      <Annotations Target="CustomerOrderUIService.SalesCancellationReasonCodes/code">
+        <Annotation Term="Core.Description" String="A specific sales cancellation reason code."/>
+      </Annotations>
+      <Annotations Target="CustomerOrderUIService.SalesCancellationReasonCodes/name">
+        <Annotation Term="Core.Description" String="Name of the sales cancellation reason codes."/>
+        <Annotation Term="Common.Label" String="Name"/>
+      </Annotations>
+      <Annotations Target="CustomerOrderUIService.SalesCancellationReasonCodes/descr">
+        <Annotation Term="Core.Description" String="Description of the sales cancellation reason codes."/>
+        <Annotation Term="Common.Label" String="Description"/>
+      </Annotations>
+      <Annotations Target="CustomerOrderUIService.UnitOfMeasureCodes">
+        <Annotation Term="ODM.codeList" Bool="true"/>
+      </Annotations>
+      <Annotations Target="CustomerOrderUIService.EntityContainer/UnitOfMeasureCodes">
+        <Annotation Term="ODM.codeList" Bool="true"/>
+      </Annotations>
+      <Annotations Target="CustomerOrderUIService.UnitOfMeasureCodes/code">
+        <Annotation Term="Core.Description" String="A specific unit of measurement code."/>
+      </Annotations>
+      <Annotations Target="CustomerOrderUIService.UnitOfMeasureCodes/name">
+        <Annotation Term="Core.Description" String="Name of the unit of measurement codes."/>
+        <Annotation Term="Common.Label" String="Name"/>
+      </Annotations>
+      <Annotations Target="CustomerOrderUIService.UnitOfMeasureCodes/descr">
+        <Annotation Term="Core.Description" String="Description of the unit of measurement codes."/>
+        <Annotation Term="Common.Label" String="Description"/>
+      </Annotations>
+      <Annotations Target="CustomerOrderUIService.SalesCancellationStatusCodes">
+        <Annotation Term="ODM.codeList" Bool="true"/>
+      </Annotations>
+      <Annotations Target="CustomerOrderUIService.EntityContainer/SalesCancellationStatusCodes">
+        <Annotation Term="ODM.codeList" Bool="true"/>
+      </Annotations>
+      <Annotations Target="CustomerOrderUIService.SalesCancellationStatusCodes/code">
+        <Annotation Term="Core.Description" String="A specific sales cancellation status code."/>
+      </Annotations>
+      <Annotations Target="CustomerOrderUIService.SalesCancellationStatusCodes/name">
+        <Annotation Term="Core.Description" String="Name of the sales cancellation status codes."/>
+        <Annotation Term="Common.Label" String="Name"/>
+      </Annotations>
+      <Annotations Target="CustomerOrderUIService.SalesCancellationStatusCodes/descr">
+        <Annotation Term="Core.Description" String="Description of the sales cancellation status codes."/>
+        <Annotation Term="Common.Label" String="Description"/>
+      </Annotations>
+      <Annotations Target="CustomerOrderUIService.SalesTextTypeCodes">
+        <Annotation Term="ODM.codeList" Bool="true"/>
+      </Annotations>
+      <Annotations Target="CustomerOrderUIService.EntityContainer/SalesTextTypeCodes">
+        <Annotation Term="ODM.codeList" Bool="true"/>
+      </Annotations>
+      <Annotations Target="CustomerOrderUIService.SalesTextTypeCodes/code">
+        <Annotation Term="Core.Description" String="A specific sales text type code."/>
+      </Annotations>
+      <Annotations Target="CustomerOrderUIService.SalesTextTypeCodes/name">
+        <Annotation Term="Core.Description" String="Name of the sales text type codes."/>
+        <Annotation Term="Common.Label" String="Name"/>
+      </Annotations>
+      <Annotations Target="CustomerOrderUIService.SalesTextTypeCodes/descr">
+        <Annotation Term="Core.Description" String="Description of the sales text type codes."/>
+        <Annotation Term="Common.Label" String="Description"/>
+      </Annotations>
+      <Annotations Target="CustomerOrderUIService.EntityContainer/CustomerOrderItemUtilitiesSubsequentDocument">
+        <Annotation Term="PersonalData.EntitySemantics" String="Other"/>
+      </Annotations>
+      <Annotations Target="CustomerOrderUIService.CustomerOrderItemUtilitiesSubsequentDocument/up_">
+        <Annotation Term="UI.Hidden" Bool="true"/>
+      </Annotations>
+      <Annotations Target="CustomerOrderUIService.CustomerOrderItemUtilitiesSubsequentDocument/up__up__up__id">
+        <Annotation Term="UI.Hidden" Bool="true"/>
+      </Annotations>
+      <Annotations Target="CustomerOrderUIService.CustomerOrderItemUtilitiesSubsequentDocument/up__up__id">
+        <Annotation Term="UI.Hidden" Bool="true"/>
+      </Annotations>
+      <Annotations Target="CustomerOrderUIService.CustomerOrderItemUtilitiesSubsequentDocument/id">
+        <Annotation Term="PersonalData.IsPotentiallyPersonal" Bool="true"/>
+        <Annotation Term="Core.Description" String="Identifier of an item in a customer order utilities subsequent document."/>
+      </Annotations>
+      <Annotations Target="CustomerOrderUIService.CustomerOrderItemUtilitiesSubsequentDocument/displayId">
+        <Annotation Term="PersonalData.IsPotentiallyPersonal" Bool="true"/>
+        <Annotation Term="Core.Description" String="Number of the subsequent document."/>
+      </Annotations>
+      <Annotations Target="CustomerOrderUIService.CustomerOrderItemUtilitiesSubsequentDocument/type">
+        <Annotation Term="Core.Description" String="Identifier for the characteristics of an item. The item type distinguishes between different item types such as free of charge or text items and determines how the system processes the item."/>
+      </Annotations>
+      <Annotations Target="CustomerOrderUIService.CustomerOrderItemUtilitiesSubsequentDocument/type_code">
+        <Annotation Term="Core.Description" String="Identifier for the characteristics of an item. The item type distinguishes between different item types such as free of charge or text items and determines how the system processes the item."/>
+      </Annotations>
+      <Annotations Target="CustomerOrderUIService.CustomerOrderItemUtilitiesSubsequentDocument/isBlocked">
+        <Annotation Term="UI.Hidden" Bool="true"/>
+        <Annotation Term="Core.Computed" Bool="true"/>
+        <Annotation Term="Core.Description" String="Set to True if data subject residence period is over."/>
+      </Annotations>
+      <Annotations Target="CustomerOrderUIService.CustomerOrderItemUtilitiesSubsequentDocumentCodes">
+        <Annotation Term="ODM.codeList" Bool="true"/>
+      </Annotations>
+      <Annotations Target="CustomerOrderUIService.EntityContainer/CustomerOrderItemUtilitiesSubsequentDocumentCodes">
+        <Annotation Term="ODM.codeList" Bool="true"/>
+      </Annotations>
+      <Annotations Target="CustomerOrderUIService.CustomerOrderItemUtilitiesSubsequentDocumentCodes/code">
+        <Annotation Term="Core.Description" String="A specific customer order utilities subsequent document code."/>
+      </Annotations>
+      <Annotations Target="CustomerOrderUIService.CustomerOrderItemUtilitiesSubsequentDocumentCodes/name">
+        <Annotation Term="Core.Description" String="Name of the customer order utilities subsequent document codes."/>
+        <Annotation Term="Common.Label" String="Name"/>
+      </Annotations>
+      <Annotations Target="CustomerOrderUIService.CustomerOrderItemUtilitiesSubsequentDocumentCodes/descr">
+        <Annotation Term="Core.Description" String="Description of the customer order utilities subsequent document codes."/>
+        <Annotation Term="Common.Label" String="Description"/>
+      </Annotations>
+      <Annotations Target="CustomerOrderUIService.CustomerOrderItemUtilitiesSubsequentDocumentCodes/urlPattern">
+        <Annotation Term="Core.Description" String="A pattern containing a URL link to the corresponding utilities subsequent document."/>
+      </Annotations>
+      <Annotations Target="CustomerOrderUIService.CustomerOrderItemUtilitiesSubsequentDocumentCodes/url">
+        <Annotation Term="Core.Computed" Bool="true"/>
+      </Annotations>
+      <Annotations Target="CustomerOrderUIService.EntityContainer/CustomerOrder_items_utilitiesAspect_referenceObject">
+        <Annotation Term="PersonalData.EntitySemantics" String="Other"/>
+      </Annotations>
+      <Annotations Target="CustomerOrderUIService.CustomerOrder_items_utilitiesAspect_referenceObject/meter">
+        <Annotation Term="PersonalData.IsPotentiallyPersonal" Bool="true"/>
+        <Annotation Term="Core.Description" String="Referenced equipment in a utilities order."/>
+      </Annotations>
+      <Annotations Target="CustomerOrderUIService.CustomerOrder_items_utilitiesAspect_referenceObject/installation">
+        <Annotation Term="Core.Description" String="An installation address on the item level for commodity item."/>
+      </Annotations>
+      <Annotations Target="CustomerOrderUIService.CustomerOrder_items_utilitiesAspect_referenceObject/isBlocked">
+        <Annotation Term="Core.Description" String="Set to True if data subject residence period is over."/>
+      </Annotations>
+    </Schema>
+  </edmx:DataServices>
+</edmx:Edmx>

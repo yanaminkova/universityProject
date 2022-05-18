@@ -1,0 +1,47 @@
+{
+    "extends": ["airbnb-base", "prettier"],
+    "env": {
+        "node": true,
+        "es6": true,
+        "jest": true
+    },
+    "parserOptions": {
+        "ecmaVersion": 2020,
+        "ecmaFeatures": {
+            "experimentalObjectRestSpread": true
+        }
+    },
+    "globals": {
+        "SELECT": true,
+        "INSERT": true,
+        "UPDATE": true,
+        "DELETE": true,
+        "CREATE": true,
+        "DROP": true,
+        "cds": true,
+        "before": true,
+        "after": true
+    },
+    "rules": {
+        "no-console": "warn",
+        "require-atomic-updates": "off",
+        "global-require": "off"
+    },
+    "overrides": [
+        {
+            "files": ["*.test.js", "chai-cds.js"],
+            "rules": {
+                "no-unused-expressions": "off"
+            }
+        }
+    ],
+    "ignorePatterns": [
+        "gen/",
+        "app/",
+        "test/",
+        "coverage/",
+        "appdeployer/",
+        "approuter/",
+        "docs/"
+    ]
+}
