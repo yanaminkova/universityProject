@@ -37,3 +37,5 @@ function stop(){
     document.getElementById('music').pause();
     document.onclick = play;
 }
+
+hfjfhkjfhkfhf
